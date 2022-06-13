@@ -1,0 +1,41 @@
+import { useTheme, GlobalStyles } from '@mui/material';
+
+const Global = () => {
+  const theme = useTheme();
+
+  return (
+    <GlobalStyles styles={{
+      '*': {
+        padding: 0,
+        margin: 0,
+        boxSizing: 'border-box',
+      },
+      '::selection': {
+        background: 'none',
+        color: 'none',
+      },
+      '::-moz-selection': {
+        background: 'none',
+        color: 'none',
+      },
+      '::-webkit-scrollbar': {
+        width: 10,
+      },
+      '::-webkit-scrollbar-thumb': {
+        backgroundColor: theme.palette.primary.main,
+      },
+      '::-webkit-scrollbar-thumb:hover': {
+        backgroundColor: theme.palette.secondary.main,
+      },
+      '::-webkit-scrollbar-track': {
+        background: theme.palette.background.paper,
+      },
+      body: {
+        backgroundColor: theme.palette.background.default,
+      },
+    }}
+    />
+  );
+};
+
+export default Global;
