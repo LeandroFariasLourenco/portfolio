@@ -2,11 +2,12 @@ import { useMemo } from 'react';
 import { CommonLayout } from 'src/core/layouts';
 import Welcome from './components/Welcome/Welcome';
 import Experience from './components/Experience/Experience';
-import Languages from './components/Languages/Languages';
+import Languages from './components/Stack/Stack';
 import About from './components/About/About';
 import Academic from './components/Academic/Academic';
 
 import * as S from './styled';
+import MyTimeline from './components/MyTimeline/MyTimeline';
 
 const Home = () => {
   const components = useMemo(() => ([
@@ -15,6 +16,7 @@ const Home = () => {
     <Experience key="experience" />,
     <Languages key="languages" />,
     <Academic key="academic" />,
+    <MyTimeline key="timeline" />,
   ]), []);
 
   return (

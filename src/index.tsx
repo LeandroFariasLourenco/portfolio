@@ -7,7 +7,7 @@ import Routes from 'src/core/routes/Routes';
 import { materialTheme } from 'src/styles/theme';
 import Global from 'src/styles/Global';
 import { IntlProvider } from 'react-intl';
-import portuguese from 'src/core/intl/portuguese.json';
+import portuguese from 'src/assets/intl/portuguese.json';
 
 import 'flag-icons/css/flag-icons.min.css';
 import 'swiper/css';
@@ -20,7 +20,7 @@ const Providers = () => (
   <StyledEngineProvider injectFirst>
     <MaterialThemeProvider theme={materialTheme}>
       <StyledThemeProvider theme={materialTheme}>
-        <IntlProvider messages={portuguese} locale="br" defaultLocale="br">
+        <IntlProvider messages={portuguese} locale="pt-BR">
           <Global />
           <Routes />
         </IntlProvider>

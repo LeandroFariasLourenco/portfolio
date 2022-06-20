@@ -43,16 +43,11 @@ const Academic = () => {
 
   return (
     <Section
-      title={(
-        <>
-          <Typewriter onInit={(typewriter) => {
-            typewriter.typeString('Formação acadêmica e cursos')
-              .start();
-          }}
-          />
-          <School fontSize="large" htmlColor="white" />
-        </>
-      )}
+      onTitleShow={(typewriter) => {
+        typewriter.typeString('Formação acadêmica e cursos')
+          .start();
+      }}
+      icon={<School fontSize="large" htmlColor="white" />}
     >
       <S.SwiperContainer>
         <Swiper {...swiperProps}>

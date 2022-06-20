@@ -10,6 +10,9 @@ const Global = () => {
         margin: 0,
         boxSizing: 'border-box',
       },
+      img: {
+        maxWidth: '100%',
+      },
       '::selection': {
         background: 'none',
         color: 'none',

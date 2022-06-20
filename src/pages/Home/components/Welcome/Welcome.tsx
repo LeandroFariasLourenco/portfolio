@@ -27,16 +27,17 @@ const Welcome = () => {
   }, []);
 
   return (
-    <Section>
+    <Grid>
       <Background
         ref={backgroundRef}
       />
       <Grid
+        item
         xs={12}
         container
         justifyContent="center"
       >
-        <S.Wrapper container alignItems="center" justifyContent="center" xs={12}>
+        <S.Wrapper container alignItems="center" item justifyContent="center" xs={12}>
           <Grid container xs={6} item>
             <Grid item xs={8}>
               <Typewriter
@@ -69,7 +70,7 @@ const Welcome = () => {
           </Grid>
         </S.Wrapper>
       </Grid>
-    </Section>
+    </Grid>
   );
 };
 

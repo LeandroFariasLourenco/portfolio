@@ -14,7 +14,9 @@ const Typewriter = ({
   <S.TypewriterWrapper>
     <Typography variant="h2">
       <TypewriterEffect
-        onInit={onInit}
+        onInit={(typewriter) => {
+          onInit(typewriter);
+        }}
       />
     </Typography>
   </S.TypewriterWrapper>

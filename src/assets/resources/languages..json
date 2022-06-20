@@ -1,0 +1,221 @@
+[
+  {
+    "name": "Typescript/Javascript",
+    "icon": "/technologies/typescript-javascript/javascript-typescript.svg",
+    "technologies": [
+      {
+        "name": "React",
+        "icon": "/technologies/typescript-javascript/react.svg",
+        "description": "home.languages1.technologies1.description",
+        "topics": [
+          "Redux",
+          "Mobx",
+          "Hooks",
+          "Classes",
+          "Styled Components"
+        ]
+      },
+      {
+        "name": "React Native",
+        "icon": "/technologies/typescript-javascript/react-native.svg",
+        "description": "home.languages1.technologies2.description",
+        "topics": [
+          "Redux",
+          "Mobx",
+          "Hooks",
+          "Classes",
+          "Styled Components",
+          "JS Bridge"
+        ]
+      },
+      {
+        "name": "Angular",
+        "icon": "/technologies/typescript-javascript/angular.svg",
+        "description": "home.languages1.technologies3.description",
+        "topics": [
+          "Observables",
+          "RxJs",
+          "Providers",
+          "Inputs/Outputs Emitters"
+        ]
+      },
+      {
+        "name": "Typescript",
+        "icon": "/technologies/typescript-javascript/typescript.svg",
+        "description": "home.languages1.technologies4.description",
+        "topics": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "name": "Javascript",
+        "icon": "/technologies/typescript-javascript/javascript.svg",
+        "description": "home.languages1.technologies5.description",
+        "topics": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "name": "Jquery",
+        "icon": "/technologies/typescript-javascript/jquery.svg",
+        "description": "home.languages1.technologies6.description",
+        "topics": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      }
+    ]
+  },
+  {
+    "name": "AWS",
+    "icon": "/technologies/aws/aws.svg",
+    "technologies": [
+      {
+        "name": "Cloudformation",
+        "icon": "/technologies/aws/cloudformation.svg",
+        "description": "home.languages2.technologies1.description",
+        "topics": []
+      },
+      {
+        "name": "Api Gateway",
+        "icon": "/technologies/aws/api-gateway.svg",
+        "description": "home.languages2.technologies2.description",
+        "topics": []
+      },
+      {
+        "name": "Lambda",
+        "icon": "/technologies/aws/lambda.svg",
+        "description": "home.languages2.technologies3.description",
+        "topics": []
+      },
+      {
+        "name": "Cloudfront",
+        "icon": "/technologies/aws/cloudfront.svg",
+        "description": "home.languages2.technologies4.description",
+        "topics": []
+      },
+      {
+        "name": "Cloud Dev Kit",
+        "icon": "/technologies/aws/cdk.svg",
+        "description": "home.languages2.technologies5.description",
+        "topics": []
+      },
+      {
+        "name": "Codecommit",
+        "icon": "/technologies/aws/codecommit.svg",
+        "description": "home.languages2.technologies6.description",
+        "topics": []
+      },
+      {
+        "name": "Codebuild",
+        "icon": "/technologies/aws/codebuild.svg",
+        "description": "home.languages2.technologies7.description",
+        "topics": []
+      },
+      {
+        "name": "Cognito",
+        "icon": "/technologies/aws/cognito.svg",
+        "description": "home.languages2.technologies8.description",
+        "topics": []
+      },
+      {
+        "name": "Amplify",
+        "icon": "/technologies/aws/amplify.svg",
+        "description": "home.languages2.technologies9.description",
+        "topics": []
+      },
+      {
+        "name": "S3",
+        "icon": "/technologies/aws/s3.svg",
+        "description": "home.languages2.technologies10.description",
+        "topics": []
+      }
+    ]
+  },
+  {
+    "name": "Dart",
+    "icon": "/technologies/dart/dart.svg",
+    "technologies": [
+      {
+        "name": "Flutter",
+        "icon": "/technologies/dart/flutter.svg",
+        "description": "home.languages3.technologies1.description",
+        "topics": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "name": "Dart",
+        "icon": "/technologies/dart/dart.svg",
+        "description": "home.languages3.technologies2.description",
+        "topics": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      }
+    ]
+  },
+  {
+    "name": "HTML/CSS",
+    "icon": "/technologies/html-css/html-css.svg",
+    "technologies": [
+      {
+        "name": "SCSS",
+        "icon": "/technologies/html-css/sass.svg",
+        "description": "home.languages4.technologies1.description",
+        "topics": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "name": "PUG",
+        "icon": "/technologies/html-css/pug.svg",
+        "description": "home.languages4.technologies2.description",
+        "topics": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "name": "HTML",
+        "icon": "/technologies/html-css/html.svg",
+        "description": "home.languages4.technologies3.description",
+        "topics": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "name": "CSS",
+        "icon": "/technologies/html-css/css.svg",
+        "description": "home.languages4.technologies4.description",
+        "topics": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "title": "home.experience1.title",
+    "date": "home.experience1.date",
+    "description": "home.experience1.description",
+    "location": "São Paulo - SP",
+    "icon": "/badges/mid-level.png",
+    "type": "home.experience1.type",
+    "stack": "home.experience1.stack",
+    "company": {
+      "name": "home.experience1.company",
+      "logo": "companies/gft.jpg",
+      "query": "GFT Alphaville"
+    }
+  },
+  {
+    "title": "home.experience2.title",
+    "date": "home.experience2.date",
+    "description": "home.experience2.description",
+    "location": "São Paulo - SP",
+    "icon": "/badges/junior.png",
+    "type": "home.experience2.type",
+    "stack": "home.experience2.stack",
+    "company": {
+      "name": "home.experience2.company",
+      "logo": "companies/nbm-informatica.png",
+      "query": "NBM Informática"
+    }
+  },
+  {
+    "title": "home.experience3.title",
+    "date": "home.experience3.date",
+    "description": "home.experience3.description",
+    "location": "São Paulo - SP",
+    "icon": "/badges/junior.png",
+    "type": "home.experience3.type",
+    "stack": "home.experience3.stack",
+    "company": {
+      "name": "home.experience3.company",
+      "logo": "companies/enext.jpg",
+      "query": "Enext"
+    }
+  },
+  {
+    "title": "home.experience4.title",
+    "date": "home.experience4.date",
+    "description": "home.experience4.description",
+    "location": "São Paulo - SP",
+    "icon": "/badges/intern.png",
+    "type": "home.experience4.type",
+    "stack": "home.experience4.stack",
+    "company": {
+      "name": "home.experience4.company",
+      "logo": "companies/enext.jpg",
+      "query": "Enext"
+    }
+  },
+  {
+    "title": "home.experience5.title",
+    "date": "home.experience5.date",
+    "description": "home.experience5.description",
+    "location": "Barueri - SP",
+    "icon": "/badges/beginner.png",
+    "type": "home.experience5.type",
+    "stack": "home.experience5.stack",
+    "company": {
+      "name": "home.experience5.company",
+      "logo": "companies/enext.jpg",
+      "query": "Enext"
+    }
+  }
+]

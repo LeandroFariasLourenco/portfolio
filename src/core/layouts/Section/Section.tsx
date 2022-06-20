@@ -1,38 +1,56 @@
 import { Grid, GridProps } from '@mui/material';
-import { memo, ReactNode } from 'react';
+import {
+  CSSProperties, memo, ReactNode, useState,
+} from 'react';
+import { Slide } from 'react-reveal';
+import { Typewriter } from 'src/core/components';
+import { TypewriterClass } from 'typewriter-effect';
 
 import * as S from './styled';
 
 interface ISectionProps {
   children: ReactNode | ReactNode[];
+  gridStyle?: CSSProperties;
+  icon: ReactNode;
   background?: string;
-  gridProps?: GridProps;
-  title?: ReactNode;
+  onTitleShow: (t: TypewriterClass) => void;
 }
 
 const Section = ({
   children,
-  gridProps,
-  title,
+  gridStyle,
+  icon,
+  onTitleShow,
   ...props
-}: ISectionProps) => (
-  <S.SectionContainer
-    container
-    xs={12}
-    justifyContent="center"
-    alignItems="center"
-    {...props}
-  >
-    <Grid item xs={6}>
-      {title ? (
-        <S.SectionHeader container flexWrap="nowrap" justifyContent="space-between" alignItems="center">
-          {title}
-        </S.SectionHeader>
-      ) : null}
-      {children}
-    </Grid>
+}: ISectionProps) => {
+  const [typing, setTyping] = useState(false);
 
-  </S.SectionContainer>
-);
+  return (
+    <S.SectionContainer
+      container
+      xs={12}
+      justifyContent="center"
+      alignItems="center"
+      style={gridStyle}
+      {...props}
+    >
+      <Grid item xs={6}>
+        <S.SectionHeader container flexWrap="nowrap" justifyContent="space-between" alignItems="center">
+          {typing ? <Typewriter onInit={onTitleShow} /> : null}
+          <Slide
+            onReveal={() => {
+              setTyping(true);
+            }}
+            right
+          >
+            {icon}
+          </Slide>
+        </S.SectionHeader>
+        {children}
+      </Grid>
+
+    </S.SectionContainer>
+  );
+};
 
 export default memo(Section);

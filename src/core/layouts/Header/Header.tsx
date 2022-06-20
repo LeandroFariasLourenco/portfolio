@@ -12,7 +12,7 @@ const Header = () => {
     <ElevationScroll>
       {/* <Slide appear={false} direction="down" in={!trigger}> */}
       <AppBar color="transparent" elevation={0}>
-        <Grid container xs={12} justifyContent="center">
+        <Grid container item xs={12} justifyContent="center">
           <Grid container item alignItems="center" justifyContent="space-between" xs={6}>
             <GitHub fontSize="large" />
             <Typography variant="h4">Leandro Farias</Typography>

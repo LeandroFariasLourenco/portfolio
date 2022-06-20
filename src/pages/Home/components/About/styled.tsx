@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import {
-  Card, Grid,
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Card, Grid, Typography,
 } from '@mui/material';
 
 export const AboutCard = styled(Card)`
@@ -27,6 +30,67 @@ export const AboutCardHoverContainer = styled(Grid)<{
   
   * {
     font-size: 0;
+  }
+`);
+
+export const AboutMeObjectives = styled(Grid)`
+  margin-top: 10px;
+
+  > * {
+    &:not(:first-child) {
+      padding-left: 15px;
+    }
+  }
+`;
+
+export const AboutMeSummary = styled(Typography)`
+  font-size: 15px;
+`;
+
+export const AboutMeAccordionSummary = styled(AccordionSummary)`
+  background-color: transparent;
+  padding-left: 0;
+
+  > div {
+    margin: 0 !important;
+  }
+
+  &.Mui-expanded {
+    min-height: 0 !important;
+  }
+
+  .MuiAccordionSummary-expandIconWrapper {
+    transform: rotate(90deg);
+
+    &.Mui-expanded {
+      transform: rotate(270deg);
+    }
+  }
+`;
+
+export const AboutMeAcccordion = styled(Accordion)`
+  background-color: transparent;
+  box-shadow: unset;
+  margin: 0 !important;
+`;
+
+export const AboutMeObjectivesTitle = styled(Typography)`
+  svg {
+    margin-right: 10px;
+  }
+`;
+
+export const AboutMeAccordionDetails = styled(AccordionDetails)`
+`;
+
+export const AboutMeObjective = styled(Typography)(({ theme }) => `
+  font-size: 15px;
+
+  &::before {
+    content: '-';
+    font-size: 20px;
+    background-color: ${theme.palette.action.focus};
+    margin: 0 10px 0 0;
   }
 `);
 

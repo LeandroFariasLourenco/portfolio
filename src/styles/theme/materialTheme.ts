@@ -9,7 +9,7 @@ export const materialTheme = createTheme({
       fontFamily: "'Share Tech Mono', monospace",
       fontSize: 38,
       textTransform: 'uppercase',
-      textShadow: '0 0 5px #00FF87',
+      textShadow: '0 0 5px #06d674',
       color: 'white',
     },
     h2: {
@@ -17,21 +17,34 @@ export const materialTheme = createTheme({
       fontSize: 32,
       color: 'white',
     },
+    h3: {
+      fontSize: 26,
+      fontFamily: "'Share Tech Mono', monospace",
+      textShadow: '0 0 1px #06d674',
+    },
+    h4: {
+      fontSize: 24,
+      fontFamily: "'Share Tech Mono', monospace",
+    },
+    h5: {
+      fontSize: 22,
+      fontFamily: "'Share Tech Mono', monospace",
+    },
   },
   palette: {
     background: {
       default: '#0E1122',
-      paper: '#1A1A1A',
+      paper: '#1E1F25',
     },
     action: {
-      active: '#04F5FF',
+      active: '#0aa1cf',
       focus: '#0E1122',
     },
     primary: {
-      main: '#00FF87',
+      main: '#06d674',
     },
     secondary: {
-      main: '#E90052',
+      main: '#d10d52',
       light: '#ab0a43',
     },
   },

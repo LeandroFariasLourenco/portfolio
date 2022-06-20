@@ -1,0 +1,106 @@
+{
+  "home.about-me.summary": "Desde muito cedo pensei em trilhar uma carreira de desenvolvedor. No início, pretendia seguir no caminho de desenvolver jogos, porém acabei entrando no mundo de desenvolvimento de software por conta da oportunidade que tive de fazer um curso técnico na área, enquanto seguia no ensino médio. No meu tempo livre gosto especialmente de jogar, uma vez ou outra realizar algum projeto pessoal, estudar, ler livros, assistir...",
+  "home.about-me.objectives": "Meus objetivos",
+  "home.about-me.objectives.short-term": "Curto/médio prazo",
+  "home.about-me.objectives.short-term1": "Encontrar uma oportunidade que eu possa ter estabilidade, não apenas financeira mas também entre a vida profissional e pessoal.",
+  "home.about-me.objectives.short-term2": "Uma empresa que me proporcione oportunidades para realizar meus planos de longo prazo.",
+  
+  "home.about-me.objectives.long-term": "Longo prazo",
+  "home.about-me.objectives.long-term1": "Tornar um desenvolvedor full-stack/full-cycle",
+  "home.about-me.objectives.long-term2": "Mudar para um país europeu (Portugal, Inglaterra)",
+  "home.about-me.salary": "Negociável",
+
+  "home.experience1.title": "Front-End Pleno",
+  "home.experience1.company": "GFT",
+  "home.experience1.date": "04/2022 - Atual",
+  "home.experience1.description": "Com meus conhecimentos sólidos no ecossistema Javascript/Typescript e Angular, React e React Native, me voltei mais para o desenvolvimento em Cloud, com foco em AWS e seus serviços. Trabalhei em projetos grandes e que tinham a prioridade de serem escaláveis a nível internacional com multilinguagens e também em projetos que já tinham anos de mercado.",
+  "home.experience1.type": "Home Office",
+  "home.experience1.stack": "React, Typescript, AWS, Git",
+  
+  "home.experience2.title": "Front-End Júnior",
+  "home.experience2.company": "NBM Informática",
+  "home.experience2.date": "03/2021 - 04/2022",
+  "home.experience2.description": "Com a mudança de empresa, também veio a mudança de tecnologias. Não comecei a trabalhar com ecommerce mas sim com soluções in-house. Utilizava-se Angular, Typescript, AWS, Azure e React Native. Os projetos eram diversos e cobriam camadas de Web e Mobile. Tive também a opotunidade de gerenciar/auxiliar diretamente 1 pessoa do time.",
+  "home.experience2.type": "Home/Presencial",
+  "home.experience2.stack": "PUG, SCSS, Typescript, Angular, React Native, AWS, Git, Gulp, Flutter",
+  
+  "home.experience3.title": "Front-End Júnior",
+  "home.experience3.company": "Enext",
+  "home.experience3.date": "09/2020 - 12/2020",
+  "home.experience3.description": "Sendo Júnior, tive a oportunidade de aprofundar meu conhecimento com as tecnologias já abordadas no estágio, ao mesmo tempo que minhas responsabilidades eram aumentadas.",
+  "home.experience3.type": "Home Office",
+  "home.experience3.stack": "PUG, SCSS, Javascript, React, Wordpress, VTEX, Git, Gulp, Grunt",
+  
+  "home.experience4.title": "Front-End Estágio",
+  "home.experience4.company": "Enext",
+  "home.experience4.date": "10/2019 - 09/2020",
+  "home.experience4.description": "Como estagiário, comecei a participar mais com o desenvolvimento de diversos projetos de ecommerce com VTEX, utilizando Linguagens e frameworks SCSS, PUG, React, Redux. Automatizadores de tarefa com Grunt, Gulp, Webpack...",
+  "home.experience4.type": "Home/Presencial",
+  "home.experience4.stack": "HTML, PUG, SCSS, Javascript, React, Magento, VTEX, Git",
+  
+  "home.experience5.title": "Front-End Programa de Capacitação",
+  "home.experience5.company": "Enext",
+  "home.experience5.date": "09/2019 - 10/2019",
+  "home.experience5.description": "Meu primeiro contato profissional. Tive a oportunidade de acompanhar profissionais no dia-a-dia, enquanto também aprendia diversas tecnologias do mundo front-end, com Git, HTML, SCSS, Javascript. Semanalmente eu apresentava projetos para ser sujeito a um teste no final do mês para a vaga de estágio.",
+  "home.experience5.type": "Presencial",
+  "home.experience5.stack": "HTML, SCSS, Javascript, Git",
+
+  "home.experience.current": "Atual",
+  "home.experience.description": "Descrição",
+  "home.experience.stack": "Tecnologias",
+
+  "home.languages1.technologies1.description": "Há um enorme debate entre se o React é um pacote ou um framework, entretanto, por sua natureza de possibilitar desenvolvimento de SPAs, conceitos próprios e padrões, enxergo como um framework. Em todos lugares que já trabalhei, o que todos tinham em comum é a utilização de React em algum projeto ou até mesmo no cotidiano.",
+  "home.languages1.technologies2.description": "Extremamente semelhante ao React. Suas principais diferenças ocorrem por conta de seu desenvolvimento mobile e multiplataforma. O que muitas pessoas não sabem é que o React Native também pode ser usado para desenvolver apps em Windows! Porém, eu apenas tive a oportunidade de desenvolver apps mobile em React Native.",
+  "home.languages1.technologies3.description": "Foi com o Angular que tive meu contato com Typescript, desde então sempre preferi desenvolver soluções utilizando Typescript, ou seja, pode-se dizer que tenho um certo carinho pelo Angular. Ele tem conceitos parecidos com o React, porém bastante diferente em como ele implementa elas com o Framework.",
+
+  "home.languages1.technologies4.description": "k",
+  "home.languages1.technologies5.description": "k",
+  "home.languages1.technologies6.description": "k",
+
+  "home.languages2.technologies1.description": "k",
+  "home.languages2.technologies2.description": "k",
+  "home.languages2.technologies3.description": "k",
+  "home.languages2.technologies4.description": "k",
+  "home.languages2.technologies5.description": "k",
+  "home.languages2.technologies6.description": "k",
+  "home.languages2.technologies7.description": "k",
+  "home.languages2.technologies8.description": "k",
+  "home.languages2.technologies9.description": "k",
+  "home.languages2.technologies10.description": "Talvez o serviços mais conhecido da AWS, responsável por armazenamento das mais diversas formas de dados estáticos em nuvem, seja pastas, imagens, pdfs... Inclusive, todos os assets deste meu portfólio, estão hospedados em um bucket s3 criado por mim.",
+
+  "home.languages3.technologies1.description": "e",
+  "home.languages3.technologies2.description": "e",
+
+  "home.languages4.technologies1.description": "e",
+  "home.languages4.technologies2.description": "e",
+  "home.languages4.technologies3.description": "e",
+  "home.languages4.technologies4.description": "e",
+  
+  "home.formation1.title": "Análise e Desenvolvimento de Sistemas",
+  "home.formation1.type": "Técnologo",
+  "home.formation1.location": "Vila Mariana - SP",
+  "home.formation1.duration": "2019 - 2020",
+
+  "home.formation2.title": "Informática p/ Internet",
+  "home.formation2.type": "Técnico",
+  "home.formation2.location": "Diadema - SP",
+  "home.formation2.duration": "2017 - 2018",
+
+  "home.formation3.title": "",
+  "home.formation3.type": "",
+  "home.formation3.location": "",
+  "home.formation3.duration": "",
+
+
+  "home.mytimeline.landmark1.name": "",
+  "home.mytimeline.landmark2.name": "",
+  "home.mytimeline.landmark3.name": "",
+  "home.mytimeline.landmark4.name": "",
+  "home.mytimeline.landmark5.name": "",
+  "home.mytimeline.landmark6.name": "",
+  "home.mytimeline.landmark7.name": "",
+  "home.mytimeline.landmark8.name": "",
+  "home.mytimeline.landmark9.name": "",
+  "home.mytimeline.landmark10.name": "",
+  "home.mytimeline.landmark11.name": ""
+}
