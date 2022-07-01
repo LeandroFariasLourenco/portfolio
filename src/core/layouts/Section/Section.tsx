@@ -1,4 +1,4 @@
-import { Grid, GridProps } from '@mui/material';
+import { Box, Grid, GridProps } from '@mui/material';
 import {
   CSSProperties, memo, ReactNode, useState,
 } from 'react';
@@ -12,7 +12,7 @@ interface ISectionProps {
   children: ReactNode | ReactNode[];
   gridStyle?: CSSProperties;
   icon: ReactNode;
-  background?: string;
+  childrenWrapperProps?: GridProps;
   onTitleShow: (t: TypewriterClass) => void;
 }
 
@@ -21,7 +21,7 @@ const Section = ({
   gridStyle,
   icon,
   onTitleShow,
-  ...props
+  childrenWrapperProps,
 }: ISectionProps) => {
   const [typing, setTyping] = useState(false);
 
@@ -32,7 +32,6 @@ const Section = ({
       justifyContent="center"
       alignItems="center"
       style={gridStyle}
-      {...props}
     >
       <Grid item xs={6}>
         <S.SectionHeader container flexWrap="nowrap" justifyContent="space-between" alignItems="center">
@@ -46,7 +45,9 @@ const Section = ({
             {icon}
           </Slide>
         </S.SectionHeader>
-        {children}
+        <Box {...childrenWrapperProps}>
+          {children}
+        </Box>
       </Grid>
 
     </S.SectionContainer>

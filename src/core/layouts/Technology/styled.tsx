@@ -13,8 +13,23 @@ export const LanguageDescriptionCard = styled(Card)(({ theme }) => `
 export const LanguagesTabWrapper = styled(Grid)(({ theme }) => `
   height: 100%;
   border: 2px dashed ${theme.palette.secondary.main};
+  background-color: ${theme.palette.background.paper};
   border-top: none;
   border-right: none;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 10,
+  },
+  &::-webkit-scrollbar-thumb {
+    background-color: ${theme.palette.secondary.main},
+  },
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: ${theme.palette.secondary.main},
+  },
+  &::-webkit-scrollbar-track {
+    background: ${theme.palette.background.paper},
+  },
 `);
 
 export const LanguageDividerTitle = styled(Typography)`
@@ -28,7 +43,7 @@ export const LanguageDescription = styled(Typography)`
 `;
 
 export const LanguageContainer = styled(Grid)`
-  min-height: 400px;
+  height: 475px;
 `;
 
 export const LanguageTopics = styled('ul')`
@@ -42,13 +57,22 @@ export const LanguageTopic = styled('li')(({ theme }) => `
   margin: 5px;
 `);
 
-export const TabContainer = styled(Card) <{
-  selected: boolean;
-}>`
+export const TabContainer = styled(Grid)(({ theme }) => `
   cursor: pointer;
-  transition: background-color 500ms ease-in-out;
-  background-color: ${({ selected, theme }) => (selected ? theme.palette.secondary.main : theme.palette.background.paper)};
-  padding: 10px 15px;
-  flex: 1;
+  transition: background-color 200ms ease-in-out;
+  background-color: ${theme.palette.background.paper} ;
+  padding: 0 15px;
   border-radius: 0;
-`;
+  min-height: 62px;
+  max-height: 62px;
+  
+  flex: 1;
+
+  &.selected {
+    background-color: ${theme.palette.secondary.main} !important;
+  }
+
+  &:hover {
+    background-color: ${theme.palette.action.hover};
+  }
+`);

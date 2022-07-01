@@ -1,4 +1,10 @@
 {
+  "header.links.section1": "Sobre mim",
+  "header.links.section2": "Experiência",
+  "header.links.section3": "Stack",
+  "header.links.section4": "Formação",
+  "header.links.section5": "Contato",
+
   "home.about-me.summary": "Desde muito cedo pensei em trilhar uma carreira de desenvolvedor. No início, pretendia seguir no caminho de desenvolver jogos, porém acabei entrando no mundo de desenvolvimento de software por conta da oportunidade que tive de fazer um curso técnico na área, enquanto seguia no ensino médio. No meu tempo livre gosto especialmente de jogar, uma vez ou outra realizar algum projeto pessoal, estudar, ler livros, assistir...",
   "home.about-me.objectives": "Meus objetivos",
   "home.about-me.objectives.short-term": "Curto/médio prazo",
@@ -92,15 +98,49 @@
   "home.formation3.duration": "",
 
 
-  "home.mytimeline.landmark1.name": "",
-  "home.mytimeline.landmark2.name": "",
-  "home.mytimeline.landmark3.name": "",
-  "home.mytimeline.landmark4.name": "",
-  "home.mytimeline.landmark5.name": "",
-  "home.mytimeline.landmark6.name": "",
-  "home.mytimeline.landmark7.name": "",
-  "home.mytimeline.landmark8.name": "",
-  "home.mytimeline.landmark9.name": "",
-  "home.mytimeline.landmark10.name": "",
-  "home.mytimeline.landmark11.name": ""
+  "home.mytimeline.landmark1.name": "Início",
+  "home.mytimeline.landmark1.description": "Começo de jornada",
+  
+  
+  "home.mytimeline.landmark2.name": "Inglês",
+  "home.mytimeline.landmark2.description": "teste",
+  
+  "home.mytimeline.landmark3.name": "Etec",
+  "home.mytimeline.landmark3.description": "teste",
+  
+  "home.mytimeline.landmark4.name": "Formação",
+  "home.mytimeline.landmark4.description": "teste",
+  
+  "home.mytimeline.landmark5.name": "Término inglês",
+  "home.mytimeline.landmark5.description": "teste",
+  
+  "home.mytimeline.landmark6.name": "Faculdade",
+  "home.mytimeline.landmark6.description": "teste",
+  
+  "home.mytimeline.landmark7.name": "Primeiro emprego",
+  "home.mytimeline.landmark7.description": "teste",
+  
+  "home.mytimeline.landmark8.name": "Estágio",
+  "home.mytimeline.landmark8.description": "teste",
+  
+  "home.mytimeline.landmark9.name": "Next",
+  "home.mytimeline.landmark9.description": "Evento da fiap ai graças a deus",
+  
+  "home.mytimeline.landmark10.name": "Promovido",
+  "home.mytimeline.landmark10.description": "Minha primeira experiência como CLT e Júnior como dev front-end.",
+
+  "home.mytimeline.landmark11.name": "Saída de emprego",
+  "home.mytimeline.landmark11.description": "Decidi tirar um tempo para encontrar uma oportunidade melhor",
+  
+  "home.mytimeline.landmark12.name": "DIPLOMA MANO",
+  "home.mytimeline.landmark12.description": "Peguei um diploma ai seloco",
+
+  "home.mytimeline.landmark13.name": "Freelance",
+  "home.mytimeline.landmark13.description": "Participei de um projeto para criar um app multiplataforma para uma empresa de elétrica.",
+
+  "home.mytimeline.landmark14.name": "Novo emprego",
+  "home.mytimeline.landmark14.description": "Ainda como Júnior, fui contratado pela NBM Informática",
+
+  "home.mytimeline.landmark15.name": "Novo emprego",
+  "home.mytimeline.landmark15.description": "Contratado pela GFT como desenvolvedor front-end pleno"
 }

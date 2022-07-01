@@ -33,12 +33,13 @@ export const materialTheme = createTheme({
   },
   palette: {
     background: {
-      default: '#0E1122',
+      default: '#1C1630',
       paper: '#1E1F25',
     },
     action: {
       active: '#0aa1cf',
       focus: '#0E1122',
+      hover: 'rgba(209, 13, 82, 0.2)',
     },
     primary: {
       main: '#06d674',

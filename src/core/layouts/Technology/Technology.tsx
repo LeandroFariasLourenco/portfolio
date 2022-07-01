@@ -4,7 +4,7 @@ import {
   Grid,
   Typography,
 } from '@mui/material';
-
+import cx from 'classnames';
 import { APP } from 'src/core/constants';
 import { FormattedMessage } from 'react-intl';
 import { ITechnology } from 'src/core/models';
@@ -21,11 +21,15 @@ const Technology = ({
     index: number,
   ) => (
     <S.TabContainer
-      selected={index === selectedTab}
+      className={cx({
+        selected: index === selectedTab,
+      })}
       onClick={() => {
         setSelectedTab(index);
       }}
       key={technology.name}
+      container
+      alignItems="center"
     >
       <Grid container flexWrap="nowrap" alignItems="center">
         <Box style={{ width: 75, marginRight: 10 }}>
@@ -54,7 +58,7 @@ const Technology = ({
 
   return (
     <S.LanguageContainer container flexWrap="nowrap">
-      <S.LanguagesTabWrapper container flexDirection="column" item xs={4}>
+      <S.LanguagesTabWrapper container flexDirection="column" flexWrap="nowrap" item xs={4}>
         {technologies.map(renderTechnology)}
       </S.LanguagesTabWrapper>
       <Grid item xs={8}>

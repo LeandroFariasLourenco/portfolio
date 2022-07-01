@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider as MaterialThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-
 import Routes from 'src/core/routes/Routes';
 import { materialTheme } from 'src/styles/theme';
 import Global from 'src/styles/Global';
@@ -13,6 +12,8 @@ import 'flag-icons/css/flag-icons.min.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+
+import 'react-vertical-timeline-component/style.min.css';
 
 import reportWebVitals from './reportWebVitals';
 

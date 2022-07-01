@@ -1,5 +1,6 @@
 import { DeveloperMode } from '@mui/icons-material';
-import { Box, useTheme } from '@mui/material';
+import cx from 'classnames';
+import { useTheme } from '@mui/material';
 import { useState } from 'react';
 import { Section } from 'src/core/layouts';
 import { APP } from 'src/core/constants';
@@ -12,30 +13,6 @@ const Languages = () => {
   const theme = useTheme();
   const [selectedTab, setSelectedTab] = useState<number>(0);
 
-  // const languageTabs = useMemo(() => [
-  //   {
-  //     icon: <img src={`${APP.aws.assets}/javascript-typescript.svg`} width={110} alt="ts/js" />,
-  //     name: 'Typescript/Javascript',
-  //     content: <Typescript />,
-  //   },
-  //   {
-  //     icon: <img src={`${APP.aws.assets}/html-css.svg`}
-  //      style={{ marginTop: '-15px' }} width={110} alt="ts/js" />,
-  //     name: 'HTML/CSS',
-  //     content: null,
-  //   },
-  //   {
-  //     icon: <img src={`${APP.aws.assets}/dart.svg`} width={55} alt="ts/js" />,
-  //     name: 'Dart',
-  //     content: null,
-  //   },
-  //   {
-  //     icon: <img src={`${APP.aws.assets}/aws.svg`} width={90} alt="aws" />,
-  //     name: 'AWS',
-  //     content: null,
-  //   },
-  // ], []);
-
   return (
     <Section
       onTitleShow={(typewriter) => {
@@ -44,11 +21,12 @@ const Languages = () => {
       }}
       icon={<DeveloperMode fontSize="large" htmlColor="white" />}
       gridStyle={{
-        backgroundColor: theme.palette.background.paper,
-        padding: 5,
+        backgroundImage: 'linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(https://www.teahub.io/photos/full/296-2965452_5-ferramentas-em-alta-para-desenvolvedores-react-desenvolvedor.png)',
+        paddingTop: 50,
+        paddingBottom: 50,
       }}
     >
-      <S.TabWrapper container>
+      <S.StackWrapper container>
         {languages.map((language, index) => (
           <S.TabContainer
             key={language.name}
@@ -61,27 +39,27 @@ const Languages = () => {
               setSelectedTab(index);
             }}
           >
-            <img
+            <S.StackLogo
               src={`${APP.aws.assets}${language.icon}`}
-              width={130}
-              style={{ maxHeight: 65 }}
               alt={language.name}
             />
           </S.TabContainer>
         ))}
-      </S.TabWrapper>
-      {languages.map(({ name, technologies }, index) => (
-        <Box
-          key={`${name}-tecnologies`}
-          sx={{
-            display: selectedTab === index ? 'flex' : 'none',
-          }}
-        >
-          <Technology
-            technologies={technologies}
-          />
-        </Box>
-      ))}
+      </S.StackWrapper>
+      <S.TechnologyWrapper>
+        {languages.map(({ name, technologies }, index) => (
+          <S.TechnologyTabContainer
+            key={`${name}-tecnologies`}
+            className={cx({
+              selected: selectedTab === index,
+            })}
+          >
+            <Technology
+              technologies={technologies}
+            />
+          </S.TechnologyTabContainer>
+        ))}
+      </S.TechnologyWrapper>
       {/* {languageTabs.map((language, index) => {
         if (selectedTab !== index) {
           return null;

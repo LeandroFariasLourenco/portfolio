@@ -21,7 +21,7 @@ const Welcome = () => {
       scaleMobile: 1,
       color: 0x00FF87,
       backgroundColor: 0x0E1122,
-      showDots: false,
+      showDots: true,
       points: 20,
     });
   }, []);

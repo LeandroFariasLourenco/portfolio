@@ -4,10 +4,8 @@ import styled from 'styled-components';
 export const SectionHeader = styled(Grid)``;
 
 export const SectionContainer = styled(Grid) <{
-  background?: string;
   color?: string;
 }>`
-  ${({ background }) => background};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

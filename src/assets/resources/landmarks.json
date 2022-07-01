@@ -1,86 +1,107 @@
 [
   {
-    "2001": [
-      {
-        "name": "home.mytimeline.landmark1.name",
-        "date": "05/02/2001"
-      }
-    ]
+    "name": "home.mytimeline.landmark1.name",
+    "description": "home.mytimeline.landmark1.description",
+    "date": "05/02/2001",
+    "position": "left",
+    "type": "start"
   },
   {
-    "2013": [
-      {
-        "name": "home.mytimeline.landmark2.name",
-        "date": "17/07/2013"
-      }
-    ]
+    "name": "home.mytimeline.landmark2.name",
+    "description": "home.mytimeline.landmark2.description",
+    "date": "17/07/2013",
+    "position": "right",
+    "type": "education"
   },
   {
-    "2017": [
-      {
-        "name": "home.mytimeline.landmark3.name",
-        "date": "23/07/2017"
-      }
-    ]
+    "name": "home.mytimeline.landmark3.name",
+    "description": "home.mytimeline.landmark3.description",
+    "date": "23/07/2017",
+    "position": "right",
+    "type": "education"
   },
   {
-    "2018": [
-      {
-        "name": "home.mytimeline.landmark4.name",
-        "date": "07/12/2018"
-      },
-      {
-        "name": "home.mytimeline.landmark5.name",
-        "date": "13/12/2018"
-      }
-    ]
+    "name": "home.mytimeline.landmark4.name",
+    "description": "home.mytimeline.landmark4.description",
+    "date": "07/12/2018",
+    "position": "left",
+    "type": "certificate"
   },
   {
-    "2019": [
-      {
-        "name": "home.mytimeline.landmark6.name",
-        "date": "18/02/2019"
-      },
-      {
-        "name": "home.mytimeline.landmark7.name",
-        "date": "01/09/2019"
-      },
-      {
-        "name": "home.mytimeline.landmark8.name",
-        "date": "01/10/2019"
-      },
-      {
-        "name": "home.mytimeline.landmark9.name",
-        "date": "03/11/2019"
-      }
-    ]
+    "name": "home.mytimeline.landmark5.name",
+    "description": "home.mytimeline.landmark5.description",
+    "date": "13/12/2018",
+    "position": "left",
+    "type": "certificate"
   },
   {
-    "2020": [
-      {
-        "name": "home.mytimeline.landmark10.name",
-        "date": "01/12/2020"
-      },
-      {
-        "name": "home.mytimeline.landmark11.name",
-        "date": "01/12/2020"
-      }
-    ]
+    "name": "home.mytimeline.landmark6.name",
+    "description": "home.mytimeline.landmark6.description",
+    "date": "18/02/2019",
+    "position": "right",
+    "type": "education"
   },
   {
-    "2021": [
-      {
-        "name": "home.mytimeline.landmark12.name",
-        "date": "01/03/2021"
-      }
-    ]
+    "name": "home.mytimeline.landmark7.name",
+    "description": "home.mytimeline.landmark7.description",
+    "date": "01/09/2019",
+    "position": "left",
+    "type": "job"
   },
   {
-    "2022": [
-      {
-        "name": "home.mytimeline.landmark13.name",
-        "date": "01/04/2022"
-      }
-    ]
+    "name": "home.mytimeline.landmark8.name",
+    "description": "home.mytimeline.landmark8.description",
+    "date": "01/10/2019",
+    "position": "left",
+    "type": "promotion"
+  },
+  {
+    "name": "home.mytimeline.landmark9.name",
+    "description": "home.mytimeline.landmark9.description",
+    "date": "03/11/2019",
+    "position": "right",
+    "type": "project"
+  },
+  {
+    "name": "home.mytimeline.landmark10.name",
+    "description": "home.mytimeline.landmark10.description",
+    "date": "01/09/2020",
+    "position": "left",
+    "type": "promotion"
+  },
+  {
+    "name": "home.mytimeline.landmark11.name",
+    "description": "home.mytimeline.landmark11.description",
+    "date": "01/09/2020",
+    "position": "left",
+    "type": "exit"
+  },
+  {
+    "name": "home.mytimeline.landmark12.name",
+    "description": "home.mytimeline.landmark12.description",
+    "date": "01/12/2020",
+    "position": "left",
+    "type": "certificate"
+  },
+  {
+    "name": "home.mytimeline.landmark13.name",
+    "description": "home.mytimeline.landmark13.description",
+    "date": "15/12/2020",
+    "position": "right",
+    "type": "freelance"
+  },
+  {
+    "name": "home.mytimeline.landmark14.name",
+    "description": "home.mytimeline.landmark14.description",
+    "date": "01/03/2021",
+    "position": "left",
+    "type": "job"
+  },
+  {
+    "name": "home.mytimeline.landmark15.name",
+    "description": "home.mytimeline.landmark15.description",
+    "date": "01/04/2022",
+    "position": "left",
+    "type": "job"
   }
 ]

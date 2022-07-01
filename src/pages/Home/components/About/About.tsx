@@ -100,6 +100,8 @@ const About = () => {
       }}
       gridStyle={{
         borderTop: `4px solid ${theme.palette.primary.main}`,
+        backgroundImage: 'linear-gradient(to top, rgba(28, 22, 48), rgba(0,0,0,0.93)), url(https://wallpapercave.com/wp/wp9641821.jpg)',
+        borderBottom: `4px solid ${theme.palette.background.default}`,
       }}
       icon={(
         <PersonSearch fontSize="large" htmlColor="white" />

@@ -9,9 +9,6 @@ import { Section } from 'src/core/layouts';
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
-import FiapLogo from 'src/assets/logos/fiap.png';
-import EtecLogo from 'src/assets/logos/etec.png';
-
 import * as S from './styled';
 
 const Academic = () => {
@@ -21,14 +18,13 @@ const Academic = () => {
       type: 'home.formation1.type',
       location: 'home.formation1.location',
       duration: 'home.formation1.duration',
-      logo: <img src={FiapLogo} width={125} alt="Fiap" />,
+      // logo: <img src={FiapLogo} width={125} alt="Fiap" />,
     },
     {
       title: 'home.formation2.title',
       type: 'home.formation2.type',
       location: 'home.formation2.location',
       duration: 'home.formation2.duration',
-      logo: <img src={EtecLogo} width={125} height={40} style={{ objectFit: 'cover' }} alt="Etec" />,
     },
   ], []);
 
@@ -57,7 +53,7 @@ const Academic = () => {
             >
               <S.AcademicCard>
                 <S.AcademicRow container flexWrap="nowrap" alignItems="center" justifyContent="center">
-                  {experience.logo}
+                  {/* {experience.logo} */}
                 </S.AcademicRow>
                 <S.AcademicHeader>
                   <S.AcademicTitle variant="h6"><FormattedMessage id={experience.title} /></S.AcademicTitle>
