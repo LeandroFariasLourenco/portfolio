@@ -9428,11 +9428,6 @@ v8-to-istanbul@^8.1.0:
     convert-source-map "^1.6.0"
     source-map "^0.7.3"
 
-vanta@^0.5.22:
-  version "0.5.22"
-  resolved "https://registry.yarnpkg.com/vanta/-/vanta-0.5.22.tgz#92290e4ebac0b7c0d4822a4316d03ccd6bf33779"
-  integrity sha512-Y58U1SjHU6HeIuwq+te7eonyi7LWzKqyPDjZyQ7Kb6Zy4ampNJHRIUZvf1Pwl6uTC6Qi6P9fUYDsUVQDHq0KKg==
-
 vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
