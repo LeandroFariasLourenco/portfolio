@@ -8,6 +8,7 @@ import Academic from './components/Academic/Academic';
 
 import * as S from './styled';
 import MyTimeline from './components/MyTimeline/MyTimeline';
+import Projects from './components/Projects/Projects';
 
 const Home = () => {
   const components = useMemo(() => ([
@@ -16,6 +17,7 @@ const Home = () => {
     <Experience key="experience" />,
     <Languages key="languages" />,
     <Academic key="academic" />,
+    <Projects key="projects" />,
     <MyTimeline key="timeline" />,
   ]), []);
 

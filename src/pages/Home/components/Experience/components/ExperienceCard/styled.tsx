@@ -1,4 +1,3 @@
-import vanillaStyled from 'styled-components';
 import {
   Card, Grid, styled, Typography,
 } from '@mui/material';
@@ -7,7 +6,7 @@ export const ExperienceCardContent = styled(Grid)`
   margin: 10px 0;
 `;
 
-export const ExperienceIcon = vanillaStyled.img`
+export const ExperienceIcon = styled('img')`
   width: 50px;
 `;
 

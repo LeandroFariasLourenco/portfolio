@@ -1,9 +1,9 @@
-import styled from 'styled-components';
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   Card, Grid, Typography,
+  styled,
 } from '@mui/material';
 
 export const AboutCard = styled(Card)`

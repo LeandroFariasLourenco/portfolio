@@ -1,16 +1,14 @@
 import { DeveloperMode } from '@mui/icons-material';
 import cx from 'classnames';
-import { useTheme } from '@mui/material';
 import { useState } from 'react';
+
 import { Section } from 'src/core/layouts';
 import { APP } from 'src/core/constants';
 import languages from 'src/assets/resources/languages..json';
 import Technology from 'src/core/layouts/Technology/Technology';
-
 import * as S from './styled';
 
 const Languages = () => {
-  const theme = useTheme();
   const [selectedTab, setSelectedTab] = useState<number>(0);
 
   return (
@@ -30,7 +28,6 @@ const Languages = () => {
         {languages.map((language, index) => (
           <S.TabContainer
             key={language.name}
-            selected={selectedTab === index}
             container
             alignItems="center"
             justifyContent="center"
@@ -38,6 +35,7 @@ const Languages = () => {
             onClick={() => {
               setSelectedTab(index);
             }}
+            className={cx({ selected: selectedTab === index })}
           >
             <S.StackLogo
               src={`${APP.aws.assets}${language.icon}`}

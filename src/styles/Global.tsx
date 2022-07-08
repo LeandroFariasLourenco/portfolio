@@ -10,6 +10,9 @@ const Global = () => {
         margin: 0,
         boxSizing: 'border-box',
       },
+      a: {
+        textDecoration: 'none',
+      },
       img: {
         maxWidth: '100%',
       },
@@ -32,6 +35,14 @@ const Global = () => {
       },
       '::-webkit-scrollbar-track': {
         background: theme.palette.background.paper,
+      },
+      '.background-canvas': {
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        left: 0,
+        top: 0,
+        zIndex: -1,
       },
       body: {
         backgroundColor: theme.palette.background.default,

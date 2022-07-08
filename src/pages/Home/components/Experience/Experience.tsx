@@ -2,7 +2,9 @@ import { WorkHistory } from '@mui/icons-material';
 import {
   Box, Grid, useTheme,
 } from '@mui/material';
-import { useCallback, useMemo, useState } from 'react';
+import {
+  memo, useCallback, useMemo, useState,
+} from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Section } from 'src/core/layouts';
 import experiences from 'src/assets/resources/experiences.json';
@@ -12,12 +14,26 @@ import {
   Swiper as SwiperClass,
 } from 'swiper';
 import cx from 'classnames';
+import Particles from 'react-tsparticles';
+import { loadFull } from 'tsparticles';
 
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
 import * as S from './styled';
 import ExperienceCard from './components/ExperienceCard/ExperienceCard';
 import ExperienceDetails from './components/ExperienceDetails/ExperienceDetails';
+import { particlesConfig } from './particles-config';
+
+const ParticlesComponent = memo(() => (
+  <Particles
+    init={async (engine) => {
+      /* @ts-ignore */
+      await loadFull(engine);
+    }}
+    canvasClassName="background-canvas"
+    options={particlesConfig}
+  />
+), () => true);
 
 const Experience = () => {
   const theme = useTheme();
@@ -79,6 +95,7 @@ const Experience = () => {
       }}
       icon={<WorkHistory fontSize="large" htmlColor="white" />}
     >
+      <ParticlesComponent />
       <S.SwiperContainer>
         <Box className="swiper-pagination">
           {[...Array(experiences.length)].map(renderSwiperPagination)}

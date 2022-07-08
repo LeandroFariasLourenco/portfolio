@@ -1,69 +1,37 @@
-import {
-  Box, Card, Grid, Typography,
-} from '@mui/material';
-import styled from 'styled-components';
+import { Card, Grid, styled } from '@mui/material';
 
-export const SwiperContainer = styled(Box)(({ theme }) => `
-  .swiper {
-    &-slide {
-      height: 350px;
-      border-radius: 10px;
-      position: relative;
-      overflow: hidden;
-      transition: background-color 200ms ease-in-out;
+export const FormationTabs = styled(Grid)(({ theme }) => `
+  border: 2px solid ${theme.palette.secondary.main};
+  border-bottom: 0;
+`);
 
-      &.selected {
-        background-color: ${theme.palette.action.active};
-      }
-    }
-    
-    &-wrapper {
-      margin-top: 40px;
-    }
+export const FormationTab = styled(Grid)(({ theme }) => `
+  transition: background-color 200ms ease-in-out;
+  padding: 10px 0;
+  background-color: ${theme.palette.background.paper};
+  cursor: pointer;
 
-    &-pagination {
-      &-bullet {
-        width: 12px;
-        height: 12px;
-        background-color: ${theme.palette.secondary.main};
+  &:not(:last-of-type) {
+    border-right: 2px dashed ${theme.palette.secondary.main};
+  }
 
-        &-active {
-          background-color: ${theme.palette.primary.main}
-        }
-      }
-    }
+  &:hover {
+    background-color: ${theme.palette.action.hover};
+  }
 
-    &-button {
-      &-prev,
-      &-next {
-        &::after {
-          color: ${theme.palette.primary.main};
-          font-size: 32px;
-        }
-      }
-    }
+  &:not(.selected) {
+    border-bottom: 2px solid ${theme.palette.secondary.main};
+  }
+
+  &.selected {
+    background-color: #15e283bc;
   }
 `);
 
-export const AcademicCard = styled(Card)`
-  height: 350px;
+export const CardContainer = styled(Grid)(({ theme }) => `
+  background-color: ${theme.palette.background.paper};
+  height: 500px;
+  border: 2px solid ${theme.palette.secondary.main};
+  border-top: 0;
   padding: 20px;
-`;
-
-export const AcademicHeader = styled(Grid)`
-  height: 90px;
-`;
-
-export const AcademicTitle = styled(Typography)`
-  text-align: center;
-`;
-
-export const AcademicRow = styled(Grid)`
-  & + & {
-    margin-top: 10px;
-  }
-
-  svg {
-    margin-right: 10px;
-  }
-`;
+`);

@@ -1,5 +1,4 @@
-import { Grid } from '@mui/material';
-import styled from 'styled-components';
+import { Grid, styled } from '@mui/material';
 
 export const TypewriterWrapper = styled(Grid)`
   .Typewriter__cursor {

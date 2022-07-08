@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   CardMembership,
   DeveloperMode,
@@ -12,15 +11,12 @@ import {
   Work,
 } from '@mui/icons-material';
 import { FormattedMessage } from 'react-intl';
-import { loadFull } from 'tsparticles';
-import { Particles } from 'react-tsparticles';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import { Typography, useTheme } from '@mui/material';
 
 import landmarks from 'src/assets/resources/landmarks.json';
 import { Section } from 'src/core/layouts';
 import { AchievementType } from 'src/core/models';
-import { particlesConfig } from './particles-config';
 
 import * as S from './styled';
 
@@ -42,15 +38,7 @@ const MyTimeline = () => {
         },
       }}
     >
-
       <S.TimelineWrapper>
-        <Particles
-          init={async (main) => {
-            await loadFull(main);
-          }}
-          canvasClassName="background-canvas"
-          options={particlesConfig}
-        />
         <VerticalTimeline
           lineColor={theme.palette.primary.main}
         >

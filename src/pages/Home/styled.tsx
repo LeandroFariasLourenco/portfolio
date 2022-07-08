@@ -1,9 +1,8 @@
-import { Box, Grid } from '@mui/material';
-import styled from 'styled-components';
+import { Box, Grid, styled } from '@mui/material';
 
 export const HomeContainer = styled(Box)``;
 
-export const FullPageControlButton = styled.button<{
+export const FullPageControlButton = styled('button')<{
   active: boolean,
 }>(({ theme, active }) => `
   border-radius: 100%;

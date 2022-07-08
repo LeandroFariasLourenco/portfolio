@@ -1,7 +1,6 @@
 import {
-  Box, Button, Card, Grid, Typography,
+  Box, Button, Grid, Typography, styled, keyframes,
 } from '@mui/material';
-import styled, { keyframes } from 'styled-components';
 
 const rotationKeyframe = keyframes`
   from {

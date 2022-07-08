@@ -1,81 +1,111 @@
 import {
-  CalendarMonth, HistoryEdu, Room, School,
+  School,
 } from '@mui/icons-material';
-import { Typography } from '@mui/material';
-import { useMemo } from 'react';
+import { Drawer, Typography } from '@mui/material';
+import { memo, useMemo, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Typewriter } from 'src/core/components';
+import cx from 'classnames';
 import { Section } from 'src/core/layouts';
 import { Navigation, Pagination } from 'swiper';
-import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
+import Particles from 'react-tsparticles';
+import { APP } from 'src/core/constants';
 import * as S from './styled';
+import { particlesConfig } from './particles-config';
+import Card from './components/Card/Card';
+
+const ParticlesComponent = memo(() => (
+  <Particles
+    canvasClassName="background-canvas"
+    options={particlesConfig}
+    id="academic-background"
+  />
+), () => true);
 
 const Academic = () => {
+  const [activeTab, setActiveTab] = useState(0);
+
   const experiences = useMemo(() => [
     {
-      title: 'home.formation1.title',
-      type: 'home.formation1.type',
-      location: 'home.formation1.location',
-      duration: 'home.formation1.duration',
-      // logo: <img src={FiapLogo} width={125} alt="Fiap" />,
+      title: 'home.formation.tabs1.title',
+      cards: [
+        {
+          title: 'home.formation1.title',
+          type: 'home.formation1.type',
+          location: 'home.formation1.location',
+          duration: '2019 - 2020',
+          logo: `${APP.aws.assets}/companies/fiap.png`,
+        },
+        {
+          title: 'home.formation2.title',
+          type: 'home.formation2.type',
+          location: 'home.formation2.location',
+          duration: '2017 - 2018',
+          logo: `${APP.aws.assets}/companies/etec.png`,
+        },
+      ],
     },
     {
-      title: 'home.formation2.title',
-      type: 'home.formation2.type',
-      location: 'home.formation2.location',
-      duration: 'home.formation2.duration',
+      title: 'home.formation.tabs2.title',
+      cards: [],
+    },
+    {
+      title: 'home.formation.tabs3.title',
+      card: [
+        {
+          title: 'home.formation2.title',
+          type: 'home.formation2.type',
+          location: 'home.formation2.location',
+          duration: '2017 - 2018',
+          logo: `${APP.aws.assets}/companies/fiap.png`,
+        },
+      ],
     },
   ], []);
-
-  const swiperProps: SwiperProps = useMemo(() => ({
-    slidesPerView: 3,
-    slidesPerGroup: 1,
-    modules: [Pagination, Navigation],
-    navigation: true,
-    pagination: true,
-    spaceBetween: 20,
-  }), []);
 
   return (
     <Section
       onTitleShow={(typewriter) => {
-        typewriter.typeString('Formação acadêmica e cursos')
+        typewriter.typeString('Formação')
           .start();
       }}
       icon={<School fontSize="large" htmlColor="white" />}
     >
-      <S.SwiperContainer>
-        <Swiper {...swiperProps}>
-          {experiences.map((experience) => (
-            <SwiperSlide
-              key={experience.title}
-            >
-              <S.AcademicCard>
-                <S.AcademicRow container flexWrap="nowrap" alignItems="center" justifyContent="center">
-                  {/* {experience.logo} */}
-                </S.AcademicRow>
-                <S.AcademicHeader>
-                  <S.AcademicTitle variant="h6"><FormattedMessage id={experience.title} /></S.AcademicTitle>
-                </S.AcademicHeader>
+      <ParticlesComponent />
+      <S.FormationTabs
+        container
+        flexWrap="nowrap"
+      >
+        {experiences.map((experience, index) => (
+          <S.FormationTab
+            container
+            key={`${experience.title}`}
+            alignItems="center"
+            justifyContent="center"
+            onClick={() => setActiveTab(index)}
+            className={cx({
+              selected: activeTab === index,
+            })}
+          >
+            <Typography variant="h4"><FormattedMessage id={experience.title} /></Typography>
+          </S.FormationTab>
+        ))}
+      </S.FormationTabs>
 
-                <S.AcademicRow container flexWrap="nowrap" alignItems="center">
-                  <HistoryEdu htmlColor="white" />
-                  <Typography variant="body1"><FormattedMessage id={experience.type} /></Typography>
-                </S.AcademicRow>
-                <S.AcademicRow container flexWrap="nowrap" alignItems="center">
-                  <CalendarMonth htmlColor="white" />
-                  <Typography variant="body1"><FormattedMessage id={experience.duration} /></Typography>
-                </S.AcademicRow>
-                <S.AcademicRow container flexWrap="nowrap" alignItems="center">
-                  <Room htmlColor="white" />
-                  <Typography variant="body1"><FormattedMessage id={experience.location} /></Typography>
-                </S.AcademicRow>
-              </S.AcademicCard>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </S.SwiperContainer>
+      <S.CardContainer
+        container
+        alignItems="center"
+        flexWrap="nowrap"
+        xs={12}
+        gap={5}
+      >
+        {experiences[activeTab]!.cards!.map((card) => (
+          <Card
+            key={card.title}
+            card={card}
+          />
+        ))}
+      </S.CardContainer>
     </Section>
   );
 };

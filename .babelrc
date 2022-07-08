@@ -1,13 +1,21 @@
 {
   "plugins": [
     [
-      "module-resolver",
+      "@emotion",
       {
-        "root": [
-          "./src"
-        ],
-        "alias": {
-          "src": "./src"
+        "importMap": {
+          "@mui/material": {
+            "styled": {
+              "canonicalImport": [
+                "@emotion/styled",
+                "default"
+              ],
+              "styledBaseImport": [
+                "@mui/material",
+                "styled"
+              ]
+            }
+          }
         }
       }
     ]

@@ -21,13 +21,19 @@ export const StackWrapper = styled(Grid)(({ theme }) => `
   margin-top: 30px;
 `);
 
-export const TabContainer = styled(Grid)<{
-  selected: boolean;
-}>(({ theme, selected }) => `
+export const TabContainer = styled(Grid)(({ theme }) => `
   cursor: pointer;
-  transition: background-color 500ms ease-in-out;
-  background-color: ${selected ? theme.palette.secondary.main : theme.palette.background.paper};
+  transition: background-color 250ms ease-in-out;
+  background-color: ${theme.palette.background.paper};
   padding: 10px;
+
+  &:hover {
+    background-color: ${theme.palette.action.hover};
+  }
+
+  &.selected {
+    background-color: ${theme.palette.secondary.main};
+  }
 
   &:not(&:last-of-type) {
     border-right: 2px dashed ${theme.palette.secondary.main};
