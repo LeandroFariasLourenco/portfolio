@@ -7,12 +7,15 @@ phases:
     },
     commands: [
        "npm install -g yarn",
-       "yarn install --production",
-       "yarn build"
+       "yarn install"
       ]
   }
   build: {
     commands: [
-      "echo test"
+       "yarn build",
     ]
   }
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'build'
