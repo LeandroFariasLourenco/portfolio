@@ -15,7 +15,3 @@ phases:
        "yarn build",
     ]
   }
-artifacts:
-  files:
-    - '**/*'
-  base-directory: 'build'
