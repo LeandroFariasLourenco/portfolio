@@ -7,7 +7,7 @@ import { FormattedMessage } from 'react-intl';
 import { ICardProps } from './props';
 import * as S from './styled';
 
-const Card = ({
+const Certificates = ({
   card,
 }: ICardProps) => {
   const cardWrapperRef = useRef<HTMLDivElement>();
@@ -33,9 +33,8 @@ const Card = ({
       </S.CardTitleContainer>
 
       <S.CardContainer>
-        <Typography><FormattedMessage id={card.description} /></Typography>
+        <Typography>My cu</Typography>
       </S.CardContainer>
-
       <S.CardContainer>
         <S.CardRow>
           <CalendarMonth htmlColor="white" />
@@ -55,4 +54,4 @@ const Card = ({
   );
 };
 
-export default Card;
+export default Certificates;

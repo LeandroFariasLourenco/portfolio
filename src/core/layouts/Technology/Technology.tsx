@@ -67,10 +67,12 @@ const Technology = ({
             <FormattedMessage id={technologies[selectedTab].description} />
           </S.LanguageDescription>
 
-          <S.LanguageTopics>
-            <S.LanguageDividerTitle variant="h4">Conceitos</S.LanguageDividerTitle>
-            {technologies[selectedTab].topics.map(renderTechnologyTopic)}
-          </S.LanguageTopics>
+          {technologies[selectedTab].topics.length ? (
+            <S.LanguageTopics>
+              <S.LanguageDividerTitle variant="h4"><FormattedMessage id="home.languages.concepts" /></S.LanguageDividerTitle>
+              {technologies[selectedTab].topics.map(renderTechnologyTopic)}
+            </S.LanguageTopics>
+          ) : null}
         </S.LanguageDescriptionCard>
       </Grid>
     </S.LanguageContainer>

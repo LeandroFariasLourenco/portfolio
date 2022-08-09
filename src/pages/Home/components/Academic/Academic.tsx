@@ -1,18 +1,18 @@
 import {
   School,
 } from '@mui/icons-material';
-import { Drawer, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { memo, useMemo, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import cx from 'classnames';
 import { Section } from 'src/core/layouts';
-import { Navigation, Pagination } from 'swiper';
 
 import Particles from 'react-tsparticles';
 import { APP } from 'src/core/constants';
 import * as S from './styled';
 import { particlesConfig } from './particles-config';
 import Card from './components/Card/Card';
+import Certificates from './components/Certificates/Certificates';
 
 const ParticlesComponent = memo(() => (
   <Particles
@@ -28,11 +28,13 @@ const Academic = () => {
   const experiences = useMemo(() => [
     {
       title: 'home.formation.tabs1.title',
+      type: 'courses',
       cards: [
         {
           title: 'home.formation1.title',
           type: 'home.formation1.type',
           location: 'home.formation1.location',
+          description: 'home.formation1.description',
           duration: '2019 - 2020',
           logo: `${APP.aws.assets}/companies/fiap.png`,
         },
@@ -40,6 +42,7 @@ const Academic = () => {
           title: 'home.formation2.title',
           type: 'home.formation2.type',
           location: 'home.formation2.location',
+          description: 'home.formation2.description',
           duration: '2017 - 2018',
           logo: `${APP.aws.assets}/companies/etec.png`,
         },
@@ -47,16 +50,28 @@ const Academic = () => {
     },
     {
       title: 'home.formation.tabs2.title',
-      cards: [],
-    },
-    {
-      title: 'home.formation.tabs3.title',
-      card: [
+      type: 'extracurriculum',
+      cards: [
         {
           title: 'home.formation2.title',
           type: 'home.formation2.type',
           location: 'home.formation2.location',
-          duration: '2017 - 2018',
+          description: 'home.formation2.description',
+          duration: '2013 - 2018',
+          logo: `${APP.aws.assets}/companies/ccaa.png`,
+        },
+      ],
+    },
+    {
+      title: 'home.formation.tabs3.title',
+      type: 'certificates',
+      cards: [
+        {
+          title: 'home.formation2.title',
+          type: 'home.formation2.type',
+          location: 'home.formation2.location',
+          description: 'home.formation2.description',
+          duration: '2013 - 2018',
           logo: `${APP.aws.assets}/companies/fiap.png`,
         },
       ],
@@ -99,12 +114,20 @@ const Academic = () => {
         xs={12}
         gap={5}
       >
-        {experiences[activeTab]!.cards!.map((card) => (
-          <Card
-            key={card.title}
-            card={card}
-          />
-        ))}
+        {experiences[activeTab]!.cards!.map((card) => {
+          const { type } = experiences[activeTab];
+
+          if (type === 'courses' || type === 'extracurriculum') {
+            return (
+              <Card
+                key={card.title}
+                card={card}
+              />
+            );
+          }
+
+          return <Certificates key={card.title} card={card} />;
+        })}
       </S.CardContainer>
     </Section>
   );

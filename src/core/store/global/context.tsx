@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useEffect } from 'react';
 import { IGlobalProviderProps } from './global';
 import store from './store';
 
@@ -8,10 +8,16 @@ export const useGlobalContext = () => useContext(GlobalContext);
 
 const GlobalProvider = ({
   children,
-}: IGlobalProviderProps) => (
-  <GlobalContext.Provider value={store}>
-    {children}
-  </GlobalContext.Provider>
-);
+}: IGlobalProviderProps) => {
+  useEffect(() => {
+    store.setupStoredLanguage();
+  }, []);
+
+  return (
+    <GlobalContext.Provider value={store}>
+      {children}
+    </GlobalContext.Provider>
+  );
+};
 
 export default GlobalProvider;

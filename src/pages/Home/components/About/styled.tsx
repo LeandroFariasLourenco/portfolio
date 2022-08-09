@@ -1,7 +1,4 @@
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
   Card, Grid, Typography,
   styled,
 } from '@mui/material';
@@ -47,40 +44,10 @@ export const AboutMeSummary = styled(Typography)`
   font-size: 15px;
 `;
 
-export const AboutMeAccordionSummary = styled(AccordionSummary)`
-  background-color: transparent;
-  padding-left: 0;
-
-  > div {
-    margin: 0 !important;
-  }
-
-  &.Mui-expanded {
-    min-height: 0 !important;
-  }
-
-  .MuiAccordionSummary-expandIconWrapper {
-    transform: rotate(90deg);
-
-    &.Mui-expanded {
-      transform: rotate(270deg);
-    }
-  }
-`;
-
-export const AboutMeAcccordion = styled(Accordion)`
-  background-color: transparent;
-  box-shadow: unset;
-  margin: 0 !important;
-`;
-
 export const AboutMeObjectivesTitle = styled(Typography)`
   svg {
     margin-right: 10px;
   }
-`;
-
-export const AboutMeAccordionDetails = styled(AccordionDetails)`
 `;
 
 export const AboutMeObjective = styled(Typography)(({ theme }) => `

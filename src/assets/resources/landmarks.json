@@ -72,34 +72,27 @@
   {
     "name": "home.mytimeline.landmark11.name",
     "description": "home.mytimeline.landmark11.description",
-    "date": "01/09/2020",
-    "position": "left",
-    "type": "exit"
-  },
-  {
-    "name": "home.mytimeline.landmark12.name",
-    "description": "home.mytimeline.landmark12.description",
-    "date": "01/12/2020",
+    "date": "07/12/2020",
     "position": "left",
     "type": "certificate"
   },
   {
-    "name": "home.mytimeline.landmark13.name",
-    "description": "home.mytimeline.landmark13.description",
+    "name": "home.mytimeline.landmark12.name",
+    "description": "home.mytimeline.landmark12.description",
     "date": "15/12/2020",
     "position": "right",
     "type": "freelance"
   },
   {
-    "name": "home.mytimeline.landmark14.name",
-    "description": "home.mytimeline.landmark14.description",
+    "name": "home.mytimeline.landmark13.name",
+    "description": "home.mytimeline.landmark13.description",
     "date": "01/03/2021",
     "position": "left",
     "type": "job"
   },
   {
-    "name": "home.mytimeline.landmark15.name",
-    "description": "home.mytimeline.landmark15.description",
+    "name": "home.mytimeline.landmark14.name",
+    "description": "home.mytimeline.landmark14.description",
     "date": "01/04/2022",
     "position": "left",
     "type": "job"

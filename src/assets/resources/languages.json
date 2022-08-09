@@ -44,10 +44,10 @@
         "icon": "/technologies/typescript-javascript/typescript.svg",
         "description": "home.languages1.technologies4.description",
         "topics": [
-          "",
-          "",
-          "",
-          ""
+          "Interfaces",
+          "Generics",
+          "Unions, Enums, Non-null assertion",
+          "Project level TSConfigs"
         ]
       },
       {
@@ -55,10 +55,10 @@
         "icon": "/technologies/typescript-javascript/javascript.svg",
         "description": "home.languages1.technologies5.description",
         "topics": [
-          "",
-          "",
-          "",
-          ""
+          "Async, Promises and general post ES5 syntax",
+          "Closures",
+          "Modules and packages",
+          "Optional Chaining"
         ]
       },
       {
@@ -66,10 +66,9 @@
         "icon": "/technologies/typescript-javascript/jquery.svg",
         "description": "home.languages1.technologies6.description",
         "topics": [
-          "",
-          "",
-          "",
-          ""
+          "Selectors",
+          "Plugins",
+          "Specific query methods"
         ]
       }
     ]

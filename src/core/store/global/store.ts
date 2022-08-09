@@ -19,8 +19,16 @@ class GlobalStore {
     }
   }
 
+  public setupStoredLanguage() {
+    const storedLanguage = localStorage.getItem('language');
+    if (storedLanguage) {
+      this.language = storedLanguage as Languages;
+    }
+  }
+
   public setLanguage(language: Languages) {
     this.language = language;
+    localStorage.setItem('language', language);
   }
 }
 

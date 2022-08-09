@@ -28,38 +28,20 @@ import * as S from './styled';
 const ShortTerm = () => {
   const theme = useTheme();
   return (
-    <S.AboutMeAcccordion>
-      <S.AboutMeAccordionSummary
-        expandIcon={<ArrowForwardIosSharp htmlColor={theme.palette.action.active} fontSize="small" />}
-      >
-        <Bookmark htmlColor={theme.palette.action.active} />
-        <Typography variant="h3"><FormattedMessage id="home.about-me.objectives.short-term" /></Typography>
-      </S.AboutMeAccordionSummary>
-
-      <S.AboutMeAccordionDetails>
-        <S.AboutMeObjective><FormattedMessage id="home.about-me.objectives.short-term1" /></S.AboutMeObjective>
-        <S.AboutMeObjective><FormattedMessage id="home.about-me.objectives.short-term2" /></S.AboutMeObjective>
-      </S.AboutMeAccordionDetails>
-    </S.AboutMeAcccordion>
+    <>
+      <S.AboutMeObjective><FormattedMessage id="home.about-me.objectives.short-term1" /></S.AboutMeObjective>
+      <S.AboutMeObjective><FormattedMessage id="home.about-me.objectives.short-term2" /></S.AboutMeObjective>
+    </>
   );
 };
 
 const LongTerm = () => {
   const theme = useTheme();
   return (
-    <S.AboutMeAcccordion>
-      <S.AboutMeAccordionSummary
-        expandIcon={<ArrowForwardIosSharp htmlColor={theme.palette.action.active} fontSize="small" />}
-      >
-        <Bookmarks htmlColor={theme.palette.action.active} />
-        <Typography variant="h3"><FormattedMessage id="home.about-me.objectives.long-term" /></Typography>
-      </S.AboutMeAccordionSummary>
-
-      <S.AboutMeAccordionDetails>
-        <S.AboutMeObjective><FormattedMessage id="home.about-me.objectives.long-term1" /></S.AboutMeObjective>
-        <S.AboutMeObjective><FormattedMessage id="home.about-me.objectives.long-term2" /></S.AboutMeObjective>
-      </S.AboutMeAccordionDetails>
-    </S.AboutMeAcccordion>
+    <>
+      <S.AboutMeObjective><FormattedMessage id="home.about-me.objectives.long-term1" /></S.AboutMeObjective>
+      <S.AboutMeObjective><FormattedMessage id="home.about-me.objectives.long-term2" /></S.AboutMeObjective>
+    </>
   );
 };
 

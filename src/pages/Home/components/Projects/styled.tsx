@@ -1,4 +1,5 @@
 import { Grid, styled } from '@mui/material';
+import { APP } from 'src/core/constants';
 
 export const ProjectsContainer = styled(Grid)(({ theme }) => `
   padding: 10px;
@@ -10,6 +11,10 @@ export const ProjectsContainer = styled(Grid)(({ theme }) => `
 `);
 
 export const ProjectsTabs = styled(Grid)`
+  background-image: linear-gradient(rgba(28, 22, 48,1), rgba(28, 22, 48,0.93)), url(${APP.aws.assets}/wallpapers/personal-projects.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 10px;
 `;
 
 export const RepositoryTitle = styled(Grid)(({ theme }) => `
@@ -25,6 +30,7 @@ export const RepositoryTitle = styled(Grid)(({ theme }) => `
 export const RepositoriesWrapper = styled(Grid)(({ theme }) => `
   height: 100%;
   border-right: dashed 2px ${theme.palette.secondary.main};
+  padding-right: 5px;
 `);
 
 export const RepositoriesList = styled(Grid)(({ theme }) => `

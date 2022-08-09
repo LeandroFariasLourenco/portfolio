@@ -1,6 +1,7 @@
 import { Code, DeveloperBoard } from '@mui/icons-material';
 import { Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { Repository, Section } from 'src/core/layouts';
 import { IGithubRepository } from 'src/core/models';
 import { GithubService } from 'src/core/services';
@@ -45,7 +46,7 @@ const Projects = () => {
         <S.RepositoriesWrapper item xs={3}>
           <S.RepositoryTitle container flexDirection="row" alignItems="center">
             <Code htmlColor="white" />
-            <Typography variant="h4">Repositórios</Typography>
+            <Typography variant="h4"><FormattedMessage id="home.projects.title" /></Typography>
           </S.RepositoryTitle>
           <S.RepositoriesList>
             {repositories.map((repository) => (
@@ -56,7 +57,18 @@ const Projects = () => {
             ))}
           </S.RepositoriesList>
         </S.RepositoriesWrapper>
-        <S.ProjectsTabs item xs={9} />
+        <S.ProjectsTabs
+          item
+          xs={9}
+          container
+          alignItems="center"
+          flexDirection="column"
+        >
+          <Typography variant="h3"><FormattedMessage id="home.projects.description.title" /></Typography>
+
+          <Typography><FormattedMessage id="home.projects.description.content1" /></Typography>
+          <Typography><FormattedMessage id="home.projects.description.content2" /></Typography>
+        </S.ProjectsTabs>
       </S.ProjectsContainer>
     </Section>
   );

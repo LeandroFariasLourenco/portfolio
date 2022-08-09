@@ -60,8 +60,16 @@ const Header = () => {
                 onChange={handleLanguageSelect}
                 variant="standard"
               >
-                <MenuItem value={Languages.Portuguese}><Box component="span" className="fi fi-br" /></MenuItem>
-                <MenuItem value={Languages.English}><Box component="span" className="fi fi-us" /></MenuItem>
+                <MenuItem value={Languages.Portuguese}>
+                  <Box component="span" className="fi fi-br" style={{ marginRight: 5 }} />
+                  {' '}
+                  PT
+                </MenuItem>
+                <MenuItem value={Languages.English}>
+                  <Box component="span" className="fi fi-us" style={{ marginRight: 5 }} />
+                  {' '}
+                  EN
+                </MenuItem>
               </S.LanguageSelect>
             </Grid>
           </Grid>

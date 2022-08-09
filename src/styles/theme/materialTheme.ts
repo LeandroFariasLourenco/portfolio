@@ -30,6 +30,10 @@ export const materialTheme = createTheme({
       fontSize: 22,
       fontFamily: "'Share Tech Mono', monospace",
     },
+    h6: {
+      fontSize: 17,
+      fontFamily: "'Ubuntu Mono', monospace",
+    },
   },
   palette: {
     background: {

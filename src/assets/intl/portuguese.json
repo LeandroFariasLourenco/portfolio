@@ -5,6 +5,13 @@
   "header.links.section4": "Formação",
   "header.links.section5": "Contato",
 
+  "home.welcome.terminal.text1.string1": "Olá, eu s",
+  "home.welcome.terminal.text1.string2": "sou o Leon",
+  "home.welcome.terminal.text1.string3": "andro Farias!",
+  "home.welcome.terminal.text2.string1": "Este é o meu portfólio que montei para você conhecer um pouco de mim.",
+  "home.welcome.terminal.text3.string1": "Espero que goste!",
+  "home.welcome.terminal.text4.string1": "Não se esqueça de entrar em contato!",
+
   "home.about-me.summary": "Desde muito cedo pensei em trilhar uma carreira de desenvolvedor. No início, pretendia seguir no caminho de desenvolver jogos, porém acabei entrando no mundo de desenvolvimento de software por conta da oportunidade que tive de fazer um curso técnico na área, enquanto seguia no ensino médio. No meu tempo livre gosto especialmente de jogar, uma vez ou outra realizar algum projeto pessoal, estudar, ler livros, assistir...",
   "home.about-me.objectives": "Meus objetivos",
   "home.about-me.objectives.short-term": "Curto/médio prazo",
@@ -55,32 +62,34 @@
   "home.experience.description": "Descrição",
   "home.experience.stack": "Tecnologias",
 
+  "home.languages.concepts": "Conceitos",
+
   "home.languages1.technologies1.description": "Há um enorme debate entre se o React é um pacote ou um framework, entretanto, por sua natureza de possibilitar desenvolvimento de SPAs, conceitos próprios e padrões, enxergo como um framework. Em todos lugares que já trabalhei, o que todos tinham em comum é a utilização de React em algum projeto ou até mesmo no cotidiano.",
   "home.languages1.technologies2.description": "Extremamente semelhante ao React. Suas principais diferenças ocorrem por conta de seu desenvolvimento mobile e multiplataforma. O que muitas pessoas não sabem é que o React Native também pode ser usado para desenvolver apps em Windows! Porém, eu apenas tive a oportunidade de desenvolver apps mobile em React Native.",
   "home.languages1.technologies3.description": "Foi com o Angular que tive meu contato com Typescript, desde então sempre preferi desenvolver soluções utilizando Typescript, ou seja, pode-se dizer que tenho um certo carinho pelo Angular. Ele tem conceitos parecidos com o React, porém bastante diferente em como ele implementa elas com o Framework.",
 
-  "home.languages1.technologies4.description": "k",
-  "home.languages1.technologies5.description": "k",
-  "home.languages1.technologies6.description": "k",
+  "home.languages1.technologies4.description": "Admito que quando eu escutava sobre o Typescript, não era algo que me deixava particularmente entusiasmado. Entretanto, chegou um determinado momento em que tive contato com a linguagem e desde então, não consigo mais voltar atrás e utilizar Javascript em sua forma vanilla. Creio que o único problema do Typescript é que não aprendi ele antes.",
+  "home.languages1.technologies5.description": "Desde meu primeiro contato com T.I, o Javascript foi sempre meu principal foco. Sua natureza que muitos dizem ser 'bagunçada', possui lados negativos claro mas ao meu ver tem muitos mais lados positivos. O que acaba sendo evidente pelo seu massivo ecossistema de frameworks, pacotes e o tamanho de sua comunidade e claro, desenvolvimento multiplataforma.",
+  "home.languages1.technologies6.description": "Uma tecnologia que podemos dizer ser bem 'arcaica'. Minha experiência em JQuery se resume a projetos web legados que ainda não haviam sido migrados ou por limitações de determinados projetos.",
 
-  "home.languages2.technologies1.description": "k",
-  "home.languages2.technologies2.description": "k",
-  "home.languages2.technologies3.description": "k",
-  "home.languages2.technologies4.description": "k",
-  "home.languages2.technologies5.description": "k",
-  "home.languages2.technologies6.description": "k",
-  "home.languages2.technologies7.description": "k",
-  "home.languages2.technologies8.description": "k",
-  "home.languages2.technologies9.description": "k",
+  "home.languages2.technologies1.description": "Criação de pilhas de processos dentro da AWS para automatizar e facilitar a instação de aplicações entre várias contas ou regiões. Normalmente utilizado em conjunto com o CDK da AWS para realizar a infraestrutura como código (IAC).",
+  "home.languages2.technologies2.description": "Endpoints, estágios e planos de uso para expôr APIs em nuvem integradas com funções Lambda.",
+  "home.languages2.technologies3.description": "FaaS (Function as a Service), aonde particularmente já desenvolvi funções lambda com NodeJS para integra-las ao API Gateway para aplicações conseguirem invoca-las com base em necessidades.",
+  "home.languages2.technologies4.description": "Distribuição de conteúdo (CDN) em núvem da AWS. Inclusive, o meu portfólio foi distribuído através do cloudfront. Aposto que ele carregou bem rapidamente ;).",
+  "home.languages2.technologies5.description": "Particularmente desenvolvi apenas aplicações com fins de estudo mas já tive que realizar manutenção em projetos que utilizavam o conceito de IaC na AWS e por consequência, o CDK. O fluxo se resumia em gerar o CDK para assim, realizar seu deploy no CloudFront.",
+  "home.languages2.technologies6.description": "Normalmente utilizo o github mas já tive que utilizar o serviço de repositório privado da AWS. É extremamente semelhante ao Github mas tem o seu diferencial de já ser nativamente integrado ao ambiente da AWS.",
+  "home.languages2.technologies7.description": "Já criei processos dentro do CodeBuild para gerarem artefatos. Normalmente esses artefatos são arquivos que logo são enviados ao S3. Novamente utilizando meu portfolio como exemplo, eu criei uma pipeline para gerar os artefatos e enviá-los para o S3.",
+  "home.languages2.technologies8.description": "Trabalhei em diversos projetos que utilizavam o cognito para gerenciamento de usuários dentro de aplicações. Sempre foi em conjunto com o Amplify.",
+  "home.languages2.technologies9.description": "O cliente front-end para conseguir utilizar o cognito de forma programática. Em todos projetos que trabalhei, ele sempre foi utilizado lado a lado com o cognito",
   "home.languages2.technologies10.description": "Talvez o serviços mais conhecido da AWS, responsável por armazenamento das mais diversas formas de dados estáticos em nuvem, seja pastas, imagens, pdfs... Inclusive, todos os assets deste meu portfólio, estão hospedados em um bucket s3 criado por mim.",
 
   "home.languages3.technologies1.description": "e",
   "home.languages3.technologies2.description": "e",
 
-  "home.languages4.technologies1.description": "e",
-  "home.languages4.technologies2.description": "e",
-  "home.languages4.technologies3.description": "e",
-  "home.languages4.technologies4.description": "e",
+  "home.languages4.technologies1.description": "",
+  "home.languages4.technologies2.description": "",
+  "home.languages4.technologies3.description": "O 'esqueleto' de todas páginas web. Normalmente utilizo para estrutar páginas e layouts, porém com o crescente uso de frameworks SPA, acaba que não utilizo mais com tanta frequência como quando trabalhava com projetos vanilla (HTML, CSS, Javascript).",
+  "home.languages4.technologies4.description": "Normalmente utilizo SCSS ou implementações como Styled Components pois escrever CSS da maneira tradicional está ficando cada vez mais obsoleto por conta também do crescimento de frameworks. Entretanto, ele nunca vai ir embora porque no final das contas, o CSS é o que faz o navegador estilizar uma página.",
 
   "home.formation.tabs1.title": "Cursos",
   "home.formation.tabs2.title": "Extracurrículares",
@@ -88,61 +97,68 @@
   
   "home.formation1.title": "Análise e Desenvolvimento de Sistemas",
   "home.formation1.type": "Técnologo",
+  "home.formation1.description": "",
   "home.formation1.location": "Vila Mariana - SP",
 
   "home.formation2.title": "Informática p/ Internet",
   "home.formation2.type": "Técnico",
+  "home.formation2.description": "",
   "home.formation2.location": "Diadema - SP",
 
-  "home.formation3.title": "",
-  "home.formation3.type": "",
-  "home.formation3.location": "",
+  "home.extracurricular1.title": "",
 
-  "home.mytimeline.landmark1.name": "Início",
-  "home.mytimeline.landmark1.description": "Começo de jornada",
- 
+  "home.certifications1.title": "",
+  "home.certifications2.title": "",
+  "home.certifications3.title": "",
+  "home.certifications4.title": "",
+
+  "home.mytimeline.landmark1.name": "Início de minha jornada",
+  "home.mytimeline.landmark1.description": "O marco zero, meu 'pontapé' inicial.",
   
-  "home.mytimeline.landmark2.name": "Inglês",
-  "home.mytimeline.landmark2.description": "teste",
+  "home.mytimeline.landmark2.name": "Começo do meu curso de Inglês",
+  "home.mytimeline.landmark2.description": "Ainda nos meus anos de pré adolescência, comecei minha preparação com a língua inglesa.",
   
   "home.mytimeline.landmark3.name": "Etec",
-  "home.mytimeline.landmark3.description": "teste",
+  "home.mytimeline.landmark3.description": "Meu primeiro contato técnico com a área de informática. O conhecimento não foi apenas em programação mas em todos os conceitos de T.I, computação, virtualização...",
   
-  "home.mytimeline.landmark4.name": "Formação",
-  "home.mytimeline.landmark4.description": "teste",
+  "home.mytimeline.landmark4.name": "Formação técnica",
+  "home.mytimeline.landmark4.description": "Juntamente com o término do ensino médio, realizei meu TCC e terminei minha primeira formação na área de T.I",
   
   "home.mytimeline.landmark5.name": "Término inglês",
-  "home.mytimeline.landmark5.description": "teste",
+  "home.mytimeline.landmark5.description": "Após longos 5 anos, realizei minha prova do TOEFL ITP e consegui minha certificação de inglês avançado.",
   
-  "home.mytimeline.landmark6.name": "Faculdade",
-  "home.mytimeline.landmark6.description": "teste",
+  "home.mytimeline.landmark6.name": "Ingressão na faculdade",
+  "home.mytimeline.landmark6.description": "Meu primeiro contato com o ensino superior. Foi a partir deste ponto que realmente comecei a procurar ativamente vagas de estágio e ingressar no mundo profissional de T.I",
   
   "home.mytimeline.landmark7.name": "Primeiro emprego",
-  "home.mytimeline.landmark7.description": "teste",
+  "home.mytimeline.landmark7.description": "Não foi exatamente um 'emprego' em si, mas uma experiência que a empresa ofereceu como parte de um processo seletivo.",
   
   "home.mytimeline.landmark8.name": "Estágio",
-  "home.mytimeline.landmark8.description": "teste",
+  "home.mytimeline.landmark8.description": "Resultado do meu desempenho no programa de capacitação da empresa. Acabei sendo escolhido para a vaga de estágio.",
   
-  "home.mytimeline.landmark9.name": "Next",
-  "home.mytimeline.landmark9.description": "Evento da fiap ai graças a deus",
+  "home.mytimeline.landmark9.name": "Evento Next da FIAP",
+  "home.mytimeline.landmark9.description": "Com o projeto desenvolvido no decorrer do ano de 2019 no meu primeiro ano da FIAP, nosso projeto foi apresentado no evento organizado pela FIAP em parceria com diversas empresas de tecnologia. Ao decorrer do evento, apresentamos nosso projeto e acabamos ficando em 2º lugar.",
   
   "home.mytimeline.landmark10.name": "Promovido",
-  "home.mytimeline.landmark10.description": "Minha primeira experiência como CLT e Júnior como dev front-end.",
+  "home.mytimeline.landmark10.description": "Promovido de meu cargo como estagiário antes do término de meu contrato. Foi minha primeira experiência em um emprego de período integral como CLT e júnior.",
 
-  "home.mytimeline.landmark11.name": "Saída de emprego",
-  "home.mytimeline.landmark11.description": "Decidi tirar um tempo para encontrar uma oportunidade melhor",
-  
-  "home.mytimeline.landmark12.name": "DIPLOMA MANO",
-  "home.mytimeline.landmark12.description": "Peguei um diploma ai seloco",
+  "home.mytimeline.landmark11.name": "Diploma de graduação",
+  "home.mytimeline.landmark11.description": "Com o fim de meu curso superior, também veio diversas reflexões sobre o que fazer daqui em diante, porém eu tinha certeza de que independente de como as coisas fossem, a área de T.I é para mim.",
 
-  "home.mytimeline.landmark13.name": "Freelance",
-  "home.mytimeline.landmark13.description": "Participei de um projeto para criar um app multiplataforma para uma empresa de elétrica.",
+  "home.mytimeline.landmark12.name": "Projeto freelancer",
+  "home.mytimeline.landmark12.description": "Um grande amigo meu da área de elétrica trabalhava em uma empresa que necessitava de um aplicativo para auxiliar em processos internos para coleta de informações. Como ele me conhecia, ele me contou sobre e acabei acertando sobre o projeto e foi minha primeira experiência trabalhando em um projeto sozinho.",
 
-  "home.mytimeline.landmark14.name": "Novo emprego",
-  "home.mytimeline.landmark14.description": "Ainda como Júnior, fui contratado pela NBM Informática",
+  "home.mytimeline.landmark13.name": "Mudança de emprego",
+  "home.mytimeline.landmark13.description": "De olhos em novas oportunidades. Fui contactado por um amigo meu da época da faculdade sobre sua empresa que necessitava de um desenvolvedor para não só desenvolver mas também auxiliar desenvolvedores dentro da empresa.",
 
-  "home.mytimeline.landmark15.name": "Novo emprego",
-  "home.mytimeline.landmark15.description": "Contratado pela GFT como desenvolvedor front-end pleno",
+  "home.mytimeline.landmark14.name": "Mudança de emprego",
+  "home.mytimeline.landmark14.description": "Acabei recebendo uma proposta que na época estava alinhada com minhas expectativas e desafios. Acabei ingressando na GFT em sua unidade no Brasil e participei de diversos projetos e até mesmo internacionais.",
+
+  "home.projects.title": "Repositórios",
+
+  "home.projects.description.title": "Sobre meus projetos",
+  "home.projects.description.content1": "Teste",
+  "home.projects.description.content2": "Teste Teste Teste",
 
   "home.footer.contact.title": "Contato",
   "home.footer.socialmedia.title": "Redes sociais",

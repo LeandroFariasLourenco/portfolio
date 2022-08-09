@@ -24,13 +24,12 @@ export const FormationTab = styled(Grid)(({ theme }) => `
   }
 
   &.selected {
-    background-color: #15e283bc;
+    background-color: ${theme.palette.action.focus};
   }
 `);
 
 export const CardContainer = styled(Grid)(({ theme }) => `
   background-color: ${theme.palette.background.paper};
-  height: 500px;
   border: 2px solid ${theme.palette.secondary.main};
   border-top: 0;
   padding: 20px;

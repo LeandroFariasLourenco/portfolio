@@ -24,7 +24,6 @@ export const HeaderBar = styled(AppBar)`
 `;
 
 export const LanguageSelect = styled(Select)`
-  width: 75px;
   padding-left: 10px;
 
   &::before {

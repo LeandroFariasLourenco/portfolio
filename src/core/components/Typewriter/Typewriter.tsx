@@ -1,18 +1,16 @@
 import { Typography } from '@mui/material';
-import { useState } from 'react';
-import TypewriterEffect, { TypewriterClass } from 'typewriter-effect';
+import TypewriterEffect from 'typewriter-effect';
+import { ITypewriterProps } from './props';
 
 import * as S from './styled';
 
-interface ITypewriterProps {
-  onInit: (typewriter: TypewriterClass) => void;
-}
-
 const Typewriter = ({
   onInit,
+  typographyProps,
+  timer,
 }: ITypewriterProps) => (
   <S.TypewriterWrapper>
-    <Typography variant="h2">
+    <Typography variant="h2" {...typographyProps}>
       <TypewriterEffect
         onInit={(typewriter) => {
           onInit(typewriter);

@@ -31,7 +31,7 @@ const MyTimeline = () => {
       icon={<Timeline htmlColor="white" fontSize="large" />}
       childrenWrapperProps={{
         style: {
-          maxHeight: 650,
+          maxHeight: 750,
           overflowY: 'auto',
           overflowX: 'hidden',
           padding: '0 10px',
@@ -42,7 +42,7 @@ const MyTimeline = () => {
         <VerticalTimeline
           lineColor={theme.palette.primary.main}
         >
-          {landmarks.map((landmark) => {
+          {landmarks.reverse().map((landmark) => {
             const { background, icon } = {
               [AchievementType.START]: { background: '#015a44', icon: <Star fontSize="large" htmlColor="white" /> },
               [AchievementType.CERTIFICATE]: { background: '#fc8e27', icon: <CardMembership fontSize="large" htmlColor="white" /> },

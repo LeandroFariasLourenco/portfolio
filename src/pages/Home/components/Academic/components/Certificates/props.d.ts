@@ -5,6 +5,5 @@ export interface ICardProps {
     location: string;
     duration: string;
     logo: string;
-    description: string;
   }
 }
