@@ -7,7 +7,7 @@ import { FormattedMessage } from 'react-intl';
 import { ICardProps } from './props';
 import * as S from './styled';
 
-const Card = ({
+const Extracurricular = ({
   card,
 }: ICardProps) => {
   const cardWrapperRef = useRef<HTMLDivElement>();
@@ -55,4 +55,4 @@ const Card = ({
   );
 };
 
-export default Card;
+export default Extracurricular;

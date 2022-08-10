@@ -31,6 +31,7 @@ const ParticlesComponent = memo(() => (
       await loadFull(engine);
     }}
     canvasClassName="background-canvas"
+    id="experience-background"
     options={particlesConfig}
   />
 ), () => true);

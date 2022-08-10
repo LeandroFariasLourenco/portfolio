@@ -1,36 +1,26 @@
 import { Grid, styled } from '@mui/material';
 
-export const CardWrapper = styled(Grid)(({ theme }) => `
+export const CertificateWrapper = styled(Grid)(({ theme }) => `
   position: relative;
   border: 2px dashed ${theme.palette.secondary.main};
   padding: 10px;
   height: 100%;
-
-  .MuiDrawer {
-    &-modal {
-      position: absolute;
-    }
-
-    &-paper {
-      position: absolute;
-    }
-  }
 `);
 
-export const CardTitleContainer = styled(Grid)`
+export const CertificateTitleContainer = styled(Grid)`
   height: 115px;
 `;
 
-export const CardLogo = styled('img')`
+export const CertificateLogo = styled('img')`
   width: 200px;
   object-fit: contain;
-  height: 30px;
+  height: 35px;
   margin: 0 auto;
 `;
 
-export const CardContainer = styled(Grid)``;
+export const CertificateContainer = styled(Grid)``;
 
-export const CardRow = styled(Grid)`
+export const CertificateRow = styled(Grid)`
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -39,3 +29,13 @@ export const CardRow = styled(Grid)`
     margin-right: 10px;
   }
 `;
+
+export const CertificateLink = styled('a')(({ theme }) => `
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 175px;
+  border: 1px dashed ${theme.palette.primary.main};
+  padding: 5px 10px;
+`);

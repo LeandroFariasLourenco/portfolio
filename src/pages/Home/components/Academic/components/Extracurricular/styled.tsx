@@ -4,16 +4,6 @@ export const CardWrapper = styled(Grid)(({ theme }) => `
   position: relative;
   border: 2px dashed ${theme.palette.secondary.main};
   padding: 10px;
-
-  .MuiDrawer {
-    &-modal {
-      position: absolute;
-    }
-
-    &-paper {
-      position: absolute;
-    }
-  }
 `);
 
 export const CardTitleContainer = styled(Grid)`

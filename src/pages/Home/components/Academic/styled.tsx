@@ -1,18 +1,18 @@
-import { Card, Grid, styled } from '@mui/material';
+import { Grid, styled } from '@mui/material';
 
 export const FormationTabs = styled(Grid)(({ theme }) => `
-  border: 2px solid ${theme.palette.secondary.main};
+  border: 2px solid ${theme.palette.action.active};
   border-bottom: 0;
 `);
 
 export const FormationTab = styled(Grid)(({ theme }) => `
   transition: background-color 200ms ease-in-out;
   padding: 10px 0;
-  background-color: ${theme.palette.background.paper};
+  background-color: #1C1630;
   cursor: pointer;
 
   &:not(:last-of-type) {
-    border-right: 2px dashed ${theme.palette.secondary.main};
+    border-right: 2px dashed ${theme.palette.action.active};
   }
 
   &:hover {
@@ -20,7 +20,7 @@ export const FormationTab = styled(Grid)(({ theme }) => `
   }
 
   &:not(.selected) {
-    border-bottom: 2px solid ${theme.palette.secondary.main};
+    border-bottom: 2px solid ${theme.palette.action.active};
   }
 
   &.selected {
@@ -29,8 +29,8 @@ export const FormationTab = styled(Grid)(({ theme }) => `
 `);
 
 export const CardContainer = styled(Grid)(({ theme }) => `
-  background-color: ${theme.palette.background.paper};
-  border: 2px solid ${theme.palette.secondary.main};
+  background-color: #1C1630;
+  border: 2px solid ${theme.palette.action.active};
   border-top: 0;
   padding: 20px;
 `);

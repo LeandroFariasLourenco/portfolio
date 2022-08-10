@@ -1,4 +1,4 @@
-import { CalendarMonth, LocationOn, School } from '@mui/icons-material';
+import { OpenInNew, RemoveRedEye } from '@mui/icons-material';
 import { Typography } from '@mui/material';
 import { useRef } from 'react';
 
@@ -13,44 +13,35 @@ const Certificates = ({
   const cardWrapperRef = useRef<HTMLDivElement>();
 
   return (
-    <S.CardWrapper
+    <S.CertificateWrapper
       item
       container
       flexWrap="nowrap"
       flexDirection="column"
       justifyContent="space-between"
-      xs={4}
       ref={(ref) => {
         cardWrapperRef.current = ref as HTMLDivElement;
       }}
     >
-      <S.CardTitleContainer
+      <S.CertificateTitleContainer
         container
         justifyContent="center"
       >
-        <S.CardLogo src={card.logo} />
+        <S.CertificateLogo src={card.logo} />
         <Typography variant="h5" fontSize="20px" textAlign="center"><FormattedMessage id={card.title} /></Typography>
-      </S.CardTitleContainer>
+      </S.CertificateTitleContainer>
 
-      <S.CardContainer>
-        <Typography>My cu</Typography>
-      </S.CardContainer>
-      <S.CardContainer>
-        <S.CardRow>
-          <CalendarMonth htmlColor="white" />
-          <Typography>{card.duration}</Typography>
-        </S.CardRow>
-        <S.CardRow>
-          <LocationOn htmlColor="white" />
-          <Typography><FormattedMessage id={card.location} /></Typography>
-        </S.CardRow>
-        <S.CardRow>
-          <School htmlColor="white" />
-          <Typography><FormattedMessage id={card.type} /></Typography>
-        </S.CardRow>
-
-      </S.CardContainer>
-    </S.CardWrapper>
+      <S.CertificateContainer>
+        <S.CertificateLink
+          href={card.link}
+          target="_blank"
+        >
+          <RemoveRedEye color="primary" />
+          <Typography><FormattedMessage id="home.certifications.seemore" /></Typography>
+          <OpenInNew color="primary" />
+        </S.CertificateLink>
+      </S.CertificateContainer>
+    </S.CertificateWrapper>
   );
 };
 
