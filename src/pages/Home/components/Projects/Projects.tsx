@@ -1,21 +1,34 @@
 import { Code, DeveloperBoard } from '@mui/icons-material';
 import { Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { APP } from 'src/core/constants';
 import { Repository, Section } from 'src/core/layouts';
 import { IGithubRepository } from 'src/core/models';
 import { GithubService } from 'src/core/services';
+import { Pagination } from 'swiper';
+import { SwiperSlide, Swiper, SwiperProps } from 'swiper/react';
 
 import * as S from './styled';
 
 const Projects = () => {
   const [repositories, setRepositories] = useState<IGithubRepository[]>([]);
+  const swiperConfig: SwiperProps = useMemo(() => ({
+    modules: [Pagination],
+    pagination: {
+      clickable: true,
+    },
+  }), []);
+
+  const projects = useMemo(() => [
+    { title: '1', background: '' },
+    { title: '2', background: `${APP.aws.assets}/projects/futawesome.png` },
+    { title: '3', background: `${APP.aws.assets}/projects/snakegame.mp4` },
+    { title: '4', background: `${APP.aws.assets}/projects/solar-system.png` },
+    { title: '5', background: `${APP.aws.assets}/projects/be-the-hero.png` },
+  ], []);
 
   const fetchRepositories = async () => {
-    // if (repositories.length) {
-    //   return;
-    // }
-
     const response = await GithubService.getRepositories();
     setRepositories(response.sort((current, next) => {
       const currentDate = new Date(current.created_at);
@@ -64,10 +77,36 @@ const Projects = () => {
           alignItems="center"
           flexDirection="column"
         >
-          <Typography variant="h3"><FormattedMessage id="home.projects.description.title" /></Typography>
+          <Swiper
+            style={{
+              height: '100%',
+              width: '100%',
+            }}
+            {...swiperConfig}
+          >
+            {projects.map((project) => (
+              <SwiperSlide
+                style={{ position: 'relative' }}
+                key={project.title}
+              >
+                <S.ProjectBackgroundVideo src={project.background} autoPlay loop muted />
+                <S.ProjectBackgroundImage src={project.background} />
+                <S.ProjectSlideContainer>
+                  <S.ProjectSlideOverlay
+                    container
+                    alignItems="flex-end"
+                    justifyContent="flex-end"
+                    flexDirection="column"
+                  >
+                    <Typography variant="h3"><FormattedMessage id="home.projects.description.title" /></Typography>
 
-          <Typography><FormattedMessage id="home.projects.description.content1" /></Typography>
-          <Typography><FormattedMessage id="home.projects.description.content2" /></Typography>
+                    <Typography><FormattedMessage id="home.projects.description.content1" /></Typography>
+                    <Typography><FormattedMessage id="home.projects.description.content2" /></Typography>
+                  </S.ProjectSlideOverlay>
+                </S.ProjectSlideContainer>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </S.ProjectsTabs>
       </S.ProjectsContainer>
     </Section>

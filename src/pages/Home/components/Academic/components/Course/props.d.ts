@@ -1,5 +1,6 @@
 import { ICourse } from 'src/core/models/ICourse';
 
 export interface ICourseProps {
-  card: ICourse
+  card: ICourse;
+  index: number;
 }

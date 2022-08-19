@@ -13,15 +13,16 @@
   "home.welcome.terminal.text4.string1": "Não se esqueça de entrar em contato!",
 
   "home.about-me.summary": "Desde muito cedo pensei em trilhar uma carreira de desenvolvedor. No início, pretendia seguir no caminho de desenvolver jogos, porém acabei entrando no mundo de desenvolvimento de software por conta da oportunidade que tive de fazer um curso técnico na área, enquanto seguia no ensino médio. No meu tempo livre gosto especialmente de jogar, uma vez ou outra realizar algum projeto pessoal, estudar, ler livros, assistir...",
-  "home.about-me.objectives": "Meus objetivos",
-  "home.about-me.objectives.short-term": "Curto/médio prazo",
-  "home.about-me.objectives.short-term1": "Encontrar uma oportunidade que eu possa ter estabilidade, não apenas financeira mas também entre a vida profissional e pessoal.",
-  "home.about-me.objectives.short-term2": "Uma empresa que me proporcione oportunidades para realizar meus planos de longo prazo.",
-  
-  "home.about-me.objectives.long-term": "Longo prazo",
-  "home.about-me.objectives.long-term1": "Tornar um desenvolvedor full-stack/full-cycle",
-  "home.about-me.objectives.long-term2": "Mudar para um país europeu (Portugal, Inglaterra)",
-  "home.about-me.salary": "Negociável",
+
+  "home.about-me.objectives": "Objetivos",
+  "home.about-me.stack": "Stack",
+  "home.about-me.books": "Livros/Assisir",
+  "home.about-me.games": "Jogos",
+
+  "home.about-me.objectives.first": "Um emprego que me traga estabilidade e confiança para sempre trabalhar com excelência.",
+  "home.about-me.objectives.second": "Mudar para um país no exterior",
+  "home.about-me.objectives.third": "Realizar uma pós graduação na área de desenvolvimento de software.",	
+  "home.about-me.objectives.fourth": "Me tornar um dev full stack",
 
   "home.experience1.title": "Front-End Pleno",
   "home.experience1.company": "GFT",
@@ -131,7 +132,7 @@
   "home.mytimeline.landmark2.name": "Começo do meu curso de Inglês",
   "home.mytimeline.landmark2.description": "Ainda nos meus anos de pré adolescência, comecei minha preparação com a língua inglesa.",
   
-  "home.mytimeline.landmark3.name": "Etec",
+  "home.mytimeline.landmark3.name": "Curso técnico",
   "home.mytimeline.landmark3.description": "Meu primeiro contato técnico com a área de informática. O conhecimento não foi apenas em programação mas em todos os conceitos de T.I, computação, virtualização...",
   
   "home.mytimeline.landmark4.name": "Formação técnica",
@@ -166,6 +167,9 @@
 
   "home.mytimeline.landmark14.name": "Mudança de emprego",
   "home.mytimeline.landmark14.description": "Acabei recebendo uma proposta que na época estava alinhada com minhas expectativas e desafios. Acabei ingressando na GFT em sua unidade no Brasil e participei de diversos projetos e até mesmo internacionais.",
+
+  "home.mytimeline.landmark15.name": "Certified Cloud Practitioner",
+  "home.mytimeline.landmark15.description": "Minha primeira certificação com AWS. Apesar de ter tido um pouco de experiência prévia com desenvolvimento em nuvem. Agora comecei oficialmente minha jornada como Cloud Practitioner.",
 
   "home.projects.title": "Repositórios",
 

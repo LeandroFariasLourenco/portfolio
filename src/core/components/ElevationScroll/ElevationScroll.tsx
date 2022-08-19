@@ -1,9 +1,6 @@
 import { useScrollTrigger, useTheme } from '@mui/material';
-import { cloneElement, ReactElement } from 'react';
-
-interface IElevationScrollProps {
-  children: ReactElement;
-}
+import { cloneElement } from 'react';
+import { IElevationScrollProps } from './types';
 
 const ElevationScroll = ({
   children,

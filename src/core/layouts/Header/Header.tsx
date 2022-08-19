@@ -1,16 +1,17 @@
-import { GitHub } from '@mui/icons-material';
+import {
+  GitHub, Info, KeyboardArrowUp, Mail, School, Terminal, Work,
+} from '@mui/icons-material';
 import {
   Grid,
   Box,
   MenuItem,
-  Select,
   Typography,
-  useTheme,
   useScrollTrigger,
-  Slide,
   SelectChangeEvent,
+  IconProps,
 } from '@mui/material';
 import { observer } from 'mobx-react-lite';
+import { useMemo, cloneElement } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { ElevationScroll } from 'src/core/components';
 import { Languages } from 'src/core/models';
@@ -19,17 +20,23 @@ import { useGlobalContext } from 'src/core/store/global/context';
 import * as S from './styled';
 
 const Header = () => {
-  const theme = useTheme();
   const trigger = useScrollTrigger();
   const globalContext = useGlobalContext();
 
-  const links = [
-    { label: 'header.links.section1', href: '#home' },
-    { label: 'header.links.section2', href: '#home' },
-    { label: 'header.links.section3', href: '#home' },
-    { label: 'header.links.section4', href: '#home' },
-    { label: 'header.links.section5', href: '#home' },
-  ];
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  const links = useMemo(() => [
+    { label: 'header.links.section1', href: '#home', icon: <Info /> },
+    { label: 'header.links.section2', href: '#home', icon: <Work /> },
+    { label: 'header.links.section3', href: '#home', icon: <Terminal /> },
+    { label: 'header.links.section4', href: '#home', icon: <School /> },
+    { label: 'header.links.section5', href: '#home', icon: <Mail /> },
+  ], []);
 
   const handleLanguageSelect = (event: SelectChangeEvent<unknown>) => {
     globalContext.setLanguage(event.target.value as Languages);
@@ -38,7 +45,7 @@ const Header = () => {
   return (
     <ElevationScroll>
       {/* <Slide appear={false} direction="down" in={!trigger}> */}
-      <S.HeaderBar color="primary" elevation={0}>
+      <S.HeaderBar elevation={100}>
         <Grid container item xs={12} justifyContent="center">
           <Grid container item alignItems="center" justifyContent="space-between" xs={8}>
             <Grid item xs={3} flexWrap="nowrap" flexDirection="row" alignItems="center" container justifyContent="space-evenly">
@@ -50,6 +57,7 @@ const Header = () => {
                 <S.HeaderLink
                   key={link.label}
                 >
+                  {cloneElement(link.icon, { htmlColor: '#fff', fontSize: 'small' } as IconProps)}
                   <Typography><FormattedMessage id={link.label} /></Typography>
                 </S.HeaderLink>
               ))}
@@ -74,6 +82,11 @@ const Header = () => {
             </Grid>
           </Grid>
         </Grid>
+        <S.ScrollToTopWrapper
+          onClick={scrollToTop}
+        >
+          <KeyboardArrowUp fontSize="large" />
+        </S.ScrollToTopWrapper>
       </S.HeaderBar>
       {/* </Slide> */}
     </ElevationScroll>

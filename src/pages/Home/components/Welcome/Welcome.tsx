@@ -1,7 +1,7 @@
 import { Grid, Typography, useTheme } from '@mui/material';
 import { Typewriter } from 'src/core/components';
 import Particles from 'react-tsparticles';
-import { ArrowDownward, Close, House } from '@mui/icons-material';
+import { Close, House } from '@mui/icons-material';
 import { useEffect, useMemo, useState } from 'react';
 import TypewriterEffect, { TypewriterClass } from 'typewriter-effect';
 import { useIntl } from 'react-intl';
@@ -83,7 +83,7 @@ const Welcome = () => {
       <S.ArrowDownContainer
         onClick={handleArrowDownClick}
       >
-        <ArrowDownward />
+        <S.ArrowDown />
       </S.ArrowDownContainer>
       <Grid container xs={6} item spacing={20}>
         <Grid item xs={8}>

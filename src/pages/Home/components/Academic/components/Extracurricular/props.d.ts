@@ -1,5 +1,6 @@
 import { IExtracurricular } from 'src/core/models/IExtracurricular';
 
 export interface ICardProps {
-  card: IExtracurricular
+  card: IExtracurricular;
+  index: number;
 }

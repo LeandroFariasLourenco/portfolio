@@ -31,7 +31,7 @@ const MyTimeline = () => {
       icon={<Timeline htmlColor="white" fontSize="large" />}
       childrenWrapperProps={{
         style: {
-          maxHeight: 750,
+          maxHeight: 1000,
           overflowY: 'auto',
           overflowX: 'hidden',
           padding: '0 10px',
@@ -42,7 +42,19 @@ const MyTimeline = () => {
         <VerticalTimeline
           lineColor={theme.palette.primary.main}
         >
-          {landmarks.reverse().map((landmark) => {
+          <VerticalTimelineElement
+            iconStyle={{
+              background: '#015a44',
+              boxShadow: '0 0 0 4px #015a44, inset 0 2px 0 rgb(0 0 0 / 8%), 0 3px 0 4px rgb(0 0 0 / 5%)',
+            }}
+            icon={(
+              <SettingsEthernet
+                fontSize="large"
+                htmlColor="white"
+              />
+            )}
+          />
+          {landmarks.map((landmark) => {
             const { background, icon } = {
               [AchievementType.START]: { background: '#015a44', icon: <Star fontSize="large" htmlColor="white" /> },
               [AchievementType.CERTIFICATE]: { background: '#fc8e27', icon: <CardMembership fontSize="large" htmlColor="white" /> },
@@ -76,18 +88,6 @@ const MyTimeline = () => {
               </VerticalTimelineElement>
             );
           })}
-          <VerticalTimelineElement
-            iconStyle={{
-              background: '#015a44',
-              boxShadow: '0 0 0 4px #015a44, inset 0 2px 0 rgb(0 0 0 / 8%), 0 3px 0 4px rgb(0 0 0 / 5%)',
-            }}
-            icon={(
-              <SettingsEthernet
-                fontSize="large"
-                htmlColor="white"
-              />
-            )}
-          />
         </VerticalTimeline>
       </S.TimelineWrapper>
     </Section>

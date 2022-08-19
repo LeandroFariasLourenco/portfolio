@@ -63,8 +63,8 @@ export const TabContainer = styled(Grid)(({ theme }) => `
   background-color: ${theme.palette.background.paper} ;
   padding: 0 15px;
   border-radius: 0;
-  min-height: 62px;
-  max-height: 62px;
+  min-height: 58px;
+  max-height: 58px;
   
   flex: 1;
 

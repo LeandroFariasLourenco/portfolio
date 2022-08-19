@@ -9,29 +9,29 @@ import * as S from './styled';
 
 const Certificates = ({
   card,
+  index,
 }: ICardProps) => {
   const cardWrapperRef = useRef<HTMLDivElement>();
 
   return (
     <S.CertificateWrapper
-      item
-      container
-      flexWrap="nowrap"
-      flexDirection="column"
-      justifyContent="space-between"
       ref={(ref) => {
         cardWrapperRef.current = ref as HTMLDivElement;
       }}
+      style={{
+        animationDuration: `${100 + 75 * index}ms`,
+      }}
     >
-      <S.CertificateTitleContainer
+      <S.CertificateContainer
         container
-        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        justifyContent="space-between"
       >
-        <S.CertificateLogo src={card.logo} />
+        <S.CertificateLogoContainer>
+          <S.CertificateLogo src={card.logo} width={card.dimensions.width} />
+        </S.CertificateLogoContainer>
         <Typography variant="h5" fontSize="20px" textAlign="center"><FormattedMessage id={card.title} /></Typography>
-      </S.CertificateTitleContainer>
-
-      <S.CertificateContainer>
         <S.CertificateLink
           href={card.link}
           target="_blank"

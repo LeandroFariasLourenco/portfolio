@@ -9,6 +9,7 @@ import * as S from './styled';
 
 const Extracurricular = ({
   card,
+  index,
 }: ICardProps) => {
   const cardWrapperRef = useRef<HTMLDivElement>();
 
@@ -19,9 +20,11 @@ const Extracurricular = ({
       flexWrap="nowrap"
       flexDirection="column"
       justifyContent="space-between"
-      xs={4}
       ref={(ref) => {
         cardWrapperRef.current = ref as HTMLDivElement;
+      }}
+      style={{
+        animationDuration: `${300 + 100 * index}ms`,
       }}
     >
       <S.CardTitleContainer

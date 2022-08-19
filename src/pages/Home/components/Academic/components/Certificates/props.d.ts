@@ -1,5 +1,6 @@
 import { ICertificate } from 'src/core/models/ICertificate';
 
 export interface ICardProps {
-  card: ICertificate
+  card: ICertificate;
+  index: number;
 }

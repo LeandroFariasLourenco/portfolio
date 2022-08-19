@@ -9,6 +9,7 @@ import * as S from './styled';
 
 const Course = ({
   card,
+  index,
 }: ICourseProps) => {
   const cardWrapperRef = useRef<HTMLDivElement>();
 
@@ -19,9 +20,12 @@ const Course = ({
       flexWrap="nowrap"
       flexDirection="column"
       justifyContent="space-between"
-      xs={4}
+      xs={12}
       ref={(ref) => {
         cardWrapperRef.current = ref as HTMLDivElement;
+      }}
+      style={{
+        animationDuration: `${300 + 100 * index}ms`,
       }}
     >
       <S.CourseTitleContainer

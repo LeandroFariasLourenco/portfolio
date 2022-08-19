@@ -1,5 +1,6 @@
-import { Grid, styled } from '@mui/material';
+import { css, Grid, styled } from '@mui/material';
 import { APP } from 'src/core/constants';
+import { SwiperSlide } from 'swiper/react';
 
 export const ProjectsContainer = styled(Grid)(({ theme }) => `
   padding: 10px;
@@ -15,6 +16,18 @@ export const ProjectsTabs = styled(Grid)`
   background-size: cover;
   background-position: center;
   padding: 10px;
+  height: 100%;
+
+  .swiper {
+    &-pagination {
+      &-bullet {
+        width: 100px;
+        height: 5px;
+        border-radius: 0;
+        background-color: ${({ theme }) => theme.palette.grey['500']};
+      }
+    }
+  }
 `;
 
 export const RepositoryTitle = styled(Grid)(({ theme }) => `
@@ -51,3 +64,35 @@ export const RepositoriesList = styled(Grid)(({ theme }) => `
     background: ${theme.palette.background.paper};
   }
 `);
+
+export const ProjectSlideOverlay = styled(Grid)`
+  background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.75));
+  position: absolute;
+  bottom: 0;
+  padding: 20px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+`;
+
+export const ProjectSlideContainer = styled(Grid)`
+  padding: 20px;
+`;
+
+const ProjectBackground = css`
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+export const ProjectBackgroundImage = styled('img')`
+  ${ProjectBackground};
+`;
+
+export const ProjectBackgroundVideo = styled('video')`
+  ${ProjectBackground};
+`;

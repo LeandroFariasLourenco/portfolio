@@ -25,11 +25,6 @@ export const particlesConfig: ParticlesProps['options'] = {
       polygon: {
         nb_sides: 5,
       },
-      image: {
-        src: 'https://img.freepik.com/fotos-gratis/figura-triangular-geometrica-legal-em-uma-luz-de-laser-neon-otima-para-fundos-e-papeis-de-parede_181624-9331.jpg?w=2000',
-        width: 500,
-        height: 100,
-      },
     },
     opacity: {
       value: 0.5,

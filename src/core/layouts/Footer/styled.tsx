@@ -14,9 +14,7 @@ export const FooterColumn = styled(Grid)`
   flex-direction: column;
 `;
 
-export const FooterContainer = styled(Grid)(() => `
-
-`);
+export const FooterContainer = styled(Grid)(() => '');
 
 export const Title = styled(Typography)(({ theme }) => `
   margin-bottom: 20px;
@@ -45,13 +43,17 @@ export const FooterLink = styled('a')`
     margin-right: 10px;
   }
 
+  & + & {
+    margin-top: 10px;
+  }
+
   p {
     font-size: 14px;
   }
 `;
 
 export const IconContainer = styled('a')`
-  height: 65px;
+  height: 60px;
   width: 60px;
   background-color: #161B22;
   display: flex;

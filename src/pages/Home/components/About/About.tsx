@@ -1,76 +1,87 @@
 import {
-  RemoveRedEye,
-  SportsEsports,
-  Terminal,
-  Theaters,
-  PersonSearch,
-  EmojiEvents,
-  ArrowForwardIosSharp,
-  Bookmark,
-  Bookmarks,
+  SportsEsports, Terminal, Theaters, PersonSearch, EmojiEvents,
 } from '@mui/icons-material';
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Grid, Typography, useTheme,
+  Divider, Grid, Typography, useTheme,
 } from '@mui/material';
 import { useMemo } from 'react';
-import { Zoom } from 'react-reveal';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { Section } from 'src/core/layouts';
 import Lottie from 'react-lottie';
 
 import PersonComputerAnimation from 'src/assets/animations/person-on-computer.json';
 
 import * as S from './styled';
-
-const ShortTerm = () => {
-  const theme = useTheme();
-  return (
-    <>
-      <S.AboutMeObjective><FormattedMessage id="home.about-me.objectives.short-term1" /></S.AboutMeObjective>
-      <S.AboutMeObjective><FormattedMessage id="home.about-me.objectives.short-term2" /></S.AboutMeObjective>
-    </>
-  );
-};
-
-const LongTerm = () => {
-  const theme = useTheme();
-  return (
-    <>
-      <S.AboutMeObjective><FormattedMessage id="home.about-me.objectives.long-term1" /></S.AboutMeObjective>
-      <S.AboutMeObjective><FormattedMessage id="home.about-me.objectives.long-term2" /></S.AboutMeObjective>
-    </>
-  );
-};
+import Story from './components/Story';
 
 const About = () => {
   const theme = useTheme();
+  const intl = useIntl();
+
   const hobbies = useMemo(() => [
     {
+      color: '#fff',
+      label: intl.messages['home.about-me.objectives'] as string,
+      icon: <EmojiEvents htmlColor="#fff" fontSize="large" />,
+      content: (
+        <Typography>
+          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.first" /></S.AboutMeTextLine>
+          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.second" /></S.AboutMeTextLine>
+          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.third" /></S.AboutMeTextLine>
+          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.fourth" /></S.AboutMeTextLine>
+        </Typography>
+      ),
+    },
+    {
       color: theme.palette.action.active,
-      icon: <Terminal
-        htmlColor={theme.palette.action.active}
-        sx={{ fontSize: 60 }}
-      />,
-      description: '',
+      label: intl.messages['home.about-me.stack'] as string,
+      icon: <Terminal htmlColor={theme.palette.action.active} fontSize="large" />,
+      content: (
+        <Typography>
+          <FormattedMessage id="home.about-me.objectives.first" />
+          <FormattedMessage id="home.about-me.objectives.second" />
+          <FormattedMessage id="home.about-me.objectives.third" />
+          <FormattedMessage id="home.about-me.objectives.fourth" />
+        </Typography>
+      ),
     },
     {
       color: theme.palette.primary.main,
-      icon: <Theaters
-        htmlColor={theme.palette.primary.main}
-        sx={{ fontSize: 60 }}
-      />,
-      description: '',
+      label: intl.messages['home.about-me.books'] as string,
+      icon: <Theaters htmlColor={theme.palette.primary.main} fontSize="large" />,
+      content: (
+        <Typography>
+          <FormattedMessage id="home.about-me.objectives.first" />
+          <FormattedMessage id="home.about-me.objectives.second" />
+          <FormattedMessage id="home.about-me.objectives.third" />
+          <FormattedMessage id="home.about-me.objectives.fourth" />
+        </Typography>
+      ),
     },
     {
       color: theme.palette.secondary.main,
-      icon: <SportsEsports
-        htmlColor={theme.palette.secondary.main}
-        sx={{ fontSize: 60 }}
-      />,
-      description: '',
+      label: intl.messages['home.about-me.games'] as string,
+      icon: <SportsEsports htmlColor={theme.palette.secondary.main} fontSize="large" />,
+      content: (
+        <Typography>
+          *
+          {' '}
+          <FormattedMessage id="home.about-me.objectives.first" />
+          <br />
+          *
+          {' '}
+          <FormattedMessage id="home.about-me.objectives.second" />
+          <br />
+          *
+          {' '}
+          <FormattedMessage id="home.about-me.objectives.third" />
+          <br />
+          *
+          {' '}
+          <FormattedMessage id="home.about-me.objectives.fourth" />
+          <br />
+        </Typography>
+      ),
     },
   ], []);
 
@@ -94,17 +105,6 @@ const About = () => {
           <S.AboutMeSummary>
             <FormattedMessage id="home.about-me.summary" />
           </S.AboutMeSummary>
-
-          <S.AboutMeObjectives>
-            <S.AboutMeObjectivesTitle variant="h2">
-              <EmojiEvents htmlColor="white" />
-              <FormattedMessage id="home.about-me.objectives" />
-            </S.AboutMeObjectivesTitle>
-
-            <ShortTerm />
-            <LongTerm />
-
-          </S.AboutMeObjectives>
         </Grid>
         <Grid item xs={6} container justifyContent="flex-end">
           <Lottie
@@ -116,32 +116,9 @@ const About = () => {
           />
         </Grid>
       </Grid>
-      <Grid container gap={6} flexWrap="nowrap">
-        {hobbies.map((hobby, index) => (
-          <S.AboutCardWrapper
-            item
-            xs={4}
-            key={hobby.color}
-          >
-            <Zoom
-              key={hobby.description}
-              duration={2500 * ((index + 1) * 0.30)}
-              bottom
-              cascade
-            >
-              <S.AboutCard>
-                {hobby.icon}
-                <RemoveRedEye htmlColor={hobby.color} />
-
-                <S.AboutCardHoverContainer
-                  $color={hobby.color}
-                  container
-                  alignItems="center"
-                  justifyContent="center"
-                />
-              </S.AboutCard>
-            </Zoom>
-          </S.AboutCardWrapper>
+      <Grid container gap={12} flexWrap="nowrap" alignItems="center" justifyContent="center">
+        {hobbies.map((hobby) => (
+          <Story key={hobby.color} hobby={hobby} />
         ))}
       </Grid>
     </Section>

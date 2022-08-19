@@ -43,14 +43,13 @@ export const materialTheme = createTheme({
     action: {
       active: '#0aa1cf',
       focus: '#0E1122',
-      hover: 'rgba(209, 13, 82, 0.2)',
+      hover: 'rgba(10, 161, 207, 0.2)',
     },
     primary: {
       main: '#06d674',
     },
     secondary: {
-      main: '#d10d52',
-      light: '#ab0a43',
+      main: '#1486a8',
     },
   },
 });

@@ -1,17 +1,7 @@
 import {
-  Card, Grid, Typography,
+  Grid, Typography,
   styled,
 } from '@mui/material';
-
-export const AboutCard = styled(Card)`
-  margin-top: 25px;
-  padding: 10px;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-flow: column;
-`;
 
 export const AboutCardHoverContainer = styled(Grid)<{
   $color: string;
@@ -30,52 +20,24 @@ export const AboutCardHoverContainer = styled(Grid)<{
   }
 `);
 
-export const AboutMeObjectives = styled(Grid)`
-  margin-top: 10px;
-
-  > * {
-    &:not(:first-child) {
-      padding-left: 15px;
-    }
-  }
-`;
-
 export const AboutMeSummary = styled(Typography)`
   font-size: 15px;
 `;
 
-export const AboutMeObjectivesTitle = styled(Typography)`
-  svg {
-    margin-right: 10px;
-  }
-`;
-
-export const AboutMeObjective = styled(Typography)(({ theme }) => `
-  font-size: 15px;
-
-  &::before {
-    content: '-';
-    font-size: 20px;
-    background-color: ${theme.palette.action.focus};
-    margin: 0 10px 0 0;
-  }
-`);
-
-export const AboutCardWrapper = styled(Grid)`
+export const AboutMeTextLine = styled('div')`
   position: relative;
-  overflow: hidden;
+  padding-left: 16px;
 
-  &:hover {
-    ${AboutCardHoverContainer} {
-      width: 100%;
-      height: 100%;
-      bottom: 0;
-      right: 0;
-      border-radius: 0;
-
-      * {
-        font-size: unset;
-      }
-    }
+  &:before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: -3px;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: ${({ theme }) => theme.palette.primary.main};
+    border-radius: 100%;
+    margin: 10px 5px 0 0;
   }
 `;

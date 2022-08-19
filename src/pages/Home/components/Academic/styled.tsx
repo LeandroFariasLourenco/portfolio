@@ -34,3 +34,7 @@ export const CardContainer = styled(Grid)(({ theme }) => `
   border-top: 0;
   padding: 20px;
 `);
+
+export const FormationWrapper = styled(Grid)`
+  height: 815px;
+`;
