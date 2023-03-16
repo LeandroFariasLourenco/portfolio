@@ -8,6 +8,7 @@ import { IGithubRepository } from 'src/core/models';
 import { GithubService } from 'src/core/services';
 import { Pagination } from 'swiper';
 import { SwiperSlide, Swiper, SwiperProps } from 'swiper/react';
+import { IProject } from './models/project.interface';
 
 import * as S from './styled';
 
@@ -21,12 +22,11 @@ const Projects = () => {
   }), []);
 
   const projects = useMemo(() => [
-    { title: '1', background: '' },
-    { title: '2', background: `${APP.aws.assets}/projects/futawesome.png` },
-    { title: '3', background: `${APP.aws.assets}/projects/snakegame.mp4` },
-    { title: '4', background: `${APP.aws.assets}/projects/solar-system.png` },
-    { title: '5', background: `${APP.aws.assets}/projects/be-the-hero.png` },
-  ], []);
+    { title: '2', description: '', background: `${APP.aws.assets}/projects/futawesome.png` },
+    { title: '3', description: '', background: `${APP.aws.assets}/projects/snakegame.mp4` },
+    { title: '4', description: '', background: `${APP.aws.assets}/projects/solar-system.png` },
+    { title: '5', description: '', background: `${APP.aws.assets}/projects/be-the-hero.png` },
+  ] as IProject[], []);
 
   const fetchRepositories = async () => {
     const response = await GithubService.getRepositories();

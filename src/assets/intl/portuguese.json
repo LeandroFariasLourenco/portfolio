@@ -12,6 +12,7 @@
   "home.welcome.terminal.text3.string1": "Espero que goste!",
   "home.welcome.terminal.text4.string1": "Não se esqueça de entrar em contato!",
 
+  "home.about-me.title": "Sobre mim",
   "home.about-me.summary": "Desde muito cedo pensei em trilhar uma carreira de desenvolvedor. No início, pretendia seguir no caminho de desenvolver jogos, porém acabei entrando no mundo de desenvolvimento de software por conta da oportunidade que tive de fazer um curso técnico na área, enquanto seguia no ensino médio. No meu tempo livre gosto especialmente de jogar, uma vez ou outra realizar algum projeto pessoal, estudar, ler livros, assistir...",
 
   "home.about-me.objectives": "Objetivos",
@@ -21,43 +22,50 @@
 
   "home.about-me.objectives.first": "Um emprego que me traga estabilidade e confiança para sempre trabalhar com excelência.",
   "home.about-me.objectives.second": "Mudar para um país no exterior",
-  "home.about-me.objectives.third": "Realizar uma pós graduação na área de desenvolvimento de software.",	
+  "home.about-me.objectives.third": "Realizar uma pós graduação na área de desenvolvimento de software.",
   "home.about-me.objectives.fourth": "Me tornar um dev full stack",
 
   "home.experience1.title": "Front-End Pleno",
-  "home.experience1.company": "GFT",
-  "home.experience1.date": "04/2022 - Atual",
-  "home.experience1.description": "Com meus conhecimentos sólidos no ecossistema Javascript/Typescript e Angular, React e React Native, me voltei mais para o desenvolvimento em Cloud, com foco em AWS e seus serviços. Trabalhei em projetos grandes e que tinham a prioridade de serem escaláveis a nível internacional com multilinguagens e também em projetos que já tinham anos de mercado.",
-  "home.experience1.type": "Home Office",
-  "home.experience1.stack": "React, Typescript, AWS, Git",
-  
-  "home.experience2.title": "Front-End Júnior",
-  "home.experience2.company": "NBM Informática",
-  "home.experience2.date": "03/2021 - 04/2022",
-  "home.experience2.description": "Com a mudança de empresa, também veio a mudança de tecnologias. Não comecei a trabalhar com ecommerce mas sim com soluções in-house. Utilizava-se Angular, Typescript, AWS, Azure e React Native. Os projetos eram diversos e cobriam camadas de Web e Mobile. Tive também a opotunidade de gerenciar/auxiliar diretamente 1 pessoa do time.",
-  "home.experience2.type": "Home/Presencial",
-  "home.experience2.stack": "PUG, SCSS, Typescript, Angular, React Native, AWS, Git, Gulp, Flutter",
-  
+  "home.experience1.company": "IBM",
+  "home.experience1.date": "09/2022 - Atual",
+  "home.experience1.description": "Trabalho com projetos atuando na área de Front End. Possuo responsabilidades de além de produzir e realizar entregas, também de auxiliar minha equipe, criação de códigos utilitários e desenvolvimento de pacotes. Utilizo uma stack bastante voltada com Front End Angular e testes unitários.",
+  "home.experience1.type": "Híbrido",
+  "home.experience1.stack": "Typescript, Devops, Angular, Git",
+
+  "home.experience2.title": "Front-End Pleno",
+  "home.experience2.company": "GFT",
+  "home.experience2.date": "04/2022 - 09/2022",
+  "home.experience2.description": "Com meus conhecimentos sólidos no ecossistema Javascript/Typescript e Angular, React e React Native, me voltei mais para o desenvolvimento em Cloud, com foco em AWS e seus serviços. Trabalhei em projetos grandes e que tinham a prioridade de serem escaláveis a nível internacional com multilinguagens e também em projetos que já tinham anos de mercado.",
+  "home.experience2.type": "Home Office",
+  "home.experience2.stack": "React, Typescript, AWS, Git",
+
   "home.experience3.title": "Front-End Júnior",
-  "home.experience3.company": "Enext",
-  "home.experience3.date": "09/2020 - 12/2020",
-  "home.experience3.description": "Sendo Júnior, tive a oportunidade de aprofundar meu conhecimento com as tecnologias já abordadas no estágio, ao mesmo tempo que minhas responsabilidades eram aumentadas.",
-  "home.experience3.type": "Home Office",
-  "home.experience3.stack": "PUG, SCSS, Javascript, React, Wordpress, VTEX, Git, Gulp, Grunt",
-  
-  "home.experience4.title": "Front-End Estágio",
+  "home.experience3.company": "NBM Informática",
+  "home.experience3.date": "03/2021 - 04/2022",
+  "home.experience3.description": "Com a mudança de empresa, também veio a mudança de tecnologias. Não comecei a trabalhar com ecommerce mas sim com soluções in-house. Utilizava-se Angular, Typescript, AWS, Azure e React Native. Os projetos eram diversos e cobriam camadas de Web e Mobile. Tive também a opotunidade de gerenciar/auxiliar diretamente 1 pessoa do time.",
+  "home.experience3.type": "Home/Presencial",
+  "home.experience3.stack": "PUG, SCSS, Typescript, Angular, React Native, AWS, Git, Gulp, Flutter",
+
+  "home.experience4.title": "Front-End Júnior",
   "home.experience4.company": "Enext",
-  "home.experience4.date": "10/2019 - 09/2020",
-  "home.experience4.description": "Como estagiário, comecei a participar mais com o desenvolvimento de diversos projetos de ecommerce com VTEX, utilizando Linguagens e frameworks SCSS, PUG, React, Redux. Automatizadores de tarefa com Grunt, Gulp, Webpack...",
-  "home.experience4.type": "Home/Presencial",
-  "home.experience4.stack": "HTML, PUG, SCSS, Javascript, React, Magento, VTEX, Git",
-  
-  "home.experience5.title": "Front-End Programa de Capacitação",
+  "home.experience4.date": "09/2020 - 12/2020",
+  "home.experience4.description": "Sendo Júnior, tive a oportunidade de aprofundar meu conhecimento com as tecnologias já abordadas no estágio, ao mesmo tempo que minhas responsabilidades eram aumentadas.",
+  "home.experience4.type": "Home Office",
+  "home.experience4.stack": "PUG, SCSS, Javascript, React, Wordpress, VTEX, Git, Gulp, Grunt",
+
+  "home.experience5.title": "Front-End Estágio",
   "home.experience5.company": "Enext",
-  "home.experience5.date": "09/2019 - 10/2019",
-  "home.experience5.description": "Meu primeiro contato profissional. Tive a oportunidade de acompanhar profissionais no dia-a-dia, enquanto também aprendia diversas tecnologias do mundo front-end, com Git, HTML, SCSS, Javascript. Semanalmente eu apresentava projetos para ser sujeito a um teste no final do mês para a vaga de estágio.",
-  "home.experience5.type": "Presencial",
-  "home.experience5.stack": "HTML, SCSS, Javascript, Git",
+  "home.experience5.date": "10/2019 - 09/2020",
+  "home.experience5.description": "Como estagiário, comecei a participar mais com o desenvolvimento de diversos projetos de ecommerce com VTEX, utilizando Linguagens e frameworks SCSS, PUG, React, Redux. Automatizadores de tarefa com Grunt, Gulp, Webpack...",
+  "home.experience5.type": "Home/Presencial",
+  "home.experience5.stack": "HTML, PUG, SCSS, Javascript, React, Magento, VTEX, Git",
+
+  "home.experience6.title": "Front-End Programa de Capacitação",
+  "home.experience6.company": "Enext",
+  "home.experience6.date": "09/2019 - 10/2019",
+  "home.experience6.description": "Meu primeiro contato profissional. Tive a oportunidade de acompanhar profissionais no dia-a-dia, enquanto também aprendia diversas tecnologias do mundo front-end, com Git, HTML, SCSS, Javascript. Semanalmente eu apresentava projetos para ser sujeito a um teste no final do mês para a vaga de estágio.",
+  "home.experience6.type": "Presencial",
+  "home.experience6.stack": "HTML, SCSS, Javascript, Git",
 
   "home.experience.current": "Atual",
   "home.experience.description": "Descrição",
@@ -95,7 +103,7 @@
   "home.formation.tabs1.title": "Cursos",
   "home.formation.tabs2.title": "Extracurrículares",
   "home.formation.tabs3.title": "Certificados",
-  
+
   "home.formation1.title": "Análise e Desenvolvimento de Sistemas",
   "home.formation1.type": "Técnologo",
   "home.formation1.description": "A FIAP possui uma metodologia de ensinar o que de fato é utilizado no mercado, fazendo com que o curso não seja muito teórico. Durante meus 2 anos de formação, aprendi desde engenharia de software, gestão, devops, desenvolvimento full stack e IA. Tive a experiência de projetar, executar e apresentar 3 acadêmicos. Sendo um deles escolhido para ser apresentado na feira da FIAP, o NEXT, onde minha equipe acabou conquistando o 2º lugar.",
@@ -123,36 +131,36 @@
   "home.certifications5.title": "Informática p/ Internet",
   "home.certifications6.title": "App Developer",
   "home.certifications7.title": "Web Designer",
-  
+
   "home.certifications.seemore": "Ver mais",
 
   "home.mytimeline.landmark1.name": "Início de minha jornada",
   "home.mytimeline.landmark1.description": "O marco zero, meu 'pontapé' inicial.",
-  
+
   "home.mytimeline.landmark2.name": "Começo do meu curso de Inglês",
   "home.mytimeline.landmark2.description": "Ainda nos meus anos de pré adolescência, comecei minha preparação com a língua inglesa.",
-  
+
   "home.mytimeline.landmark3.name": "Curso técnico",
   "home.mytimeline.landmark3.description": "Meu primeiro contato técnico com a área de informática. O conhecimento não foi apenas em programação mas em todos os conceitos de T.I, computação, virtualização...",
-  
+
   "home.mytimeline.landmark4.name": "Formação técnica",
   "home.mytimeline.landmark4.description": "Juntamente com o término do ensino médio, realizei meu TCC e terminei minha primeira formação na área de T.I",
-  
+
   "home.mytimeline.landmark5.name": "Término inglês",
   "home.mytimeline.landmark5.description": "Após longos 5 anos, realizei minha prova do TOEFL ITP e consegui minha certificação de inglês avançado.",
-  
+
   "home.mytimeline.landmark6.name": "Ingressão na faculdade",
   "home.mytimeline.landmark6.description": "Meu primeiro contato com o ensino superior. Foi a partir deste ponto que realmente comecei a procurar ativamente vagas de estágio e ingressar no mundo profissional de T.I",
-  
+
   "home.mytimeline.landmark7.name": "Primeiro emprego",
   "home.mytimeline.landmark7.description": "Não foi exatamente um 'emprego' em si, mas uma experiência que a empresa ofereceu como parte de um processo seletivo.",
-  
+
   "home.mytimeline.landmark8.name": "Estágio",
   "home.mytimeline.landmark8.description": "Resultado do meu desempenho no programa de capacitação da empresa. Acabei sendo escolhido para a vaga de estágio.",
-  
+
   "home.mytimeline.landmark9.name": "Evento Next da FIAP",
   "home.mytimeline.landmark9.description": "Com o projeto desenvolvido no decorrer do ano de 2019 no meu primeiro ano da FIAP, nosso projeto foi apresentado no evento organizado pela FIAP em parceria com diversas empresas de tecnologia. Ao decorrer do evento, apresentamos nosso projeto e acabamos ficando em 2º lugar.",
-  
+
   "home.mytimeline.landmark10.name": "Promovido",
   "home.mytimeline.landmark10.description": "Promovido de meu cargo como estagiário antes do término de meu contrato. Foi minha primeira experiência em um emprego de período integral como CLT e júnior.",
 

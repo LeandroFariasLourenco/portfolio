@@ -88,7 +88,7 @@ const About = () => {
   return (
     <Section
       onTitleShow={(typewriter) => {
-        typewriter.typeString('Sobre mim')
+        typewriter.typeString(intl.messages['home.about-me.title'] as string)
           .start();
       }}
       gridStyle={{

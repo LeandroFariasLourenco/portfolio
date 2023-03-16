@@ -85,7 +85,7 @@ const Welcome = () => {
       >
         <S.ArrowDown />
       </S.ArrowDownContainer>
-      <Grid container xs={6} item spacing={20}>
+      <Grid container xs={6} sm={8} item spacing={20}>
         <Grid item xs={8}>
           <S.TypeWriterBackground
             elevation={3}

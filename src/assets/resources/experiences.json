@@ -9,8 +9,8 @@
     "stack": "home.experience1.stack",
     "company": {
       "name": "home.experience1.company",
-      "logo": "companies/gft.jpg",
-      "query": "GFT Alphaville"
+      "logo": "companies/ibm.jpg",
+      "query": "IBM Rua Tutóia"
     }
   },
   {
@@ -18,13 +18,13 @@
     "date": "home.experience2.date",
     "description": "home.experience2.description",
     "location": "São Paulo - SP",
-    "icon": "/badges/junior.png",
+    "icon": "/badges/mid-level.png",
     "type": "home.experience2.type",
     "stack": "home.experience2.stack",
     "company": {
       "name": "home.experience2.company",
-      "logo": "companies/nbm-informatica.png",
-      "query": "NBM Informática"
+      "logo": "companies/gft.jpg",
+      "query": "GFT Alphaville"
     }
   },
   {
@@ -37,8 +37,8 @@
     "stack": "home.experience3.stack",
     "company": {
       "name": "home.experience3.company",
-      "logo": "companies/enext.jpg",
-      "query": "Enext"
+      "logo": "companies/nbm-informatica.png",
+      "query": "NBM Informática"
     }
   },
   {
@@ -46,7 +46,7 @@
     "date": "home.experience4.date",
     "description": "home.experience4.description",
     "location": "São Paulo - SP",
-    "icon": "/badges/intern.png",
+    "icon": "/badges/junior.png",
     "type": "home.experience4.type",
     "stack": "home.experience4.stack",
     "company": {
@@ -59,12 +59,26 @@
     "title": "home.experience5.title",
     "date": "home.experience5.date",
     "description": "home.experience5.description",
-    "location": "Barueri - SP",
-    "icon": "/badges/beginner.png",
+    "location": "São Paulo - SP",
+    "icon": "/badges/intern.png",
     "type": "home.experience5.type",
     "stack": "home.experience5.stack",
     "company": {
       "name": "home.experience5.company",
+      "logo": "companies/enext.jpg",
+      "query": "Enext"
+    }
+  },
+  {
+    "title": "home.experience6.title",
+    "date": "home.experience6.date",
+    "description": "home.experience6.description",
+    "location": "Barueri - SP",
+    "icon": "/badges/beginner.png",
+    "type": "home.experience6.type",
+    "stack": "home.experience6.stack",
+    "company": {
+      "name": "home.experience6.company",
       "logo": "companies/enext.jpg",
       "query": "Enext"
     }
