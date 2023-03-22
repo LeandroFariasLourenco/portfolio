@@ -33,7 +33,7 @@ const Section = ({
       alignItems="center"
       style={gridStyle}
     >
-      <Grid item xs={12} style={{ maxWidth: 1000 }}>
+      <Grid item xs={12} width="100%" style={{ maxWidth: 1000 }}>
         <S.SectionHeader container flexWrap="nowrap" justifyContent="space-between" alignItems="center">
           {typing ? <Typewriter onInit={onTitleShow} /> : null}
           <Slide

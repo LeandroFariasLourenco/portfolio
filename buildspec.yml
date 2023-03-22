@@ -1,18 +1,13 @@
 version: 0.2
 
 phases:
-  install: {
-    'runtime-versions': {
-      nodejs: '14'
-    },
-    commands: [
-       "npm install -g yarn",
-       "yarn install"
-      ]
-  }
-  build: {
-    commands: [
-       "yarn build",
-    ]
-  }
-  
+  install:
+    {
+      "runtime-versions": { nodejs: "14" },
+      commands: ["npm install -g yarn", "yarn install --immutable"],
+    }
+  build: { commands: ["yarn build"] }
+artifacts:
+  files:
+    - "**/*"
+  base-directory: "build"

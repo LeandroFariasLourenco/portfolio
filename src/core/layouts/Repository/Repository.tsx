@@ -1,6 +1,7 @@
 import { AccountTree, CalendarMonth, ExitToApp } from '@mui/icons-material';
 import { Typography } from '@mui/material';
 import { memo } from 'react';
+import Responsive from 'src/core/components/Responsive/Responsive';
 import { IRepositoryProps } from './props';
 import * as S from './styled';
 
@@ -50,12 +51,20 @@ const Repository = ({
 
       <S.RepositoryRow>
         <S.RepositoryTitle>{repository.name}</S.RepositoryTitle>
-        <ExitToApp htmlColor="white" fontSize="small" />
+        <Responsive
+          breakpoint="md"
+        >
+          <ExitToApp htmlColor="white" fontSize="small" />
+        </Responsive>
       </S.RepositoryRow>
 
       <S.RepositoryRow>
         <S.RepositoryRow>
-          <CalendarMonth htmlColor="white" fontSize="small" />
+          <Responsive
+            breakpoint="md"
+          >
+            <CalendarMonth htmlColor="white" fontSize="small" />
+          </Responsive>
           <Typography variant="caption">{new Date(repository.created_at).toLocaleDateString()}</Typography>
         </S.RepositoryRow>
 

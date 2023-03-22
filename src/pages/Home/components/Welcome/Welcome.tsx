@@ -6,6 +6,8 @@ import { useEffect, useMemo, useState } from 'react';
 import TypewriterEffect, { TypewriterClass } from 'typewriter-effect';
 import { useIntl } from 'react-intl';
 import { APP } from 'src/core/constants';
+import Responsive from 'src/core/components/Responsive/Responsive';
+import { EResponsiveType } from 'src/core/models';
 import * as S from './styled';
 import { particlesConfig } from './particles-config';
 
@@ -74,19 +76,29 @@ const Welcome = () => {
   }, []);
 
   return (
-    <S.Wrapper container alignItems="center" item justifyContent="center" xs={12}>
+    <S.Wrapper container alignItems="center" item justifyContent="center" md={12}>
       <Particles
         id="welcome-background"
         canvasClassName="background-canvas"
         options={particlesConfig}
       />
-      <S.ArrowDownContainer
-        onClick={handleArrowDownClick}
+      <Responsive
+        breakpoint="md"
       >
-        <S.ArrowDown />
-      </S.ArrowDownContainer>
-      <Grid container xs={6} sm={8} item spacing={20}>
-        <Grid item xs={8}>
+        <S.ArrowDownContainer
+          onClick={handleArrowDownClick}
+        >
+          <S.ArrowDown />
+        </S.ArrowDownContainer>
+      </Responsive>
+      <Grid container justifyContent="center" alignItems="center" md={10} lg={8} sm={8} item spacing={10}>
+        <Responsive
+          breakpoint="md"
+          type={EResponsiveType.smaller}
+        >
+          <Grid item xs={12}><S.ProfileImage src="https://www.github.com/LeandroFariasLourenco.png?size=200" /></Grid>
+        </Responsive>
+        <Grid item md={8} sm={12}>
           <S.TypeWriterBackground
             elevation={3}
           >
@@ -99,7 +111,7 @@ const Welcome = () => {
               <S.TerminalWindowCircles
                 container
                 item
-                xs={3}
+                md={3}
               >
                 <S.TerminalWindowCircle $color="#ED6152" />
                 <S.TerminalWindowCircle $color="#E7C21C" />
@@ -109,7 +121,7 @@ const Welcome = () => {
               <S.TerminalTitleContainer
                 container
                 item
-                xs={6}
+                md={8}
                 alignItems="center"
               >
                 <House fontSize="small" htmlColor={theme.palette.grey[400]} />
@@ -151,9 +163,11 @@ const Welcome = () => {
             </S.TerminalContent>
           </S.TypeWriterBackground>
         </Grid>
-        <Grid item xs={4}>
-          <S.ProfileImage src="https://www.github.com/LeandroFariasLourenco.png?size=200" />
-        </Grid>
+        <Responsive
+          breakpoint="md"
+        >
+          <Grid item md={4}><S.ProfileImage src="https://www.github.com/LeandroFariasLourenco.png?size=200" /></Grid>
+        </Responsive>
       </Grid>
     </S.Wrapper>
   );

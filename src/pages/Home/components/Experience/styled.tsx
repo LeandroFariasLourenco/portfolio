@@ -1,5 +1,5 @@
 import {
-  Box, Button, Grid, Typography, styled, keyframes,
+  Box, Button, Grid, keyframes, styled,
 } from '@mui/material';
 
 const rotationKeyframe = keyframes`
@@ -16,20 +16,6 @@ export const Container = styled(Grid)`
   
 `;
 
-export const CurrentExperience = styled(Typography)`
-  position: absolute;
-  top: 5px;
-  left: -26px;
-  background-color: ${({ theme }) => theme.palette.primary.main};
-  display: block;
-  z-index: 1;
-  transform: rotate(-45deg);
-  font-size: 20px;
-  color: white;
-  padding: 5px 30px;
-  text-shadow: 0 0 2px black;
-`;
-
 export const SwiperContainer = styled(Grid)(({ theme }) => `
   position: relative;
   margin-top: 40px;
@@ -39,31 +25,42 @@ export const SwiperContainer = styled(Grid)(({ theme }) => `
       position: relative;
       overflow: hidden;
 
-      &::before {
-        content: '""';
-        position: absolute;
-        display: block;
-        width: 90%;
-        height: 175px;
-        border: 2px dashed ${theme.palette.secondary.main};
-        padding: 5px;
-        background-color: ${theme.palette.secondary.main};
-        background-clip: content-box;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: -1;
+      ${theme.breakpoints.up('md')} {
+        &::before {
+          content: '""';
+          position: absolute;
+          display: block;
+          width: 90%;
+          height: 175px;
+          border: 2px dashed ${theme.palette.secondary.main};
+          padding: 5px;
+          background-color: ${theme.palette.secondary.main};
+          background-clip: content-box;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: -1;
+        }
       }
     }
 
     &-pagination {
-      top: 50%;
-      left: -40px;
-      bottom: unset;
-      right: unset;
-      transform: translateY(-50%);
-      display: flex;
-      flex-flow: column;
+      ${theme.breakpoints.up('md')} {
+        bottom: unset;
+        right: unset;
+        transform: translateY(-50%);
+        display: flex;
+        flex-flow: column;
+        top: 50%;
+        left: -40px;
+      }
+
+      ${theme.breakpoints.down('md')} {
+        bottom: 10px;
+        display: flex;
+        left: 50%;
+        transform: translateX(-50%);
+      }
 
       &-bullet {
         width: 25px;
@@ -77,6 +74,11 @@ export const SwiperContainer = styled(Grid)(({ theme }) => `
         justify-content: center;
         position: relative;
 
+        ${theme.breakpoints.down('md')} {
+          width: 19px;
+          height: 19px;
+        }
+
         &.first {
           border-color: ${theme.palette.primary.main};
 
@@ -88,7 +90,13 @@ export const SwiperContainer = styled(Grid)(({ theme }) => `
         }
 
         &:not(&:first-of-type) {
-          margin-top: 35px;
+          ${theme.breakpoints.up('md')} {
+            margin-top: 35px;
+          }
+
+          ${theme.breakpoints.down('md')} {
+            margin-left: 20px;
+          }
         }
 
         &:not(&:last-of-type) {
@@ -96,12 +104,21 @@ export const SwiperContainer = styled(Grid)(({ theme }) => `
             content: '';
             display: block;
             position: absolute;
-            width: 5px;
-            transition: background-color 500ms ease-in-out;
-            bottom: -35px;
-            left: 50%;
-            transform: translateX(-50%);
-            height: 34px;
+
+            ${theme.breakpoints.down('md')} {
+              width: 20px;
+              height: 2px;
+              right: -21px;
+            }
+
+            ${theme.breakpoints.up('md')} {
+              width: 5px;
+              transition: background-color 500ms ease-in-out;
+              bottom: -35px;
+              left: 50%;
+              transform: translateX(-50%);
+              height: 34px;
+            }
           }
         }
 
@@ -127,27 +144,46 @@ export const SwiperContainer = styled(Grid)(({ theme }) => `
       &-next {
         &::after {
           color: ${theme.palette.primary.main};
-          font-size: 32px;
           font-weight: bold;
+          font-size: 32px;
+
+          ${theme.breakpoints.down('md')} {
+            font-size: 24px;
+          }
         }
       }
 
-      &-prev,
-      &-next {
-        right: unset;
-        top: unset;
+      ${theme.breakpoints.down('md')} {
+        &-disabled {
+          visibility: hidden;
+        }
 
-        left: 50%;
+        &-next {
+          right: -5.5%;
+        }
+
+        &-prev {
+          left: -5%;
+        }
       }
 
-      &-prev {
-        top: -20px;
-        transform: translateX(-50%) rotate(90deg);
-      }
+      ${theme.breakpoints.up('md')} {
+        &-prev,
+        &-next {
+          right: unset;
+          top: unset;
+          left: 50%;
+        }
 
-      &-next {
-        bottom: -50px;
-        transform: translateX(-50%) rotate(90deg);
+        &-prev {
+          top: -20px;
+          transform: translateX(-50%) rotate(90deg);
+        }
+
+        &-next {
+          bottom: -50px;
+          transform: translateX(-50%) rotate(90deg);
+        }
       }
     }
   }
@@ -164,13 +200,6 @@ export const ExperienceAnimatedBorder = styled(Box)<{
 `);
 
 export const SeemoreButton = styled(Button)``;
-
-export const ExperienceContainer = styled(Grid)(({ theme }) => `
-  position: relative;
-  height: 550px;
-  overflow: hidden;
-  border-radius: 10px;
-`);
 
 export const ExperienceAnimatedContainer = styled(Box) <{
   $index: number;

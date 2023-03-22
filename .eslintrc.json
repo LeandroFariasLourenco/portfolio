@@ -30,6 +30,7 @@
     "no-unused-vars": "off",
     "no-shadow": "off",
     "no-await-in-loop": "off",
+    "no-undef": "off",
     "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off",
     "react/no-array-index-key": "off",

@@ -1,14 +1,23 @@
 import { Grid, styled, Typography } from '@mui/material';
 
 export const RepositoryContainer = styled('a')(({ theme }) => `
-  padding: 5px;
   transition: 200ms opacity ease-in-out;
   display: block;
   border: 1px solid ${theme.palette.action.active};
   opacity: 0.45;
+  
+  ${theme.breakpoints.up('md')} {
+    padding: 5px;
 
-  & + & {
-    margin-top: 10px;
+    & + & {
+      margin-top: 10px;
+    }
+  }
+
+  ${theme.breakpoints.down('md')} {
+    padding: 5px 10px;
+    min-width: 175px;
+    margin-right: 10px;
   }
 
   &:hover {
@@ -35,6 +44,7 @@ export const RepositoryTitle = styled(Typography)(({ theme }) => `
   color: ${theme.palette.action.active};
   font-weight: bold;
   font-size: 13.5px;
+  white-space: nowrap;
 `);
 
 export const RepositoryRow = styled(Grid)`

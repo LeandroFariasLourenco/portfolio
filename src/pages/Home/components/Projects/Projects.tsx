@@ -3,6 +3,7 @@ import { Typography } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { APP } from 'src/core/constants';
+import useResponsive from 'src/core/hooks/useIsResponsive/useIsResponsive';
 import { Repository, Section } from 'src/core/layouts';
 import { IGithubRepository } from 'src/core/models';
 import { GithubService } from 'src/core/services';
@@ -14,6 +15,7 @@ import * as S from './styled';
 
 const Projects = () => {
   const [repositories, setRepositories] = useState<IGithubRepository[]>([]);
+  const isMobile = useResponsive({ breakpoint: 'md' });
   const swiperConfig: SwiperProps = useMemo(() => ({
     modules: [Pagination],
     pagination: {
@@ -56,12 +58,12 @@ const Projects = () => {
       }}
     >
       <S.ProjectsContainer container>
-        <S.RepositoriesWrapper item xs={3}>
+        <S.RepositoriesWrapper item xs={12} md={3}>
           <S.RepositoryTitle container flexDirection="row" alignItems="center">
             <Code htmlColor="white" />
             <Typography variant="h4"><FormattedMessage id="home.projects.title" /></Typography>
           </S.RepositoryTitle>
-          <S.RepositoriesList>
+          <S.RepositoriesList container flexWrap="nowrap">
             {repositories.map((repository) => (
               <Repository
                 key={repository.id}
@@ -72,7 +74,8 @@ const Projects = () => {
         </S.RepositoriesWrapper>
         <S.ProjectsTabs
           item
-          xs={9}
+          xs={12}
+          md={9}
           container
           alignItems="center"
           flexDirection="column"

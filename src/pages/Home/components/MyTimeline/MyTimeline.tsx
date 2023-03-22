@@ -16,12 +16,14 @@ import { Typography, useTheme } from '@mui/material';
 
 import landmarks from 'src/assets/resources/landmarks.json';
 import { Section } from 'src/core/layouts';
-import { AchievementType } from 'src/core/models';
 
+import { EAchievementType, EResponsiveType } from 'src/core/models';
+import useResponsive from 'src/core/hooks/useIsResponsive/useIsResponsive';
 import * as S from './styled';
 
 const MyTimeline = () => {
   const theme = useTheme();
+  const isMobile = useResponsive({ breakpoint: 'md', type: EResponsiveType.smaller });
 
   return (
     <Section
@@ -31,7 +33,7 @@ const MyTimeline = () => {
       icon={<Timeline htmlColor="white" fontSize="large" />}
       childrenWrapperProps={{
         style: {
-          maxHeight: 1000,
+          maxHeight: isMobile ? 475 : 1000,
           overflowY: 'auto',
           overflowX: 'hidden',
           padding: '0 10px',
@@ -56,14 +58,14 @@ const MyTimeline = () => {
           />
           {landmarks.map((landmark) => {
             const { background, icon } = {
-              [AchievementType.START]: { background: '#015a44', icon: <Star fontSize="large" htmlColor="white" /> },
-              [AchievementType.CERTIFICATE]: { background: '#fc8e27', icon: <CardMembership fontSize="large" htmlColor="white" /> },
-              [AchievementType.EDUCATION]: { background: '#001a63', icon: <School fontSize="large" htmlColor="white" /> },
-              [AchievementType.JOB]: { background: '#ff8902', icon: <Work fontSize="large" htmlColor="white" /> },
-              [AchievementType.PROJECT]: { background: '#ff3a04', icon: <PresentToAll fontSize="large" htmlColor="white" /> },
-              [AchievementType.PROMOTION]: { background: '#406794', icon: <Upgrade fontSize="large" htmlColor="white" /> },
-              [AchievementType.EXIT]: { background: theme.palette.secondary.main, icon: <ExitToApp fontSize="large" htmlColor="white" /> },
-              [AchievementType.FREELANCE]: { background: '#005842', icon: <DeveloperMode fontSize="large" htmlColor="white" /> },
+              [EAchievementType.START]: { background: '#015a44', icon: <Star fontSize="large" htmlColor="white" /> },
+              [EAchievementType.CERTIFICATE]: { background: '#fc8e27', icon: <CardMembership fontSize="large" htmlColor="white" /> },
+              [EAchievementType.EDUCATION]: { background: '#001a63', icon: <School fontSize="large" htmlColor="white" /> },
+              [EAchievementType.JOB]: { background: '#ff8902', icon: <Work fontSize="large" htmlColor="white" /> },
+              [EAchievementType.PROJECT]: { background: '#ff3a04', icon: <PresentToAll fontSize="large" htmlColor="white" /> },
+              [EAchievementType.PROMOTION]: { background: '#406794', icon: <Upgrade fontSize="large" htmlColor="white" /> },
+              [EAchievementType.EXIT]: { background: theme.palette.secondary.main, icon: <ExitToApp fontSize="large" htmlColor="white" /> },
+              [EAchievementType.FREELANCE]: { background: '#005842', icon: <DeveloperMode fontSize="large" htmlColor="white" /> },
             }[landmark.type]!;
             return (
               <VerticalTimelineElement

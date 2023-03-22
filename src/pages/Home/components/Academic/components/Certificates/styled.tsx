@@ -52,4 +52,9 @@ export const CertificateLink = styled('a')(({ theme }) => `
   width: 175px;
   border: 1px dashed ${theme.palette.primary.main};
   padding: 5px 10px;
+  
+  ${theme.breakpoints.down('md')} {
+    width: 70%;
+    margin-top: 10px;
+  }
 `);

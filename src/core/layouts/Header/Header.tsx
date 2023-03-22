@@ -1,5 +1,5 @@
 import {
-  GitHub, Info, KeyboardArrowUp, Mail, School, Terminal, Work,
+  GitHub, Info, KeyboardArrowUp, Mail, School, Terminal, Work, Menu,
 } from '@mui/icons-material';
 import {
   Grid,
@@ -14,7 +14,9 @@ import { observer } from 'mobx-react-lite';
 import { useMemo, cloneElement } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { ElevationScroll } from 'src/core/components';
-import { Languages } from 'src/core/models';
+import Responsive from 'src/core/components/Responsive/Responsive';
+import useResponsive from 'src/core/hooks/useIsResponsive/useIsResponsive';
+import { EResponsiveType, Languages } from 'src/core/models';
 import { useGlobalContext } from 'src/core/store/global/context';
 
 import * as S from './styled';
@@ -22,6 +24,7 @@ import * as S from './styled';
 const Header = () => {
   const trigger = useScrollTrigger();
   const globalContext = useGlobalContext();
+  const isMobile = useResponsive({ breakpoint: 'md', type: EResponsiveType.smaller });
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -45,24 +48,44 @@ const Header = () => {
   return (
     <ElevationScroll>
       {/* <Slide appear={false} direction="down" in={!trigger}> */}
-      <S.HeaderBar elevation={100}>
+      <S.HeaderBar elevation={4}>
         <Grid container item xs={12} justifyContent="center">
-          <Grid container item alignItems="center" justifyContent="space-between" xs={8}>
-            <Grid item xs={3} flexWrap="nowrap" flexDirection="row" alignItems="center" container justifyContent="space-evenly">
-              <GitHub fontSize="large" />
-              <Typography variant="h4">Leandro Farias</Typography>
-            </Grid>
-            <Grid item xs={8} container justifyContent="flex-end" flexWrap="nowrap">
-              {links.map((link) => (
-                <S.HeaderLink
-                  key={link.label}
-                >
-                  {cloneElement(link.icon, { htmlColor: '#fff', fontSize: 'small' } as IconProps)}
-                  <Typography><FormattedMessage id={link.label} /></Typography>
-                </S.HeaderLink>
-              ))}
-            </Grid>
-            <Grid item xs={1}>
+          <Grid container item alignItems="center" justifyContent="space-between" xs={12} md={8}>
+            <Responsive
+              breakpoint="md"
+              belowComponent={(
+                <>
+                  <Grid>
+                    <Menu />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={8}
+                    flexWrap="nowrap"
+                    flexDirection="row"
+                    alignItems="center"
+                    container
+                    justifyContent="space-around"
+                  >
+                    <GitHub fontSize="large" />
+                    <Typography variant={isMobile ? 'h5' : 'h4'}>Leandro Farias</Typography>
+                  </Grid>
+                </>
+              )}
+              aboveComponent={(
+                <Grid item xs={8} container justifyContent="flex-end" flexWrap="nowrap">
+                  {links.map((link) => (
+                    <S.HeaderLink
+                      key={link.label}
+                    >
+                      {cloneElement(link.icon, { htmlColor: '#fff', fontSize: 'small' } as IconProps)}
+                      <Typography><FormattedMessage id={link.label} /></Typography>
+                    </S.HeaderLink>
+                  ))}
+                </Grid>
+              )}
+            />
+            <Grid item md={1}>
               <S.LanguageSelect
                 value={globalContext.language}
                 onChange={handleLanguageSelect}
@@ -71,12 +94,12 @@ const Header = () => {
                 <MenuItem value={Languages.Portuguese}>
                   <Box component="span" className="fi fi-br" style={{ marginRight: 5 }} />
                   {' '}
-                  PT
+                  {!isMobile && 'PT'}
                 </MenuItem>
                 <MenuItem value={Languages.English}>
                   <Box component="span" className="fi fi-us" style={{ marginRight: 5 }} />
                   {' '}
-                  EN
+                  {!isMobile && 'EN'}
                 </MenuItem>
               </S.LanguageSelect>
             </Grid>

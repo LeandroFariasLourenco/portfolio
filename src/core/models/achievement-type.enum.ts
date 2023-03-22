@@ -1,4 +1,4 @@
-export enum AchievementType {
+export enum EAchievementType {
   START = 'start',
   EDUCATION = 'education',
   PROMOTION = 'promotion',

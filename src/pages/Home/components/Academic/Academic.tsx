@@ -12,10 +12,11 @@ import AnimateHeight from 'react-animate-height';
 import { Section } from 'src/core/layouts';
 import Particles from 'react-tsparticles';
 import { APP } from 'src/core/constants';
-import { ICourse } from 'src/core/models/ICourse';
-import { IExtracurricular } from 'src/core/models/IExtracurricular';
-import { ICertificate } from 'src/core/models/ICertificate';
+import {
+  ICertificate, IExtracurricular, ICourse, EResponsiveType,
+} from 'src/core/models';
 import { useHidden } from 'src/core/hooks';
+import useResponsive from 'src/core/hooks/useIsResponsive/useIsResponsive';
 import * as S from './styled';
 import { particlesConfig } from './particles-config';
 import Certificates from './components/Certificates/Certificates';
@@ -33,6 +34,7 @@ const ParticlesComponent = memo(() => (
 const Academic = () => {
   const [activeTab, setActiveTab] = useState(0);
   const cardContainerRef = useRef<HTMLDivElement>();
+  const isMobile = useResponsive({ breakpoint: 'md', type: EResponsiveType.smaller });
 
   const formationTabs = useMemo(() => [
     'home.formation.tabs1.title',
@@ -155,7 +157,7 @@ const Academic = () => {
                 selected: activeTab === index,
               })}
             >
-              <Typography variant="h4"><FormattedMessage id={tab} /></Typography>
+              <Typography variant={isMobile ? 'h5' : 'h4'}><FormattedMessage id={tab} /></Typography>
             </S.FormationTab>
           ))}
         </S.FormationTabs>
@@ -182,7 +184,7 @@ const Academic = () => {
               }}
             >
               {formations.courses.map((card, index) => (
-                <Grid item xs={4}>
+                <Grid item xs={12} md={4}>
                   <Course index={index} card={card as ICourse} />
                 </Grid>
               ))}
@@ -195,7 +197,7 @@ const Academic = () => {
               spacing={2}
             >
               {formations.extracurriculars.map((card, index) => (
-                <Grid item xs={4}>
+                <Grid item xs={12} md={4}>
                   <Extracurricular index={index} card={card as IExtracurricular} />
                 </Grid>
               ))}
@@ -211,7 +213,8 @@ const Academic = () => {
                 <Grid
                   key={card.title}
                   item
-                  xs={4}
+                  md={4}
+                  xs={6}
                 >
                   <Certificates
                     index={index}

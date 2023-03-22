@@ -11,6 +11,8 @@ import Lottie from 'react-lottie';
 
 import PersonComputerAnimation from 'src/assets/animations/person-on-computer.json';
 
+import Responsive from 'src/core/components/Responsive/Responsive';
+import { EResponsiveType } from 'src/core/models';
 import * as S from './styled';
 import Story from './components/Story';
 
@@ -38,10 +40,10 @@ const About = () => {
       icon: <Terminal htmlColor={theme.palette.action.active} fontSize="large" />,
       content: (
         <Typography>
-          <FormattedMessage id="home.about-me.objectives.first" />
-          <FormattedMessage id="home.about-me.objectives.second" />
-          <FormattedMessage id="home.about-me.objectives.third" />
-          <FormattedMessage id="home.about-me.objectives.fourth" />
+          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.first" /></S.AboutMeTextLine>
+          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.second" /></S.AboutMeTextLine>
+          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.third" /></S.AboutMeTextLine>
+          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.fourth" /></S.AboutMeTextLine>
         </Typography>
       ),
     },
@@ -51,10 +53,10 @@ const About = () => {
       icon: <Theaters htmlColor={theme.palette.primary.main} fontSize="large" />,
       content: (
         <Typography>
-          <FormattedMessage id="home.about-me.objectives.first" />
-          <FormattedMessage id="home.about-me.objectives.second" />
-          <FormattedMessage id="home.about-me.objectives.third" />
-          <FormattedMessage id="home.about-me.objectives.fourth" />
+          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.first" /></S.AboutMeTextLine>
+          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.second" /></S.AboutMeTextLine>
+          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.third" /></S.AboutMeTextLine>
+          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.fourth" /></S.AboutMeTextLine>
         </Typography>
       ),
     },
@@ -64,22 +66,10 @@ const About = () => {
       icon: <SportsEsports htmlColor={theme.palette.secondary.main} fontSize="large" />,
       content: (
         <Typography>
-          *
-          {' '}
-          <FormattedMessage id="home.about-me.objectives.first" />
-          <br />
-          *
-          {' '}
-          <FormattedMessage id="home.about-me.objectives.second" />
-          <br />
-          *
-          {' '}
-          <FormattedMessage id="home.about-me.objectives.third" />
-          <br />
-          *
-          {' '}
-          <FormattedMessage id="home.about-me.objectives.fourth" />
-          <br />
+          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.first" /></S.AboutMeTextLine>
+          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.second" /></S.AboutMeTextLine>
+          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.third" /></S.AboutMeTextLine>
+          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.fourth" /></S.AboutMeTextLine>
         </Typography>
       ),
     },
@@ -101,12 +91,12 @@ const About = () => {
       )}
     >
       <Grid container item xs={12}>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <S.AboutMeSummary>
             <FormattedMessage id="home.about-me.summary" />
           </S.AboutMeSummary>
         </Grid>
-        <Grid item xs={6} container justifyContent="flex-end">
+        <Grid item xs={12} md={6} container justifyContent="flex-end">
           <Lottie
             width={315}
             style={{ margin: 0 }}
@@ -116,11 +106,26 @@ const About = () => {
           />
         </Grid>
       </Grid>
-      <Grid container gap={12} flexWrap="nowrap" alignItems="center" justifyContent="center">
-        {hobbies.map((hobby) => (
-          <Story key={hobby.color} hobby={hobby} />
-        ))}
-      </Grid>
+      <Responsive
+        breakpoint="md"
+      >
+        <Grid container gap={12} flexWrap="nowrap" alignItems="center" justifyContent="center">
+          {hobbies.map((hobby) => (
+            <Story key={hobby.label} hobby={hobby} />
+          ))}
+        </Grid>
+      </Responsive>
+
+      <Responsive
+        type={EResponsiveType.smaller}
+        breakpoint="md"
+      >
+        <Grid container item xs={12} alignItems="center" justifyContent="center">
+          {hobbies.map((hobby) => (
+            <Story key={hobby.label} hobby={hobby} />
+          ))}
+        </Grid>
+      </Responsive>
     </Section>
   );
 };

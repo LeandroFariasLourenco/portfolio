@@ -7,11 +7,11 @@ import cx from 'classnames';
 import { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import * as S from './styled';
-import { StoryProps } from './types';
+import { IStoryProps } from './types';
 
 const Story = ({
   hobby,
-}: StoryProps) => {
+}: IStoryProps) => {
   const [open, setOpen] = useState(false);
   const theme = useTheme();
 

@@ -1,28 +1,30 @@
 import { WorkHistory } from '@mui/icons-material';
 import {
-  Box, Grid, useTheme,
+  Box, useTheme,
 } from '@mui/material';
+import cx from 'classnames';
 import {
   memo, useCallback, useMemo, useState,
 } from 'react';
-import { FormattedMessage } from 'react-intl';
-import { Section } from 'src/core/layouts';
-import experiences from 'src/assets/resources/experiences.json';
 import { Fade } from 'react-reveal';
+import Particles from 'react-tsparticles';
+import experiences from 'src/assets/resources/experiences.json';
+import { Section } from 'src/core/layouts';
 import {
   Mousewheel, Navigation, Pagination,
   Swiper as SwiperClass,
 } from 'swiper';
-import cx from 'classnames';
-import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
-import * as S from './styled';
-import ExperienceCard from './components/ExperienceCard/ExperienceCard';
-import ExperienceDetails from './components/ExperienceDetails/ExperienceDetails';
+import Responsive from 'src/core/components/Responsive/Responsive';
+import useResponsive from 'src/core/hooks/useIsResponsive/useIsResponsive';
+import { EResponsiveType } from 'src/core/models';
+import DesktopCard from './components/DesktopCard/DesktopCard';
+import MobileCard from './components/MobileCard/MobileCard';
 import { particlesConfig } from './particles-config';
+import * as S from './styled';
 
 const ParticlesComponent = memo(() => (
   <Particles
@@ -40,24 +42,26 @@ const Experience = () => {
   const theme = useTheme();
   const [swiper, setSwiper] = useState<SwiperClass>();
   const [swiperIndex, setSwiperIndex] = useState<number>(0);
+  const isMobile = useResponsive({ type: EResponsiveType.smaller, breakpoint: 'md' });
+
   const swiperProps: SwiperProps = useMemo(() => ({
-    modules: [Pagination, Navigation, Mousewheel],
-    direction: 'vertical',
-    mousewheel: true,
-    grabCursor: true,
+    modules: isMobile ? [Pagination, Navigation] : [Pagination, Navigation, Mousewheel],
+    direction: isMobile ? 'horizontal' : 'vertical',
+    mousewheel: !isMobile,
+    grabCursor: !isMobile,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
-    spaceBetween: 30,
+    spaceBetween: isMobile ? 15 : 30,
     onRealIndexChange: (swiper) => {
       setSwiperIndex(swiper.realIndex);
     },
     onSwiper: (swiper) => {
       setSwiper(swiper);
     },
-    style: { height: 550 },
-  }), []);
+    style: { height: isMobile ? 450 : 550 },
+  }), [isMobile]);
 
   const renderAnimatedBorder = (index: number) => ({
     LeftBorderComponent: (
@@ -117,26 +121,24 @@ const Experience = () => {
                 key={experience.date}
               >
                 <Fade>
-                  <Grid container flexDirection="row" flexWrap="nowrap" gap={10}>
-                    <S.ExperienceContainer item xs={6}>
-                      {index === 0 && (
-                        <S.CurrentExperience>
-                          <FormattedMessage id="home.experience.current" />
-                        </S.CurrentExperience>
-                      )}
-                      {LeftBorderComponent}
-                      <ExperienceCard
+                  <Responsive
+                    breakpoint="md"
+                    aboveComponent={(
+                      <DesktopCard
+                        LeftBorderComponent={LeftBorderComponent}
+                        RightBorderComponent={RightBorderComponent}
+                        experience={experience}
+                        index={index}
+                      />
+                    )}
+                    belowComponent={(
+                      <MobileCard
+                        BorderComponent={LeftBorderComponent}
+                        index={index}
                         experience={experience}
                       />
-                    </S.ExperienceContainer>
-
-                    <S.ExperienceContainer item xs={6}>
-                      {RightBorderComponent}
-                      <ExperienceDetails
-                        experience={experience}
-                      />
-                    </S.ExperienceContainer>
-                  </Grid>
+                    )}
+                  />
                 </Fade>
               </SwiperSlide>
             );

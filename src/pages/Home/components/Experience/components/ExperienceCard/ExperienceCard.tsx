@@ -42,7 +42,6 @@ const ExperienceCard = ({
           <Typography variant="subtitle1"><FormattedMessage id={experience.type} /></Typography>
         </S.ExperienceTopic>
       </S.ExperienceCardContent>
-
       <Grid container>
         <Grid item xs={6}>
           <iframe

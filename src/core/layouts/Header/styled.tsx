@@ -27,6 +27,10 @@ export const HeaderLink = styled('a')(({ theme }) => `
 export const HeaderBar = styled(AppBar)`
   padding: 5px 0;
   background-color: blue;
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    padding: 10px;
+  }
 `;
 
 export const LanguageSelect = styled(Select)(({ theme }) => `

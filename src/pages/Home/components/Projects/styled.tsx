@@ -5,10 +5,13 @@ import { SwiperSlide } from 'swiper/react';
 export const ProjectsContainer = styled(Grid)(({ theme }) => `
   padding: 10px;
   margin-top: 20px;
-  height: 500px;
   width: 100%;
   border: 2px solid ${theme.palette.secondary.main};
   background-color: ${theme.palette.background.default};
+
+  ${theme.breakpoints.up('md')} {
+    height: 500px;
+  }
 `);
 
 export const ProjectsTabs = styled(Grid)`
@@ -16,7 +19,14 @@ export const ProjectsTabs = styled(Grid)`
   background-size: cover;
   background-position: center;
   padding: 10px;
-  height: 100%;
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    height: 500px;
+  }
+
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    height: 100%;
+  }
 
   .swiper {
     &-pagination {
@@ -41,18 +51,33 @@ export const RepositoryTitle = styled(Grid)(({ theme }) => `
 `);
 
 export const RepositoriesWrapper = styled(Grid)(({ theme }) => `
-  height: 100%;
-  border-right: dashed 2px ${theme.palette.secondary.main};
   padding-right: 5px;
+  
+  ${theme.breakpoints.up('md')} {
+    border-right: dashed 2px ${theme.palette.secondary.main};
+    height: 100%;
+  }
 `);
 
 export const RepositoriesList = styled(Grid)(({ theme }) => `
-  overflow-y: auto;
-  height: 92%;
   padding-right: 10px;
+  
+  ${theme.breakpoints.up('md')} {
+    overflow-y: auto;
+    height: 92%;
+  }
+
+  ${theme.breakpoints.down('md')} {
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
 
   &::-webkit-scrollbar {
     width: 5px;
+
+    ${theme.breakpoints.down('md')} {
+      height: 5px;
+    }
   }
   &::-webkit-scrollbar-thumb {
     background-color: ${theme.palette.secondary.main};

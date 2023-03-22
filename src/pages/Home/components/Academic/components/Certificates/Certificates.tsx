@@ -3,6 +3,7 @@ import { Typography } from '@mui/material';
 import { useRef } from 'react';
 
 import { FormattedMessage } from 'react-intl';
+import Responsive from 'src/core/components/Responsive/Responsive';
 
 import { ICardProps } from './props';
 import * as S from './styled';
@@ -37,7 +38,11 @@ const Certificates = ({
           target="_blank"
         >
           <RemoveRedEye color="primary" />
-          <Typography><FormattedMessage id="home.certifications.seemore" /></Typography>
+          <Responsive
+            breakpoint="md"
+          >
+            <Typography><FormattedMessage id="home.certifications.seemore" /></Typography>
+          </Responsive>
           <OpenInNew color="primary" />
         </S.CertificateLink>
       </S.CertificateContainer>

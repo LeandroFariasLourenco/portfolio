@@ -10,12 +10,20 @@ export const Wrapper = styled(Grid)`
 `;
 
 export const ProfileImage = styled('img')`
-  border-radius: 100px;
+  border-radius: 100%;
+  width: 260px;
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    width: 185px;
+    margin: 0 auto;
+    display: block;
+  }
 `;
 
 export const TypeWriterBackground = styled(Card)`
   background-color: #1E1E1E;
   border-radius: 5px;
+  max-width: 600px;
 `;
 
 export const TerminalHeading = styled(Grid)`
@@ -51,7 +59,6 @@ export const TerminalText = styled(Typography)(({ theme }) => `
 
 export const TerminalRow = styled(Grid)`
   display: flex;
-  align-items: center;
 `;
 
 export const TerminalTitleContainer = styled(Grid)``;

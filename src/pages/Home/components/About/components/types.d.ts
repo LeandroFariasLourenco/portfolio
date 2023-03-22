@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export interface StoryProps {
+export interface IStoryProps {
   hobby: {
     color: string;
     icon: ReactNode;
