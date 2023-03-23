@@ -16,7 +16,7 @@ import {
   ICertificate, IExtracurricular, ICourse, EResponsiveType,
 } from 'src/core/models';
 import { useHidden } from 'src/core/hooks';
-import useResponsive from 'src/core/hooks/useIsResponsive/useIsResponsive';
+import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import * as S from './styled';
 import { particlesConfig } from './particles-config';
 import Certificates from './components/Certificates/Certificates';

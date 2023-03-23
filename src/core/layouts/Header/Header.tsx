@@ -14,8 +14,8 @@ import { observer } from 'mobx-react-lite';
 import { useMemo, cloneElement } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { ElevationScroll } from 'src/core/components';
-import Responsive from 'src/core/components/Responsive/Responsive';
-import useResponsive from 'src/core/hooks/useIsResponsive/useIsResponsive';
+import Responsive from 'src/core/components/responsive/responsive';
+import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EResponsiveType, Languages } from 'src/core/models';
 import { useGlobalContext } from 'src/core/store/global/context';
 

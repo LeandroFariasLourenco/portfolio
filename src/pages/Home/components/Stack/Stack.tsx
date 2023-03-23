@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Section } from 'src/core/layouts';
 import { APP } from 'src/core/constants';
 import languages from 'src/assets/resources/languages.json';
-import Technology from 'src/core/layouts/Technology/Technology';
+import Technology from 'src/core/layouts/technology/technology';
 import * as S from './styled';
 
 const Languages = () => {

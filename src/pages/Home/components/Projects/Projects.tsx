@@ -3,7 +3,7 @@ import { Typography } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { APP } from 'src/core/constants';
-import useResponsive from 'src/core/hooks/useIsResponsive/useIsResponsive';
+import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { Repository, Section } from 'src/core/layouts';
 import { IGithubRepository } from 'src/core/models';
 import { GithubService } from 'src/core/services';

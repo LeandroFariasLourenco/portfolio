@@ -1,7 +1,7 @@
 import { AccountTree, CalendarMonth, ExitToApp } from '@mui/icons-material';
 import { Typography } from '@mui/material';
 import { memo } from 'react';
-import Responsive from 'src/core/components/Responsive/Responsive';
+import Responsive from 'src/core/components/responsive/responsive';
 import { IRepositoryProps } from './props';
 import * as S from './styled';
 

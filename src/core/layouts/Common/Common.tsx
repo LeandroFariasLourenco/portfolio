@@ -1,5 +1,5 @@
 import { memo, ReactNode } from 'react';
-import Header from 'src/core/layouts/Header/Header';
+import Header from 'src/core/layouts/header/header';
 import Footer from 'src/core/layouts/Footer/Footer';
 
 interface ICommonProps {

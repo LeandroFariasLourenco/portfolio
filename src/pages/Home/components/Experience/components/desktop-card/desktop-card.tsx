@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material';
 import { FormattedMessage } from 'react-intl';
-import ExperienceCard from '../ExperienceCard/ExperienceCard';
-import ExperienceDetails from '../ExperienceDetails/ExperienceDetails';
+import ExperienceCard from '../experience-card/experience-card';
+import ExperienceDetails from '../experience-details/experience-details';
 
 import * as S from './styled';
 import { IDesktopCardProps } from './types';

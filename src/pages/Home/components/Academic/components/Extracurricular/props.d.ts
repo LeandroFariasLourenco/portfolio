@@ -1,4 +1,4 @@
-import { IExtracurricular } from 'src/core/models/IExtracurricular';
+import { IExtracurricular } from 'src/core/models';
 
 export interface ICardProps {
   card: IExtracurricular;

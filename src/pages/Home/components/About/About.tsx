@@ -11,10 +11,10 @@ import Lottie from 'react-lottie';
 
 import PersonComputerAnimation from 'src/assets/animations/person-on-computer.json';
 
-import Responsive from 'src/core/components/Responsive/Responsive';
+import Responsive from 'src/core/components/responsive/responsive';
 import { EResponsiveType } from 'src/core/models';
 import * as S from './styled';
-import Story from './components/Story';
+import Story from './components/story';
 
 const About = () => {
   const theme = useTheme();

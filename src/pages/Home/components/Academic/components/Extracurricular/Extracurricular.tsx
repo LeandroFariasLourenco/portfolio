@@ -3,8 +3,8 @@ import { Typography } from '@mui/material';
 import { useRef } from 'react';
 
 import { FormattedMessage } from 'react-intl';
-
 import { ICardProps } from './props';
+
 import * as S from './styled';
 
 const Extracurricular = ({

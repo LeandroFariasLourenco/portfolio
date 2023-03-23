@@ -18,11 +18,11 @@ import { loadFull } from 'tsparticles';
 
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
-import Responsive from 'src/core/components/Responsive/Responsive';
-import useResponsive from 'src/core/hooks/useIsResponsive/useIsResponsive';
+import Responsive from 'src/core/components/responsive/responsive';
+import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EResponsiveType } from 'src/core/models';
-import DesktopCard from './components/DesktopCard/DesktopCard';
-import MobileCard from './components/MobileCard/MobileCard';
+import DesktopCard from './components/desktop-card/desktop-card';
+import MobileCard from './components/mobile-card/mobile-card';
 import { particlesConfig } from './particles-config';
 import * as S from './styled';
 

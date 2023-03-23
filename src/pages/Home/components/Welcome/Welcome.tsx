@@ -6,7 +6,7 @@ import { useEffect, useMemo, useState } from 'react';
 import TypewriterEffect, { TypewriterClass } from 'typewriter-effect';
 import { useIntl } from 'react-intl';
 import { APP } from 'src/core/constants';
-import Responsive from 'src/core/components/Responsive/Responsive';
+import Responsive from 'src/core/components/responsive/responsive';
 import { EResponsiveType } from 'src/core/models';
 import * as S from './styled';
 import { particlesConfig } from './particles-config';

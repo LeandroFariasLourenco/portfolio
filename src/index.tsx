@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider as MaterialThemeProvider, StyledEngineProvider } from '@mui/material/styles';
-import Routes from 'src/core/routes/Routes';
+import Routes from 'src/core/routes/routes';
 import { materialTheme } from 'src/styles/theme';
 import { IntlProvider } from 'react-intl';
 
@@ -15,7 +15,7 @@ import 'react-vertical-timeline-component/style.min.css';
 import { observer } from 'mobx-react-lite';
 import reportWebVitals from './reportWebVitals';
 import GlobalProvider, { useGlobalContext } from './core/store/global/context';
-import Global from './styles/Global';
+import Global from './styles/global';
 
 const IntlComponent = observer(() => {
   const globalContext = useGlobalContext();

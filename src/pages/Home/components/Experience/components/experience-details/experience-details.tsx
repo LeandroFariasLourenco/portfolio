@@ -1,6 +1,6 @@
 import { Grid, Typography } from '@mui/material';
 import { FormattedMessage, useIntl } from 'react-intl';
-import Responsive from 'src/core/components/Responsive/Responsive';
+import Responsive from 'src/core/components/responsive/responsive';
 import { IExperienceDetailsProps } from './props';
 
 import * as S from './styled';

@@ -1,1 +1,1 @@
-export * from './materialTheme';
+export * from './material-theme';

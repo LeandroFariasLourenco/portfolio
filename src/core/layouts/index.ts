@@ -1,6 +1,6 @@
-export { default as Section } from './Section/Section';
-export { default as CommonLayout } from './Common/Common';
-export { default as Header } from './Header/Header';
+export { default as Section } from './section/section';
+export { default as CommonLayout } from './common/common';
+export { default as Header } from './header/header';
 export { default as Footer } from './Footer/Footer';
-export { default as Background } from './Background/Background';
-export { default as Repository } from './Repository/Repository';
+export { default as Background } from './background/background';
+export { default as Repository } from './repository/repository';

@@ -18,7 +18,7 @@ import landmarks from 'src/assets/resources/landmarks.json';
 import { Section } from 'src/core/layouts';
 
 import { EAchievementType, EResponsiveType } from 'src/core/models';
-import useResponsive from 'src/core/hooks/useIsResponsive/useIsResponsive';
+import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import * as S from './styled';
 
 const MyTimeline = () => {

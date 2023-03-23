@@ -3,7 +3,7 @@ import { Typography } from '@mui/material';
 import { useRef } from 'react';
 
 import { FormattedMessage } from 'react-intl';
-import Responsive from 'src/core/components/Responsive/Responsive';
+import Responsive from 'src/core/components/responsive/responsive';
 
 import { ICardProps } from './props';
 import * as S from './styled';
