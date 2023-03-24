@@ -19,7 +19,6 @@ export const CurrentExperience = styled(Typography)`
 
 export const ExperienceContainer = styled(Grid)(({ theme }) => `
   position: relative;
-  height: 500px;
   overflow: hidden;
   border-radius: 10px;
 `);
@@ -52,12 +51,9 @@ export const ExperienceTopic = styled(Grid)`
 
 export const ExperienceCard = styled(Card)(({ theme }) => `
   padding: 16px;
-  height: 98%;
-  width: 98%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  margin: 4px;
   transition: background-color 500ms ease-in-out;
   border-radius: 10px;
 

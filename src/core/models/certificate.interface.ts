@@ -2,5 +2,5 @@ export interface ICertificate {
   title: string;
   link: string;
   logo: string;
-  dimensions: { width: string };
+  width: { mobile: string, desktop: string };
 }

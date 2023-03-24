@@ -207,11 +207,13 @@ export const ExperienceAnimatedContainer = styled(Box) <{
 }>`
   width: 150%;
   height: 150%;
+  position: absolute;
+  z-index: -1;
   animation-delay: ${({ $index }) => $index * 2}s;
   animation-name: ${rotationKeyframe};
   animation-duration: 40s;
-  animation-direction: ${({ $index }) => ($index % 2 === 0 ? 'normal' : 'reverse')};
-  /* animation-direction: ${({ $direction }) => ($direction === 'left' ? 'normal' : 'reverse')}; */
+  /* animation-direction: ${({ $index }) => ($index % 2 === 0 ? 'normal' : 'reverse')}; */
+  animation-direction: ${({ $direction }) => ($direction === 'left' ? 'normal' : 'reverse')};
   animation-iteration-count: infinite;
 
   ${ExperienceAnimatedBorder} {

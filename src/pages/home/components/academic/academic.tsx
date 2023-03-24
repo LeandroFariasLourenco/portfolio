@@ -17,11 +17,12 @@ import {
 } from 'src/core/models';
 import { useHidden } from 'src/core/hooks';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
+import Responsive from 'src/core/components/responsive/responsive';
 import * as S from './styled';
 import { particlesConfig } from './particles-config';
-import Certificates from './components/Certificates/Certificates';
-import Course from './components/Course/Course';
-import Extracurricular from './components/Extracurricular/Extracurricular';
+import Certificate from './components/certificate/certificate';
+import Course from './components/course/course';
+import Extracurricular from './components/extracurricular/extracurricular';
 
 const ParticlesComponent = memo(() => (
   <Particles
@@ -42,7 +43,11 @@ const Academic = () => {
     'home.formation.tabs3.title',
   ], []);
 
-  const formations = useMemo(() => ({
+  const formations = useMemo<{
+    courses: ICourse[],
+    extracurriculars: IExtracurricular[],
+    certificates: ICertificate[]
+  }>(() => ({
     courses: [{
       title: 'home.formation1.title',
       type: 'home.formation1.type',
@@ -82,43 +87,43 @@ const Academic = () => {
         title: 'home.certifications1.title',
         link: `${APP.aws.assets}/certificates/certified-cloud-practitioner-certificate.pdf`,
         logo: `${APP.aws.assets}/certificates/certified-cloud-practitioner.png`,
-        dimensions: { width: '60px' },
+        width: { desktop: '60px', mobile: '55px' },
       },
       {
         title: 'home.certifications2.title',
         link: `${APP.aws.assets}/certificates/TOEFL-ITP-degree.jpeg`,
         logo: `${APP.aws.assets}/companies/ccaa.png`,
-        dimensions: { width: '60px' },
+        width: { desktop: '60px', mobile: '50px' },
       },
       {
         title: 'home.certifications3.title',
         link: `${APP.aws.assets}/certificates/english-course.jpeg`,
         logo: `${APP.aws.assets}/companies/ccaa.png`,
-        dimensions: { width: '60px' },
+        width: { desktop: '60px', mobile: '50px' },
       },
       {
         title: 'home.certifications4.title',
         link: `${APP.aws.assets}/certificates/fiap-college-degree.jpg`,
         logo: `${APP.aws.assets}/companies/fiap.png`,
-        dimensions: { width: '125px' },
+        width: { desktop: '125px', mobile: '65px' },
       },
       {
         title: 'home.certifications5.title',
         link: `${APP.aws.assets}/certificates/profissional-app-developer.pdf`,
         logo: `${APP.aws.assets}/companies/etec.png`,
-        dimensions: { width: '100px' },
+        width: { desktop: '100px', mobile: '65px' },
       },
       {
         title: 'home.certifications6.title',
         link: `${APP.aws.assets}/profissional-web-designer.pdf`,
         logo: `${APP.aws.assets}/companies/fiap.png`,
-        dimensions: { width: '125px' },
+        width: { desktop: '125px', mobile: '65px' },
       },
       {
         title: 'home.certifications7.title',
         link: `${APP.aws.assets}/profissional-app-developer.pdf`,
         logo: `${APP.aws.assets}/companies/fiap.png`,
-        dimensions: { width: '125px' },
+        width: { desktop: '125px', mobile: '65px' },
       },
     ],
   }), []);
@@ -148,8 +153,9 @@ const Academic = () => {
               justifyContent="center"
               onClick={() => {
                 setActiveTab(index);
+                if (isMobile) return;
                 cardContainerRef.current!.scrollIntoView({
-                  block: 'center',
+                  block: isMobile ? 'start' : 'center',
                   behavior: 'smooth',
                 });
               }}
@@ -168,11 +174,11 @@ const Academic = () => {
         >
           <S.CardContainer
             container
+            item
             ref={(ref) => {
               cardContainerRef.current = ref!;
             }}
             alignItems="center"
-            flexWrap="nowrap"
             xs={12}
             gap={5}
           >
@@ -183,9 +189,9 @@ const Academic = () => {
                 display: useHidden(activeTab !== 0),
               }}
             >
-              {formations.courses.map((card, index) => (
-                <Grid item xs={12} md={4}>
-                  <Course index={index} card={card as ICourse} />
+              {formations.courses.map((course, index) => (
+                <Grid key={course.title} item xs={12} md={4}>
+                  <Course index={index} course={course} />
                 </Grid>
               ))}
             </Grid>
@@ -196,31 +202,42 @@ const Academic = () => {
               }}
               spacing={2}
             >
-              {formations.extracurriculars.map((card, index) => (
-                <Grid item xs={12} md={4}>
-                  <Extracurricular index={index} card={card as IExtracurricular} />
+              {formations.extracurriculars.map((extracurricular, index) => (
+                <Grid key={extracurricular.title} item xs={12} md={4}>
+                  <Extracurricular index={index} extracurricular={extracurricular} />
                 </Grid>
               ))}
             </Grid>
             <Grid
               container
-              spacing={2}
+              spacing={isMobile ? 1 : 2}
               style={{
                 display: useHidden(activeTab !== 2),
               }}
             >
-              {formations.certificates.map((card, index) => (
-                <Grid
-                  key={card.title}
-                  item
-                  md={4}
-                  xs={6}
-                >
-                  <Certificates
-                    index={index}
-                    card={card as ICertificate}
-                  />
-                </Grid>
+              {formations.certificates.map((certificate, index) => (
+                <Responsive
+                  key={certificate.title}
+                  breakpoint="md"
+                  belowComponent={(
+                    <Certificate
+                      index={index}
+                      certificate={certificate}
+                    />
+                  )}
+                  aboveComponent={(
+                    <Grid
+                      container
+                      item
+                      md={4}
+                    >
+                      <Certificate
+                        index={index}
+                        certificate={certificate}
+                      />
+                    </Grid>
+                  )}
+                />
               ))}
             </Grid>
           </S.CardContainer>

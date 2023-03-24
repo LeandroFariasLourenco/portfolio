@@ -4,7 +4,7 @@ import { EResponsiveType } from '../../models';
 import { IUseResponsiveProps } from './types';
 
 const useResponsive = ({
-  breakpoint,
+  breakpoint = 'md',
   type = EResponsiveType.bigger,
 }: IUseResponsiveProps) => {
   const { breakpoints } = useTheme();

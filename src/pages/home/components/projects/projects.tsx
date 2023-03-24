@@ -1,7 +1,10 @@
 import { Code, DeveloperBoard } from '@mui/icons-material';
 import { Typography } from '@mui/material';
-import { useEffect, useMemo, useState } from 'react';
+import {
+  useEffect, useMemo, useState, useCallback,
+} from 'react';
 import { FormattedMessage } from 'react-intl';
+import Responsive from 'src/core/components/responsive/responsive';
 import { APP } from 'src/core/constants';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { Repository, Section } from 'src/core/layouts';
@@ -15,7 +18,7 @@ import * as S from './styled';
 
 const Projects = () => {
   const [repositories, setRepositories] = useState<IGithubRepository[]>([]);
-  const isMobile = useResponsive({ breakpoint: 'md' });
+  const isMobile = useResponsive({});
   const swiperConfig: SwiperProps = useMemo(() => ({
     modules: [Pagination],
     pagination: {
@@ -44,6 +47,13 @@ const Projects = () => {
     fetchRepositories();
   }, []);
 
+  const renderRepository = useCallback((repository: IGithubRepository) => (
+    <Repository
+      key={repository.id}
+      repository={repository}
+    />
+  ), [repositories]);
+
   return (
     <Section
       onTitleShow={(typewriter) => {
@@ -63,14 +73,16 @@ const Projects = () => {
             <Code htmlColor="white" />
             <Typography variant="h4"><FormattedMessage id="home.projects.title" /></Typography>
           </S.RepositoryTitle>
-          <S.RepositoriesList container flexWrap="nowrap">
-            {repositories.map((repository) => (
-              <Repository
-                key={repository.id}
-                repository={repository}
-              />
-            ))}
-          </S.RepositoriesList>
+          <Responsive
+            breakpoint="md"
+            aboveComponent={(
+              <S.RepositoriesList container flexWrap="wrap">{repositories.map(renderRepository)}</S.RepositoriesList>
+            )}
+            belowComponent={(
+              <S.RepositoriesList container flexWrap="nowrap" flexDirection="row">{repositories.map(renderRepository)}</S.RepositoriesList>
+            )}
+          />
+
         </S.RepositoriesWrapper>
         <S.ProjectsTabs
           item

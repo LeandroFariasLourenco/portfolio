@@ -8,7 +8,7 @@ import { ICourseProps } from './props';
 import * as S from './styled';
 
 const Course = ({
-  card,
+  course: card,
   index,
 }: ICourseProps) => {
   const cardWrapperRef = useRef<HTMLDivElement>();

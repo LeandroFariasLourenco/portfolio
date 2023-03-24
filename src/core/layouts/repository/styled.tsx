@@ -8,6 +8,7 @@ export const RepositoryContainer = styled('a')(({ theme }) => `
   
   ${theme.breakpoints.up('md')} {
     padding: 5px;
+    width: 100%;
 
     & + & {
       margin-top: 10px;

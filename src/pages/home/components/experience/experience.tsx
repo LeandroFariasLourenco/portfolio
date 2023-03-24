@@ -53,14 +53,15 @@ const Experience = () => {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
-    spaceBetween: isMobile ? 15 : 30,
+    spaceBetween: isMobile ? 0 : 30,
     onRealIndexChange: (swiper) => {
       setSwiperIndex(swiper.realIndex);
     },
     onSwiper: (swiper) => {
       setSwiper(swiper);
     },
-    style: { height: isMobile ? 450 : 550 },
+    autoHeight: isMobile,
+    style: { height: isMobile ? 'unset' : 550 },
   }), [isMobile]);
 
   const renderAnimatedBorder = (index: number) => ({
