@@ -1,37 +1,45 @@
 import {
-  SportsEsports, Terminal, Theaters, PersonSearch, EmojiEvents,
+  EmojiEvents, PersonSearch, SportsEsports, Terminal, Theaters,
 } from '@mui/icons-material';
-import {
-  Divider, Grid, Typography, useTheme,
-} from '@mui/material';
-import { useMemo } from 'react';
+import { Grid, useTheme } from '@mui/material';
+import { useMemo, useCallback } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { Section } from 'src/core/layouts';
 import Lottie from 'react-lottie';
+import { Section } from 'src/core/layouts';
 
 import PersonComputerAnimation from 'src/assets/animations/person-on-computer.json';
 
 import Responsive from 'src/core/components/responsive/responsive';
-import { EResponsiveType } from 'src/core/models';
-import * as S from './styled';
 import Story from './components/story';
+import { IHobbie } from './models/hobbies.interface';
+import * as S from './styled';
+
+const LottieAnimation = () => (
+  <Lottie
+    width={315}
+    style={{ margin: 0 }}
+    options={{
+      animationData: PersonComputerAnimation,
+    }}
+  />
+);
 
 const About = () => {
   const theme = useTheme();
   const intl = useIntl();
 
-  const hobbies = useMemo(() => [
+  const hobbies = useMemo<IHobbie[]>(() => [
     {
       color: '#fff',
       label: intl.messages['home.about-me.objectives'] as string,
       icon: <EmojiEvents htmlColor="#fff" fontSize="large" />,
       content: (
-        <Typography>
+        <S.HobbyText>
           <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.first" /></S.AboutMeTextLine>
           <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.second" /></S.AboutMeTextLine>
           <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.third" /></S.AboutMeTextLine>
           <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.fourth" /></S.AboutMeTextLine>
-        </Typography>
+        </S.HobbyText>
       ),
     },
     {
@@ -39,12 +47,12 @@ const About = () => {
       label: intl.messages['home.about-me.stack'] as string,
       icon: <Terminal htmlColor={theme.palette.action.active} fontSize="large" />,
       content: (
-        <Typography>
+        <S.HobbyText>
           <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.first" /></S.AboutMeTextLine>
           <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.second" /></S.AboutMeTextLine>
           <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.third" /></S.AboutMeTextLine>
           <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.fourth" /></S.AboutMeTextLine>
-        </Typography>
+        </S.HobbyText>
       ),
     },
     {
@@ -52,12 +60,12 @@ const About = () => {
       label: intl.messages['home.about-me.books'] as string,
       icon: <Theaters htmlColor={theme.palette.primary.main} fontSize="large" />,
       content: (
-        <Typography>
+        <S.HobbyText>
           <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.first" /></S.AboutMeTextLine>
           <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.second" /></S.AboutMeTextLine>
           <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.third" /></S.AboutMeTextLine>
           <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.fourth" /></S.AboutMeTextLine>
-        </Typography>
+        </S.HobbyText>
       ),
     },
     {
@@ -65,15 +73,17 @@ const About = () => {
       label: intl.messages['home.about-me.games'] as string,
       icon: <SportsEsports htmlColor={theme.palette.secondary.main} fontSize="large" />,
       content: (
-        <Typography>
+        <S.HobbyText>
           <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.first" /></S.AboutMeTextLine>
           <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.second" /></S.AboutMeTextLine>
           <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.third" /></S.AboutMeTextLine>
           <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.fourth" /></S.AboutMeTextLine>
-        </Typography>
+        </S.HobbyText>
       ),
     },
   ], []);
+
+  const renderHobbies = useCallback((hobby: IHobbie) => <Story key={hobby.label} hobby={hobby} />, [hobbies]);
 
   return (
     <Section
@@ -97,35 +107,22 @@ const About = () => {
           </S.AboutMeSummary>
         </Grid>
         <Grid item xs={12} md={6} container justifyContent="flex-end">
-          <Lottie
-            width={315}
-            style={{ margin: 0 }}
-            options={{
-              animationData: PersonComputerAnimation,
-            }}
-          />
+          <LottieAnimation />
         </Grid>
       </Grid>
       <Responsive
         breakpoint="md"
-      >
-        <Grid container gap={12} flexWrap="nowrap" alignItems="center" justifyContent="center">
-          {hobbies.map((hobby) => (
-            <Story key={hobby.label} hobby={hobby} />
-          ))}
-        </Grid>
-      </Responsive>
-
-      <Responsive
-        type={EResponsiveType.smaller}
-        breakpoint="md"
-      >
-        <Grid container item xs={12} alignItems="center" justifyContent="center">
-          {hobbies.map((hobby) => (
-            <Story key={hobby.label} hobby={hobby} />
-          ))}
-        </Grid>
-      </Responsive>
+        belowComponent={(
+          <Grid container item xs={12} alignItems="center" justifyContent="center">
+            {hobbies.map(renderHobbies)}
+          </Grid>
+        )}
+        aboveComponent={(
+          <Grid container gap={12} flexWrap="nowrap" alignItems="center" justifyContent="center">
+            {hobbies.map(renderHobbies)}
+          </Grid>
+        )}
+      />
     </Section>
   );
 };

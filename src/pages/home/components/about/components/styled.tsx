@@ -39,13 +39,18 @@ export const DashedBorder = styled('div')`
   &:nth-of-type(8) { transform: rotate(325deg); }
 `;
 
-export const StoryPanel = styled(Card)`
+export const StoryPanel = styled(Card)(({ theme }) => `
   padding: 5px;
   position: absolute;
   width: 140%;
   transition: opacity 300ms, transform 300ms, border-radius 300ms;
   top: 50%;
   left: 50%;
+
+  ${theme.breakpoints.down('md')} {
+    width: 115%;
+    top: 25%;
+  }
   
   &.is--open {
     opacity: 1;
@@ -58,7 +63,7 @@ export const StoryPanel = styled(Card)`
     border-radius: 100%;
     transform: translate(-50%, -50%) scale(0);
   }
-`;
+`);
 
 export const StoryLabel = styled(Typography)`
   margin-top: 10px;

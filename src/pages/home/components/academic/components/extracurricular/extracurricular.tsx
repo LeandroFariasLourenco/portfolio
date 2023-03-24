@@ -8,7 +8,7 @@ import { ICardProps } from './props';
 import * as S from './styled';
 
 const Extracurricular = ({
-  card,
+  extracurricular: card,
   index,
 }: ICardProps) => {
   const cardWrapperRef = useRef<HTMLDivElement>();

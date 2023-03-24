@@ -1,8 +1,8 @@
 import { Email, Phone } from '@mui/icons-material';
-import { EmailIcon, LinkedinIcon } from 'react-share';
 import { Grid, Typography } from '@mui/material';
 import { memo } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { LinkedinIcon } from 'react-share';
 import * as S from './styled';
 
 const Footer = () => (
@@ -16,7 +16,7 @@ const Footer = () => (
       container
       xs={8}
     >
-      <S.FooterColumn item xs={4}>
+      <S.FooterColumn item xs={12} md={4}>
         <S.FooterContainer
           container
           justifyContent="center"
@@ -36,14 +36,14 @@ const Footer = () => (
           </S.FooterLink>
         </S.FooterContainer>
       </S.FooterColumn>
-      <S.FooterColumn item xs={4}>
+      <S.FooterColumn item xs={12} md={4}>
         <S.Title variant="h5"><FormattedMessage id="home.footer.socialmedia.title" /></S.Title>
         <S.FooterRow>
           <S.IconContainer href="" target="_blank"><LinkedinIcon /></S.IconContainer>
           <S.IconContainer href="" target="_blank"><S.GithubIcon /></S.IconContainer>
         </S.FooterRow>
       </S.FooterColumn>
-      <S.FooterColumn item xs={4}>
+      <S.FooterColumn item xs={12} md={4}>
         <S.Title variant="h5"><FormattedMessage id="home.footer.requirements.title" /></S.Title>
       </S.FooterColumn>
     </Grid>

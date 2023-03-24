@@ -1,6 +1,5 @@
 import {
-  Grid, Typography,
-  styled,
+  Grid, styled, Typography,
 } from '@mui/material';
 
 export const AboutCardHoverContainer = styled(Grid)<{
@@ -41,3 +40,11 @@ export const AboutMeTextLine = styled('div')`
     margin: 10px 5px 0 0;
   }
 `;
+
+export const HobbyText = styled(Typography)(({ theme }) => `
+  font-size: 16px;
+
+  ${theme.breakpoints.down('md')} {
+    font-size: 13.5px;
+  }
+`);

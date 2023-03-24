@@ -7,12 +7,22 @@ export const FooterWrapper = styled(Grid)(({ theme }) => `
   padding: 20px;
 `);
 
-export const FooterColumn = styled(Grid)`
+export const FooterColumn = styled(Grid)(({ theme }) => `
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
-`;
+
+  ${theme.breakpoints.up('md')} {
+    align-items: center;
+  }
+
+  ${theme.breakpoints.down('md')} {
+    align-items: flex-start;
+    & + & {
+      margin-top: 30px;
+    }
+  }
+`);
 
 export const FooterContainer = styled(Grid)(() => '');
 

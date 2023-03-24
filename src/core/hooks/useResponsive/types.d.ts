@@ -3,5 +3,5 @@ import { EResponsiveType } from 'src/core/models';
 
 export interface IUseResponsiveProps {
   type?: EResponsiveType;
-  breakpoint: Breakpoint
+  breakpoint?: Breakpoint
 }

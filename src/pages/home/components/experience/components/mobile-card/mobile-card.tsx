@@ -16,7 +16,7 @@ const MobileCard = ({
   const intl = useIntl();
 
   return (
-    <Grid container flexDirection="row" flexWrap="nowrap" gap={10}>
+    <Grid container flexDirection="row" flexWrap="nowrap">
       <S.ExperienceContainer container item xs={12}>
         {BorderComponent}
         {index === 0 && (

@@ -3,6 +3,24 @@ import { Grid, styled } from '@mui/material';
 export const FormationTabs = styled(Grid)(({ theme }) => `
   border: 2px solid ${theme.palette.action.active};
   border-bottom: 0;
+
+  ${theme.breakpoints.down('md')} {
+    overflow-x: auto;
+    padding-bottom: 5px;
+
+    &::-webkit-scrollbar {
+      height: 5px;
+    },
+    &::-webkit-scrollbar-thumb {
+      background-color: ${theme.palette.action.active};
+    },
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: ${theme.palette.action.active};
+    },
+    &::-webkit-scrollbar-track {
+      background: ${theme.palette.background.paper};
+    },
+  }
 `);
 
 export const FormationTab = styled(Grid)(({ theme }) => `

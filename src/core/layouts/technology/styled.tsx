@@ -19,7 +19,7 @@ export const LanguagesTabWrapper = styled(Grid)(({ theme }) => `
   overflow-y: auto;
 
   &::-webkit-scrollbar {
-    width: 10,
+    width: 10px,
   },
   &::-webkit-scrollbar-thumb {
     background-color: ${theme.palette.secondary.main},

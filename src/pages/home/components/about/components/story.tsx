@@ -1,11 +1,11 @@
 import { Close } from '@mui/icons-material';
 import {
-  Box,
-  Grid, Typography, useTheme,
+  Grid, useTheme,
 } from '@mui/material';
 import cx from 'classnames';
 import { useState } from 'react';
-import { FormattedMessage } from 'react-intl';
+import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
+import { EResponsiveType } from 'src/core/models';
 import * as S from './styled';
 import { IStoryProps } from './types';
 
@@ -14,10 +14,11 @@ const Story = ({
 }: IStoryProps) => {
   const [open, setOpen] = useState(false);
   const theme = useTheme();
+  const isMobile = useResponsive({ breakpoint: 'md', type: EResponsiveType.smaller });
 
   return (
     <Grid
-      xs={4}
+      xs={isMobile ? 6 : 4}
     >
       <S.AboutMeStoryTopicContainer
         container
