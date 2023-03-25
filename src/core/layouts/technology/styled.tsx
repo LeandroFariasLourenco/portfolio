@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {
   Card, Grid, styled, Typography,
 } from '@mui/material';
