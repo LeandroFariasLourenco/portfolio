@@ -44,25 +44,43 @@ const Experience = () => {
   const [swiperIndex, setSwiperIndex] = useState<number>(0);
   const isMobile = useResponsive({ type: EResponsiveType.smaller, breakpoint: 'md' });
 
-  const swiperProps: SwiperProps = useMemo(() => ({
-    modules: isMobile ? [Pagination, Navigation] : [Pagination, Navigation, Mousewheel],
-    direction: isMobile ? 'horizontal' : 'vertical',
-    mousewheel: !isMobile,
-    grabCursor: !isMobile,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+  const swiperProps = useMemo<{ mobile: SwiperProps, desktop: SwiperProps }>(() => ({
+    mobile: {
+      modules: [Pagination, Navigation],
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      spaceBetween: 0,
+      onRealIndexChange: (swiper) => {
+        setSwiperIndex(swiper.realIndex);
+      },
+      onSwiper: (swiper) => {
+        setSwiper(swiper);
+      },
+      autoHeight: true,
+      direction: 'horizontal',
+      style: { paddingBottom: 50 },
     },
-    spaceBetween: isMobile ? 0 : 30,
-    onRealIndexChange: (swiper) => {
-      setSwiperIndex(swiper.realIndex);
+    desktop: {
+      spaceBetween: 30,
+      style: { height: 550 },
+      modules: [Pagination, Navigation, Mousewheel],
+      direction: 'vertical',
+      onRealIndexChange: (swiper) => {
+        setSwiperIndex(swiper.realIndex);
+      },
+      onSwiper: (swiper) => {
+        setSwiper(swiper);
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      mousewheel: true,
+      grabCursor: true,
     },
-    onSwiper: (swiper) => {
-      setSwiper(swiper);
-    },
-    autoHeight: isMobile,
-    style: { height: isMobile ? 'unset' : 550 },
-  }), [isMobile]);
+  }), []);
 
   const renderAnimatedBorder = (index: number) => ({
     LeftBorderComponent: (
@@ -86,7 +104,7 @@ const Experience = () => {
         first: index === 0,
       })}
       onClick={() => {
-        swiper!.slideTo(index);
+        swiper?.slideTo(index);
       }}
       component="span"
       key={index}
@@ -109,7 +127,7 @@ const Experience = () => {
         <Box className="swiper-button-next" />
         <Box className="swiper-button-prev" />
         <Swiper
-          {...swiperProps}
+          {...(isMobile ? swiperProps.mobile : swiperProps.desktop)}
         >
           {experiences.map((experience, index) => {
             const {
