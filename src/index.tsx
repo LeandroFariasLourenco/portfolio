@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider as MaterialThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import Routes from 'src/core/routes/routes';
-import { materialTheme } from 'src/styles/theme';
+import { materialTheme } from 'src/styles/utils';
 import { IntlProvider } from 'react-intl';
 
 import 'flag-icons/css/flag-icons.min.css';

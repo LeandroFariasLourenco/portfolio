@@ -1,6 +1,7 @@
 import {
   Card, Grid, styled, Typography,
 } from '@mui/material';
+import { mixins } from 'src/styles/utils';
 
 export const LanguageDescriptionCard = styled(Card)(({ theme }) => `
   padding: 15px;
@@ -18,18 +19,12 @@ export const LanguagesTabWrapper = styled(Grid)(({ theme }) => `
   border-right: none;
   overflow-y: auto;
 
-  &::-webkit-scrollbar {
-    width: 10px,
-  },
-  &::-webkit-scrollbar-thumb {
-    background-color: ${theme.palette.secondary.main},
-  },
-  &::-webkit-scrollbar-thumb:hover {
-    background-color: ${theme.palette.secondary.main},
-  },
-  &::-webkit-scrollbar-track {
-    background: ${theme.palette.background.paper},
-  },
+  ${mixins.scrollbarStyle({
+  height: '5px',
+  backgroundThumbColor: theme.palette.secondary.main,
+  backgroundTrackColor: theme.palette.secondary.main,
+})
+  }
 `);
 
 export const LanguageDividerTitle = styled(Typography)`

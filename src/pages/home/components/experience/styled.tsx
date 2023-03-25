@@ -104,6 +104,7 @@ export const SwiperContainer = styled(Grid)(({ theme }) => `
             content: '';
             display: block;
             position: absolute;
+            transition: background-color 500ms ease-in-out;
 
             ${theme.breakpoints.down('md')} {
               width: 20px;
@@ -113,7 +114,6 @@ export const SwiperContainer = styled(Grid)(({ theme }) => `
 
             ${theme.breakpoints.up('md')} {
               width: 5px;
-              transition: background-color 500ms ease-in-out;
               bottom: -35px;
               left: 50%;
               transform: translateX(-50%);
