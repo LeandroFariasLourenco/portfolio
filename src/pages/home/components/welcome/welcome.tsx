@@ -8,13 +8,16 @@ import { useIntl } from 'react-intl';
 import { APP } from 'src/core/constants';
 import Responsive from 'src/core/components/responsive/responsive';
 import { EResponsiveType } from 'src/core/models';
+import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import * as S from './styled';
-import { particlesConfig } from './particles-config';
+import { mobileParticlesConfig } from './particles/mobile-config';
+import { desktopParticlesConfig } from './particles/desktop-config';
 
 const Welcome = () => {
   const theme = useTheme();
   const intl = useIntl();
   const [terminalRows, setTerminalRows] = useState([]);
+  const isMobile = useResponsive({});
 
   const terminalText = useMemo(() => ([
     {
@@ -80,7 +83,7 @@ const Welcome = () => {
       <Particles
         id="welcome-background"
         canvasClassName="background-canvas"
-        options={particlesConfig}
+        options={isMobile ? mobileParticlesConfig : desktopParticlesConfig}
       />
       <Responsive
         breakpoint="md"

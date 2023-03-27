@@ -6,7 +6,7 @@ import cx from 'classnames';
 import {
   memo, useCallback, useMemo, useState,
 } from 'react';
-import { Fade } from 'react-reveal';
+import { Fade } from 'react-awesome-reveal';
 import Particles from 'react-tsparticles';
 import experiences from 'src/assets/resources/experiences.json';
 import { Section } from 'src/core/layouts';
@@ -23,20 +23,25 @@ import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EResponsiveType } from 'src/core/models';
 import DesktopCard from './components/desktop-card/desktop-card';
 import MobileCard from './components/mobile-card/mobile-card';
-import { particlesConfig } from './particles-config';
-import * as S from './styled';
 
-const ParticlesComponent = memo(() => (
-  <Particles
-    init={async (engine) => {
-      /* @ts-ignore */
-      await loadFull(engine);
-    }}
-    canvasClassName="background-canvas"
-    id="experience-background"
-    options={particlesConfig}
-  />
-), () => true);
+import * as S from './styled';
+import { desktopParticlesConfig } from './particles/desktop-config';
+import { mobileParticlesConfig } from './particles/mobile-config';
+
+const ParticlesComponent = memo(() => {
+  const isMobile = useResponsive({});
+  return (
+    <Particles
+      init={async (engine) => {
+        /* @ts-ignore */
+        await loadFull(engine);
+      }}
+      canvasClassName="background-canvas"
+      id="experience-background"
+      options={isMobile ? mobileParticlesConfig : desktopParticlesConfig}
+    />
+  );
+}, () => true);
 
 const Experience = () => {
   const theme = useTheme();

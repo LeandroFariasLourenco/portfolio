@@ -95,8 +95,8 @@
   "home.languages3.technologies1.description": "e",
   "home.languages3.technologies2.description": "e",
 
-  "home.languages4.technologies1.description": "",
-  "home.languages4.technologies2.description": "",
+  "home.languages4.technologies1.description": "a",
+  "home.languages4.technologies2.description": "a",
   "home.languages4.technologies3.description": "O 'esqueleto' de todas páginas web. Normalmente utilizo para estrutar páginas e layouts, porém com o crescente uso de frameworks SPA, acaba que não utilizo mais com tanta frequência como quando trabalhava com projetos vanilla (HTML, CSS, Javascript).",
   "home.languages4.technologies4.description": "Normalmente utilizo SCSS ou implementações como Styled Components pois escrever CSS da maneira tradicional está ficando cada vez mais obsoleto por conta também do crescimento de frameworks. Entretanto, ele nunca vai ir embora porque no final das contas, o CSS é o que faz o navegador estilizar uma página.",
 

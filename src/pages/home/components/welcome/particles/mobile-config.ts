@@ -1,6 +1,6 @@
 import { ParticlesProps } from 'react-tsparticles';
 
-export const particlesConfig: ParticlesProps['options'] = {
+export const mobileParticlesConfig: ParticlesProps['options'] = {
   fullScreen: {
     enable: false,
   },
@@ -70,17 +70,6 @@ export const particlesConfig: ParticlesProps['options'] = {
   },
   interactivity: {
     detect_on: 'canvas',
-    events: {
-      onhover: {
-        enable: true,
-        mode: 'repulse',
-      },
-      onclick: {
-        enable: true,
-        mode: 'remove',
-      },
-      resize: true,
-    },
     modes: {
       grab: {
         distance: 400,

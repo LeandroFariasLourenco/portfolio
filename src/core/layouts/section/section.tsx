@@ -2,7 +2,7 @@ import { Box, Grid, GridProps } from '@mui/material';
 import {
   CSSProperties, memo, ReactNode, useState,
 } from 'react';
-import { Slide } from 'react-reveal';
+import { Slide } from 'react-awesome-reveal';
 import { Typewriter } from 'src/core/components';
 import { TypewriterClass } from 'typewriter-effect';
 
@@ -28,6 +28,7 @@ const Section = ({
   return (
     <S.SectionContainer
       container
+      item
       xs={12}
       justifyContent="center"
       alignItems="center"
@@ -37,10 +38,10 @@ const Section = ({
         <S.SectionHeader container flexWrap="nowrap" justifyContent="space-between" alignItems="center">
           {typing ? <Typewriter onInit={onTitleShow} /> : null}
           <Slide
-            onReveal={() => {
+            onVisibilityChange={() => {
               setTyping(true);
             }}
-            right
+            direction="right"
           >
             {icon}
           </Slide>

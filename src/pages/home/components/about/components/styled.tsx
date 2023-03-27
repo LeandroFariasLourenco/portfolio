@@ -16,6 +16,9 @@ export const AboutMeStoryTopic = styled(Button)`
   width: 70px;
   height: 65px;
   border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  box-shadow: 0px 0px 0px 1px transparent;
   overflow: hidden;
 `;
 

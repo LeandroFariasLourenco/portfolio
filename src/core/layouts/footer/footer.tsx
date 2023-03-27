@@ -10,6 +10,7 @@ const Footer = () => (
     container
     justifyContent="center"
     xs={12}
+    item
   >
     <Grid
       item

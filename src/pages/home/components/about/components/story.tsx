@@ -19,6 +19,7 @@ const Story = ({
   return (
     <Grid
       xs={isMobile ? 6 : 4}
+      item
     >
       <S.AboutMeStoryTopicContainer
         container
