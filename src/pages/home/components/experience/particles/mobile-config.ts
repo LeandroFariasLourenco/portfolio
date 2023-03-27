@@ -1,6 +1,6 @@
 import { IParticlesProps } from 'react-tsparticles';
 
-export const particlesConfig: IParticlesProps['options'] = {
+export const mobileParticlesConfig: IParticlesProps['options'] = {
   background: {
     color: {
       value: '#1C1630',
@@ -12,15 +12,6 @@ export const particlesConfig: IParticlesProps['options'] = {
   },
   fpsLimit: 30,
   interactivity: {
-    events: {
-      onHover: {
-        enable: true,
-        mode: 'bubble',
-        parallax: {
-          force: 60,
-        },
-      },
-    },
     modes: {
       bubble: {
         distance: 400,

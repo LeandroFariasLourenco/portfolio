@@ -23,14 +23,19 @@ import { particlesConfig } from './particles-config';
 import Certificate from './components/certificate/certificate';
 import Course from './components/course/course';
 import Extracurricular from './components/extracurricular/extracurricular';
+import { desktopParticlesConfig } from './particles/desktop-config';
+import { mobileParticlesConfig } from './particles/mobile-config';
 
-const ParticlesComponent = memo(() => (
-  <Particles
-    canvasClassName="background-canvas"
-    options={particlesConfig}
-    id="academic-background"
-  />
-), () => true);
+const ParticlesComponent = memo(() => {
+  const isMobile = useResponsive({});
+  return (
+    <Particles
+      canvasClassName="background-canvas"
+      options={isMobile ? mobileParticlesConfig : desktopParticlesConfig}
+      id="academic-background"
+    />
+  );
+}, () => true);
 
 const Academic = () => {
   const [activeTab, setActiveTab] = useState(0);
