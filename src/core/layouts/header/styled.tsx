@@ -1,6 +1,7 @@
 import {
-  AppBar, Grid, Select, styled,
+  AppBar, Grid, Select,
 } from '@mui/material';
+import styled from 'styled-components';
 
 export const HeaderLink = styled('a')(({ theme }) => `
   font-size: 12px;
@@ -24,14 +25,19 @@ export const HeaderLink = styled('a')(({ theme }) => `
   }
 `);
 
-export const HeaderBar = styled(AppBar)`
+export const HeaderBar = styled(AppBar)<{ isTop: boolean }>(({ isTop, theme }) => `
   padding: 5px 0;
-  background-color: blue;
+  box-shadow: unset;
+  
+  svg {
+    transition: fill 200ms ease-in-out;
+    fill: ${isTop ? 'white' : theme.palette.text.primary}
+  }
 
-  ${({ theme }) => theme.breakpoints.down('md')} {
+  ${theme.breakpoints.down('md')} {
     padding: 10px;
   }
-`;
+`);
 
 export const LanguageSelect = styled(Select)(({ theme }) => `
   padding-left: 10px;

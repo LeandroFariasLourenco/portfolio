@@ -12,12 +12,14 @@ import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import * as S from './styled';
 import { mobileParticlesConfig } from './particles/mobile-config';
 import { desktopParticlesConfig } from './particles/desktop-config';
+import DesktopTerminal from './components/desktop-terminal/desktop-terminal';
+import MobileTerminal from './components/mobile-terminal/mobile-terminal';
 
 const Welcome = () => {
   const theme = useTheme();
   const intl = useIntl();
   const [terminalRows, setTerminalRows] = useState([]);
-  const isMobile = useResponsive({});
+  const isDesktop = useResponsive({});
 
   const terminalText = useMemo(() => ([
     {
@@ -83,7 +85,7 @@ const Welcome = () => {
       <Particles
         id="welcome-background"
         canvasClassName="background-canvas"
-        options={isMobile ? mobileParticlesConfig : desktopParticlesConfig}
+        options={isDesktop ? mobileParticlesConfig : desktopParticlesConfig}
       />
       <Responsive
         breakpoint="md"
@@ -105,65 +107,7 @@ const Welcome = () => {
           <S.TypeWriterBackground
             elevation={3}
           >
-            <S.TerminalHeading
-              container
-              flexWrap="nowrap"
-              alignItems="center"
-              justifyContent="space-between"
-            >
-              <S.TerminalWindowCircles
-                container
-                item
-                md={3}
-              >
-                <S.TerminalWindowCircle $color="#ED6152" />
-                <S.TerminalWindowCircle $color="#E7C21C" />
-                <S.TerminalWindowCircle $color="#4AC628" />
-              </S.TerminalWindowCircles>
-
-              <S.TerminalTitleContainer
-                container
-                item
-                md={8}
-                alignItems="center"
-              >
-                <House fontSize="small" htmlColor={theme.palette.grey[400]} />
-                <S.TerminalTitle variant="h6">
-                  portfolio -- -bash --80x24
-                </S.TerminalTitle>
-              </S.TerminalTitleContainer>
-
-              <Close fontSize="small" htmlColor={theme.palette.grey[400]} />
-            </S.TerminalHeading>
-            <S.TerminalContent>
-              {terminalText.map((text) => (
-                <S.TerminalRow
-                  key={text.key}
-                >
-                  <S.TerminalText variant="h6">
-                    Leandro:
-                  </S.TerminalText>
-                  <Typewriter
-                    typographyProps={{
-                      variant: 'h6',
-                    }}
-                    onInit={text.typeText}
-                  />
-                </S.TerminalRow>
-              ))}
-              <S.TerminalRow>
-                <S.TerminalText variant="h6">
-                  Leandro:
-                </S.TerminalText>
-                <Typography>
-                  <TypewriterEffect
-                    onInit={(typewriter) => {
-                      typewriter.start();
-                    }}
-                  />
-                </Typography>
-              </S.TerminalRow>
-            </S.TerminalContent>
+            {isDesktop ? <DesktopTerminal /> : <MobileTerminal />}
           </S.TypeWriterBackground>
         </Grid>
         <Responsive
