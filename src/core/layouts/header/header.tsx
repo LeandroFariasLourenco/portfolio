@@ -24,7 +24,7 @@ import * as S from './styled';
 
 const Header = () => {
   const globalContext = useGlobalContext();
-  const isWindowOnTop = useIsWindowTop();
+  const isWindowScrolled = useIsWindowTop();
   const isMobile = useResponsive({ breakpoint: 'md', type: EResponsiveType.smaller });
 
   const scrollToTop = () => {
@@ -49,7 +49,7 @@ const Header = () => {
   return (
     <ElevationScroll>
       {/* <Slide appear={false} direction="down" in={!trigger}> */}
-      <S.HeaderBar isTop={isWindowOnTop} elevation={4}>
+      <S.HeaderBar isTop={isWindowScrolled} elevation={4}>
         <Grid container item xs={12} justifyContent="center">
           <Grid container item alignItems="center" justifyContent="space-between" xs={12} md={8}>
             <Responsive

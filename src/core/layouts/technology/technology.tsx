@@ -9,6 +9,7 @@ import { APP } from 'src/core/constants';
 import { FormattedMessage } from 'react-intl';
 import { ITechnology } from 'src/core/models';
 import Responsive from 'src/core/components/responsive/responsive';
+import { getBucketResource } from 'src/core/functions';
 import * as S from './styled';
 import { IExperienceProps } from './props';
 
@@ -35,7 +36,7 @@ const Technology = ({
       <Grid container flexWrap="nowrap" alignItems="center">
         <Box style={{ width: 75, marginRight: 10 }}>
           <img
-            src={`${APP.aws.assets}${technology.icon}`}
+            src={getBucketResource(technology.icon)}
             width={35}
             alt={technology.name}
           />

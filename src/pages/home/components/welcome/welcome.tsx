@@ -96,20 +96,20 @@ const Welcome = () => {
           <S.ArrowDown />
         </S.ArrowDownContainer>
       </Responsive>
-      <Grid container justifyContent="center" alignItems="center" md={10} lg={8} sm={8} item spacing={10}>
+      <Grid container justifyContent="center" alignItems="center" md={10} lg={8} sm={8} item spacing={isDesktop ? 10 : 5}>
         <Responsive
           breakpoint="md"
           type={EResponsiveType.smaller}
         >
           <Grid item xs={12}><S.ProfileImage src="https://www.github.com/LeandroFariasLourenco.png?size=200" /></Grid>
         </Responsive>
-        <Grid item md={8} sm={12}>
+        <S.TerminalComponentWrapper item md={8} sm={12}>
           <S.TypeWriterBackground
             elevation={3}
           >
             {isDesktop ? <DesktopTerminal /> : <MobileTerminal />}
           </S.TypeWriterBackground>
-        </Grid>
+        </S.TerminalComponentWrapper>
         <Responsive
           breakpoint="md"
         >

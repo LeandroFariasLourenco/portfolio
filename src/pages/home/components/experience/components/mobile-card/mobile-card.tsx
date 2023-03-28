@@ -4,6 +4,7 @@ import {
 import { Grid, Typography } from '@mui/material';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { APP } from 'src/core/constants';
+import { getBucketResource } from 'src/core/functions';
 
 import * as S from './styled';
 import { IMobileCardProps } from './types';
@@ -29,7 +30,7 @@ const MobileCard = ({
         >
           <Grid container flexDirection="column">
             <S.ExperienceHeader container flexDirection="row" flexWrap="nowrap" alignItems="center">
-              <S.ExperienceIcon src={`${APP.aws.assets}${experience.icon}`} alt={experience.title} />
+              <S.ExperienceIcon src={getBucketResource(experience.icon)} alt={experience.title} />
               <S.ExperienceTitle variant="h5"><FormattedMessage id={experience.title} /></S.ExperienceTitle>
             </S.ExperienceHeader>
 
@@ -77,7 +78,7 @@ const MobileCard = ({
                 </S.StackTechnologyListContainer>
               </Grid>
               <Grid item xs={4} container alignItems="flex-end" justifyContent="flex-end">
-                <S.CompanyLogo src={`${APP.aws.assets}/${experience.company.logo}`} alt={experience.company.name} />
+                <S.CompanyLogo src={getBucketResource(`/${experience.company.logo}`)} alt={experience.company.name} />
               </Grid>
             </Grid>
           </Grid>

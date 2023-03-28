@@ -5,8 +5,8 @@ import { Typography, useTheme } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { Typewriter } from 'src/core/components';
-import { APP } from 'src/core/constants';
-import TypewriterEffect, { TypewriterClass } from 'typewriter-effect';
+import { getBucketResource } from 'src/core/functions';
+import { TypewriterClass } from 'typewriter-effect';
 import * as S from './styled';
 
 const MobileTerminal = () => {
@@ -78,7 +78,7 @@ const MobileTerminal = () => {
           flexDirection="row"
           flexWrap="nowrap"
         >
-          <S.TerminalTabIcon src={`${APP.aws.assets}/assets/git-for-windows.ico`} />
+          <S.TerminalTabIcon src={getBucketResource('/assets/git-for-windows.ico')} />
 
           <S.TerminalTabText>Bash</S.TerminalTabText>
 
@@ -113,25 +113,35 @@ const MobileTerminal = () => {
               <S.TerminalTextPath>/c/WINDOWS/system32</S.TerminalTextPath>
             </S.TerminalText>
             <Typewriter
+              options={{
+                delay: 50,
+              }}
               typographyProps={{
                 variant: 'h6',
+                fontSize: 14.5,
               }}
               onInit={text.typeText}
             />
           </S.TerminalRow>
         ))}
-        {/* <S.TerminalRow>
-          <S.TerminalText variant="h6">
-            Leandro:
+        <S.TerminalRow>
+          <S.TerminalText
+            container
+            flexDirection="row"
+            flexWrap="nowrap"
+          >
+            <S.TerminalTextUser>Leand@DESKTOP</S.TerminalTextUser>
+            <S.TerminalTextCPU>MINGW64</S.TerminalTextCPU>
+            <S.TerminalTextPath>/c/WINDOWS/system32</S.TerminalTextPath>
           </S.TerminalText>
           <Typography>
-            <TypewriterEffect
+            {/* <TypewriterEffect
               onInit={(typewriter) => {
                 typewriter.start();
               }}
-            />
+            /> */}
           </Typography>
-        </S.TerminalRow> */}
+        </S.TerminalRow>
       </S.TerminalContent>
     </S.TerminalWrapper>
   );

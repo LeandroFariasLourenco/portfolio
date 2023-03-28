@@ -10,6 +10,7 @@ import { Section } from 'src/core/layouts';
 import PersonComputerAnimation from 'src/assets/animations/person-on-computer.json';
 
 import Responsive from 'src/core/components/responsive/responsive';
+import { getBucketResource } from 'src/core/functions';
 import Story from './components/story';
 import { IHobbie } from './models/hobbies.interface';
 import * as S from './styled';
@@ -93,7 +94,7 @@ const About = () => {
       }}
       gridStyle={{
         borderTop: `4px solid ${theme.palette.primary.main}`,
-        backgroundImage: 'linear-gradient(to top, rgba(28, 22, 48), rgba(28, 22, 48,0.97)), url(https://wallpapercave.com/wp/wp9641821.jpg)',
+        backgroundImage: `linear-gradient(to top, rgba(28, 22, 45), rgba(28, 22, 48,0.95)), url(${getBucketResource('/wallpapers/web-developer-background.png')})`,
         borderBottom: `4px solid ${theme.palette.background.default}`,
       }}
       icon={(

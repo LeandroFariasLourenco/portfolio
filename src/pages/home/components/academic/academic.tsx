@@ -18,6 +18,7 @@ import {
 import { useHidden } from 'src/core/hooks';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import Responsive from 'src/core/components/responsive/responsive';
+import { getBucketResource } from 'src/core/functions';
 import * as S from './styled';
 import { particlesConfig } from './particles-config';
 import Certificate from './components/certificate/certificate';
@@ -59,7 +60,7 @@ const Academic = () => {
       location: 'home.formation1.location',
       description: 'home.formation1.description',
       duration: '2019 - 2020',
-      logo: `${APP.aws.assets}/companies/fiap.png`,
+      logo: `${getBucketResource('/companies/fiap.png')}`,
     },
     {
       title: 'home.formation2.title',
@@ -67,7 +68,7 @@ const Academic = () => {
       location: 'home.formation2.location',
       description: 'home.formation2.description',
       duration: '2017 - 2018',
-      logo: `${APP.aws.assets}/companies/etec.png`,
+      logo: `${getBucketResource('/companies/etec.png')}`,
     }],
     extracurriculars: [
       {
@@ -76,7 +77,7 @@ const Academic = () => {
         location: 'home.extracurricular1.location',
         description: 'home.extracurricular1.description',
         duration: '2013 - 2018',
-        logo: `${APP.aws.assets}/companies/ccaa.png`,
+        logo: `${getBucketResource('/companies/ccaa.png')}`,
       },
       {
         title: 'home.extracurricular2.title',
@@ -84,50 +85,50 @@ const Academic = () => {
         location: 'home.extracurricular2.location',
         description: 'home.extracurricular2.description',
         duration: '2022',
-        logo: `${APP.aws.assets}/companies/udemy.png`,
+        logo: `${getBucketResource('/companies/udemy.png')}`,
       },
     ],
     certificates: [
       {
         title: 'home.certifications1.title',
-        link: `${APP.aws.assets}/certificates/certified-cloud-practitioner-certificate.pdf`,
-        logo: `${APP.aws.assets}/certificates/certified-cloud-practitioner.png`,
+        link: `${getBucketResource('/certificates/certified-cloud')}-practitioner-certificate.pdf`,
+        logo: `${getBucketResource('/certificates/certified-cloud')}-practitioner.png`,
         width: { desktop: '60px', mobile: '55px' },
       },
       {
         title: 'home.certifications2.title',
-        link: `${APP.aws.assets}/certificates/TOEFL-ITP-degree.jpeg`,
-        logo: `${APP.aws.assets}/companies/ccaa.png`,
+        link: `${getBucketResource('/certificates/TOEFL-ITP')}-degree.jpeg`,
+        logo: `${getBucketResource('/companies/ccaa.png')}`,
         width: { desktop: '60px', mobile: '50px' },
       },
       {
         title: 'home.certifications3.title',
-        link: `${APP.aws.assets}/certificates/english-course.jpeg`,
-        logo: `${APP.aws.assets}/companies/ccaa.png`,
+        link: `${getBucketResource('/certificates/english-course')}.jpeg`,
+        logo: `${getBucketResource('/companies/ccaa.png')}`,
         width: { desktop: '60px', mobile: '50px' },
       },
       {
         title: 'home.certifications4.title',
-        link: `${APP.aws.assets}/certificates/fiap-college-degree.jpg`,
-        logo: `${APP.aws.assets}/companies/fiap.png`,
+        link: `${getBucketResource('/certificates/fiap-college')}-degree.jpg`,
+        logo: `${getBucketResource('/companies/fiap.png')}`,
         width: { desktop: '125px', mobile: '65px' },
       },
       {
         title: 'home.certifications5.title',
-        link: `${APP.aws.assets}/certificates/profissional-app-developer.pdf`,
-        logo: `${APP.aws.assets}/companies/etec.png`,
+        link: `${getBucketResource('/certificates/profissional-app')}-developer.pdf`,
+        logo: `${getBucketResource('/companies/etec.png')}`,
         width: { desktop: '100px', mobile: '65px' },
       },
       {
         title: 'home.certifications6.title',
-        link: `${APP.aws.assets}/profissional-web-designer.pdf`,
-        logo: `${APP.aws.assets}/companies/fiap.png`,
+        link: `${getBucketResource('/profissional-web-designer')}.pdf`,
+        logo: `${getBucketResource('/companies/fiap.png')}`,
         width: { desktop: '125px', mobile: '65px' },
       },
       {
         title: 'home.certifications7.title',
-        link: `${APP.aws.assets}/profissional-app-developer.pdf`,
-        logo: `${APP.aws.assets}/companies/fiap.png`,
+        link: `${getBucketResource('/profissional-app-developer')}.pdf`,
+        logo: `${getBucketResource('/companies/fiap.png')}`,
         width: { desktop: '125px', mobile: '65px' },
       },
     ],
