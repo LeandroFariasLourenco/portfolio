@@ -15,6 +15,7 @@ import { useMemo, cloneElement } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { ElevationScroll } from 'src/core/components';
 import Responsive from 'src/core/components/responsive/responsive';
+import useIsWindowTop from 'src/core/hooks/useIsWindowTop';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EResponsiveType, Languages } from 'src/core/models';
 import { useGlobalContext } from 'src/core/store/global/context';
@@ -22,8 +23,8 @@ import { useGlobalContext } from 'src/core/store/global/context';
 import * as S from './styled';
 
 const Header = () => {
-  const trigger = useScrollTrigger();
   const globalContext = useGlobalContext();
+  const isWindowOnTop = useIsWindowTop();
   const isMobile = useResponsive({ breakpoint: 'md', type: EResponsiveType.smaller });
 
   const scrollToTop = () => {
@@ -48,7 +49,7 @@ const Header = () => {
   return (
     <ElevationScroll>
       {/* <Slide appear={false} direction="down" in={!trigger}> */}
-      <S.HeaderBar elevation={4}>
+      <S.HeaderBar isTop={isWindowOnTop} elevation={4}>
         <Grid container item xs={12} justifyContent="center">
           <Grid container item alignItems="center" justifyContent="space-between" xs={12} md={8}>
             <Responsive

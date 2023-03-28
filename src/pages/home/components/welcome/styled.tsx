@@ -20,11 +20,15 @@ export const ProfileImage = styled('img')`
   }
 `;
 
-export const TypeWriterBackground = styled(Card)`
+export const TypeWriterBackground = styled(Card)(({ theme }) => `
   background-color: #1E1E1E;
   border-radius: 5px;
   max-width: 600px;
-`;
+
+  ${theme.breakpoints.down('md')} {
+    margin: 7px;
+  }
+`);
 
 export const TerminalHeading = styled(Grid)`
   background-color: #4A4A4A;
