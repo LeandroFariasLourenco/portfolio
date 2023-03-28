@@ -6,6 +6,7 @@ import {
 import { FormattedMessage } from 'react-intl';
 import Responsive from 'src/core/components/responsive/responsive';
 import { APP } from 'src/core/constants';
+import { getBucketResource } from 'src/core/functions';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { Repository, Section } from 'src/core/layouts';
 import { IGithubRepository } from 'src/core/models';
@@ -27,10 +28,10 @@ const Projects = () => {
   }), []);
 
   const projects = useMemo(() => [
-    { title: '2', description: '', background: `${APP.aws.assets}/projects/futawesome.png` },
-    { title: '3', description: '', background: `${APP.aws.assets}/projects/snakegame.mp4` },
-    { title: '4', description: '', background: `${APP.aws.assets}/projects/solar-system.png` },
-    { title: '5', description: '', background: `${APP.aws.assets}/projects/be-the-hero.png` },
+    { title: '2', description: '', background: getBucketResource('/projects/futawesome.png') },
+    { title: '3', description: '', background: getBucketResource('/projects/snakegame.mp4') },
+    { title: '4', description: '', background: getBucketResource('/projects/solar-system.png') },
+    { title: '5', description: '', background: getBucketResource('/projects/be-the-hero.png') },
   ] as IProject[], []);
 
   const fetchRepositories = async () => {
@@ -62,7 +63,7 @@ const Projects = () => {
       }}
       icon={<DeveloperBoard htmlColor="white" fontSize="large" />}
       gridStyle={{
-        backgroundImage: 'linear-gradient(rgba(28, 22, 48,1), rgba(28, 22, 48,0.96)), url(https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/content/cover_image_file/cover_image/687289/retina_1708x683_op-Ten-Front-End-Design-Rules-For-Developers_Luke-Newsletter-d3a7d3e7430ee224cab75104f11342a0.png)',
+        backgroundImage: `linear-gradient(rgba(28, 22, 48, 0.88), rgba(28, 22, 48,0.95)), url(${getBucketResource('/wallpapers/terminal.png')})`,
         paddingTop: 50,
         paddingBottom: 50,
       }}

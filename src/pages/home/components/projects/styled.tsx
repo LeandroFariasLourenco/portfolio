@@ -1,5 +1,6 @@
 import { css, Grid, styled } from '@mui/material';
 import { APP } from 'src/core/constants';
+import { getBucketResource } from 'src/core/functions';
 import { SwiperSlide } from 'swiper/react';
 
 export const ProjectsContainer = styled(Grid)(({ theme }) => `
@@ -15,7 +16,7 @@ export const ProjectsContainer = styled(Grid)(({ theme }) => `
 `);
 
 export const ProjectsTabs = styled(Grid)`
-  background-image: linear-gradient(rgba(28, 22, 48,1), rgba(28, 22, 48,0.93)), url(${APP.aws.assets}/wallpapers/personal-projects.jpg);
+  background-image: linear-gradient(rgba(28, 22, 48,1), rgba(28, 22, 48,0.93)), url(${getBucketResource('/wallpapers/personal-projects.jpg')});
   background-size: cover;
   background-position: center;
   padding: 10px;

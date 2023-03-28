@@ -144,26 +144,26 @@ const Experience = () => {
               <SwiperSlide
                 key={experience.date}
               >
-                <Fade>
-                  <Responsive
-                    breakpoint="md"
-                    aboveComponent={(
+                <Responsive
+                  breakpoint="md"
+                  aboveComponent={(
+                    <Fade>
                       <DesktopCard
                         LeftBorderComponent={LeftBorderComponent}
                         RightBorderComponent={RightBorderComponent}
                         experience={experience}
                         index={index}
                       />
-                    )}
-                    belowComponent={(
-                      <MobileCard
-                        BorderComponent={LeftBorderComponent}
-                        index={index}
-                        experience={experience}
-                      />
-                    )}
-                  />
-                </Fade>
+                    </Fade>
+                  )}
+                  belowComponent={(
+                    <MobileCard
+                      BorderComponent={LeftBorderComponent}
+                      index={index}
+                      experience={experience}
+                    />
+                  )}
+                />
               </SwiperSlide>
             );
           })}

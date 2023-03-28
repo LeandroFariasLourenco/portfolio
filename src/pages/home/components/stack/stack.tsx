@@ -6,6 +6,7 @@ import { Section } from 'src/core/layouts';
 import { APP } from 'src/core/constants';
 import languages from 'src/assets/resources/languages.json';
 import Technology from 'src/core/layouts/technology/technology';
+import { getBucketResource } from 'src/core/functions';
 import * as S from './styled';
 
 const Languages = () => {
@@ -19,7 +20,7 @@ const Languages = () => {
       }}
       icon={<DeveloperMode fontSize="large" htmlColor="white" />}
       gridStyle={{
-        backgroundImage: 'linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(https://www.teahub.io/photos/full/296-2965452_5-ferramentas-em-alta-para-desenvolvedores-react-desenvolvedor.png)',
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(${getBucketResource('/wallpapers/developer.png')})`,
         paddingTop: 50,
         paddingBottom: 50,
       }}
@@ -38,7 +39,7 @@ const Languages = () => {
             className={cx({ selected: selectedTab === index })}
           >
             <S.StackLogo
-              src={`${APP.aws.assets}${language.icon}`}
+              src={getBucketResource(language.icon)}
               alt={language.name}
             />
           </S.TabContainer>

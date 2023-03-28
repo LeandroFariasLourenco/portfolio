@@ -3,7 +3,7 @@ import {
 } from '@mui/icons-material';
 import { Grid, Typography } from '@mui/material';
 import { FormattedMessage } from 'react-intl';
-import { APP } from 'src/core/constants';
+import { getBucketResource } from 'src/core/functions';
 import { ExperienceCardProps } from './props';
 
 import * as S from './styled';
@@ -17,7 +17,7 @@ const ExperienceCard = ({
   >
     <Grid container flexDirection="column">
       <S.ExperienceHeader container flexDirection="row" flexWrap="nowrap" alignItems="center">
-        <S.ExperienceIcon src={`${APP.aws.assets}${experience.icon}`} alt={experience.title} />
+        <S.ExperienceIcon src={getBucketResource(experience.icon)} alt={experience.title} />
         <S.ExperienceTitle variant="h3"><FormattedMessage id={experience.title} /></S.ExperienceTitle>
       </S.ExperienceHeader>
 
@@ -57,7 +57,7 @@ const ExperienceCard = ({
         </Grid>
 
         <Grid item xs={6} container alignItems="flex-end" justifyContent="flex-end">
-          <S.CompanyLogo src={`${APP.aws.assets}/${experience.company.logo}`} alt={experience.company.name} />
+          <S.CompanyLogo src={getBucketResource(`/${experience.company.logo}`)} alt={experience.company.name} />
         </Grid>
       </Grid>
     </Grid>

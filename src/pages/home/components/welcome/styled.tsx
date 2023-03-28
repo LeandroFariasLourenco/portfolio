@@ -6,7 +6,11 @@ import {
 export const Wrapper = styled(Grid)`
   padding-top: 80px;
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    padding-bottom: 40px;
+  }
 `;
 
 export const ProfileImage = styled('img')`
@@ -23,65 +27,15 @@ export const ProfileImage = styled('img')`
 export const TypeWriterBackground = styled(Card)(({ theme }) => `
   background-color: #1E1E1E;
   border-radius: 5px;
-  max-width: 600px;
-
+  
   ${theme.breakpoints.down('md')} {
-    margin: 7px;
+    width: 95%;
+    margin: 0 auto;
   }
-`);
-
-export const TerminalHeading = styled(Grid)`
-  background-color: #4A4A4A;
-  padding: 5px 10px;
-  border-radius: 5px 5px 0 0;
-  position: relative;
-
-  &::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 1px;
-    background-color: black;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+  
+  ${theme.breakpoints.up('md')} {
+    max-width: 600px;
   }
-`;
-
-export const TerminalContent = styled(Grid)`
-  padding: 5px 10px;
-
-  .Typewriter__cursor {
-    font-weight: bold;
-  }
-`;
-
-export const TerminalText = styled(Typography)(({ theme }) => `
-  color: ${theme.palette.grey[300]};
-  margin-right: 5px;
-`);
-
-export const TerminalRow = styled(Grid)`
-  display: flex;
-`;
-
-export const TerminalTitleContainer = styled(Grid)``;
-
-export const TerminalTitle = styled(Typography)(({ theme }) => `
-  color: ${theme.palette.grey[400]};
-  margin-left: 5px;
-`);
-
-export const TerminalWindowCircles = styled(Grid)``;
-
-export const TerminalWindowCircle = styled('div')<{
-  $color: string;
-}>(({ $color }) => `
-  border-radius: 100%;
-  width: 17px;
-  height: 17px;
-  background-color: ${$color};
-  margin-right: 10px;
 `);
 
 const arrowDownAnimation = keyframes`
@@ -106,6 +60,12 @@ const pulse = keyframes`
     opacity: 0;
   }
 `;
+
+export const TerminalComponentWrapper = styled(Grid)(({ theme }) => `
+  ${theme.breakpoints.down('md')} {
+    width: 100%;
+  }
+`);
 
 export const ArrowDownContainer = styled(Grid)`
   position: absolute;
