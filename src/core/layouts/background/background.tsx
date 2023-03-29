@@ -2,7 +2,7 @@ import { forwardRef, ReactNode } from 'react';
 import * as S from './styled';
 
 interface IBackgroundProps {
-  children: ReactNode | ReactNode[];
+  children: ReactNode;
 }
 
 const Background = forwardRef<IBackgroundProps, any>(({

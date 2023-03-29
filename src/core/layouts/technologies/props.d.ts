@@ -1,5 +1,5 @@
 import { ITechnology } from 'src/core/models';
 
-export interface IExperienceProps {
+export interface ITechnologiesProps {
   technologies: ITechnology[];
 }

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Section } from 'src/core/layouts';
 import { APP } from 'src/core/constants';
 import languages from 'src/assets/resources/languages.json';
-import Technology from 'src/core/layouts/technology/technology';
+import Technologies from 'src/core/layouts/technologies/technology';
 import { getBucketResource } from 'src/core/functions';
 import * as S from './styled';
 
@@ -53,7 +53,7 @@ const Languages = () => {
               selected: selectedTab === index,
             })}
           >
-            <Technology
+            <Technologies
               technologies={technologies}
             />
           </S.TechnologyTabContainer>

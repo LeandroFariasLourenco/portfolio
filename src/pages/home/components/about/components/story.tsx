@@ -11,8 +11,9 @@ import { IStoryProps } from './types';
 
 const Story = ({
   hobby,
+  onClick,
+  open,
 }: IStoryProps) => {
-  const [open, setOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useResponsive({ breakpoint: 'md', type: EResponsiveType.smaller });
 
@@ -36,7 +37,7 @@ const Story = ({
           <S.AboutMeStoryTopic
             style={{ borderColor: hobby.color }}
             onClick={() => {
-              setOpen(true);
+              onClick(hobby.label, true);
             }}
           >
             {Array(8).fill(Math.random()).map((_, index) => (
@@ -62,7 +63,7 @@ const Story = ({
 
           <S.CloseStory
             onClick={() => {
-              setOpen(false);
+              onClick(hobby.label, false);
             }}
           >
             Close

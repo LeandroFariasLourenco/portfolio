@@ -3,7 +3,7 @@ import Header from 'src/core/layouts/header/header';
 import Footer from 'src/core/layouts/footer/footer';
 
 interface ICommonProps {
-  children: ReactNode | ReactNode[];
+  children: ReactNode;
 }
 
 const Common = ({

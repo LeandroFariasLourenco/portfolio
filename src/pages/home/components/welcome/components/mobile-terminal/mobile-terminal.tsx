@@ -1,20 +1,21 @@
 import {
   Close, CropDin, Remove,
 } from '@mui/icons-material';
-import { Typography, useTheme } from '@mui/material';
+import { Grid, Typography, useTheme } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { Typewriter } from 'src/core/components';
 import { getBucketResource } from 'src/core/functions';
 import { TypewriterClass } from 'typewriter-effect';
+import { ITerminalLine } from './models/terminal-line.interface';
 import * as S from './styled';
 
 const MobileTerminal = () => {
   const theme = useTheme();
   const intl = useIntl();
-  const [terminalRows, setTerminalRows] = useState([]);
+  const [terminalRows, setTerminalRows] = useState<ITerminalLine[]>([]);
 
-  const terminalText = useMemo(() => ([
+  const terminalTexts = useMemo<ITerminalLine[]>(() => ([
     {
       key: 'first',
       timer: 0,
@@ -29,7 +30,7 @@ const MobileTerminal = () => {
     },
     {
       key: 'second',
-      timer: 6500,
+      timer: 3250,
       typeText: (typewriter: TypewriterClass) => {
         typewriter.typeString(intl.messages['home.welcome.terminal.text2.string1'] as string)
           .start();
@@ -37,7 +38,7 @@ const MobileTerminal = () => {
     },
     {
       key: 'third',
-      timer: 13500,
+      timer: 7250,
       typeText: (typewriter: TypewriterClass) => {
         typewriter.typeString(intl.messages['home.welcome.terminal.text3.string1'] as string)
           .start();
@@ -45,7 +46,7 @@ const MobileTerminal = () => {
     },
     {
       key: 'fourth',
-      timer: 14500,
+      timer: 8450,
       typeText: (typewriter: TypewriterClass) => {
         typewriter.typeString(intl.messages['home.welcome.terminal.text4.string1'] as string)
           .start();
@@ -53,17 +54,26 @@ const MobileTerminal = () => {
     },
     {
       key: 'fifth',
-      timer: 16000,
+      timer: 10850,
       typeText: (typewriter: TypewriterClass) => {
         typewriter.typeString(':)').start();
       },
     },
   ]), [intl]);
 
-  const setupTerminalTimers = () => { };
+  const setupTerminalTimer = () => {
+    terminalTexts.forEach((terminalText) => {
+      const timeout = setTimeout(() => {
+        if (terminalRows.length !== terminalTexts.length) {
+          setTerminalRows((prevState) => [...prevState, terminalText]);
+        }
+        clearTimeout(timeout);
+      }, terminalText.timer);
+    });
+  };
 
   useEffect(() => {
-    setupTerminalTimers();
+    setupTerminalTimer();
   }, []);
 
   return (
@@ -97,7 +107,7 @@ const MobileTerminal = () => {
         </S.TerminalWindowOptions>
       </S.TerminalHeading>
       <S.TerminalContent>
-        {terminalText.map((text) => (
+        {terminalRows.map((text) => (
           <S.TerminalRow
             container
             flexDirection="column"
@@ -112,36 +122,25 @@ const MobileTerminal = () => {
               <S.TerminalTextCPU>MINGW64</S.TerminalTextCPU>
               <S.TerminalTextPath>/c/WINDOWS/system32</S.TerminalTextPath>
             </S.TerminalText>
-            <Typewriter
-              options={{
-                delay: 50,
-              }}
-              typographyProps={{
-                variant: 'h6',
-                fontSize: 14.5,
-              }}
-              onInit={text.typeText}
-            />
+            <Grid
+              container
+              flexWrap="nowrap"
+              alignItems="flex-start"
+            >
+              <S.TerminalTabCommandPrefix variant="h6">$</S.TerminalTabCommandPrefix>
+              <Typewriter
+                options={{
+                  delay: 50,
+                }}
+                typographyProps={{
+                  variant: 'h6',
+                  fontSize: 14.5,
+                }}
+                onInit={text.typeText}
+              />
+            </Grid>
           </S.TerminalRow>
         ))}
-        <S.TerminalRow>
-          <S.TerminalText
-            container
-            flexDirection="row"
-            flexWrap="nowrap"
-          >
-            <S.TerminalTextUser>Leand@DESKTOP</S.TerminalTextUser>
-            <S.TerminalTextCPU>MINGW64</S.TerminalTextCPU>
-            <S.TerminalTextPath>/c/WINDOWS/system32</S.TerminalTextPath>
-          </S.TerminalText>
-          <Typography>
-            {/* <TypewriterEffect
-              onInit={(typewriter) => {
-                typewriter.start();
-              }}
-            /> */}
-          </Typography>
-        </S.TerminalRow>
       </S.TerminalContent>
     </S.TerminalWrapper>
   );
