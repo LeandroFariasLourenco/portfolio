@@ -9,7 +9,7 @@ import { TypewriterClass } from 'typewriter-effect';
 import * as S from './styled';
 
 interface ISectionProps {
-  children: ReactNode | ReactNode[];
+  children: ReactNode;
   gridStyle?: CSSProperties;
   icon: ReactNode;
   childrenWrapperProps?: GridProps;

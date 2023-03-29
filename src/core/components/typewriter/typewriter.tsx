@@ -7,7 +7,6 @@ import * as S from './styled';
 const Typewriter = ({
   onInit,
   typographyProps,
-  timer,
   options = {},
 }: ITypewriterProps) => (
   <S.TypewriterWrapper>

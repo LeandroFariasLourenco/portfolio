@@ -1,15 +1,31 @@
 /* eslint-disable */
+import { ArrowUpward } from '@mui/icons-material';
 import {
+  Box,
   Card, Grid, styled, Typography,
 } from '@mui/material';
 import { mixins } from 'src/styles/utils';
 
 export const LanguageDescriptionCard = styled(Card)(({ theme }) => `
-  padding: 15px;
   border-radius: 0;
-  height: 100%;
-  border: 2px dashed ${theme.palette.secondary.main};
   border-top: none;
+  
+  ${theme.breakpoints.down('md')} {
+    transition: max-height 500ms ease-in;
+    max-height: 0;
+    
+    &.is--selected {
+      padding: 15px;
+      max-height: 2000px
+    }
+  }
+
+  
+  ${theme.breakpoints.up('md')} {
+    padding: 15px;
+    height: 100%;
+    border: 2px dashed ${theme.palette.secondary.main};
+  }
 `);
 
 export const LanguagesTabWrapper = styled(Grid)(({ theme }) => `
@@ -17,8 +33,11 @@ export const LanguagesTabWrapper = styled(Grid)(({ theme }) => `
   border: 2px dashed ${theme.palette.secondary.main};
   background-color: ${theme.palette.background.paper};
   border-top: none;
-  border-right: none;
   overflow-y: auto;
+  
+  ${theme.breakpoints.up('md')} {
+    border-right: none;
+  }
 
   ${mixins.scrollbarStyle({
   height: '5px',
@@ -39,7 +58,9 @@ export const LanguageDescription = styled(Typography)`
 `;
 
 export const LanguageContainer = styled(Grid)`
-  height: 475px;
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    height: 475px;
+  }
 `;
 
 export const LanguageTopics = styled('ul')`
@@ -53,6 +74,31 @@ export const LanguageTopic = styled('li')(({ theme }) => `
   margin: 5px;
 `);
 
+export const TechnologyTabWrapper = styled(Grid)(({ theme }) => `
+  ${theme.breakpoints.down('md')} {
+    justify-content: space-between;
+  }
+`);
+
+export const TechnologyImageContainer = styled(Box)(({ theme }) => `
+  margin-right: 10px;
+
+  ${theme.breakpoints.up('md')} {
+    width: 75px;
+  }
+`);
+
+export const TechnologyTitle = styled(Typography)(({ theme }) => `
+  ${theme.breakpoints.down('md')} {
+    flex: 1;
+  }
+`);
+
+export const TechnologyMobileArrow = styled(ArrowUpward)<{ selected: boolean }>(({ selected }) => `
+  transform: ${selected ? 'rotate(180deg)' : 'rotate(0)'};
+  transition: transform 200ms ease-in-out;
+`);
+
 export const TabContainer = styled(Grid)(({ theme }) => `
   cursor: pointer;
   transition: background-color 200ms ease-in-out;
@@ -61,14 +107,15 @@ export const TabContainer = styled(Grid)(({ theme }) => `
   border-radius: 0;
   min-height: 58px;
   max-height: 58px;
-  
   flex: 1;
 
   &.selected {
     background-color: ${theme.palette.secondary.main} !important;
   }
 
-  &:hover {
-    background-color: ${theme.palette.action.hover};
+  ${theme.breakpoints.up('md')} {
+    &:hover {
+      background-color: ${theme.palette.action.hover};
+    }
   }
 `);

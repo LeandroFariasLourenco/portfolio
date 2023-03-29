@@ -58,6 +58,12 @@ export const TerminalTabClose = styled(Grid)(({ theme }) => `
   top: 0;
 `);
 
+export const TerminalTabCommandPrefix = styled(Typography)(({ theme }) => `
+  font-size: 14px;
+  color: white;
+  margin-right: 5px;
+`);
+
 export const TerminalTabText = styled(Typography)(({ theme }) => `
   /* color: ${theme.palette.text.secondary}; */
   color: white;

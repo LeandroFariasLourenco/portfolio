@@ -2,7 +2,7 @@ import {
   EmojiEvents, PersonSearch, SportsEsports, Terminal, Theaters,
 } from '@mui/icons-material';
 import { Grid, useTheme } from '@mui/material';
-import { useMemo, useCallback } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import Lottie from 'react-lottie';
 import { Section } from 'src/core/layouts';
@@ -28,6 +28,7 @@ const LottieAnimation = () => (
 const About = () => {
   const theme = useTheme();
   const intl = useIntl();
+  const [currentOpenedStory, setCurrentOpenedStory] = useState<string>('');
 
   const hobbies = useMemo<IHobbie[]>(() => [
     {
@@ -84,7 +85,18 @@ const About = () => {
     },
   ], []);
 
-  const renderHobbies = useCallback((hobby: IHobbie) => <Story key={hobby.label} hobby={hobby} />, [hobbies]);
+  const handleStoryClick = (storyName: string, open: boolean) => {
+    setCurrentOpenedStory(open ? storyName : '');
+  };
+
+  const renderHobbies = useCallback((hobby: IHobbie) => (
+    <Story
+      key={hobby.label}
+      hobby={hobby}
+      onClick={handleStoryClick}
+      open={currentOpenedStory === hobby.label}
+    />
+  ), [hobbies, currentOpenedStory]);
 
   return (
     <Section
