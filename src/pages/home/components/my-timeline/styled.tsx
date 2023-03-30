@@ -8,6 +8,17 @@ export const TimelineWrapper = styled(Grid)(({ theme }) => `
     color: ${theme.typography.body1.color};
     margin: -10px 10px 0 10px;
   }
+
+  ${theme.breakpoints.down('md')} {
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 475px;
+  }
+
+  svg {
+    opacity: 1 !important;
+  }
 `);
 
 // export const TimelineParticlesContainer = styled(Box)``;

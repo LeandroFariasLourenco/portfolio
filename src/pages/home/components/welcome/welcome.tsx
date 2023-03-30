@@ -85,7 +85,7 @@ const Welcome = () => {
       <Particles
         id="welcome-background"
         canvasClassName="background-canvas"
-        options={isDesktop ? mobileParticlesConfig : desktopParticlesConfig}
+        options={isDesktop ? desktopParticlesConfig : mobileParticlesConfig}
       />
       <Responsive
         breakpoint="md"

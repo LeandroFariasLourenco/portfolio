@@ -2,30 +2,30 @@ import {
   School,
 } from '@mui/icons-material';
 import { Grid, Typography } from '@mui/material';
+import cx from 'classnames';
 import {
   memo, useMemo, useRef, useState,
 } from 'react';
-import { FormattedMessage } from 'react-intl';
-import cx from 'classnames';
 import AnimateHeight from 'react-animate-height';
+import { FormattedMessage } from 'react-intl';
 
-import { Section } from 'src/core/layouts';
+import SwipeRightAnimation from 'src/assets/animations/swipe-right.json';
 import Particles from 'react-tsparticles';
-import { APP } from 'src/core/constants';
-import {
-  ICertificate, IExtracurricular, ICourse, EResponsiveType,
-} from 'src/core/models';
+import Responsive from 'src/core/components/responsive/responsive';
+import SwipeAnimation from 'src/core/components/swipe-animation/swipe-animation';
+import { getBucketResource } from 'src/core/functions';
 import { useHidden } from 'src/core/hooks';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
-import Responsive from 'src/core/components/responsive/responsive';
-import { getBucketResource } from 'src/core/functions';
-import * as S from './styled';
-import { particlesConfig } from './particles-config';
+import { Section } from 'src/core/layouts';
+import {
+  EResponsiveType, ICertificate, ICourse, IExtracurricular,
+} from 'src/core/models';
 import Certificate from './components/certificate/certificate';
 import Course from './components/course/course';
 import Extracurricular from './components/extracurricular/extracurricular';
 import { desktopParticlesConfig } from './particles/desktop-config';
 import { mobileParticlesConfig } from './particles/mobile-config';
+import * as S from './styled';
 
 const ParticlesComponent = memo(() => {
   const isMobile = useResponsive({});
@@ -151,6 +151,14 @@ const Academic = () => {
           container
           flexWrap="nowrap"
         >
+          <SwipeAnimation lottieProps={{
+            height: 55,
+            speed: 1.25,
+            options: {
+              animationData: SwipeRightAnimation,
+            },
+          }}
+          />
           {formationTabs.map((tab, index) => (
             <S.FormationTab
               container

@@ -7,13 +7,7 @@
         "name": "React",
         "icon": "/technologies/typescript-javascript/react.svg",
         "description": "home.languages1.technologies1.description",
-        "topics": [
-          "Redux",
-          "Mobx",
-          "Hooks",
-          "Classes",
-          "Styled Components"
-        ]
+        "topics": ["Redux", "Mobx", "Hooks", "Classes", "Styled Components"]
       },
       {
         "name": "React Native",
@@ -65,11 +59,7 @@
         "name": "Jquery",
         "icon": "/technologies/typescript-javascript/jquery.svg",
         "description": "home.languages1.technologies6.description",
-        "topics": [
-          "Selectors",
-          "Plugins",
-          "Specific query methods"
-        ]
+        "topics": ["Selectors", "Plugins", "Specific query methods"]
       }
     ]
   },
@@ -147,23 +137,13 @@
         "name": "Flutter",
         "icon": "/technologies/dart/flutter.svg",
         "description": "home.languages3.technologies1.description",
-        "topics": [
-          "",
-          "",
-          "",
-          ""
-        ]
+        "topics": ["1", "2", "3", "4"]
       },
       {
         "name": "Dart",
         "icon": "/technologies/dart/dart.svg",
         "description": "home.languages3.technologies2.description",
-        "topics": [
-          "",
-          "",
-          "",
-          ""
-        ]
+        "topics": ["5", "6", "7", "8"]
       }
     ]
   },
@@ -175,45 +155,25 @@
         "name": "SCSS",
         "icon": "/technologies/html-css/sass.svg",
         "description": "home.languages4.technologies1.description",
-        "topics": [
-          "",
-          "",
-          "",
-          ""
-        ]
+        "topics": ["9", "10", "11", "12"]
       },
       {
         "name": "PUG",
         "icon": "/technologies/html-css/pug.svg",
         "description": "home.languages4.technologies2.description",
-        "topics": [
-          "",
-          "",
-          "",
-          ""
-        ]
+        "topics": ["13", "14", "15", "16"]
       },
       {
         "name": "HTML",
         "icon": "/technologies/html-css/html.svg",
         "description": "home.languages4.technologies3.description",
-        "topics": [
-          "",
-          "",
-          "",
-          ""
-        ]
+        "topics": ["17", "18", "19", "20"]
       },
       {
         "name": "CSS",
         "icon": "/technologies/html-css/css.svg",
         "description": "home.languages4.technologies4.description",
-        "topics": [
-          "",
-          "",
-          "",
-          ""
-        ]
+        "topics": ["21", "22", "23", "24"]
       }
     ]
   }
