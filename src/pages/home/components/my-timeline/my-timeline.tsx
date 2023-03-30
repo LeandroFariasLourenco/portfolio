@@ -14,11 +14,14 @@ import { FormattedMessage } from 'react-intl';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import { Typography, useTheme } from '@mui/material';
 
+import SwipeDownAnimation from 'src/assets/animations/swipe-down.json';
 import landmarks from 'src/assets/resources/landmarks.json';
 import { Section } from 'src/core/layouts';
 
 import { EAchievementType, EResponsiveType } from 'src/core/models';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
+import SwipeAnimation from 'src/core/components/swipe-animation/swipe-animation';
+import Responsive from 'src/core/components/responsive/responsive';
 import * as S from './styled';
 
 const MyTimeline = () => {
@@ -31,16 +34,19 @@ const MyTimeline = () => {
         typewriter.typeString('Minha trajetória').start();
       }}
       icon={<Timeline htmlColor="white" fontSize="large" />}
-      childrenWrapperProps={{
-        style: {
-          maxHeight: isMobile ? 475 : 1000,
-          overflowY: 'auto',
-          overflowX: 'hidden',
-          padding: '0 10px',
-        },
-      }}
     >
       <S.TimelineWrapper>
+        <Responsive
+          breakpoint="md"
+          type={EResponsiveType.smaller}
+        >
+          <SwipeAnimation lottieProps={{
+            options: { animationData: SwipeDownAnimation },
+            speed: 0.40,
+            width: 125,
+          }}
+          />
+        </Responsive>
         <VerticalTimeline
           lineColor={theme.palette.primary.main}
         >

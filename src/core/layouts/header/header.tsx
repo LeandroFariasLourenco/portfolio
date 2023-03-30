@@ -1,17 +1,12 @@
 import {
-  GitHub, Info, KeyboardArrowUp, Mail, School, Terminal, Work, Menu,
+  GitHub, Info, KeyboardArrowUp, Mail, Menu, School, Terminal, Work,
 } from '@mui/icons-material';
 import {
-  Grid,
-  Box,
-  MenuItem,
-  Typography,
-  useScrollTrigger,
-  SelectChangeEvent,
-  IconProps,
+  Box, Drawer, Grid, IconProps, MenuItem, SelectChangeEvent, Typography,
 } from '@mui/material';
+import cx from 'classnames';
 import { observer } from 'mobx-react-lite';
-import { useMemo, cloneElement } from 'react';
+import { cloneElement, useMemo, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { ElevationScroll } from 'src/core/components';
 import Responsive from 'src/core/components/responsive/responsive';
@@ -19,12 +14,14 @@ import useIsWindowTop from 'src/core/hooks/useIsWindowTop';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EResponsiveType, Languages } from 'src/core/models';
 import { useGlobalContext } from 'src/core/store/global/context';
+import { IMenuOption } from './models/menu-option.interface';
 
 import * as S from './styled';
 
 const Header = () => {
   const globalContext = useGlobalContext();
-  const isWindowScrolled = useIsWindowTop();
+  const isWindowOnTop = useIsWindowTop();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const isMobile = useResponsive({ breakpoint: 'md', type: EResponsiveType.smaller });
 
   const scrollToTop = () => {
@@ -34,7 +31,7 @@ const Header = () => {
     });
   };
 
-  const links = useMemo(() => [
+  const menuOptions: IMenuOption[] = useMemo<IMenuOption[]>(() => [
     { label: 'header.links.section1', href: '#home', icon: <Info /> },
     { label: 'header.links.section2', href: '#home', icon: <Work /> },
     { label: 'header.links.section3', href: '#home', icon: <Terminal /> },
@@ -46,17 +43,38 @@ const Header = () => {
     globalContext.setLanguage(event.target.value as Languages);
   };
 
+  const renderMenuOptions = (link: IMenuOption) => (
+    <S.HeaderLink
+      key={link.label}
+    >
+      {cloneElement(link.icon as any, { htmlColor: '#fff', fontSize: 'small' } as IconProps)}
+      <Typography><FormattedMessage id={link.label} /></Typography>
+    </S.HeaderLink>
+  );
+
   return (
     <ElevationScroll>
       {/* <Slide appear={false} direction="down" in={!trigger}> */}
-      <S.HeaderBar isTop={isWindowScrolled} elevation={4}>
+      <S.HeaderBar isTop={isWindowOnTop} elevation={4}>
         <Grid container item xs={12} justifyContent="center">
           <Grid container item alignItems="center" justifyContent="space-between" xs={12} md={8}>
             <Responsive
               breakpoint="md"
               belowComponent={(
                 <>
-                  <Grid>
+                  <Drawer
+                    anchor="left"
+                    open={mobileMenuOpen}
+                    onClose={() => {
+                      setMobileMenuOpen(false);
+                    }}
+                  >
+                    {menuOptions.map(renderMenuOptions)}
+                  </Drawer>
+                  <Grid onClick={() => {
+                    setMobileMenuOpen(true);
+                  }}
+                  >
                     <Menu />
                   </Grid>
                   <Grid
@@ -75,14 +93,7 @@ const Header = () => {
               )}
               aboveComponent={(
                 <Grid item xs={8} container justifyContent="flex-end" flexWrap="nowrap">
-                  {links.map((link) => (
-                    <S.HeaderLink
-                      key={link.label}
-                    >
-                      {cloneElement(link.icon, { htmlColor: '#fff', fontSize: 'small' } as IconProps)}
-                      <Typography><FormattedMessage id={link.label} /></Typography>
-                    </S.HeaderLink>
-                  ))}
+                  {menuOptions.map(renderMenuOptions)}
                 </Grid>
               )}
             />
@@ -108,6 +119,9 @@ const Header = () => {
         </Grid>
         <S.ScrollToTopWrapper
           onClick={scrollToTop}
+          className={cx({
+            show: !isWindowOnTop,
+          })}
         >
           <KeyboardArrowUp fontSize="large" />
         </S.ScrollToTopWrapper>

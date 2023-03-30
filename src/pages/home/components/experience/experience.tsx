@@ -16,17 +16,18 @@ import {
 } from 'swiper';
 import { loadFull } from 'tsparticles';
 
-import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import Responsive from 'src/core/components/responsive/responsive';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EResponsiveType } from 'src/core/models';
+import { IResponsiveSwiper } from 'src/core/models/responsive-swiper.interface';
 import DesktopCard from './components/desktop-card/desktop-card';
 import MobileCard from './components/mobile-card/mobile-card';
 
-import * as S from './styled';
 import { desktopParticlesConfig } from './particles/desktop-config';
 import { mobileParticlesConfig } from './particles/mobile-config';
+import * as S from './styled';
 
 const ParticlesComponent = memo(() => {
   const isMobile = useResponsive({});
@@ -48,15 +49,14 @@ const Experience = () => {
   const [swiper, setSwiper] = useState<SwiperClass>();
   const [swiperIndex, setSwiperIndex] = useState<number>(0);
   const isMobile = useResponsive({ type: EResponsiveType.smaller, breakpoint: 'md' });
-
-  const swiperProps = useMemo<{ mobile: SwiperProps, desktop: SwiperProps }>(() => ({
+  const swiperProps: IResponsiveSwiper = useMemo<IResponsiveSwiper>(() => ({
     mobile: {
       modules: [Pagination, Navigation],
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       },
-      spaceBetween: 0,
+      spaceBetween: 15,
       onRealIndexChange: (swiper) => {
         setSwiperIndex(swiper.realIndex);
       },
@@ -124,7 +124,7 @@ const Experience = () => {
       }}
       icon={<WorkHistory fontSize="large" htmlColor="white" />}
     >
-      <ParticlesComponent />
+      {!isMobile ? <ParticlesComponent /> : null}
       <S.SwiperContainer>
         <Box className="swiper-pagination">
           {[...Array(experiences.length)].map(renderSwiperPagination)}

@@ -2,11 +2,10 @@ import { DeveloperMode } from '@mui/icons-material';
 import cx from 'classnames';
 import { useState } from 'react';
 
-import { Section } from 'src/core/layouts';
-import { APP } from 'src/core/constants';
 import languages from 'src/assets/resources/languages.json';
-import Technologies from 'src/core/layouts/technologies/technology';
 import { getBucketResource } from 'src/core/functions';
+import { Section } from 'src/core/layouts';
+import Technologies from 'src/core/layouts/technologies/technologies';
 import * as S from './styled';
 
 const Languages = () => {

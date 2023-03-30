@@ -1,29 +1,42 @@
 import { Code, DeveloperBoard } from '@mui/icons-material';
 import { Typography } from '@mui/material';
 import {
-  useEffect, useMemo, useState, useCallback,
+  useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { FormattedMessage } from 'react-intl';
+import SwipeRightAnimation from 'src/assets/animations/swipe-right.json';
+import { BottomSheet } from 'src/core/components';
 import Responsive from 'src/core/components/responsive/responsive';
-import { APP } from 'src/core/constants';
+import SwipeAnimation from 'src/core/components/swipe-animation/swipe-animation';
+
 import { getBucketResource } from 'src/core/functions';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { Repository, Section } from 'src/core/layouts';
-import { IGithubRepository } from 'src/core/models';
+import { EResponsiveType, IGithubRepository } from 'src/core/models';
+import { IResponsiveSwiper } from 'src/core/models/responsive-swiper.interface';
 import { GithubService } from 'src/core/services';
-import { Pagination } from 'swiper';
-import { SwiperSlide, Swiper, SwiperProps } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { IProject } from './models/project.interface';
 
 import * as S from './styled';
 
 const Projects = () => {
   const [repositories, setRepositories] = useState<IGithubRepository[]>([]);
-  const isMobile = useResponsive({});
-  const swiperConfig: SwiperProps = useMemo(() => ({
-    modules: [Pagination],
-    pagination: {
-      clickable: true,
+  const isMobile = useResponsive({ type: EResponsiveType.smaller });
+  const swiperConfig: IResponsiveSwiper = useMemo<IResponsiveSwiper>(() => ({
+    desktop: {
+      modules: [Pagination],
+      pagination: {
+        clickable: true,
+      },
+    },
+    mobile: {
+      modules: [Navigation],
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
     },
   }), []);
 
@@ -66,8 +79,11 @@ const Projects = () => {
         backgroundImage: `linear-gradient(rgba(28, 22, 48, 0.88), rgba(28, 22, 48,0.95)), url(${getBucketResource('/wallpapers/terminal.png')})`,
         paddingTop: 50,
         paddingBottom: 50,
+        position: 'relative',
       }}
     >
+      {/* <BottomSheet /> */}
+
       <S.ProjectsContainer container>
         <S.RepositoriesWrapper item xs={12} md={3}>
           <S.RepositoryTitle container flexDirection="row" alignItems="center">
@@ -80,7 +96,17 @@ const Projects = () => {
               <S.RepositoriesList container flexWrap="wrap">{repositories.map(renderRepository)}</S.RepositoriesList>
             )}
             belowComponent={(
-              <S.RepositoriesList container flexWrap="nowrap" flexDirection="row">{repositories.map(renderRepository)}</S.RepositoriesList>
+              <S.RepositoriesList container flexWrap="nowrap" flexDirection="row">
+                <SwipeAnimation lottieProps={{
+                  height: 80,
+                  speed: 1.25,
+                  options: {
+                    animationData: SwipeRightAnimation,
+                  },
+                }}
+                />
+                {repositories.map(renderRepository)}
+              </S.RepositoriesList>
             )}
           />
 
@@ -98,7 +124,7 @@ const Projects = () => {
               height: '100%',
               width: '100%',
             }}
-            {...swiperConfig}
+            {...(isMobile ? swiperConfig.mobile : swiperConfig.desktop)}
           >
             {projects.map((project) => (
               <SwiperSlide

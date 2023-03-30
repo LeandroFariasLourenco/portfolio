@@ -45,6 +45,8 @@ export const SwiperContainer = styled(Grid)(({ theme }) => `
     }
 
     &-pagination {
+      overflow: hidden;
+
       ${theme.breakpoints.up('md')} {
         bottom: unset;
         right: unset;

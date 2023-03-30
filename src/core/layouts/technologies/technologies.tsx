@@ -4,7 +4,9 @@ import {
   useTheme,
 } from '@mui/material';
 import cx from 'classnames';
-import { memo, useCallback, useState } from 'react';
+import {
+  Fragment, memo, useCallback, useState,
+} from 'react';
 import { FormattedMessage } from 'react-intl';
 import Responsive from 'src/core/components/responsive/responsive';
 import { getBucketResource } from 'src/core/functions';
@@ -25,7 +27,7 @@ const TechnologyDetails = ({
         {topic}
       </Typography>
     </S.LanguageTopic>
-  ), [isSelected]);
+  ), []);
 
   return (
     <S.LanguageDescriptionCard
@@ -40,7 +42,7 @@ const TechnologyDetails = ({
       {technology.topics.length ? (
         <S.LanguageTopics>
           <S.LanguageDividerTitle variant="h4"><FormattedMessage id="home.languages.concepts" /></S.LanguageDividerTitle>
-          {technology.topics.map(renderTechnologyTopic)}
+          {technology.topics.map((topic) => renderTechnologyTopic(topic))}
         </S.LanguageTopics>
       ) : null}
     </S.LanguageDescriptionCard>
@@ -61,7 +63,7 @@ const Technologies = ({
     const isSelected = index === selectedTab;
 
     return (
-      <>
+      <Fragment key={technology.description}>
         <S.TabContainer
           className={cx({
             selected: isSelected,
@@ -106,7 +108,7 @@ const Technologies = ({
         >
           <TechnologyDetails technology={technology} isSelected={isSelected} />
         </Responsive>
-      </>
+      </Fragment>
     );
   }, [selectedTab]);
 

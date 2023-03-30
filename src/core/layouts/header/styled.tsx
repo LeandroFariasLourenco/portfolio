@@ -9,18 +9,29 @@ export const HeaderLink = styled('a')(({ theme }) => `
   padding: 10px;
   display: flex;
   align-items: center;
-  justify-content: center;
   transition: background-color 200ms ease-in-out;
-
+  
   svg {
     margin-right: 5px;
+
+    ${theme.breakpoints.down('md')} {
+      margin-right: 15px;
+    }
   }
 
-  &:hover {
-    background-color: ${theme.palette.primary.main};
+  ${theme.breakpoints.down('md')} {
+    padding: 10px 25px;
+  }
 
-    > p {
-      color: ${theme.palette.secondary.main};
+  ${theme.breakpoints.up('md')} {
+    justify-content: center;
+
+    &:hover {
+      background-color: ${theme.palette.primary.main};
+
+      > p {
+        color: ${theme.palette.secondary.main};
+      }
     }
   }
 `);
@@ -53,12 +64,25 @@ export const ScrollToTopWrapper = styled(Grid)(({ theme }) => `
   bottom: 20px;
   right: 20px;
   background-color: ${theme.palette.primary.main};
-  padding: 5px;
-  border-radius: 100px;
-  transition: background-color 200ms ease-in-out;
+  padding: 1px;
+  border-radius: 100%;
+  transition: all 200ms ease-in-out;
   cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
 
-  &:hover {
-    background-color: ${theme.palette.secondary.main};
+  &.show {
+    opacity: 1;
+    visibility: inherit;
+  }
+
+  ${theme.breakpoints.up('md')} {
+    &:hover {
+      background-color: ${theme.palette.secondary.main};
+    }
   }
 `);
+
+export const MobileDrawerContainer = styled(Grid)`
+
+`;

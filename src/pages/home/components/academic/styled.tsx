@@ -1,8 +1,15 @@
-import { Grid, styled } from '@mui/material';
+import { Grid, Box } from '@mui/material';
+import styled from 'styled-components';
 
 export const FormationTabs = styled(Grid)(({ theme }) => `
   border: 2px solid ${theme.palette.action.active};
   border-bottom: 0;
+  position: relative;
+
+  svg {
+    opacity: 1;
+    transform: scale(1.3) !important;
+  }
 
   ${theme.breakpoints.down('md')} {
     overflow-x: auto;
@@ -51,7 +58,7 @@ export const FormationTab = styled(Grid)(({ theme }) => `
 `);
 
 export const CardContainer = styled(Grid)(({ theme }) => `
-  background-color: #1C1630;
+  background-color: rgba(28, 22, 48, 0.75);
   border: 2px solid ${theme.palette.action.active};
   border-top: 0;
   padding: 20px;

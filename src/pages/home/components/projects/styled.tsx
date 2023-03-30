@@ -1,7 +1,5 @@
 import { css, Grid, styled } from '@mui/material';
-import { APP } from 'src/core/constants';
 import { getBucketResource } from 'src/core/functions';
-import { SwiperSlide } from 'swiper/react';
 
 export const ProjectsContainer = styled(Grid)(({ theme }) => `
   padding: 10px;
@@ -10,36 +8,47 @@ export const ProjectsContainer = styled(Grid)(({ theme }) => `
   border: 2px solid ${theme.palette.secondary.main};
   background-color: ${theme.palette.background.default};
 
+  ${theme.breakpoints.down('md')} {
+    background-color: rgba(28, 22, 48, 0.85);
+  }
+
   ${theme.breakpoints.up('md')} {
     height: 500px;
   }
 `);
 
-export const ProjectsTabs = styled(Grid)`
+export const ProjectsTabs = styled(Grid)(({ theme }) => `
   background-image: linear-gradient(rgba(28, 22, 48,1), rgba(28, 22, 48,0.93)), url(${getBucketResource('/wallpapers/personal-projects.jpg')});
   background-size: cover;
   background-position: center;
-  padding: 10px;
-
-  ${({ theme }) => theme.breakpoints.down('md')} {
+  
+  ${theme.breakpoints.down('md')} {
     height: 500px;
   }
-
-  ${({ theme }) => theme.breakpoints.up('md')} {
+  
+  ${theme.breakpoints.up('md')} {
     height: 100%;
+    padding: 10px;
   }
 
   .swiper {
     &-pagination {
       &-bullet {
-        width: 100px;
-        height: 5px;
-        border-radius: 0;
-        background-color: ${({ theme }) => theme.palette.grey['500']};
+        ${theme.breakpoints.up('md')} {
+          width: 100px;
+          height: 5px;
+          border-radius: 0;
+          background-color: ${theme.palette.grey['500']};
+        }
+
+        ${theme.breakpoints.down('md')} {
+          padding: 7px;
+          background-color: ${theme.palette.action.active};
+        }
       }
     }
   }
-`;
+`);
 
 export const RepositoryTitle = styled(Grid)(({ theme }) => `
   margin-bottom: 10px;
@@ -62,6 +71,7 @@ export const RepositoriesWrapper = styled(Grid)(({ theme }) => `
 
 export const RepositoriesList = styled(Grid)(({ theme }) => `
   padding-right: 10px;
+  position: relative;
   
   ${theme.breakpoints.up('md')} {
     overflow-y: auto;
