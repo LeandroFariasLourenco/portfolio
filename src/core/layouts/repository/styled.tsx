@@ -4,11 +4,12 @@ export const RepositoryContainer = styled('a')(({ theme }) => `
   transition: 200ms opacity ease-in-out;
   display: block;
   border: 1px solid ${theme.palette.action.active};
-  opacity: 0.45;
   scroll-snap-align: center;
+  z-index: 3;
   
   ${theme.breakpoints.up('md')} {
     padding: 5px;
+    opacity: 0.45;
     width: 100%;
 
     & + & {
@@ -20,6 +21,7 @@ export const RepositoryContainer = styled('a')(({ theme }) => `
     padding: 5px 10px;
     min-width: 175px;
     margin-right: 10px;
+    opacity: 0.75;
   }
 
   &:hover {

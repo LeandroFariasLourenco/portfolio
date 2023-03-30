@@ -1,6 +1,8 @@
 import {
   Grid, styled, Typography,
 } from '@mui/material';
+import { getBucketResource } from 'src/core/functions';
+import { mixins } from 'src/styles/utils';
 
 export const AboutCardHoverContainer = styled(Grid)<{
   $color: string;
@@ -48,3 +50,10 @@ export const HobbyText = styled(Typography)(({ theme }) => `
     font-size: 13.5px;
   }
 `);
+
+export const AboutMeWrapper = styled(Grid)`
+  ${mixins.linearGradientBackground({
+    backgroundImage: getBucketResource('/wallpapers/web-developer-background.png'),
+    gradientColor: 'linear-gradient(to top, rgba(28, 22, 45), rgba(28, 22, 48,0.95))',
+  })}
+`;

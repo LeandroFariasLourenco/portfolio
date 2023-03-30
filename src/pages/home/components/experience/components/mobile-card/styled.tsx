@@ -21,6 +21,8 @@ export const ExperienceContainer = styled(Grid)(({ theme }) => `
   position: relative;
   overflow: hidden;
   border-radius: 10px;
+  padding-bottom: 8px;
+  isolation: isolate;
 `);
 
 export const ExperienceCardContent = styled(Grid)`
@@ -62,7 +64,7 @@ export const ExperienceCard = styled(Card)(({ theme }) => `
     content: "";
     position: absolute;
     display: block;
-    width: 1%;
+    width: 10px;
     height: 175px;
     border: 2px dashed ${theme.palette.secondary.main};
     padding: 5px;
@@ -73,11 +75,11 @@ export const ExperienceCard = styled(Card)(({ theme }) => `
   }
   
   &::after {
-    left: -7px;
+    left: -11px;
   }
   
   &::before {
-    right: -7px;
+    right: -11px;
   }
 `);
 

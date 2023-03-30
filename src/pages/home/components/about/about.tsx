@@ -99,44 +99,45 @@ const About = () => {
   ), [hobbies, currentOpenedStory]);
 
   return (
-    <Section
-      onTitleShow={(typewriter) => {
-        typewriter.typeString(intl.messages['home.about-me.title'] as string)
-          .start();
-      }}
-      gridStyle={{
-        borderTop: `4px solid ${theme.palette.primary.main}`,
-        backgroundImage: `linear-gradient(to top, rgba(28, 22, 45), rgba(28, 22, 48,0.95)), url(${getBucketResource('/wallpapers/web-developer-background.png')})`,
-        borderBottom: `4px solid ${theme.palette.background.default}`,
-      }}
-      icon={(
-        <PersonSearch fontSize="large" htmlColor="white" />
-      )}
-    >
-      <Grid container item xs={12}>
-        <Grid item xs={12} md={6}>
-          <S.AboutMeSummary>
-            <FormattedMessage id="home.about-me.summary" />
-          </S.AboutMeSummary>
-        </Grid>
-        <Grid item xs={12} md={6} container justifyContent="flex-end">
-          <LottieAnimation />
-        </Grid>
-      </Grid>
-      <Responsive
-        breakpoint="md"
-        belowComponent={(
-          <Grid container item xs={12} alignItems="center" justifyContent="center">
-            {hobbies.map(renderHobbies)}
-          </Grid>
+    <S.AboutMeWrapper>
+      <Section
+        onTitleShow={(typewriter) => {
+          typewriter.typeString(intl.messages['home.about-me.title'] as string)
+            .start();
+        }}
+        gridStyle={{
+          borderTop: `4px solid ${theme.palette.primary.main}`,
+          borderBottom: `4px solid ${theme.palette.background.default}`,
+        }}
+        icon={(
+          <PersonSearch fontSize="large" htmlColor="white" />
         )}
-        aboveComponent={(
-          <Grid container gap={12} flexWrap="nowrap" alignItems="center" justifyContent="center">
-            {hobbies.map(renderHobbies)}
+      >
+        <Grid container item xs={12}>
+          <Grid item xs={12} md={6}>
+            <S.AboutMeSummary>
+              <FormattedMessage id="home.about-me.summary" />
+            </S.AboutMeSummary>
           </Grid>
-        )}
-      />
-    </Section>
+          <Grid item xs={12} md={6} container justifyContent="flex-end">
+            <LottieAnimation />
+          </Grid>
+        </Grid>
+        <Responsive
+          breakpoint="md"
+          belowComponent={(
+            <Grid container item xs={12} alignItems="center" justifyContent="center">
+              {hobbies.map(renderHobbies)}
+            </Grid>
+          )}
+          aboveComponent={(
+            <Grid container gap={12} flexWrap="nowrap" alignItems="center" justifyContent="center">
+              {hobbies.map(renderHobbies)}
+            </Grid>
+          )}
+        />
+      </Section>
+    </S.AboutMeWrapper>
   );
 };
 

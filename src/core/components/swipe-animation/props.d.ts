@@ -3,4 +3,5 @@ import { ReactNode } from 'react';
 
 export interface ISwipeAnimationProps {
   lottieProps: LottieProps;
+  continuous?: boolean;
 }

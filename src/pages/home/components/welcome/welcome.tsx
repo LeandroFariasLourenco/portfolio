@@ -1,12 +1,10 @@
 import { Grid } from '@mui/material';
-import { useState, useEffect } from 'react';
 import Particles from 'react-tsparticles';
 import Responsive from 'src/core/components/responsive/responsive';
 import { APP } from 'src/core/constants';
 import loadParticlesEngine from 'src/core/functions/load-particles-engine';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EResponsiveType } from 'src/core/models';
-import { loadFull } from 'tsparticles';
 import DesktopTerminal from './components/desktop-terminal/desktop-terminal';
 import MobileTerminal from './components/mobile-terminal/mobile-terminal';
 import { desktopParticlesConfig } from './particles/desktop-config';
@@ -15,7 +13,6 @@ import * as S from './styled';
 
 const Welcome = () => {
   const isDesktop = useResponsive({});
-  const [, setParticlesLoaded] = useState(false);
 
   const handleArrowDownClick = () => {
     window.scrollTo({
@@ -23,10 +20,6 @@ const Welcome = () => {
       behavior: 'smooth',
     });
   };
-
-  useEffect(() => {
-    setParticlesLoaded(true);
-  }, []);
 
   return (
     <S.Wrapper container alignItems="center" item justifyContent="center" md={12}>

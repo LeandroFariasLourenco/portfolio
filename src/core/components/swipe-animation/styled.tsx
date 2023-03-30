@@ -11,7 +11,7 @@ export const SwipeAnimationOverlay = styled(Box)`
   transition: all 200ms ease-in-out;
   visibility: hidden;
   opacity: 0;
-  z-index: 1;
+  z-index: 4;
 
   svg {
     opacity: 0.85;
@@ -20,6 +20,5 @@ export const SwipeAnimationOverlay = styled(Box)`
   &.is--open {
     visibility: unset;
     opacity: 1;
-    z-index: 2;
   }
 `;
