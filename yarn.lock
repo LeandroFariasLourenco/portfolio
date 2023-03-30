@@ -8061,7 +8061,7 @@ react-transition-group@^4.4.5:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react-tsparticles@^2.1.0:
+react-tsparticles@^2.9.3:
   version "2.9.3"
   resolved "https://registry.yarnpkg.com/react-tsparticles/-/react-tsparticles-2.9.3.tgz#bfbac7fe2e13e010131624c52e1a25b3a3e50cbb"
   integrity sha512-QSo5Y0iXcXzOKbOira+kn5Z9Yv0ugk4swcn44HkdublSS8XAmV2QiQSd9T2mdM1tGZ8xVSuqsfdgGWfRC1KKng==

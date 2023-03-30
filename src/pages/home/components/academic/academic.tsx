@@ -20,23 +20,13 @@ import { Section } from 'src/core/layouts';
 import {
   EResponsiveType, ICertificate, ICourse, IExtracurricular,
 } from 'src/core/models';
+import loadParticlesEngine from 'src/core/functions/load-particles-engine';
 import Certificate from './components/certificate/certificate';
 import Course from './components/course/course';
 import Extracurricular from './components/extracurricular/extracurricular';
 import { desktopParticlesConfig } from './particles/desktop-config';
 import { mobileParticlesConfig } from './particles/mobile-config';
 import * as S from './styled';
-
-const ParticlesComponent = memo(() => {
-  const isMobile = useResponsive({});
-  return (
-    <Particles
-      canvasClassName="background-canvas"
-      options={isMobile ? mobileParticlesConfig : desktopParticlesConfig}
-      id="academic-background"
-    />
-  );
-}, () => true);
 
 const Academic = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -146,7 +136,12 @@ const Academic = () => {
           height: '100%',
         }}
       >
-        <ParticlesComponent />
+        <Particles
+          canvasClassName="background-canvas"
+          init={loadParticlesEngine}
+          options={isMobile ? mobileParticlesConfig : desktopParticlesConfig}
+          id="academic-background"
+        />
         <S.FormationTabs
           container
           flexWrap="nowrap"
@@ -154,6 +149,7 @@ const Academic = () => {
           <SwipeAnimation lottieProps={{
             height: 55,
             speed: 1.25,
+            width: 135,
             options: {
               animationData: SwipeRightAnimation,
             },

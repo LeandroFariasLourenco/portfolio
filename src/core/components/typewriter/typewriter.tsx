@@ -1,4 +1,6 @@
 import { Typography } from '@mui/material';
+import { useState } from 'react';
+import cx from 'classnames';
 import TypewriterEffect from 'typewriter-effect';
 import { ITypewriterProps } from './props';
 
@@ -8,17 +10,25 @@ const Typewriter = ({
   onInit,
   typographyProps,
   options = {},
-}: ITypewriterProps) => (
-  <S.TypewriterWrapper>
-    <Typography variant="h2" {...typographyProps}>
-      <TypewriterEffect
-        onInit={(typewriter) => {
-          onInit(typewriter);
-        }}
-        options={options}
-      />
-    </Typography>
-  </S.TypewriterWrapper>
-);
+}: ITypewriterProps) => {
+  const [hasFinished, setHasFinished] = useState<boolean>(false);
 
+  return (
+    <S.TypewriterWrapper
+      className={cx({
+        'is--finished': hasFinished,
+      })}
+    >
+      <Typography variant="h2" {...typographyProps}>
+        <TypewriterEffect
+          onInit={(typewriter) => {
+            onInit(typewriter);
+            typewriter.callFunction(() => { setHasFinished(true); });
+          }}
+          options={options}
+        />
+      </Typography>
+    </S.TypewriterWrapper>
+  );
+};
 export default Typewriter;

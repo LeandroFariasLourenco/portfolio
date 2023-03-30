@@ -5,6 +5,7 @@ export const RepositoryContainer = styled('a')(({ theme }) => `
   display: block;
   border: 1px solid ${theme.palette.action.active};
   opacity: 0.45;
+  scroll-snap-align: center;
   
   ${theme.breakpoints.up('md')} {
     padding: 5px;

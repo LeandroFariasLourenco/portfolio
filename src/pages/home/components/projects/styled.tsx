@@ -18,9 +18,21 @@ export const ProjectsContainer = styled(Grid)(({ theme }) => `
 `);
 
 export const ProjectsTabs = styled(Grid)(({ theme }) => `
-  background-image: linear-gradient(rgba(28, 22, 48,1), rgba(28, 22, 48,0.93)), url(${getBucketResource('/wallpapers/personal-projects.jpg')});
+  background-image: url(${getBucketResource('/wallpapers/personal-projects.jpg')});
   background-size: cover;
   background-position: center;
+  z-index: 2;
+
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: linear-gradient(rgba(28, 22, 48,1), rgba(28, 22, 48,0.93));
+    z-index: 1;
+  }
   
   ${theme.breakpoints.down('md')} {
     height: 500px;
@@ -72,14 +84,17 @@ export const RepositoriesWrapper = styled(Grid)(({ theme }) => `
 export const RepositoriesList = styled(Grid)(({ theme }) => `
   padding-right: 10px;
   position: relative;
+  scroll-snap-type: both mandatory;
   
   ${theme.breakpoints.up('md')} {
     overflow-y: auto;
+    overflow-x: hidden;
     height: 92%;
   }
 
   ${theme.breakpoints.down('md')} {
     overflow-x: auto;
+    overflow-y: hidden;
     padding-bottom: 10px;
   }
 

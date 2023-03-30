@@ -1,5 +1,5 @@
 import { Code, DeveloperBoard } from '@mui/icons-material';
-import { Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
@@ -96,17 +96,28 @@ const Projects = () => {
               <S.RepositoriesList container flexWrap="wrap">{repositories.map(renderRepository)}</S.RepositoriesList>
             )}
             belowComponent={(
-              <S.RepositoriesList container flexWrap="nowrap" flexDirection="row">
-                <SwipeAnimation lottieProps={{
-                  height: 80,
-                  speed: 1.25,
-                  options: {
-                    animationData: SwipeRightAnimation,
-                  },
-                }}
-                />
-                {repositories.map(renderRepository)}
-              </S.RepositoriesList>
+              <Responsive
+                breakpoint="md"
+                aboveComponent={(
+                  <S.RepositoriesList container flexWrap="nowrap" flexDirection="row">
+                    {repositories.map(renderRepository)}
+                  </S.RepositoriesList>
+                )}
+                belowComponent={(
+                  <S.RepositoriesList container flexWrap="nowrap" flexDirection="row">
+                    <SwipeAnimation lottieProps={{
+                      height: 80,
+                      width: 'unset',
+                      speed: 1.25,
+                      options: {
+                        animationData: SwipeRightAnimation,
+                      },
+                    }}
+                    />
+                    {repositories.map(renderRepository)}
+                  </S.RepositoriesList>
+                )}
+              />
             )}
           />
 

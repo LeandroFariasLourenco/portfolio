@@ -1,9 +1,14 @@
-import { Grid, styled } from '@mui/material';
+import { Grid } from '@mui/material';
+import styled from 'styled-components';
 
-// .Typewriter__cursor {
-//   font-size: 0;
-// }
-export const TypewriterWrapper = styled(Grid)<{
-  timer?: number;
-}>(({ timer }) => `
-`);
+export const TypewriterWrapper = styled(Grid)`
+  .Typwriter__cursor {
+    transition: font-size 200ms ease-in-out;
+  }
+
+  &.is--finished {
+    .Typewriter__cursor {
+      font-size: 0;
+    }
+  }
+`;

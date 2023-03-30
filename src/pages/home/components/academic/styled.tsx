@@ -13,6 +13,7 @@ export const FormationTabs = styled(Grid)(({ theme }) => `
 
   ${theme.breakpoints.down('md')} {
     overflow-x: auto;
+    overflow-y: hidden;
     padding-bottom: 5px;
 
     &::-webkit-scrollbar {

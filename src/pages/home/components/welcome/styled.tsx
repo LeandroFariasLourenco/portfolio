@@ -67,6 +67,10 @@ export const TerminalComponentWrapper = styled(Grid)(({ theme }) => `
   }
 `);
 
+export const WelcomeContainer = styled(Grid)`
+  z-index: 1;
+`;
+
 export const ArrowDownContainer = styled(Grid)`
   position: absolute;
   bottom: 20px;

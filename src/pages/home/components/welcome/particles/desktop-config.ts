@@ -4,10 +4,10 @@ export const desktopParticlesConfig: ParticlesProps['options'] = {
   fullScreen: {
     enable: false,
   },
-  fpsLimit: 30,
+  fpsLimit: 60,
   particles: {
     number: {
-      value: 80,
+      value: 120,
       density: {
         enable: true,
         value_area: 800,
@@ -69,7 +69,7 @@ export const desktopParticlesConfig: ParticlesProps['options'] = {
     },
   },
   interactivity: {
-    detect_on: 'canvas',
+    detect_on: 'window',
     events: {
       onhover: {
         enable: true,
