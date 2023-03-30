@@ -1,4 +1,13 @@
-import { Grid, styled } from '@mui/material';
+import { Grid, styled, Box } from '@mui/material';
+import { getBucketResource } from 'src/core/functions';
+import { mixins } from 'src/styles/utils';
+
+export const TimelineContainer = styled(Box)`
+  ${mixins.linearGradientBackground({
+    backgroundImage: getBucketResource('/wallpapers/terminal.png'),
+    gradientColor: 'linear-gradient(rgba(28, 22, 48, 0.88), rgba(28, 22, 48,0.95))',
+  })}
+`;
 
 export const TimelineWrapper = styled(Grid)(({ theme }) => `
   .landmark-date {
@@ -20,5 +29,3 @@ export const TimelineWrapper = styled(Grid)(({ theme }) => `
     opacity: 1 !important;
   }
 `);
-
-// export const TimelineParticlesContainer = styled(Box)``;

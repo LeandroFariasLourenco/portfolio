@@ -69,100 +69,100 @@ const Projects = () => {
   ), [repositories]);
 
   return (
-    <Section
-      onTitleShow={(typewriter) => {
-        typewriter.typeString('Meus projetos')
-          .start();
-      }}
-      icon={<DeveloperBoard htmlColor="white" fontSize="large" />}
-      gridStyle={{
-        backgroundImage: `linear-gradient(rgba(28, 22, 48, 0.88), rgba(28, 22, 48,0.95)), url(${getBucketResource('/wallpapers/terminal.png')})`,
-        paddingTop: 50,
-        paddingBottom: 50,
-        position: 'relative',
-      }}
-    >
-      {/* <BottomSheet /> */}
+    <S.ProjectsWrapper>
+      <Section
+        onTitleShow={(typewriter) => {
+          typewriter.typeString('Meus projetos')
+            .start();
+        }}
+        icon={<DeveloperBoard htmlColor="white" fontSize="large" />}
+        gridStyle={{
+          paddingTop: 50,
+          paddingBottom: 50,
+        }}
+      >
+        {/* <BottomSheet /> */}
 
-      <S.ProjectsContainer container>
-        <S.RepositoriesWrapper item xs={12} md={3}>
-          <S.RepositoryTitle container flexDirection="row" alignItems="center">
-            <Code htmlColor="white" />
-            <Typography variant="h4"><FormattedMessage id="home.projects.title" /></Typography>
-          </S.RepositoryTitle>
-          <Responsive
-            breakpoint="md"
-            aboveComponent={(
-              <S.RepositoriesList container flexWrap="wrap">{repositories.map(renderRepository)}</S.RepositoriesList>
-            )}
-            belowComponent={(
-              <Responsive
-                breakpoint="md"
-                aboveComponent={(
-                  <S.RepositoriesList container flexWrap="nowrap" flexDirection="row">
-                    {repositories.map(renderRepository)}
-                  </S.RepositoriesList>
-                )}
-                belowComponent={(
-                  <S.RepositoriesList container flexWrap="nowrap" flexDirection="row">
-                    <SwipeAnimation lottieProps={{
-                      height: 80,
-                      width: 'unset',
-                      speed: 1.25,
-                      options: {
-                        animationData: SwipeRightAnimation,
-                      },
-                    }}
-                    />
-                    {repositories.map(renderRepository)}
-                  </S.RepositoriesList>
-                )}
-              />
-            )}
-          />
+        <S.ProjectsContainer container>
+          <S.RepositoriesWrapper item xs={12} md={3}>
+            <S.RepositoryTitle container flexDirection="row" alignItems="center">
+              <Code htmlColor="white" />
+              <Typography variant="h4"><FormattedMessage id="home.projects.title" /></Typography>
+            </S.RepositoryTitle>
+            <Responsive
+              breakpoint="md"
+              aboveComponent={(
+                <S.RepositoriesList container flexWrap="wrap">{repositories.map(renderRepository)}</S.RepositoriesList>
+              )}
+              belowComponent={(
+                <Responsive
+                  breakpoint="md"
+                  aboveComponent={(
+                    <S.RepositoriesList container flexWrap="nowrap" flexDirection="row">
+                      {repositories.map(renderRepository)}
+                    </S.RepositoriesList>
+                  )}
+                  belowComponent={(
+                    <S.RepositoriesList container flexWrap="nowrap" flexDirection="row">
+                      <SwipeAnimation lottieProps={{
+                        height: 80,
+                        width: 'unset',
+                        speed: 1.25,
+                        options: {
+                          animationData: SwipeRightAnimation,
+                        },
+                      }}
+                      />
+                      {repositories.map(renderRepository)}
+                    </S.RepositoriesList>
+                  )}
+                />
+              )}
+            />
 
-        </S.RepositoriesWrapper>
-        <S.ProjectsTabs
-          item
-          xs={12}
-          md={9}
-          container
-          alignItems="center"
-          flexDirection="column"
-        >
-          <Swiper
-            style={{
-              height: '100%',
-              width: '100%',
-            }}
-            {...(isMobile ? swiperConfig.mobile : swiperConfig.desktop)}
+          </S.RepositoriesWrapper>
+          <S.ProjectsTabs
+            item
+            xs={12}
+            md={9}
+            container
+            alignItems="center"
+            flexDirection="column"
           >
-            {projects.map((project) => (
-              <SwiperSlide
-                style={{ position: 'relative' }}
-                key={project.title}
-              >
-                <S.ProjectBackgroundVideo src={project.background} autoPlay loop muted />
-                <S.ProjectBackgroundImage src={project.background} />
-                <S.ProjectSlideContainer>
-                  <S.ProjectSlideOverlay
-                    container
-                    alignItems="flex-end"
-                    justifyContent="flex-end"
-                    flexDirection="column"
-                  >
-                    <Typography variant="h3"><FormattedMessage id="home.projects.description.title" /></Typography>
+            <Swiper
+              style={{
+                height: '100%',
+                width: '100%',
+              }}
+              {...(isMobile ? swiperConfig.mobile : swiperConfig.desktop)}
+            >
+              {projects.map((project) => (
+                <SwiperSlide
+                  style={{ position: 'relative' }}
+                  key={project.title}
+                >
+                  <S.ProjectBackgroundVideo src={project.background} autoPlay loop muted />
+                  <S.ProjectBackgroundImage src={project.background} />
+                  <S.ProjectSlideContainer>
+                    <S.ProjectSlideOverlay
+                      container
+                      alignItems="flex-end"
+                      justifyContent="flex-end"
+                      flexDirection="column"
+                    >
+                      <Typography variant="h3"><FormattedMessage id="home.projects.description.title" /></Typography>
 
-                    <Typography><FormattedMessage id="home.projects.description.content1" /></Typography>
-                    <Typography><FormattedMessage id="home.projects.description.content2" /></Typography>
-                  </S.ProjectSlideOverlay>
-                </S.ProjectSlideContainer>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </S.ProjectsTabs>
-      </S.ProjectsContainer>
-    </Section>
+                      <Typography><FormattedMessage id="home.projects.description.content1" /></Typography>
+                      <Typography><FormattedMessage id="home.projects.description.content2" /></Typography>
+                    </S.ProjectSlideOverlay>
+                  </S.ProjectSlideContainer>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </S.ProjectsTabs>
+        </S.ProjectsContainer>
+      </Section>
+    </S.ProjectsWrapper>
   );
 };
 

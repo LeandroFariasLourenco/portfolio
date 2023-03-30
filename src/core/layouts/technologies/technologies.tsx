@@ -35,16 +35,18 @@ const TechnologyDetails = ({
         'is--selected': isSelected,
       })}
     >
-      <S.LanguageDescription>
-        <FormattedMessage id={technology.description} />
-      </S.LanguageDescription>
+      <S.LanguageDescriptionContainer>
+        <S.LanguageDescription>
+          <FormattedMessage id={technology.description} />
+        </S.LanguageDescription>
 
-      {technology.topics.length ? (
-        <S.LanguageTopics>
-          <S.LanguageDividerTitle variant="h4"><FormattedMessage id="home.languages.concepts" /></S.LanguageDividerTitle>
-          {technology.topics.map((topic) => renderTechnologyTopic(topic))}
-        </S.LanguageTopics>
-      ) : null}
+        {technology.topics.length ? (
+          <S.LanguageTopics>
+            <S.LanguageDividerTitle variant="h4"><FormattedMessage id="home.languages.concepts" /></S.LanguageDividerTitle>
+            {technology.topics.map((topic) => renderTechnologyTopic(topic))}
+          </S.LanguageTopics>
+        ) : null}
+      </S.LanguageDescriptionContainer>
     </S.LanguageDescriptionCard>
   );
 };
@@ -110,7 +112,7 @@ const Technologies = ({
         </Responsive>
       </Fragment>
     );
-  }, [selectedTab]);
+  }, [selectedTab, isMobile]);
 
   return (
     <S.LanguageContainer container flexWrap="nowrap">

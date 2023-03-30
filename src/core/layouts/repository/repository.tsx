@@ -2,6 +2,7 @@ import { AccountTree, CalendarMonth, ExitToApp } from '@mui/icons-material';
 import { Typography } from '@mui/material';
 import { memo } from 'react';
 import Responsive from 'src/core/components/responsive/responsive';
+import { getBucketResource } from 'src/core/functions';
 import { IRepositoryProps } from './props';
 import * as S from './styled';
 
@@ -11,25 +12,25 @@ const Repository = ({
   const getRepositoryLanguageIcon = (language: string) => {
     switch (language?.toLowerCase()) {
       case 'javascript':
-        return 'https://img.icons8.com/color/48/000000/javascript.png';
+        return getBucketResource('/technologies/javascript.png');
       case 'typescript':
-        return 'https://img.icons8.com/color/48/000000/typescript.png';
+        return getBucketResource('/technologies/typescript.png');
       case 'python':
-        return 'https://img.icons8.com/color/48/000000/python.png';
+        return getBucketResource('/technologies/python.png');
       case 'dart':
-        return 'https://img.icons8.com/color/48/000000/dart.png';
+        return getBucketResource('/technologies/dart.png');
       case 'css':
-        return 'https://img.icons8.com/color/48/000000/css3.png';
+        return getBucketResource('/technologies/css3.png');
       case 'c#':
-        return 'https://img.icons8.com/color/344/c-sharp-logo.png';
+        return getBucketResource('/technologies/c-sharp-logo.png');
       case 'html':
-        return 'https://img.icons8.com/color/48/000000/html-5.png';
+        return getBucketResource('/technologies/html-5.png');
       case 'java':
-        return 'https://img.icons8.com/color/48/000000/java.png';
+        return getBucketResource('/technologies/java.png');
       case 'ejs':
-        return 'https://img.icons8.com/fluency/344/node-js.png';
+        return getBucketResource('/technologies/node-js.png');
       default:
-        return 'https://img.icons8.com/fluency-systems-regular/344/page-not-found.png';
+        return getBucketResource('/technologies/page-not-found.png');
     }
   };
 

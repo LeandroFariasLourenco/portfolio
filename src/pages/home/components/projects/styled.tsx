@@ -1,24 +1,26 @@
 import { css, Grid, styled } from '@mui/material';
 import { getBucketResource } from 'src/core/functions';
+import { mixins } from 'src/styles/utils';
 
 export const ProjectsContainer = styled(Grid)(({ theme }) => `
   padding: 10px;
   margin-top: 20px;
   width: 100%;
   border: 2px solid ${theme.palette.secondary.main};
-  background-color: ${theme.palette.background.default};
-
-  ${theme.breakpoints.down('md')} {
-    background-color: rgba(28, 22, 48, 0.85);
-  }
 
   ${theme.breakpoints.up('md')} {
     height: 500px;
   }
 `);
 
+export const ProjectsWrapper = styled(Grid)`
+  ${mixins.linearGradientBackground({
+    backgroundImage: getBucketResource('/wallpapers/terminal.png'),
+    gradientColor: 'linear-gradient(rgba(28, 22, 48, 0.88), rgba(28, 22, 48,0.95))',
+  })}
+`;
+
 export const ProjectsTabs = styled(Grid)(({ theme }) => `
-  background-image: url(${getBucketResource('/wallpapers/personal-projects.jpg')});
   background-size: cover;
   background-position: center;
   z-index: 2;

@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { ArrowUpward } from '@mui/icons-material';
 import {
   Box,
@@ -15,16 +14,20 @@ export const LanguageDescriptionCard = styled(Card)(({ theme }) => `
     max-height: 0;
     
     &.is--selected {
-      padding: 15px;
       max-height: 2000px
     }
   }
-
   
   ${theme.breakpoints.up('md')} {
     padding: 15px;
     height: 100%;
     border: 2px dashed ${theme.palette.secondary.main};
+  }
+`);
+
+export const LanguageDescriptionContainer = styled(Box)(({ theme }) => `
+  ${theme.breakpoints.down('md')} {
+    padding: 15px;
   }
 `);
 
@@ -40,11 +43,11 @@ export const LanguagesTabWrapper = styled(Grid)(({ theme }) => `
   }
 
   ${mixins.scrollbarStyle({
-  height: '5px',
-  backgroundThumbColor: theme.palette.secondary.main,
-  backgroundTrackColor: theme.palette.secondary.main,
-})
-  }
+    height: '5px',
+    backgroundThumbColor: theme.palette.secondary.main,
+    backgroundTrackColor: theme.palette.secondary.main,
+  })
+}
 `);
 
 export const LanguageDividerTitle = styled(Typography)`

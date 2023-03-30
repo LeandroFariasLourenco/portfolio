@@ -1,6 +1,8 @@
 import {
   Box, Grid, keyframes, styled,
 } from '@mui/material';
+import { getBucketResource } from 'src/core/functions';
+import { mixins } from 'src/styles/utils';
 
 const changeTechnologyTab = keyframes`
   from {
@@ -47,6 +49,13 @@ export const StackLogo = styled('img')`
 `;
 
 export const TechnologyWrapper = styled(Box)``;
+
+export const SectionWrapper = styled(Grid)`
+  ${mixins.linearGradientBackground({
+    backgroundImage: getBucketResource('/wallpapers/developer.png'),
+    gradientColor: 'linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75))',
+  })}
+`;
 
 export const TechnologyTabContainer = styled(Grid)`
   transition: transform 500ms ease-in-out;

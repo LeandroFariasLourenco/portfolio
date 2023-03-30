@@ -1,14 +1,14 @@
 import { useMemo } from 'react';
 import { CommonLayout } from 'src/core/layouts';
-import Welcome from './components/welcome/welcome';
-import Experience from './components/experience/experience';
-import Languages from './components/stack/stack';
 import About from './components/about/about';
 import Academic from './components/academic/academic';
+import Experience from './components/experience/experience';
+import Languages from './components/stack/stack';
+import Welcome from './components/welcome/welcome';
 
-import * as S from './styled';
 import MyTimeline from './components/my-timeline/my-timeline';
 import Projects from './components/projects/projects';
+import * as S from './styled';
 
 const Home = () => {
   const components = useMemo(() => ([

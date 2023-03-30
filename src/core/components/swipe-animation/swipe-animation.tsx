@@ -9,9 +9,10 @@ import * as S from './styled';
 
 const SwipeAnimation = ({
   lottieProps,
+  continuous = true,
 }: ISwipeAnimationProps) => {
   const [show, setShow] = useState<boolean>(true);
-  const timerToResetShow = 4500;
+  const timerToResetShow = 5750;
   const timeoutRef = useRef<number | undefined>(undefined);
   const [swipeOverlayRef, setSwipeOverlayRef] = useState<HTMLDivElement>();
 
@@ -66,7 +67,10 @@ const SwipeAnimation = ({
         className={cx({
           'is--open': show,
         })}
-        onTouchEnd={handleOnTouchEnd}
+        onTouchEnd={() => {
+          if (!continuous) { return; }
+          handleOnTouchEnd();
+        }}
         onTouchStart={handleOnPress}
         onClick={handleOnPress}
       >
