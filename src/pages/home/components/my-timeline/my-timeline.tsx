@@ -36,17 +36,13 @@ const MyTimeline = () => {
       icon={<Timeline htmlColor="white" fontSize="large" />}
     >
       <S.TimelineWrapper>
-        <Responsive
-          breakpoint="md"
-          type={EResponsiveType.smaller}
-        >
-          <SwipeAnimation lottieProps={{
-            options: { animationData: SwipeDownAnimation },
-            speed: 0.40,
-            width: 125,
-          }}
-          />
-        </Responsive>
+        <SwipeAnimation lottieProps={{
+          options: { animationData: SwipeDownAnimation },
+          speed: 0.40,
+          width: 125,
+          height: 'unset',
+        }}
+        />
         <VerticalTimeline
           lineColor={theme.palette.primary.main}
         >
