@@ -1,5 +1,6 @@
 import { Grid } from '@mui/material';
 import Particles from 'react-tsparticles';
+import LazyLoadParticles from 'src/core/components/lazy-load/lazy-load';
 import Responsive from 'src/core/components/responsive/responsive';
 import { APP } from 'src/core/constants';
 import loadParticlesEngine from 'src/core/functions/load-particles-engine';
@@ -23,12 +24,7 @@ const Welcome = () => {
 
   return (
     <S.Wrapper container alignItems="center" item justifyContent="center" md={12}>
-      <Particles
-        id="welcome-background"
-        canvasClassName="background-canvas"
-        init={(engine) => loadParticlesEngine(engine)}
-        params={isDesktop ? desktopParticlesConfig : mobileParticlesConfig}
-      />
+      <LazyLoadParticles id="welcome-section" particlesConfig={isDesktop ? desktopParticlesConfig : mobileParticlesConfig} />
       <Responsive
         breakpoint="md"
       >

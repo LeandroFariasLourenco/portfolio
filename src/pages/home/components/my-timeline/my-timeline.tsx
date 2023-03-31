@@ -10,6 +10,7 @@ import {
   Upgrade,
   Work,
 } from '@mui/icons-material';
+import { memo } from 'react';
 import { Typography, useTheme } from '@mui/material';
 import { FormattedMessage } from 'react-intl';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
@@ -23,6 +24,7 @@ import { EAchievementType } from 'src/core/models';
 import { Responsive } from 'src/core/components';
 import loadParticlesEngine from 'src/core/functions/load-particles-engine';
 import Particles from 'react-tsparticles';
+import LazyLoadParticles from 'src/core/components/lazy-load/lazy-load';
 import * as S from './styled';
 import { desktopParticlesConfig } from './particles/desktop-config';
 
@@ -31,22 +33,13 @@ const MyTimeline = () => {
 
   return (
     <S.TimelineContainer>
+      <LazyLoadParticles id="my-timeline-section" particlesConfig={desktopParticlesConfig} />
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString('Minha trajetória').start();
         }}
         icon={<Timeline htmlColor="white" fontSize="large" />}
       >
-        <Responsive
-          breakpoint="md"
-        >
-          <Particles
-            id="my-timeline-background"
-            canvasClassName="background-canvas"
-            init={(engine) => loadParticlesEngine(engine)}
-            params={desktopParticlesConfig}
-          />
-        </Responsive>
         <S.TimelineWrapper>
           {/* <SwipeAnimation
             continuous={false}
@@ -70,7 +63,7 @@ const MyTimeline = () => {
                   fontSize="large"
                   htmlColor="white"
                 />
-            )}
+              )}
             />
             {landmarks.map((landmark) => {
               const { background, icon } = {

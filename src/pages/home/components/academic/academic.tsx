@@ -21,6 +21,7 @@ import {
   EResponsiveType, ICertificate, ICourse, IExtracurricular,
 } from 'src/core/models';
 import loadParticlesEngine from 'src/core/functions/load-particles-engine';
+import LazyLoadParticles from 'src/core/components/lazy-load/lazy-load';
 import Certificate from './components/certificate/certificate';
 import Course from './components/course/course';
 import Extracurricular from './components/extracurricular/extracurricular';
@@ -126,6 +127,7 @@ const Academic = () => {
 
   return (
     <S.FormationWrapper>
+      <LazyLoadParticles id="formation-section" particlesConfig={isMobile ? mobileParticlesConfig : desktopParticlesConfig} />
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString('Formação')
@@ -136,12 +138,6 @@ const Academic = () => {
           height: '100%',
         }}
       >
-        <Particles
-          canvasClassName="background-canvas"
-          init={(engine) => loadParticlesEngine(engine)}
-          options={isMobile ? mobileParticlesConfig : desktopParticlesConfig}
-          id="academic-background"
-        />
         <S.FormationTabs
           container
           flexWrap="nowrap"

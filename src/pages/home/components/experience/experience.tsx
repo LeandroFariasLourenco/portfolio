@@ -3,7 +3,9 @@ import {
   Box, useTheme,
 } from '@mui/material';
 import cx from 'classnames';
-import { useCallback, useMemo, useState } from 'react';
+import {
+  useCallback, useMemo, useState,
+} from 'react';
 import { Fade } from 'react-awesome-reveal';
 import experiences from 'src/assets/resources/experiences.json';
 import { Section } from 'src/core/layouts';
@@ -18,14 +20,13 @@ import Responsive from 'src/core/components/responsive/responsive';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EResponsiveType } from 'src/core/models';
 import { IResponsiveSwiper } from 'src/core/models/responsive-swiper.interface';
-import Particles from 'react-tsparticles';
-import loadParticlesEngine from 'src/core/functions/load-particles-engine';
+import LazyLoadParticles from 'src/core/components/lazy-load/lazy-load';
 import DesktopCard from './components/desktop-card/desktop-card';
 import MobileCard from './components/mobile-card/mobile-card';
 
 import * as S from './styled';
-import { mobileParticlesConfig } from './particles/mobile-config';
 import { desktopParticlesConfig } from './particles/desktop-config';
+import { mobileParticlesConfig } from './particles/mobile-config';
 
 const Experience = () => {
   const theme = useTheme();
@@ -106,15 +107,11 @@ const Experience = () => {
           .start();
       }}
       icon={<WorkHistory fontSize="large" htmlColor="white" />}
+      gridStyle={{
+        position: 'relative',
+      }}
     >
-      {!isMobile ? (
-        <Particles
-          init={(engine) => loadParticlesEngine(engine)}
-          canvasClassName="background-canvas"
-          id="experience-background"
-          options={isMobile ? mobileParticlesConfig : desktopParticlesConfig}
-        />
-      ) : null}
+      <LazyLoadParticles id="experience-section" particlesConfig={isMobile ? mobileParticlesConfig : desktopParticlesConfig} />
       <S.SwiperContainer>
         <Box className="swiper-pagination">
           {[...Array(experiences.length)].map(renderSwiperPagination)}
