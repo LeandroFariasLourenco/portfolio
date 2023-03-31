@@ -109,7 +109,7 @@ const Experience = () => {
     >
       {!isMobile ? (
         <Particles
-          init={loadParticlesEngine}
+          init={(engine) => loadParticlesEngine(engine)}
           canvasClassName="background-canvas"
           id="experience-background"
           options={isMobile ? mobileParticlesConfig : desktopParticlesConfig}

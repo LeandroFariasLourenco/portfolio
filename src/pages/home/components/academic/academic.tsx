@@ -138,7 +138,7 @@ const Academic = () => {
       >
         <Particles
           canvasClassName="background-canvas"
-          init={loadParticlesEngine}
+          init={(engine) => loadParticlesEngine(engine)}
           options={isMobile ? mobileParticlesConfig : desktopParticlesConfig}
           id="academic-background"
         />

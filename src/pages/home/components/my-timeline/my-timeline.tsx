@@ -43,12 +43,12 @@ const MyTimeline = () => {
           <Particles
             id="my-timeline-background"
             canvasClassName="background-canvas"
-            init={loadParticlesEngine}
+            init={(engine) => loadParticlesEngine(engine)}
             params={desktopParticlesConfig}
           />
         </Responsive>
         <S.TimelineWrapper>
-          <SwipeAnimation
+          {/* <SwipeAnimation
             continuous={false}
             lottieProps={{
               options: { animationData: SwipeDownAnimation },
@@ -56,7 +56,7 @@ const MyTimeline = () => {
               width: 125,
               height: 'unset',
             }}
-          />
+          /> */}
           <VerticalTimeline
             lineColor={theme.palette.primary.main}
           >
