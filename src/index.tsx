@@ -1,9 +1,8 @@
-import React from 'react';
+import { StyledEngineProvider, ThemeProvider as MaterialThemeProvider } from '@mui/material/styles';
 import ReactDOM from 'react-dom/client';
-import { ThemeProvider as MaterialThemeProvider, StyledEngineProvider } from '@mui/material/styles';
+import { IntlProvider } from 'react-intl';
 import Routes from 'src/core/routes/routes';
 import { materialTheme } from 'src/styles/utils';
-import { IntlProvider } from 'react-intl';
 
 import 'flag-icons/css/flag-icons.min.css';
 import 'swiper/css';
@@ -13,8 +12,8 @@ import 'swiper/css/pagination';
 import 'react-vertical-timeline-component/style.min.css';
 
 import { observer } from 'mobx-react-lite';
-import reportWebVitals from './reportWebVitals';
 import GlobalProvider, { useGlobalContext } from './core/store/global/context';
+import reportWebVitals from './reportWebVitals';
 import Global from './styles/global';
 
 const IntlComponent = observer(() => {
@@ -43,7 +42,8 @@ const Providers = () => (
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
-  <Providers />,
+  <Providers />
+  ,
 );
 
 // If you want to start measuring performance in your app, pass a function

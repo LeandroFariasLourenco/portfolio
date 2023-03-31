@@ -7,7 +7,7 @@ export const desktopParticlesConfig: ParticlesProps['options'] = {
   fpsLimit: 60,
   particles: {
     number: {
-      value: 120,
+      value: 90,
       density: {
         enable: true,
         value_area: 800,
@@ -37,7 +37,7 @@ export const desktopParticlesConfig: ParticlesProps['options'] = {
       },
     },
     size: {
-      value: 3.945738208161363,
+      value: 3.9,
       random: true,
       anim: {
         enable: false,
@@ -75,11 +75,6 @@ export const desktopParticlesConfig: ParticlesProps['options'] = {
         enable: true,
         mode: 'repulse',
       },
-      onclick: {
-        enable: true,
-        mode: 'remove',
-      },
-      resize: true,
     },
     modes: {
       grab: {
@@ -95,16 +90,9 @@ export const desktopParticlesConfig: ParticlesProps['options'] = {
         opacity: 8,
       },
       repulse: {
-        distance: 129.93235396821524,
+        distance: 130,
         duration: 0.4,
-      },
-      push: {
-        particles_nb: 4,
-      },
-      remove: {
-        particles_nb: 2,
       },
     },
   },
-  retina_detect: true,
 };

@@ -70,6 +70,7 @@ export const CardContainer = styled(Grid)(({ theme }) => `
 `);
 
 export const FormationWrapper = styled(Grid)`
+  position: relative;
   ${({ theme }) => theme.breakpoints.up('md')} {
     height: 815px;
   }
