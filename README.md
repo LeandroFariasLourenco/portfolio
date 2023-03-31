@@ -10,3 +10,4 @@ Tratar uso de multíplos "return"s em um useEffect para resolver o problema do S
 Refator linear-gradient com imagens para um container com a cor usando ::before
 Implementar particles na seção de timeline em desktop
 Ver alguma forma de carregar apenas animações que estão no campo de visão
+
