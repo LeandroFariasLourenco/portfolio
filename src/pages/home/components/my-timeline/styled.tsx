@@ -20,9 +20,8 @@ export const TimelineWrapper = styled(Grid)(({ theme }) => `
 
   ${theme.breakpoints.down('md')} {
     position: relative;
-    overflow-y: auto;
     overflow-x: hidden;
-    max-height: 475px;
+    /* max-height: 475px; */
   }
 
   svg {

@@ -26,7 +26,7 @@ const Welcome = () => {
       <Particles
         id="welcome-background"
         canvasClassName="background-canvas"
-        init={loadParticlesEngine}
+        init={(engine) => loadParticlesEngine(engine)}
         params={isDesktop ? desktopParticlesConfig : mobileParticlesConfig}
       />
       <Responsive

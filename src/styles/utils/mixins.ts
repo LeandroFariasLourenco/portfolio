@@ -34,6 +34,9 @@ export const mixins = {
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
+      @supports (-webkit-overflow-scrolling: touch) {
+        background-attachment: scroll;
+      }
 
       > * {
         z-index: 3;
