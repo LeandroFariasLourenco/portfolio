@@ -123,12 +123,12 @@ const Academic = () => {
   }), []);
 
   return (
-    <S.FormationWrapper>
-      <Responsive
+    <S.FormationWrapper id="academic">
+      {/* <Responsive
         breakpoint="md"
-      >
-        <LazyLoadParticles id="formation-section" particlesConfig={desktopParticlesConfig} />
-      </Responsive>
+      > */}
+      <LazyLoadParticles id="formation-section" particlesConfig={desktopParticlesConfig} />
+      {/* </Responsive> */}
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString('Formação')

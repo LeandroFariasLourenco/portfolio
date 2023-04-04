@@ -17,7 +17,8 @@ export const ProjectsWrapper = styled(Grid)`
   ${mixins.linearGradientBackground({
     backgroundImage: getBucketResource('/wallpapers/terminal.png'),
     gradientColor: 'linear-gradient(rgba(28, 22, 48, 0.88), rgba(28, 22, 48,0.95))',
-  })}
+  })};
+  background-attachment: fixed;
 `;
 
 export const ProjectsTabs = styled(Grid)(({ theme }) => `

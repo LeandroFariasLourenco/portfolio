@@ -6,7 +6,9 @@ import {
 } from '@mui/material';
 import cx from 'classnames';
 import { observer } from 'mobx-react-lite';
-import { cloneElement, useMemo, useState } from 'react';
+import {
+  useCallback, cloneElement, useMemo, useState,
+} from 'react';
 import { FormattedMessage } from 'react-intl';
 import { ElevationScroll } from 'src/core/components';
 import Responsive from 'src/core/components/responsive/responsive';
@@ -14,6 +16,7 @@ import useIsWindowTop from 'src/core/hooks/useIsWindowTop';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EResponsiveType, Languages } from 'src/core/models';
 import { useGlobalContext } from 'src/core/store/global/context';
+import { APP } from 'src/core/constants';
 import { IMenuOption } from './models/menu-option.interface';
 
 import * as S from './styled';
@@ -32,25 +35,33 @@ const Header = () => {
   };
 
   const menuOptions: IMenuOption[] = useMemo<IMenuOption[]>(() => [
-    { label: 'header.links.section1', href: '#home', icon: <Info /> },
-    { label: 'header.links.section2', href: '#home', icon: <Work /> },
-    { label: 'header.links.section3', href: '#home', icon: <Terminal /> },
-    { label: 'header.links.section4', href: '#home', icon: <School /> },
-    { label: 'header.links.section5', href: '#home', icon: <Mail /> },
+    { label: 'header.links.section1', href: '#about', icon: <Info /> },
+    { label: 'header.links.section2', href: '#experience', icon: <Work /> },
+    { label: 'header.links.section3', href: '#my-stack', icon: <Work /> },
+    { label: 'header.links.section4', href: '#academic', icon: <Terminal /> },
+    { label: 'header.links.section5', href: '#projects', icon: <School /> },
+    { label: 'header.links.section6', href: '#timeline', icon: <Mail /> },
   ], []);
 
   const handleLanguageSelect = (event: SelectChangeEvent<unknown>) => {
     globalContext.setLanguage(event.target.value as Languages);
   };
 
-  const renderMenuOptions = (link: IMenuOption) => (
+  const renderMenuOptions = useCallback((link: IMenuOption) => (
     <S.HeaderLink
       key={link.label}
+      to={link.href}
+      scroll={(el) => {
+        window.scrollTo({
+          behavior: 'smooth',
+          top: (el.getBoundingClientRect().top + window.scrollY) - APP.header.height,
+        });
+      }}
     >
       {cloneElement(link.icon as any, { htmlColor: '#fff', fontSize: 'small' } as IconProps)}
       <Typography><FormattedMessage id={link.label} /></Typography>
     </S.HeaderLink>
-  );
+  ), []);
 
   return (
     <ElevationScroll>
