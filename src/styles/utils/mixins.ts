@@ -38,32 +38,30 @@ export const mixins = {
     backgroundImage,
     gradientColor,
   }: { backgroundImage: string; gradientColor: string; }) {
-    return css`
-      background-image: url(${backgroundImage});
-      position: relative;
-      z-index: 1;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      @supports (-webkit-overflow-scrolling: touch) {
-        background-attachment: scroll;
-      }
+    return css(({ theme }) => `
+      ${theme.breakpoints.up('md')} {
+        background-image: url(${backgroundImage});
+        position: relative;
+        z-index: 1;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
 
-      > * {
-        z-index: 3;
-      }
+        > * {
+          z-index: 3;
+        }
 
-      &::before {
-        content: '';
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 2;
-        background-image: ${gradientColor};
+        &::before {
+          content: '';
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 2;
+          background-image: ${gradientColor};
+        }
       }
-    `;
+    `);
   },
 };

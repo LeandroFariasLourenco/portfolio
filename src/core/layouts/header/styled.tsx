@@ -1,9 +1,10 @@
 import {
   AppBar, Grid, Select,
 } from '@mui/material';
+import { HashLink } from 'react-router-hash-link';
 import styled from 'styled-components';
 
-export const HeaderLink = styled('a')(({ theme }) => `
+export const HeaderLink = styled(HashLink)(({ theme }) => `
   font-size: 12px;
   cursor: pointer;
   padding: 10px;

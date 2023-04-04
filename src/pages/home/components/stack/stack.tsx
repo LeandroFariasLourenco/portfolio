@@ -12,7 +12,7 @@ const Languages = () => {
   const [selectedTab, setSelectedTab] = useState<number>(0);
 
   return (
-    <S.SectionWrapper>
+    <S.SectionWrapper id="my-stack">
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString('Minha stack')

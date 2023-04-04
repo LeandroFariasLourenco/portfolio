@@ -27,12 +27,12 @@ const MyTimeline = () => {
   const theme = useTheme();
 
   return (
-    <S.TimelineContainer>
-      <Responsive
+    <S.TimelineContainer id="timeline">
+      {/* <Responsive
         breakpoint="md"
-      >
-        <LazyLoadParticles id="my-timeline-section" particlesConfig={desktopParticlesConfig} />
-      </Responsive>
+      > */}
+      <LazyLoadParticles id="my-timeline-section" particlesConfig={desktopParticlesConfig} />
+      {/* </Responsive> */}
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString('Minha trajetória').start();

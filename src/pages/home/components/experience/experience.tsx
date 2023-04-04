@@ -101,6 +101,7 @@ const Experience = () => {
 
   return (
     <Section
+      id="experience"
       onTitleShow={(typewriter) => {
         typewriter.typeString('Experiência profissional')
           .start();
@@ -110,11 +111,11 @@ const Experience = () => {
         position: 'relative',
       }}
     >
-      <Responsive
+      {/* <Responsive
         breakpoint="md"
-      >
-        <LazyLoadParticles id="experience-section" particlesConfig={desktopParticlesConfig} />
-      </Responsive>
+      > */}
+      <LazyLoadParticles id="experience-section" particlesConfig={desktopParticlesConfig} />
+      {/* </Responsive> */}
       <S.SwiperContainer>
         <Box className="swiper-pagination">
           {[...Array(experiences.length)].map(renderSwiperPagination)}

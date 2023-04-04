@@ -69,7 +69,7 @@ const Projects = () => {
   ), [repositories]);
 
   return (
-    <S.ProjectsWrapper>
+    <S.ProjectsWrapper id="projects">
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString('Meus projetos')
