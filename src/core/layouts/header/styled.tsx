@@ -36,15 +36,10 @@ export const HeaderLink = styled('a')(({ theme }) => `
   }
 `);
 
-export const HeaderBar = styled(AppBar)<{ isTop: boolean }>(({ isTop, theme }) => `
+export const HeaderBar = styled(AppBar)(({ theme }) => `
   padding: 5px 0;
   box-shadow: unset;
   
-  svg {
-    transition: fill 200ms ease-in-out;
-    fill: ${isTop ? 'white' : theme.palette.text.primary}
-  }
-
   ${theme.breakpoints.down('md')} {
     padding: 10px;
   }

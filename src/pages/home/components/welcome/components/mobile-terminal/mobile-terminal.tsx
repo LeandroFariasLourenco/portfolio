@@ -1,7 +1,7 @@
 import {
   Close, CropDin, Remove,
 } from '@mui/icons-material';
-import { Grid, Typography, useTheme } from '@mui/material';
+import { Grid } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { Typewriter } from 'src/core/components';
@@ -11,7 +11,6 @@ import { ITerminalLine } from './models/terminal-line.interface';
 import * as S from './styled';
 
 const MobileTerminal = () => {
-  const theme = useTheme();
   const intl = useIntl();
   const [terminalRows, setTerminalRows] = useState<ITerminalLine[]>([]);
 

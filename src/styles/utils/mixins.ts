@@ -22,6 +22,18 @@ export const mixins = {
       }
     `;
   },
+
+  visibilityTransition: css`
+    transition: all 200ms ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    
+    &.is--visible {
+      opacity: 1;
+      visibility: unset;
+    }
+  `,
+
   linearGradientBackground({
     backgroundImage,
     gradientColor,
