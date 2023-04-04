@@ -26,7 +26,6 @@ import MobileCard from './components/mobile-card/mobile-card';
 
 import * as S from './styled';
 import { desktopParticlesConfig } from './particles/desktop-config';
-import { mobileParticlesConfig } from './particles/mobile-config';
 
 const Experience = () => {
   const theme = useTheme();
@@ -111,7 +110,11 @@ const Experience = () => {
         position: 'relative',
       }}
     >
-      <LazyLoadParticles id="experience-section" particlesConfig={isMobile ? mobileParticlesConfig : desktopParticlesConfig} />
+      <Responsive
+        breakpoint="md"
+      >
+        <LazyLoadParticles id="experience-section" particlesConfig={desktopParticlesConfig} />
+      </Responsive>
       <S.SwiperContainer>
         <Box className="swiper-pagination">
           {[...Array(experiences.length)].map(renderSwiperPagination)}

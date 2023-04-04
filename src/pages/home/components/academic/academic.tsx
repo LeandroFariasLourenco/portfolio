@@ -4,13 +4,13 @@ import {
 import { Grid, Typography } from '@mui/material';
 import cx from 'classnames';
 import {
-  memo, useMemo, useRef, useState,
+  useMemo, useRef, useState,
 } from 'react';
 import AnimateHeight from 'react-animate-height';
 import { FormattedMessage } from 'react-intl';
 
 import SwipeRightAnimation from 'src/assets/animations/swipe-right.json';
-import Particles from 'react-tsparticles';
+import LazyLoadParticles from 'src/core/components/lazy-load/lazy-load';
 import Responsive from 'src/core/components/responsive/responsive';
 import SwipeAnimation from 'src/core/components/swipe-animation/swipe-animation';
 import { getBucketResource } from 'src/core/functions';
@@ -20,13 +20,10 @@ import { Section } from 'src/core/layouts';
 import {
   EResponsiveType, ICertificate, ICourse, IExtracurricular,
 } from 'src/core/models';
-import loadParticlesEngine from 'src/core/functions/load-particles-engine';
-import LazyLoadParticles from 'src/core/components/lazy-load/lazy-load';
 import Certificate from './components/certificate/certificate';
 import Course from './components/course/course';
 import Extracurricular from './components/extracurricular/extracurricular';
 import { desktopParticlesConfig } from './particles/desktop-config';
-import { mobileParticlesConfig } from './particles/mobile-config';
 import * as S from './styled';
 
 const Academic = () => {
@@ -127,7 +124,11 @@ const Academic = () => {
 
   return (
     <S.FormationWrapper>
-      <LazyLoadParticles id="formation-section" particlesConfig={isMobile ? mobileParticlesConfig : desktopParticlesConfig} />
+      <Responsive
+        breakpoint="md"
+      >
+        <LazyLoadParticles id="formation-section" particlesConfig={desktopParticlesConfig} />
+      </Responsive>
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString('Formação')

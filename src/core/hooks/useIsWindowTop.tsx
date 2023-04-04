@@ -15,7 +15,7 @@ const useIsWindowTop = () => {
     };
   }, []);
 
-  return !yOffset;
+  return { isWindowOnTop: !yOffset };
 };
 
 export default useIsWindowTop;

@@ -1,9 +1,9 @@
 import { Grid } from '@mui/material';
-import Particles from 'react-tsparticles';
+import cx from 'classnames';
 import LazyLoadParticles from 'src/core/components/lazy-load/lazy-load';
 import Responsive from 'src/core/components/responsive/responsive';
 import { APP } from 'src/core/constants';
-import loadParticlesEngine from 'src/core/functions/load-particles-engine';
+import useIsWindowTop from 'src/core/hooks/useIsWindowTop';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EResponsiveType } from 'src/core/models';
 import DesktopTerminal from './components/desktop-terminal/desktop-terminal';
@@ -14,6 +14,7 @@ import * as S from './styled';
 
 const Welcome = () => {
   const isDesktop = useResponsive({});
+  const { isWindowOnTop } = useIsWindowTop();
 
   const handleArrowDownClick = () => {
     window.scrollTo({
@@ -29,6 +30,9 @@ const Welcome = () => {
         breakpoint="md"
       >
         <S.ArrowDownContainer
+          className={cx({
+            'is--visible': isWindowOnTop,
+          })}
           onClick={handleArrowDownClick}
         >
           <S.ArrowDown />

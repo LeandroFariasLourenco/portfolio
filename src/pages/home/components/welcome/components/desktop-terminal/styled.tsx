@@ -1,12 +1,10 @@
-import { ArrowDownward } from '@mui/icons-material';
 import {
-  Card, Grid, keyframes, styled, Typography,
+  Box, Grid, styled, Typography,
 } from '@mui/material';
 
 export const TerminalHeading = styled(Grid)`
   background-color: #4A4A4A;
   padding: 5px 10px;
-  border-radius: 5px 5px 0 0;
   position: relative;
 
   &::after {
@@ -21,21 +19,54 @@ export const TerminalHeading = styled(Grid)`
   }
 `;
 
+export const TerminalWrapper = styled(Box)`
+  border: 1px solid black;
+  border-radius: 5px;
+  overflow: hidden;
+  opacity: 0.35;
+  transition: opacity 200ms ease-in-out;
+
+  &.is--focused {
+    opacity: 1;
+  }
+`;
+
 export const TerminalContent = styled(Grid)`
   padding: 5px 10px;
+  max-height: 250px;
+  overflow-y: auto;
 
   .Typewriter__cursor {
     font-weight: bold;
   }
 `;
 
-export const TerminalText = styled(Typography)(({ theme }) => `
+export const TerminalPrefixText = styled(Typography)(({ theme }) => `
   color: ${theme.palette.grey[300]};
   margin-right: 5px;
+  display: flex;
+  align-items: center;
+
+  > svg {
+    margin-left: -8px;
+    margin-right: 8px;
+    width: 15px;
+  }
 `);
+
+export const TerminalText = styled(Typography)`
+  display: flex;
+
+  &.is--current--line {
+    &::after {
+      content: "|"
+    }
+  }
+`;
 
 export const TerminalRow = styled(Grid)`
   display: flex;
+  white-space: pre;
 `;
 
 export const TerminalTitleContainer = styled(Grid)``;
@@ -45,14 +76,46 @@ export const TerminalTitle = styled(Typography)(({ theme }) => `
   margin-left: 5px;
 `);
 
-export const TerminalWindowCircles = styled(Grid)``;
+export const TerminalWindowCircles = styled(Grid)`
+  &:hover {
+    .hover-icon {
+      opacity: 1;
+    }
+  }
+`;
 
-export const TerminalWindowCircle = styled('div')<{
+export const TerminalWindowCircle = styled(Box)<{
   $color: string;
 }>(({ $color }) => `
-  border-radius: 100%;
+  background-color: ${$color};
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+`);
+
+export const TerminalWindowWrapper = styled(Box)`
+  position: relative;
   width: 17px;
   height: 17px;
-  background-color: ${$color};
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 100%;
   margin-right: 10px;
-`);
+
+  .hover-icon {
+    opacity: 0;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    bottom: 3px;
+    left: 3px;
+    width: unset;
+    height: unset;
+
+    &.rotate {
+      transform: rotate(90deg);
+    }
+  }
+`;

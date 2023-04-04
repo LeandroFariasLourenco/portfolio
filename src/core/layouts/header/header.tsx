@@ -20,7 +20,7 @@ import * as S from './styled';
 
 const Header = () => {
   const globalContext = useGlobalContext();
-  const isWindowOnTop = useIsWindowTop();
+  const { isWindowOnTop } = useIsWindowTop();
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const isMobile = useResponsive({ breakpoint: 'md', type: EResponsiveType.smaller });
 
@@ -54,8 +54,7 @@ const Header = () => {
 
   return (
     <ElevationScroll>
-      {/* <Slide appear={false} direction="down" in={!trigger}> */}
-      <S.HeaderBar isTop={isWindowOnTop} elevation={4}>
+      <S.HeaderBar elevation={4}>
         <Grid container item xs={12} justifyContent="center">
           <Grid container item alignItems="center" justifyContent="space-between" xs={12} md={8}>
             <Responsive
@@ -92,9 +91,12 @@ const Header = () => {
                 </>
               )}
               aboveComponent={(
-                <Grid item xs={8} container justifyContent="flex-end" flexWrap="nowrap">
-                  {menuOptions.map(renderMenuOptions)}
-                </Grid>
+                <>
+                  <GitHub htmlColor="#fff" fontSize="large" />
+                  <Grid item maxWidth={700} container justifyContent="space-between" alignItems="center">
+                    {menuOptions.map(renderMenuOptions)}
+                  </Grid>
+                </>
               )}
             />
             <Grid item md={1}>
@@ -126,7 +128,6 @@ const Header = () => {
           <KeyboardArrowUp fontSize="large" />
         </S.ScrollToTopWrapper>
       </S.HeaderBar>
-      {/* </Slide> */}
     </ElevationScroll>
   );
 };

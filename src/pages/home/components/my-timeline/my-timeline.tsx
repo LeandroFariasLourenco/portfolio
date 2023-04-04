@@ -10,30 +10,29 @@ import {
   Upgrade,
   Work,
 } from '@mui/icons-material';
-import { memo } from 'react';
 import { Typography, useTheme } from '@mui/material';
 import { FormattedMessage } from 'react-intl';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 
-import SwipeDownAnimation from 'src/assets/animations/swipe-down.json';
 import landmarks from 'src/assets/resources/landmarks.json';
 import { Section } from 'src/core/layouts';
 
-import SwipeAnimation from 'src/core/components/swipe-animation/swipe-animation';
+import LazyLoadParticles from 'src/core/components/lazy-load/lazy-load';
 import { EAchievementType } from 'src/core/models';
 import { Responsive } from 'src/core/components';
-import loadParticlesEngine from 'src/core/functions/load-particles-engine';
-import Particles from 'react-tsparticles';
-import LazyLoadParticles from 'src/core/components/lazy-load/lazy-load';
-import * as S from './styled';
 import { desktopParticlesConfig } from './particles/desktop-config';
+import * as S from './styled';
 
 const MyTimeline = () => {
   const theme = useTheme();
 
   return (
     <S.TimelineContainer>
-      <LazyLoadParticles id="my-timeline-section" particlesConfig={desktopParticlesConfig} />
+      <Responsive
+        breakpoint="md"
+      >
+        <LazyLoadParticles id="my-timeline-section" particlesConfig={desktopParticlesConfig} />
+      </Responsive>
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString('Minha trajetória').start();

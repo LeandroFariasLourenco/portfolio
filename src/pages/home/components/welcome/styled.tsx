@@ -2,6 +2,7 @@ import { ArrowDownward } from '@mui/icons-material';
 import {
   Card, Grid, keyframes, styled, Typography,
 } from '@mui/material';
+import { mixins } from 'src/styles/utils';
 
 export const Wrapper = styled(Grid)`
   padding-top: 80px;
@@ -72,6 +73,7 @@ export const WelcomeContainer = styled(Grid)`
 `;
 
 export const ArrowDownContainer = styled(Grid)`
+  ${mixins.visibilityTransition};
   position: absolute;
   bottom: 20px;
   left: 50%;
@@ -83,7 +85,6 @@ export const ArrowDownContainer = styled(Grid)`
   justify-content: center;
   padding: 7.5px;
   cursor: pointer;
-  transition: background-color 200ms ease-in-out;
 
   &::before,
   &::after {
