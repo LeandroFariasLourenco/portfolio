@@ -12,6 +12,7 @@ import { Typewriter } from 'src/core/components';
 import { useLoginTime } from 'src/core/hooks';
 import useIsWindowTop from 'src/core/hooks/useIsWindowTop';
 import { TypewriterClass } from 'typewriter-effect';
+import { deleteLastCharacter } from 'src/core/functions';
 import { ITerminalLine } from '../mobile-terminal/models/terminal-line.interface';
 import * as S from './styled';
 
@@ -93,7 +94,7 @@ const DesktopTerminal = () => {
     const keysToPreventDefault = [
       'PageDown', 'PageUp', 'End', 'Home', 'AltRight', 'AltLeft',
       'ControlLeft', 'ControlRight', 'Delete', 'Insert', 'ScrollLock', 'Pause',
-      'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
+      'ArrowRight', 'ArrowUp', 'ArrowDown',
     ];
 
     if (keyBlacklist.includes(event.key) || keysToPreventDefault.includes(event.code)) {
@@ -115,10 +116,7 @@ const DesktopTerminal = () => {
       setTerminalRowsCount((prevState) => {
         const newState = [...prevState];
         const currentIndex = newState.length - 1;
-        const list = newState[currentIndex].split('');
-        list.splice(list.length - 1, 1);
-        newState.slice(0, list.length - 2);
-        newState[currentIndex] = list.join('');
+        newState[currentIndex] = deleteLastCharacter(newState[currentIndex]);
         return newState;
       });
       return;
