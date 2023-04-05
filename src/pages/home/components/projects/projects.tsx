@@ -12,7 +12,7 @@ import SwipeAnimation from 'src/core/components/swipe-animation/swipe-animation'
 import { getBucketResource } from 'src/core/functions';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { Repository, Section } from 'src/core/layouts';
-import { EResponsiveType, IGithubRepository } from 'src/core/models';
+import { EAppSections, EResponsiveType, IGithubRepository } from 'src/core/models';
 import { IResponsiveSwiper } from 'src/core/models/responsive-swiper.interface';
 import { GithubService } from 'src/core/services';
 import { Navigation, Pagination } from 'swiper';
@@ -69,7 +69,7 @@ const Projects = () => {
   ), [repositories]);
 
   return (
-    <S.ProjectsWrapper id="projects">
+    <S.ProjectsWrapper id={EAppSections.PROJECTS}>
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString('Meus projetos')

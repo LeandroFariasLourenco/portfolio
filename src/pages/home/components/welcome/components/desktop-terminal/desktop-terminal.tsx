@@ -13,6 +13,7 @@ import { useLoginTime } from 'src/core/hooks';
 import useIsWindowTop from 'src/core/hooks/useIsWindowTop';
 import { TypewriterClass } from 'typewriter-effect';
 import { deleteLastCharacter } from 'src/core/functions';
+import { EAppSections } from 'src/core/models';
 import { ITerminalLine } from '../mobile-terminal/models/terminal-line.interface';
 import * as S from './styled';
 
@@ -80,6 +81,67 @@ const DesktopTerminal = () => {
     });
   };
 
+  const handleSpacePress = (event: KeyboardEvent) => {
+    setTerminalRowsCount((prevState) => {
+      const newState = [...prevState];
+      newState[newState.length - 1] += '&nbsp;';
+      return newState;
+    });
+    event.preventDefault();
+    scrollToTerminalBottom();
+  };
+
+  const handleBackspacePress = () => {
+    setTerminalRowsCount((prevState) => {
+      const newState = [...prevState];
+      const currentIndex = newState.length - 1;
+      newState[currentIndex] = deleteLastCharacter(newState[currentIndex]);
+      return newState;
+    });
+  };
+
+  const handleEnterPress = () => {
+    setTerminalRowsCount((prevState) => {
+      const currentIndex = prevState.length - 1;
+      if (!prevState[currentIndex]) return prevState;
+      const newState = [...prevState];
+      const userInput = newState[currentIndex];
+      const appSections = Object.values(EAppSections) as string[];
+
+      if (appSections.includes(userInput.replace('/', ''))) {
+        document.querySelector(`#${userInput.replace('/', '')}`)!.scrollIntoView();
+        scrollToTerminalBottom();
+        return [...newState, ''];
+      }
+
+      if (userInput === 'clear') {
+        return [''];
+      }
+
+      if (userInput === '/help') {
+        newState.push('Aqui está uma lista de comandos possíveis:');
+        appSections.forEach((section) => {
+          newState.push(`/${section}`);
+        });
+        scrollToTerminalBottom();
+        return [...newState, ''];
+      }
+
+      scrollToTerminalBottom();
+      return [...newState, `Bash: comando não encontrado: ${userInput}`, ''];
+    });
+  };
+
+  const handleKeyPress = (key: string) => {
+    setTerminalRowsCount((prevState) => {
+      const currentIndex = prevState.length - 1;
+      const newState = [...prevState];
+      newState[currentIndex] += key;
+      scrollToTerminalBottom();
+      return newState;
+    });
+  };
+
   const setupTerminalActions = (event: KeyboardEvent) => {
     if (!isWindowOnTopRef.current) {
       return;
@@ -94,7 +156,7 @@ const DesktopTerminal = () => {
     const keysToPreventDefault = [
       'PageDown', 'PageUp', 'End', 'Home', 'AltRight', 'AltLeft',
       'ControlLeft', 'ControlRight', 'Delete', 'Insert', 'ScrollLock', 'Pause',
-      'ArrowRight', 'ArrowUp', 'ArrowDown',
+      'ArrowRight', 'ArrowDown', 'ArrowUp', 'ArrowDown',
     ];
 
     if (keyBlacklist.includes(event.key) || keysToPreventDefault.includes(event.code)) {
@@ -102,64 +164,15 @@ const DesktopTerminal = () => {
       return;
     }
 
-    if (event.code === 'Space') {
-      setTerminalRowsCount((prevState) => {
-        const newState = [...prevState];
-        newState[newState.length - 1] += '&nbsp;';
-        return newState;
-      });
-      event.preventDefault();
-      return;
+    switch (event.code) {
+      case 'Space': handleSpacePress(event);
+        break;
+      case 'Backspace': handleBackspacePress();
+        break;
+      case 'Enter': handleEnterPress();
+        break;
+      default: handleKeyPress(event.key);
     }
-
-    if (event.key === 'Backspace') {
-      setTerminalRowsCount((prevState) => {
-        const newState = [...prevState];
-        const currentIndex = newState.length - 1;
-        newState[currentIndex] = deleteLastCharacter(newState[currentIndex]);
-        return newState;
-      });
-      return;
-    }
-
-    if (event.key === 'Enter') {
-      setTerminalRowsCount((prevState) => {
-        const currentIndex = prevState.length - 1;
-        if (!prevState[currentIndex]) return prevState;
-        const newState = [...prevState];
-        const userInput = newState[currentIndex];
-
-        if (userInput === 'clear') {
-          return [''];
-        }
-
-        if (userInput === '/help') {
-          newState.push('Aqui está uma lista de comandos possíveis:');
-          newState.push('/experiencies');
-          newState.push('/curriculum');
-          newState.push('/my-stack');
-          newState.push('/timeline');
-          newState.push('/about-me');
-          newState.push('/formation');
-          newState.push('/projects');
-
-          scrollToTerminalBottom();
-          return [...newState, ''];
-        }
-
-        scrollToTerminalBottom();
-        return [...newState, `Bash: comando não encontrado: ${userInput}`, ''];
-      });
-
-      return;
-    }
-
-    setTerminalRowsCount((prevState) => {
-      const currentIndex = prevState.length - 1;
-      const newState = [...prevState];
-      newState[currentIndex] += event.key;
-      return newState;
-    });
   };
 
   useEffect(() => {
@@ -239,7 +252,7 @@ const DesktopTerminal = () => {
         </S.TerminalRow>
         {welcomeMessages.map((text, index) => (
           <S.TerminalRow
-            key={text.key}
+            key={`${text.key}-${index}`}
           >
             <S.TerminalPrefixText variant="h6">
               <ArrowRightAlt fontSize="small" />
@@ -257,7 +270,7 @@ const DesktopTerminal = () => {
           </S.TerminalRow>
         ))}
         {terminalRows.map((text, index) => (
-          <S.TerminalRow key={text}>
+          <S.TerminalRow key={`${text}-${index}`}>
             <S.TerminalPrefixText variant="h6">
               <ArrowRightAlt fontSize="small" />
               ~

@@ -25,15 +25,20 @@ export const TerminalWrapper = styled(Box)`
   overflow: hidden;
   opacity: 0.35;
   transition: opacity 200ms ease-in-out;
+  
+  &:not(.is--focused) {
+    pointer-events: none;
+  }
 
   &.is--focused {
     opacity: 1;
+    pointer-events: unset;
   }
 `;
 
 export const TerminalContent = styled(Grid)`
   padding: 5px 10px;
-  max-height: 250px;
+  max-height: 300px;
   overflow-y: auto;
 
   .Typewriter__cursor {
@@ -45,12 +50,13 @@ export const TerminalPrefixText = styled(Typography)(({ theme }) => `
   color: ${theme.palette.grey[300]};
   margin-right: 5px;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
 
   > svg {
     margin-left: -8px;
     margin-right: 8px;
     width: 15px;
+    margin-top: 5px;
   }
 `);
 
@@ -66,7 +72,7 @@ export const TerminalText = styled(Typography)`
 
 export const TerminalRow = styled(Grid)`
   display: flex;
-  white-space: pre;
+  /* white-space: pre; */
 `;
 
 export const TerminalTitleContainer = styled(Grid)``;

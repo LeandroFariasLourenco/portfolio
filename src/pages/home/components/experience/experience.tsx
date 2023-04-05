@@ -18,7 +18,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import Responsive from 'src/core/components/responsive/responsive';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
-import { EResponsiveType } from 'src/core/models';
+import { EAppSections, EResponsiveType } from 'src/core/models';
 import { IResponsiveSwiper } from 'src/core/models/responsive-swiper.interface';
 import LazyLoadParticles from 'src/core/components/lazy-load/lazy-load';
 import DesktopCard from './components/desktop-card/desktop-card';
@@ -101,7 +101,7 @@ const Experience = () => {
 
   return (
     <Section
-      id="experience"
+      id={EAppSections.EXPERIENCES}
       onTitleShow={(typewriter) => {
         typewriter.typeString('Experiência profissional')
           .start();

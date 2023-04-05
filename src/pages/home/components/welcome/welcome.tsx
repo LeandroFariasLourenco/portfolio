@@ -5,7 +5,7 @@ import Responsive from 'src/core/components/responsive/responsive';
 import { APP } from 'src/core/constants';
 import useIsWindowTop from 'src/core/hooks/useIsWindowTop';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
-import { EResponsiveType } from 'src/core/models';
+import { EAppSections, EResponsiveType } from 'src/core/models';
 import DesktopTerminal from './components/desktop-terminal/desktop-terminal';
 import MobileTerminal from './components/mobile-terminal/mobile-terminal';
 import { desktopParticlesConfig } from './particles/desktop-config';
@@ -24,7 +24,7 @@ const Welcome = () => {
   };
 
   return (
-    <S.Wrapper container alignItems="center" item justifyContent="center" md={12}>
+    <S.Wrapper container alignItems="center" item justifyContent="center" md={12} id={EAppSections.WELCOME}>
       <LazyLoadParticles id="welcome-section" particlesConfig={isDesktop ? desktopParticlesConfig : mobileParticlesConfig} />
       <Responsive
         breakpoint="md"

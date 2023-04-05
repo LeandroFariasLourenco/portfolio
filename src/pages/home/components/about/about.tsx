@@ -10,6 +10,7 @@ import { Section } from 'src/core/layouts';
 import PersonComputerAnimation from 'src/assets/animations/person-on-computer.json';
 
 import Responsive from 'src/core/components/responsive/responsive';
+import { EAppSections } from 'src/core/models';
 import Story from './components/story';
 import { IHobbie } from './models/hobbies.interface';
 import * as S from './styled';
@@ -98,7 +99,7 @@ const About = () => {
   ), [hobbies, currentOpenedStory]);
 
   return (
-    <S.AboutMeWrapper id="about">
+    <S.AboutMeWrapper id={EAppSections.ABOUT}>
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString(intl.messages['home.about-me.title'] as string)

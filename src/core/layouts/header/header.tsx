@@ -14,7 +14,7 @@ import { ElevationScroll } from 'src/core/components';
 import Responsive from 'src/core/components/responsive/responsive';
 import useIsWindowTop from 'src/core/hooks/useIsWindowTop';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
-import { EResponsiveType, Languages } from 'src/core/models';
+import { EAppSections, EResponsiveType, Languages } from 'src/core/models';
 import { useGlobalContext } from 'src/core/store/global/context';
 import { APP } from 'src/core/constants';
 import { IMenuOption } from './models/menu-option.interface';
@@ -35,12 +35,12 @@ const Header = () => {
   };
 
   const menuOptions: IMenuOption[] = useMemo<IMenuOption[]>(() => [
-    { label: 'header.links.section1', href: '#about', icon: <Info /> },
-    { label: 'header.links.section2', href: '#experience', icon: <Work /> },
-    { label: 'header.links.section3', href: '#my-stack', icon: <Work /> },
-    { label: 'header.links.section4', href: '#academic', icon: <Terminal /> },
-    { label: 'header.links.section5', href: '#projects', icon: <School /> },
-    { label: 'header.links.section6', href: '#timeline', icon: <Mail /> },
+    { label: 'header.links.section1', href: `#${EAppSections.ABOUT}`, icon: <Info /> },
+    { label: 'header.links.section2', href: `#${EAppSections.EXPERIENCES}`, icon: <Work /> },
+    { label: 'header.links.section3', href: `#${EAppSections.STACK}`, icon: <Work /> },
+    { label: 'header.links.section4', href: `#${EAppSections.ACADEMIC}`, icon: <Terminal /> },
+    { label: 'header.links.section5', href: `#${EAppSections.PROJECTS}`, icon: <School /> },
+    { label: 'header.links.section6', href: `#${EAppSections.MY_TIMELINE}`, icon: <Mail /> },
   ], []);
 
   const handleLanguageSelect = (event: SelectChangeEvent<unknown>) => {
