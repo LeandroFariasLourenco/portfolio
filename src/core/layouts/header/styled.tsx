@@ -37,10 +37,19 @@ export const HeaderLink = styled(HashLink)(({ theme }) => `
   }
 `);
 
-export const HeaderBar = styled(AppBar)(({ theme }) => `
+export const HeaderWrapper = styled(Grid)`
+  background-color: rgba(20, 134, 168, 0.75);
+  transition: background-color 200ms ease-in-out;
   padding: 5px 0;
+
+  &.transparent {
+    background-color: transparent;
+  }
+`;
+
+export const HeaderBar = styled(AppBar)(({ theme }) => `
   box-shadow: unset;
-  
+
   ${theme.breakpoints.down('md')} {
     padding: 10px;
   }

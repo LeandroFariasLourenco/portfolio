@@ -26,6 +26,7 @@ const DesktopTerminal = () => {
   const isWindowOnTopRef = useRef<boolean>(isWindowOnTop);
   const terminalContainerRef = useRef<HTMLDivElement>();
   const { loginTime } = useLoginTime();
+  const [playingGame, setPlayingGame] = useState<boolean>(false);
 
   const introTerminalTexts = useMemo<ITerminalLine[]>(() => ([
     {
@@ -109,7 +110,9 @@ const DesktopTerminal = () => {
       const appSections = Object.values(EAppSections) as string[];
 
       if (appSections.includes(userInput.replace('/', ''))) {
-        document.querySelector(`#${userInput.replace('/', '')}`)!.scrollIntoView();
+        requestAnimationFrame(() => {
+          document.querySelector(`#${userInput.replace('/', '')}`)!.scrollIntoView();
+        });
         scrollToTerminalBottom();
         return [...newState, ''];
       }
@@ -118,11 +121,24 @@ const DesktopTerminal = () => {
         return [''];
       }
 
+      const answers = ['Snake game', 'jogo da cobrinha', 'cobrinha', 'serpente', 'jogo da serpente', 'snake'];
+      if (answers.includes(`${userInput.toLowerCase()}`)) {
+        setPlayingGame(true);
+        return [''];
+      }
+
+      if (userInput === '/game') {
+        newState.push('Qual jogo foi inspirado pelo Blockade de 1976?');
+        scrollToTerminalBottom();
+        return [...newState, ''];
+      }
+
       if (userInput === '/help') {
         newState.push('Aqui está uma lista de comandos possíveis:');
         appSections.forEach((section) => {
           newState.push(`/${section}`);
         });
+        newState.push('/game');
         scrollToTerminalBottom();
         return [...newState, ''];
       }
@@ -203,89 +219,102 @@ const DesktopTerminal = () => {
   }, []);
 
   return (
-    <S.TerminalWrapper
+    <S.TerminalComponentWrapper
       className={cx({
-        'is--focused': isWindowOnTop,
+        closed: playingGame,
       })}
+      item
+      md={8}
+      sm={12}
     >
-      <S.TerminalHeading
-        container
-        flexWrap="nowrap"
-        alignItems="center"
-        justifyContent="space-between"
+      <S.TypeWriterBackground
+        elevation={3}
       >
-        <S.TerminalWindowCircles
-          container
-          item
-          md={3}
+        <S.TerminalWrapper
+          className={cx({
+            'is--focused': isWindowOnTop,
+          })}
         >
-          <S.TerminalWindowWrapper>
-            <S.TerminalWindowCircle $color="#ED6152" />
-            <Close className="hover-icon" />
-          </S.TerminalWindowWrapper>
-          <S.TerminalWindowWrapper>
-            <S.TerminalWindowCircle $color="#E7C21C" />
-            <Remove className="hover-icon" />
-          </S.TerminalWindowWrapper>
-          <S.TerminalWindowWrapper>
-            <S.TerminalWindowCircle $color="#4AC628" />
-            <OpenInFull className="hover-icon rotate" />
-          </S.TerminalWindowWrapper>
-        </S.TerminalWindowCircles>
-
-        <S.TerminalTitleContainer
-          container
-          item
-          md={8}
-          alignItems="center"
-        >
-          <House fontSize="small" htmlColor={theme.palette.grey[400]} />
-          <S.TerminalTitle variant="h6">
-            portfolio -- -bash --80x24
-          </S.TerminalTitle>
-        </S.TerminalTitleContainer>
-      </S.TerminalHeading>
-      {/* @ts-ignore */}
-      <S.TerminalContent ref={terminalContainerRef}>
-        <S.TerminalRow>
-          <S.TerminalPrefixText variant="h6">{loginTime}</S.TerminalPrefixText>
-        </S.TerminalRow>
-        {welcomeMessages.map((text, index) => (
-          <S.TerminalRow
-            key={`${text.key}-${index}`}
+          <S.TerminalHeading
+            container
+            flexWrap="nowrap"
+            alignItems="center"
+            justifyContent="space-between"
           >
-            <S.TerminalPrefixText variant="h6">
-              <ArrowRightAlt fontSize="small" />
-              ~
-            </S.TerminalPrefixText>
-            <Typewriter
-              options={{
-                delay: 50,
-              }}
-              typographyProps={{
-                variant: 'h6',
-              }}
-              onInit={introTerminalTexts[index].typeText}
-            />
-          </S.TerminalRow>
-        ))}
-        {terminalRows.map((text, index) => (
-          <S.TerminalRow key={`${text}-${index}`}>
-            <S.TerminalPrefixText variant="h6">
-              <ArrowRightAlt fontSize="small" />
-              ~
-            </S.TerminalPrefixText>
-            <S.TerminalText
-              variant="h6"
-              className={cx({
-                'is--current--line': index === terminalRows.length - 1,
-              })}
-              dangerouslySetInnerHTML={{ __html: text }}
-            />
-          </S.TerminalRow>
-        ))}
-      </S.TerminalContent>
-    </S.TerminalWrapper>
+            <S.TerminalWindowCircles
+              container
+              item
+              md={3}
+            >
+              <S.TerminalWindowWrapper>
+                <S.TerminalWindowCircle $color="#ED6152" />
+                <Close className="hover-icon" />
+              </S.TerminalWindowWrapper>
+              <S.TerminalWindowWrapper>
+                <S.TerminalWindowCircle $color="#E7C21C" />
+                <Remove className="hover-icon" />
+              </S.TerminalWindowWrapper>
+              <S.TerminalWindowWrapper>
+                <S.TerminalWindowCircle $color="#4AC628" />
+                <OpenInFull className="hover-icon rotate" />
+              </S.TerminalWindowWrapper>
+            </S.TerminalWindowCircles>
+
+            <S.TerminalTitleContainer
+              container
+              item
+              md={8}
+              alignItems="center"
+            >
+              <House fontSize="small" htmlColor={theme.palette.grey[400]} />
+              <S.TerminalTitle variant="h6">
+                portfolio -- -bash --80x24
+              </S.TerminalTitle>
+            </S.TerminalTitleContainer>
+          </S.TerminalHeading>
+          {/* @ts-ignore */}
+          <S.TerminalContent ref={terminalContainerRef}>
+            <S.TerminalRow>
+              <S.TerminalPrefixText variant="h6">{loginTime}</S.TerminalPrefixText>
+            </S.TerminalRow>
+            {welcomeMessages.map((text, index) => (
+              <S.TerminalRow
+                key={`${text.key}-${index}`}
+              >
+                <S.TerminalPrefixText variant="h6">
+                  <ArrowRightAlt fontSize="small" />
+                  ~
+                </S.TerminalPrefixText>
+                <Typewriter
+                  options={{
+                    delay: 50,
+                  }}
+                  typographyProps={{
+                    variant: 'h6',
+                  }}
+                  onInit={introTerminalTexts[index].typeText}
+                />
+              </S.TerminalRow>
+            ))}
+            {terminalRows.map((text, index) => (
+              <S.TerminalRow key={`${text}-${index}`}>
+                <S.TerminalPrefixText variant="h6">
+                  <ArrowRightAlt fontSize="small" />
+                  ~
+                </S.TerminalPrefixText>
+                <S.TerminalText
+                  variant="h6"
+                  className={cx({
+                    'is--current--line': index === terminalRows.length - 1,
+                  })}
+                  dangerouslySetInnerHTML={{ __html: text }}
+                />
+              </S.TerminalRow>
+            ))}
+          </S.TerminalContent>
+        </S.TerminalWrapper>
+      </S.TypeWriterBackground>
+    </S.TerminalComponentWrapper>
   );
 };
 

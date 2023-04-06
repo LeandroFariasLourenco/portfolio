@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@mui/material';
+import { Card, Grid, Typography } from '@mui/material';
 import styled from 'styled-components';
 
 export const TerminalHeading = styled(Grid)`
@@ -18,6 +18,18 @@ export const TerminalHeading = styled(Grid)`
     left: 0;
   }
 `;
+
+export const TerminalComponentWrapper = styled(Grid)`
+  width: 100%;
+`;
+
+export const TypeWriterBackground = styled(Card)(({ theme }) => `
+  background-color: #1E1E1E;
+  border-radius: 5px;
+  max-width: 600px;
+  width: 95%;
+  margin: 0 auto;
+`);
 
 export const TerminalContent = styled(Grid)`
   padding: 5px 10px;

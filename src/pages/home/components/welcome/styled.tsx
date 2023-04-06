@@ -8,6 +8,7 @@ export const Wrapper = styled(Grid)`
   padding-top: 80px;
   position: relative;
   min-height: 100vh;
+  position: relative;
 
   ${({ theme }) => theme.breakpoints.down('md')} {
     padding-bottom: 40px;

@@ -45,13 +45,7 @@ const Welcome = () => {
         >
           <Grid item xs={12}><S.ProfileImage src="https://www.github.com/LeandroFariasLourenco.png?size=200" /></Grid>
         </Responsive>
-        <S.TerminalComponentWrapper item md={8} sm={12}>
-          <S.TypeWriterBackground
-            elevation={3}
-          >
-            {isDesktop ? <DesktopTerminal /> : <MobileTerminal />}
-          </S.TypeWriterBackground>
-        </S.TerminalComponentWrapper>
+        {isDesktop ? <DesktopTerminal /> : <MobileTerminal />}
         <Responsive
           breakpoint="md"
         >

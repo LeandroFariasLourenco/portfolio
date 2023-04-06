@@ -1,6 +1,38 @@
 import {
-  Box, Grid, styled, Typography,
+  Box, Card, Grid, keyframes, styled, Typography,
 } from '@mui/material';
+
+const shutdownAnimation = keyframes`
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
+  }
+`;
+
+export const TerminalComponentWrapper = styled(Grid)`
+  ${(({ theme }) => theme.breakpoints.down('md'))} {
+    width: 100%;
+  }
+
+  &.closed {
+    animation-delay: 500ms;
+    animation: ${shutdownAnimation} 500ms forwards;
+  }
+`;
+
+export const TypeWriterBackground = styled(Card)(({ theme }) => `
+  background-color: #1E1E1E;
+  border-radius: 5px;
+  max-width: 600px;
+  
+  ${theme.breakpoints.down('md')} {
+    width: 95%;
+    margin: 0 auto;
+  }
+`);
 
 export const TerminalHeading = styled(Grid)`
   background-color: #4A4A4A;
@@ -38,7 +70,7 @@ export const TerminalWrapper = styled(Box)`
 
 export const TerminalContent = styled(Grid)`
   padding: 5px 10px;
-  max-height: 300px;
+  height: 300px;
   overflow-y: auto;
 
   .Typewriter__cursor {
