@@ -1,4 +1,5 @@
 import {
+  Box,
   Grid, styled, Typography,
 } from '@mui/material';
 import { getBucketResource } from 'src/core/functions';
@@ -25,9 +26,14 @@ export const AboutMeSummary = styled(Typography)`
   font-size: 15px;
 `;
 
-export const AboutMeTextLine = styled('div')`
+export const HobbyText = styled(Box)(({ theme }) => `
   position: relative;
   padding-left: 16px;
+  font-size: 16px;
+
+  ${theme.breakpoints.down('md')} {
+    font-size: 13.5px;
+  }
 
   &:before {
     content: '';
@@ -37,19 +43,13 @@ export const AboutMeTextLine = styled('div')`
     display: inline-block;
     width: 8px;
     height: 8px;
-    background-color: ${({ theme }) => theme.palette.primary.main};
+    background-color: ${theme.palette.primary.main};
     border-radius: 100%;
     margin: 10px 5px 0 0;
   }
-`;
-
-export const HobbyText = styled(Typography)(({ theme }) => `
-  font-size: 16px;
-
-  ${theme.breakpoints.down('md')} {
-    font-size: 13.5px;
-  }
 `);
+
+export const HobbyContainer = styled(Grid)``;
 
 export const AboutMeWrapper = styled(Grid)`
   ${mixins.linearGradientBackground({

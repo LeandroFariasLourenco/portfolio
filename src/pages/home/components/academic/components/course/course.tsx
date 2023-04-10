@@ -4,7 +4,7 @@ import { useRef } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
-import { ICourseProps } from './props';
+import { ICourseProps } from './props.interface';
 import * as S from './styled';
 
 const Course = ({

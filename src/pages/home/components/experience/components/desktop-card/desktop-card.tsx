@@ -4,7 +4,7 @@ import ExperienceCard from '../experience-card/experience-card';
 import ExperienceDetails from '../experience-details/experience-details';
 
 import * as S from './styled';
-import { IDesktopCardProps } from './types';
+import { IDesktopCardProps } from './props.interface';
 
 const DesktopCard = ({
   LeftBorderComponent,

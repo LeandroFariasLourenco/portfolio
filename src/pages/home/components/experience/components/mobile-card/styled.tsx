@@ -85,7 +85,6 @@ export const ExperienceCard = styled(Card)(({ theme }) => `
 
 export const CompanyLogo = styled('img')`
   width: 80px;
-  background-color: white;
 `;
 
 export const StackTechnologyListContainer = styled(Box)``;

@@ -7,7 +7,7 @@ import Responsive from 'src/core/components/responsive/responsive';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EResponsiveType } from 'src/core/models';
 
-import { ICardProps } from './props';
+import { ICardProps } from './props.interface';
 import * as S from './styled';
 
 const Certificate = ({

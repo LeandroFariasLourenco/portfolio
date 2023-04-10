@@ -4,7 +4,7 @@ import Lottie from 'react-lottie';
 import { EResponsiveType } from 'src/core/models';
 import Responsive from '../responsive/responsive';
 
-import { ISwipeAnimationProps } from './props';
+import { ISwipeAnimationProps } from './props.interface';
 import * as S from './styled';
 
 const SwipeAnimation = ({

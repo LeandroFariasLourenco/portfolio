@@ -1,15 +1,20 @@
 import { Box } from '@mui/material';
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Particles } from 'react-tsparticles';
-import loadParticlesEngine from 'src/core/functions/load-particles-engine';
-import { ILazyLoadProps } from './props';
+import { loadFull } from 'tsparticles';
+import { Engine } from 'tsparticles-engine';
+import { ILazyLoadProps } from './props.interface';
 
 const LazyLoadParticles = ({ particlesConfig, id }: ILazyLoadProps) => {
   const { inView, ref } = useInView({
     threshold: 0,
     triggerOnce: true,
   });
+
+  const loadParticlesEngine = useCallback(async (engine: Engine) => {
+    await loadFull(engine);
+  }, []);
 
   return (
     <Box
@@ -30,4 +35,4 @@ const LazyLoadParticles = ({ particlesConfig, id }: ILazyLoadProps) => {
   );
 };
 
-export default memo(LazyLoadParticles, () => true);
+export default memo(LazyLoadParticles);

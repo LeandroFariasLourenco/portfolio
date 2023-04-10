@@ -1,6 +1,37 @@
 import {
-  Box, Grid, styled, Typography,
+  Box, Card, Grid, keyframes, styled, Typography,
 } from '@mui/material';
+
+const shutdownAnimation = keyframes`
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
+  }
+`;
+
+export const TerminalComponentWrapper = styled(Grid)`
+  ${(({ theme }) => theme.breakpoints.down('md'))} {
+    width: 100%;
+  }
+
+  &.closed {
+    animation: ${shutdownAnimation} 1.2s forwards;
+  }
+`;
+
+export const TypeWriterBackground = styled(Card)(({ theme }) => `
+  background-color: #1E1E1E;
+  border-radius: 5px;
+  max-width: 600px;
+  
+  ${theme.breakpoints.down('md')} {
+    width: 95%;
+    margin: 0 auto;
+  }
+`);
 
 export const TerminalHeading = styled(Grid)`
   background-color: #4A4A4A;
@@ -25,15 +56,20 @@ export const TerminalWrapper = styled(Box)`
   overflow: hidden;
   opacity: 0.35;
   transition: opacity 200ms ease-in-out;
+  
+  &:not(.is--focused) {
+    pointer-events: none;
+  }
 
   &.is--focused {
     opacity: 1;
+    pointer-events: unset;
   }
 `;
 
 export const TerminalContent = styled(Grid)`
   padding: 5px 10px;
-  max-height: 250px;
+  height: 300px;
   overflow-y: auto;
 
   .Typewriter__cursor {
@@ -45,28 +81,38 @@ export const TerminalPrefixText = styled(Typography)(({ theme }) => `
   color: ${theme.palette.grey[300]};
   margin-right: 5px;
   display: flex;
-  align-items: center;
 
   > svg {
     margin-left: -8px;
     margin-right: 8px;
     width: 15px;
+    margin-top: 5px;
   }
 `);
+
+const blinkingAnimation = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
 
 export const TerminalText = styled(Typography)`
   display: flex;
 
   &.is--current--line {
     &::after {
-      content: "|"
+      content: "|";
+      animation: ${blinkingAnimation} alternate infinite 550ms;
     }
   }
 `;
 
 export const TerminalRow = styled(Grid)`
   display: flex;
-  white-space: pre;
 `;
 
 export const TerminalTitleContainer = styled(Grid)``;

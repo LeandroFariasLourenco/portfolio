@@ -1,5 +1,5 @@
 import {
-  EmojiEvents, PersonSearch, SportsEsports, Terminal, Theaters,
+  EmojiEvents, Info, PersonSearch, SportsEsports, Terminal, Theaters,
 } from '@mui/icons-material';
 import { Grid, useTheme } from '@mui/material';
 import { useCallback, useMemo, useState } from 'react';
@@ -9,7 +9,9 @@ import { Section } from 'src/core/layouts';
 
 import PersonComputerAnimation from 'src/assets/animations/person-on-computer.json';
 
+import { SlideTitle } from 'src/core/components';
 import Responsive from 'src/core/components/responsive/responsive';
+import { EAppSections } from 'src/core/models';
 import Story from './components/story';
 import { IHobbie } from './models/hobbies.interface';
 import * as S from './styled';
@@ -35,12 +37,12 @@ const About = () => {
       label: intl.messages['home.about-me.objectives'] as string,
       icon: <EmojiEvents htmlColor="#fff" fontSize="large" />,
       content: (
-        <S.HobbyText>
-          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.first" /></S.AboutMeTextLine>
-          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.second" /></S.AboutMeTextLine>
-          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.third" /></S.AboutMeTextLine>
-          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.fourth" /></S.AboutMeTextLine>
-        </S.HobbyText>
+        <S.HobbyContainer>
+          <S.HobbyText><FormattedMessage id="home.about-me.objectives.first" /></S.HobbyText>
+          <S.HobbyText><FormattedMessage id="home.about-me.objectives.second" /></S.HobbyText>
+          <S.HobbyText><FormattedMessage id="home.about-me.objectives.third" /></S.HobbyText>
+          <S.HobbyText><FormattedMessage id="home.about-me.objectives.fourth" /></S.HobbyText>
+        </S.HobbyContainer>
       ),
     },
     {
@@ -48,12 +50,12 @@ const About = () => {
       label: intl.messages['home.about-me.stack'] as string,
       icon: <Terminal htmlColor={theme.palette.action.active} fontSize="large" />,
       content: (
-        <S.HobbyText>
-          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.first" /></S.AboutMeTextLine>
-          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.second" /></S.AboutMeTextLine>
-          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.third" /></S.AboutMeTextLine>
-          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.fourth" /></S.AboutMeTextLine>
-        </S.HobbyText>
+        <S.HobbyContainer>
+          <S.HobbyText><FormattedMessage id="home.about-me.objectives.first" /></S.HobbyText>
+          <S.HobbyText><FormattedMessage id="home.about-me.objectives.second" /></S.HobbyText>
+          <S.HobbyText><FormattedMessage id="home.about-me.objectives.third" /></S.HobbyText>
+          <S.HobbyText><FormattedMessage id="home.about-me.objectives.fourth" /></S.HobbyText>
+        </S.HobbyContainer>
       ),
     },
     {
@@ -61,12 +63,12 @@ const About = () => {
       label: intl.messages['home.about-me.books'] as string,
       icon: <Theaters htmlColor={theme.palette.primary.main} fontSize="large" />,
       content: (
-        <S.HobbyText>
-          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.first" /></S.AboutMeTextLine>
-          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.second" /></S.AboutMeTextLine>
-          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.third" /></S.AboutMeTextLine>
-          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.fourth" /></S.AboutMeTextLine>
-        </S.HobbyText>
+        <S.HobbyContainer>
+          <S.HobbyText><FormattedMessage id="home.about-me.objectives.first" /></S.HobbyText>
+          <S.HobbyText><FormattedMessage id="home.about-me.objectives.second" /></S.HobbyText>
+          <S.HobbyText><FormattedMessage id="home.about-me.objectives.third" /></S.HobbyText>
+          <S.HobbyText><FormattedMessage id="home.about-me.objectives.fourth" /></S.HobbyText>
+        </S.HobbyContainer>
       ),
     },
     {
@@ -74,12 +76,12 @@ const About = () => {
       label: intl.messages['home.about-me.games'] as string,
       icon: <SportsEsports htmlColor={theme.palette.secondary.main} fontSize="large" />,
       content: (
-        <S.HobbyText>
-          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.first" /></S.AboutMeTextLine>
-          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.second" /></S.AboutMeTextLine>
-          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.third" /></S.AboutMeTextLine>
-          <S.AboutMeTextLine><FormattedMessage id="home.about-me.objectives.fourth" /></S.AboutMeTextLine>
-        </S.HobbyText>
+        <S.HobbyContainer>
+          <S.HobbyText><FormattedMessage id="home.about-me.objectives.first" /></S.HobbyText>
+          <S.HobbyText><FormattedMessage id="home.about-me.objectives.second" /></S.HobbyText>
+          <S.HobbyText><FormattedMessage id="home.about-me.objectives.third" /></S.HobbyText>
+          <S.HobbyText><FormattedMessage id="home.about-me.objectives.fourth" /></S.HobbyText>
+        </S.HobbyContainer>
       ),
     },
   ], []);
@@ -98,7 +100,7 @@ const About = () => {
   ), [hobbies, currentOpenedStory]);
 
   return (
-    <S.AboutMeWrapper id="about">
+    <S.AboutMeWrapper id={EAppSections.ABOUT}>
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString(intl.messages['home.about-me.title'] as string)
@@ -126,12 +128,26 @@ const About = () => {
           breakpoint="md"
           belowComponent={(
             <Grid container item xs={12} alignItems="center" justifyContent="center">
+              <SlideTitle
+                onTitleShow={(typewriter) => {
+                  typewriter.typeString('Hobbies & Objetivos').start();
+                }}
+                icon={<Info fontSize="large" htmlColor="white" />}
+              />
               {hobbies.map(renderHobbies)}
             </Grid>
           )}
           aboveComponent={(
-            <Grid container gap={12} flexWrap="nowrap" alignItems="center" justifyContent="center">
-              {hobbies.map(renderHobbies)}
+            <Grid container flexDirection="column">
+              <SlideTitle
+                onTitleShow={(typewriter) => {
+                  typewriter.typeString('Hobbies & Objetivos').start();
+                }}
+                icon={<Info fontSize="large" htmlColor="white" />}
+              />
+              <Grid container flexWrap="nowrap" flexDirection="row" alignItems="center" justifyContent="center">
+                {hobbies.map(renderHobbies)}
+              </Grid>
             </Grid>
           )}
         />

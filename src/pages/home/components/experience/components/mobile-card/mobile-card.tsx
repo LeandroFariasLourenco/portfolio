@@ -7,7 +7,7 @@ import { APP } from 'src/core/constants';
 import { getBucketResource } from 'src/core/functions';
 
 import * as S from './styled';
-import { IMobileCardProps } from './types';
+import { IMobileCardProps } from './props.interface';
 
 const MobileCard = ({
   index,

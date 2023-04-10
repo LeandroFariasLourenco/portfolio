@@ -3,7 +3,7 @@ import { Typography } from '@mui/material';
 import { useRef } from 'react';
 
 import { FormattedMessage } from 'react-intl';
-import { ICardProps } from './props';
+import { ICardProps } from './props.interface';
 
 import * as S from './styled';
 

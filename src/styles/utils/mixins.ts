@@ -1,6 +1,11 @@
 import { css } from 'styled-components';
 
 export const mixins = {
+  flexCentered: css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  `,
   scrollbarStyle({
     height,
     backgroundThumbColor,

@@ -6,13 +6,14 @@ import languages from 'src/assets/resources/languages.json';
 import { getBucketResource } from 'src/core/functions';
 import { Section } from 'src/core/layouts';
 import Technologies from 'src/core/layouts/technologies/technologies';
+import { EAppSections } from 'src/core/models';
 import * as S from './styled';
 
 const Languages = () => {
   const [selectedTab, setSelectedTab] = useState<number>(0);
 
   return (
-    <S.SectionWrapper id="my-stack">
+    <S.SectionWrapper id={EAppSections.STACK}>
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString('Minha stack')

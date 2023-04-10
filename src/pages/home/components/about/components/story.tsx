@@ -3,11 +3,10 @@ import {
   Grid, useTheme,
 } from '@mui/material';
 import cx from 'classnames';
-import { useState } from 'react';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EResponsiveType } from 'src/core/models';
 import * as S from './styled';
-import { IStoryProps } from './types';
+import { IStoryProps } from './props.interface';
 
 const Story = ({
   hobby,

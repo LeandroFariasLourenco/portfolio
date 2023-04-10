@@ -12,7 +12,7 @@ import Responsive from 'src/core/components/responsive/responsive';
 import { getBucketResource } from 'src/core/functions';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EResponsiveType, ITechnology } from 'src/core/models';
-import { ITechnologiesProps } from './props';
+import { ITechnologiesProps } from './props.interface';
 import * as S from './styled';
 
 const TechnologyDetails = ({

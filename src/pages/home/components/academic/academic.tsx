@@ -18,6 +18,7 @@ import { useHidden } from 'src/core/hooks';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { Section } from 'src/core/layouts';
 import {
+  EAppSections,
   EResponsiveType, ICertificate, ICourse, IExtracurricular,
 } from 'src/core/models';
 import Certificate from './components/certificate/certificate';
@@ -123,7 +124,7 @@ const Academic = () => {
   }), []);
 
   return (
-    <S.FormationWrapper id="academic">
+    <S.FormationWrapper id={EAppSections.ACADEMIC}>
       {/* <Responsive
         breakpoint="md"
       > */}
