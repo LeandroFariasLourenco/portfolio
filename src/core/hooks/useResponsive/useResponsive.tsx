@@ -1,7 +1,7 @@
 import { useTheme } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { EResponsiveType } from '../../models';
-import { IUseResponsiveProps } from './types';
+import { IUseResponsiveProps } from './props.interface';
 
 const useResponsive = ({
   breakpoint = 'md',

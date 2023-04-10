@@ -3,7 +3,7 @@ import { Typography } from '@mui/material';
 import { memo } from 'react';
 import Responsive from 'src/core/components/responsive/responsive';
 import { getBucketResource } from 'src/core/functions';
-import { IRepositoryProps } from './props';
+import { IRepositoryProps } from './props.interface';
 import * as S from './styled';
 
 const Repository = ({

@@ -4,7 +4,7 @@ import {
 import { Grid, Typography } from '@mui/material';
 import { FormattedMessage } from 'react-intl';
 import { getBucketResource } from 'src/core/functions';
-import { ExperienceCardProps } from './props';
+import { ExperienceCardProps } from './props.interface';
 
 import * as S from './styled';
 

@@ -6,7 +6,6 @@ import cx from 'classnames';
 import {
   useCallback, useMemo, useState,
 } from 'react';
-import { Fade } from 'react-awesome-reveal';
 import experiences from 'src/assets/resources/experiences.json';
 import { Section } from 'src/core/layouts';
 import {
@@ -16,16 +15,16 @@ import {
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import LazyLoadParticles from 'src/core/components/lazy-load/lazy-load';
 import Responsive from 'src/core/components/responsive/responsive';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EAppSections, EResponsiveType } from 'src/core/models';
 import { IResponsiveSwiper } from 'src/core/models/responsive-swiper.interface';
-import LazyLoadParticles from 'src/core/components/lazy-load/lazy-load';
 import DesktopCard from './components/desktop-card/desktop-card';
 import MobileCard from './components/mobile-card/mobile-card';
 
-import * as S from './styled';
 import { desktopParticlesConfig } from './particles/desktop-config';
+import * as S from './styled';
 
 const Experience = () => {
   const theme = useTheme();
@@ -111,11 +110,7 @@ const Experience = () => {
         position: 'relative',
       }}
     >
-      {/* <Responsive
-        breakpoint="md"
-      > */}
       <LazyLoadParticles id="experience-section" particlesConfig={desktopParticlesConfig} />
-      {/* </Responsive> */}
       <S.SwiperContainer>
         <Box className="swiper-pagination">
           {[...Array(experiences.length)].map(renderSwiperPagination)}
@@ -138,14 +133,12 @@ const Experience = () => {
                 <Responsive
                   breakpoint="md"
                   aboveComponent={(
-                    <Fade>
-                      <DesktopCard
-                        LeftBorderComponent={LeftBorderComponent}
-                        RightBorderComponent={RightBorderComponent}
-                        experience={experience}
-                        index={index}
-                      />
-                    </Fade>
+                    <DesktopCard
+                      LeftBorderComponent={LeftBorderComponent}
+                      RightBorderComponent={RightBorderComponent}
+                      experience={experience}
+                      index={index}
+                    />
                   )}
                   belowComponent={(
                     <MobileCard

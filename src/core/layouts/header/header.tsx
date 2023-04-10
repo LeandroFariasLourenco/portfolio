@@ -16,6 +16,8 @@ import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EAppSections, EResponsiveType, Languages } from 'src/core/models';
 import { useGlobalContext } from 'src/core/store/global/context';
 import { APP } from 'src/core/constants';
+import { HashLink } from 'react-router-hash-link';
+import { smoothScroll } from 'src/core/functions';
 import { IMenuOption } from './models/menu-option.interface';
 
 import * as S from './styled';
@@ -53,16 +55,17 @@ const Header = () => {
     <S.HeaderLink
       key={link.label}
       to={link.href}
-      scroll={(el) => {
-        window.scrollTo({
-          behavior: 'smooth',
-          top: (el.getBoundingClientRect().top + window.scrollY) - APP.header.height,
-        });
-      }}
+      scroll={smoothScroll}
     >
       {cloneElement(link.icon as any, { htmlColor: '#fff', fontSize: 'small' } as IconProps)}
       <Typography><FormattedMessage id={link.label} /></Typography>
     </S.HeaderLink>
+  ), []);
+
+  const renderHeaderIcon = useCallback(() => (
+    <HashLink scroll={smoothScroll} to={`#${EAppSections.WELCOME}`}>
+      <GitHub fontSize="large" htmlColor="#fff" />
+    </HashLink>
   ), []);
 
   return (
@@ -109,19 +112,19 @@ const Header = () => {
                       container
                       justifyContent="space-around"
                     >
-                      <GitHub fontSize="large" />
+                      {renderHeaderIcon()}
                       <Typography variant={isMobile ? 'h5' : 'h4'}>Leandro Farias</Typography>
                     </Grid>
                   </>
-              )}
+                )}
                 aboveComponent={(
                   <>
-                    <GitHub htmlColor="#fff" fontSize="large" />
+                    {renderHeaderIcon()}
                     <Grid item maxWidth={700} container justifyContent="space-between" alignItems="center">
                       {menuOptions.map(renderMenuOptions)}
                     </Grid>
                   </>
-              )}
+                )}
               />
               <Grid item md={1}>
                 <S.LanguageSelect

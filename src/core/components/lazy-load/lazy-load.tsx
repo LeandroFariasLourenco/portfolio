@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { Particles } from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 import { Engine } from 'tsparticles-engine';
-import { ILazyLoadProps } from './props';
+import { ILazyLoadProps } from './props.interface';
 
 const LazyLoadParticles = ({ particlesConfig, id }: ILazyLoadProps) => {
   const { inView, ref } = useInView({

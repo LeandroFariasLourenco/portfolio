@@ -37,22 +37,22 @@ export const HeaderLink = styled(HashLink)(({ theme }) => `
   }
 `);
 
-export const HeaderWrapper = styled(Grid)`
+export const HeaderWrapper = styled(Grid)(({ theme }) => `
   background-color: rgba(20, 134, 168, 0.75);
   transition: background-color 200ms ease-in-out;
   padding: 5px 0;
 
-  &.transparent {
-    background-color: transparent;
-  }
-`;
-
-export const HeaderBar = styled(AppBar)(({ theme }) => `
-  box-shadow: unset;
-
   ${theme.breakpoints.down('md')} {
     padding: 10px;
   }
+
+  &.transparent {
+    background-color: transparent;
+  }
+`);
+
+export const HeaderBar = styled(AppBar)(({ theme }) => `
+  box-shadow: unset;
 `);
 
 export const LanguageSelect = styled(Select)(({ theme }) => `
@@ -66,15 +66,22 @@ export const LanguageSelect = styled(Select)(({ theme }) => `
 
 export const ScrollToTopWrapper = styled(Grid)(({ theme }) => `
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 10px;
+  right: 10px;
   background-color: ${theme.palette.primary.main};
   padding: 1px;
-  border-radius: 100%;
   transition: all 200ms ease-in-out;
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+
+  svg {
+    width: unset;
+    height: unset;
+  }
 
   &.show {
     opacity: 1;

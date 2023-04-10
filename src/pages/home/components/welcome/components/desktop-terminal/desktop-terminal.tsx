@@ -5,19 +5,24 @@ import {
 import { useTheme } from '@mui/material';
 import cx from 'classnames';
 import {
+  useCallback,
   useEffect, useMemo, useRef, useState,
 } from 'react';
 import { useIntl } from 'react-intl';
 import { Typewriter } from 'src/core/components';
+import { deleteLastCharacter } from 'src/core/functions';
 import { useLoginTime } from 'src/core/hooks';
 import useIsWindowTop from 'src/core/hooks/useIsWindowTop';
-import { TypewriterClass } from 'typewriter-effect';
-import { deleteLastCharacter } from 'src/core/functions';
 import { EAppSections } from 'src/core/models';
+import { TypewriterClass } from 'typewriter-effect';
 import { ITerminalLine } from '../mobile-terminal/models/terminal-line.interface';
+import { IDesktopTerminalProps } from './props.interface';
 import * as S from './styled';
 
-const DesktopTerminal = () => {
+const DesktopTerminal = ({
+  onGameActivation,
+  playingGame,
+}: IDesktopTerminalProps) => {
   const theme = useTheme();
   const intl = useIntl();
   const [welcomeMessages, setWelcomeMessages] = useState<ITerminalLine[]>([]);
@@ -26,7 +31,6 @@ const DesktopTerminal = () => {
   const isWindowOnTopRef = useRef<boolean>(isWindowOnTop);
   const terminalContainerRef = useRef<HTMLDivElement>();
   const { loginTime } = useLoginTime();
-  const [playingGame, setPlayingGame] = useState<boolean>(false);
 
   const introTerminalTexts = useMemo<ITerminalLine[]>(() => ([
     {
@@ -43,7 +47,7 @@ const DesktopTerminal = () => {
     },
     {
       key: 'second',
-      timer: 3250,
+      timer: 2250,
       typeText: (typewriter: TypewriterClass) => {
         typewriter.typeString(intl.messages['home.welcome.terminal.text2.string1'] as string)
           .start();
@@ -51,7 +55,7 @@ const DesktopTerminal = () => {
     },
     {
       key: 'third',
-      timer: 7250,
+      timer: 4750,
       typeText: (typewriter: TypewriterClass) => {
         typewriter.typeString(intl.messages['home.welcome.terminal.text3.string1'] as string)
           .start();
@@ -59,7 +63,7 @@ const DesktopTerminal = () => {
     },
     {
       key: 'fourth',
-      timer: 8450,
+      timer: 5750,
       typeText: (typewriter: TypewriterClass) => {
         typewriter.typeString(intl.messages['home.welcome.terminal.text4.string1'] as string)
           .start();
@@ -67,7 +71,7 @@ const DesktopTerminal = () => {
     },
     {
       key: 'fifth',
-      timer: 10850,
+      timer: 6850,
       typeText: (typewriter: TypewriterClass) => {
         typewriter.typeString('Digite /help para mais informações').start();
       },
@@ -121,14 +125,17 @@ const DesktopTerminal = () => {
         return [''];
       }
 
-      const answers = ['Snake game', 'jogo da cobrinha', 'cobrinha', 'serpente', 'jogo da serpente', 'snake'];
-      if (answers.includes(`${userInput.toLowerCase()}`)) {
-        setPlayingGame(true);
+      const answers = ['jogodacobrinha', 'cobrinha', 'serpente', 'jogo da serpente', 'snake', 'snakegame', 'jogodacobra'];
+      if (answers.includes(userInput
+        .trim()
+        .toLowerCase()
+        .replace(/\s|&nbsp;/g, ''))) {
+        onGameActivation();
         return [''];
       }
 
       if (userInput === '/game') {
-        newState.push('Qual jogo foi inspirado pelo Blockade de 1976?');
+        newState.push('Qual jogo foi inspirado pelo Blockade de 1976? (Digite apenas o nome)');
         scrollToTerminalBottom();
         return [...newState, ''];
       }
@@ -158,7 +165,7 @@ const DesktopTerminal = () => {
     });
   };
 
-  const setupTerminalActions = (event: KeyboardEvent) => {
+  const setupTerminalActions = useCallback((event: KeyboardEvent) => {
     if (!isWindowOnTopRef.current) {
       return;
     }
@@ -189,15 +196,16 @@ const DesktopTerminal = () => {
         break;
       default: handleKeyPress(event.key);
     }
-  };
+  }, []);
 
   useEffect(() => {
-    window.addEventListener('keydown', setupTerminalActions);
+    if (!playingGame) {
+      window.addEventListener('keydown', setupTerminalActions);
+      return;
+    }
 
-    return () => {
-      window.removeEventListener('keydown', setupTerminalActions);
-    };
-  }, []);
+    window.removeEventListener('keydown', setupTerminalActions);
+  }, [playingGame]);
 
   useEffect(() => {
     isWindowOnTopRef.current = isWindowOnTop;
@@ -287,7 +295,7 @@ const DesktopTerminal = () => {
                 </S.TerminalPrefixText>
                 <Typewriter
                   options={{
-                    delay: 50,
+                    delay: 25,
                   }}
                   typographyProps={{
                     variant: 'h6',
@@ -296,7 +304,7 @@ const DesktopTerminal = () => {
                 />
               </S.TerminalRow>
             ))}
-            {terminalRows.map((text, index) => (
+            {welcomeMessages.length === introTerminalTexts.length && terminalRows.map((text, index) => (
               <S.TerminalRow key={`${text}-${index}`}>
                 <S.TerminalPrefixText variant="h6">
                   <ArrowRightAlt fontSize="small" />

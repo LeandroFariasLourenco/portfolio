@@ -29,7 +29,7 @@ const MobileTerminal = () => {
     },
     {
       key: 'second',
-      timer: 3250,
+      timer: 2250,
       typeText: (typewriter: TypewriterClass) => {
         typewriter.typeString(intl.messages['home.welcome.terminal.text2.string1'] as string)
           .start();
@@ -37,7 +37,7 @@ const MobileTerminal = () => {
     },
     {
       key: 'third',
-      timer: 7250,
+      timer: 4750,
       typeText: (typewriter: TypewriterClass) => {
         typewriter.typeString(intl.messages['home.welcome.terminal.text3.string1'] as string)
           .start();
@@ -45,17 +45,10 @@ const MobileTerminal = () => {
     },
     {
       key: 'fourth',
-      timer: 8450,
+      timer: 5750,
       typeText: (typewriter: TypewriterClass) => {
         typewriter.typeString(intl.messages['home.welcome.terminal.text4.string1'] as string)
           .start();
-      },
-    },
-    {
-      key: 'fifth',
-      timer: 10850,
-      typeText: (typewriter: TypewriterClass) => {
-        typewriter.typeString(':)').start();
       },
     },
   ]), [intl]);
@@ -94,7 +87,7 @@ const MobileTerminal = () => {
               flexDirection="row"
               flexWrap="nowrap"
             >
-              <S.TerminalTabIcon src={getBucketResource('/assets/git-for-windows.ico')} />
+              <S.TerminalTabIcon src={getBucketResource('/git-for-windows.ico')} />
 
               <S.TerminalTabText>Bash</S.TerminalTabText>
 
@@ -136,7 +129,7 @@ const MobileTerminal = () => {
                   <S.TerminalTabCommandPrefix variant="h6">$</S.TerminalTabCommandPrefix>
                   <Typewriter
                     options={{
-                      delay: 50,
+                      delay: 25,
                     }}
                     typographyProps={{
                       variant: 'h6',

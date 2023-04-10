@@ -59,5 +59,4 @@ export const ExperienceCard = styled(Card)<{
 
 export const CompanyLogo = styled('img')`
   width: 100px;
-  background-color: white;
 `;

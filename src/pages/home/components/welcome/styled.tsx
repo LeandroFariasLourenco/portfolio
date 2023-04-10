@@ -1,6 +1,6 @@
 import { ArrowDownward } from '@mui/icons-material';
 import {
-  Card, Grid, keyframes, styled, Typography,
+  Card, css, Grid, keyframes, styled, Typography,
 } from '@mui/material';
 import { mixins } from 'src/styles/utils';
 
@@ -16,7 +16,7 @@ export const Wrapper = styled(Grid)`
 `;
 
 export const ProfileImage = styled('img')`
-  border-radius: 100%;
+  border-radius: 20px;
   width: 260px;
 
   ${({ theme }) => theme.breakpoints.down('md')} {
@@ -69,9 +69,23 @@ export const TerminalComponentWrapper = styled(Grid)(({ theme }) => `
   }
 `);
 
-export const WelcomeContainer = styled(Grid)`
-  z-index: 1;
+const hide = keyframes`
+  to {
+    max-height: 0;
+    max-width: 0;
+  }
 `;
+
+export const WelcomeContainer = styled(Grid)<{ $animationTimer: number }>(({ $animationTimer }) => css`
+  z-index: 1;
+  transition: opacity ${$animationTimer}ms ease-in-out;
+
+  &.playing {
+    opacity: 0;
+    animation: ${hide} forwards;
+    animation-delay: 1s;
+  }
+`);
 
 export const ArrowDownContainer = styled(Grid)`
   ${mixins.visibilityTransition};
@@ -86,6 +100,7 @@ export const ArrowDownContainer = styled(Grid)`
   justify-content: center;
   padding: 7.5px;
   cursor: pointer;
+  z-index: 1;
 
   &::before,
   &::after {

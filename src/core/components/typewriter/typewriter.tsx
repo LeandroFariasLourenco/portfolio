@@ -2,7 +2,7 @@ import { Typography } from '@mui/material';
 import { useState } from 'react';
 import cx from 'classnames';
 import TypewriterEffect from 'typewriter-effect';
-import { ITypewriterProps } from './props';
+import { ITypewriterProps } from './props.interface';
 
 import * as S from './styled';
 
@@ -25,7 +25,10 @@ const Typewriter = ({
             onInit(typewriter);
             typewriter.callFunction(() => { setHasFinished(true); });
           }}
-          options={options}
+          options={{
+            delay: 75,
+            ...options,
+          }}
         />
       </Typography>
     </S.TypewriterWrapper>

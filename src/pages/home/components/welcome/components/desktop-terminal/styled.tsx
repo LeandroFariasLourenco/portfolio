@@ -18,8 +18,7 @@ export const TerminalComponentWrapper = styled(Grid)`
   }
 
   &.closed {
-    animation-delay: 500ms;
-    animation: ${shutdownAnimation} 500ms forwards;
+    animation: ${shutdownAnimation} 1.2s forwards;
   }
 `;
 
@@ -82,7 +81,6 @@ export const TerminalPrefixText = styled(Typography)(({ theme }) => `
   color: ${theme.palette.grey[300]};
   margin-right: 5px;
   display: flex;
-  /* align-items: center; */
 
   > svg {
     margin-left: -8px;
@@ -92,19 +90,29 @@ export const TerminalPrefixText = styled(Typography)(({ theme }) => `
   }
 `);
 
+const blinkingAnimation = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
 export const TerminalText = styled(Typography)`
   display: flex;
 
   &.is--current--line {
     &::after {
-      content: "|"
+      content: "|";
+      animation: ${blinkingAnimation} alternate infinite 550ms;
     }
   }
 `;
 
 export const TerminalRow = styled(Grid)`
   display: flex;
-  /* white-space: pre; */
 `;
 
 export const TerminalTitleContainer = styled(Grid)``;

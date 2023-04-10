@@ -1,7 +1,5 @@
 import { Grid, styled } from '@mui/material';
 
-export const SectionHeader = styled(Grid)``;
-
 export const SectionContainer = styled(Grid) <{
   color?: string;
 }>`
