@@ -1,8 +1,8 @@
-import { AccountTree, CalendarMonth, ExitToApp } from '@mui/icons-material';
+import { CalendarMonth, ExitToApp } from '@mui/icons-material';
 import { Typography } from '@mui/material';
 import { memo } from 'react';
+import { TECHNOLOGY_ICONS } from 'src/assets/resources/technology-icons';
 import Responsive from 'src/core/components/responsive/responsive';
-import { getBucketResource } from 'src/core/functions';
 import { IRepositoryProps } from './props.interface';
 import * as S from './styled';
 
@@ -12,25 +12,25 @@ const Repository = ({
   const getRepositoryLanguageIcon = (language: string) => {
     switch (language?.toLowerCase()) {
       case 'javascript':
-        return getBucketResource('/technologies/javascript.png');
+        return TECHNOLOGY_ICONS.JAVASCRIPT;
       case 'typescript':
-        return getBucketResource('/technologies/typescript.png');
+        return TECHNOLOGY_ICONS.TYPESCRIPT;
       case 'python':
-        return getBucketResource('/technologies/python.png');
+        return TECHNOLOGY_ICONS.PYTHON;
       case 'dart':
-        return getBucketResource('/technologies/dart.png');
+        return TECHNOLOGY_ICONS.DART;
       case 'css':
-        return getBucketResource('/technologies/css3.png');
+        return TECHNOLOGY_ICONS.CSS;
       case 'c#':
-        return getBucketResource('/technologies/c-sharp-logo.png');
+        return TECHNOLOGY_ICONS.CSHARP;
       case 'html':
-        return getBucketResource('/technologies/html-5.png');
+        return TECHNOLOGY_ICONS.HTML;
       case 'java':
-        return getBucketResource('/technologies/java.png');
+        return TECHNOLOGY_ICONS.JAVA;
       case 'ejs':
-        return getBucketResource('/technologies/node-js.png');
+        return TECHNOLOGY_ICONS.EJS;
       default:
-        return getBucketResource('/technologies/page-not-found.png');
+        return TECHNOLOGY_ICONS.NOT_FOUND;
     }
   };
 

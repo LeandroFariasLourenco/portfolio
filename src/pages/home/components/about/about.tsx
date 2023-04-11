@@ -120,14 +120,18 @@ const About = () => {
               <FormattedMessage id="home.about-me.summary" />
             </S.AboutMeSummary>
           </Grid>
-          <Grid item xs={12} md={6} container justifyContent="flex-end">
-            <LottieAnimation />
-          </Grid>
+          <Responsive
+            breakpoint="md"
+          >
+            <Grid item xs={12} md={6} container justifyContent="flex-end">
+              <LottieAnimation />
+            </Grid>
+          </Responsive>
         </Grid>
         <Responsive
           breakpoint="md"
           belowComponent={(
-            <Grid container item xs={12} alignItems="center" justifyContent="center">
+            <Grid container item xs={12} marginTop="20px" alignItems="center" justifyContent="center">
               <SlideTitle
                 onTitleShow={(typewriter) => {
                   typewriter.typeString('Hobbies & Objetivos').start();

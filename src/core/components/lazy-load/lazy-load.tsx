@@ -10,6 +10,7 @@ const LazyLoadParticles = ({ particlesConfig, id }: ILazyLoadProps) => {
   const { inView, ref } = useInView({
     threshold: 0,
     triggerOnce: true,
+    root: document.body,
   });
 
   const loadParticlesEngine = useCallback(async (engine: Engine) => {

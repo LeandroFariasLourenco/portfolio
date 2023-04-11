@@ -11,7 +11,7 @@ import appleTexture from 'src/assets/textures/apple.png';
 import cherryTexture from 'src/assets/textures/cherry.png';
 import bananaTexture from 'src/assets/textures/banana.png';
 
-export const textures = {
+export const TEXTURES = {
   snakeHeadTexture: {
     width: 10,
     height: 10,

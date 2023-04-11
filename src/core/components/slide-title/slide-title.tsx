@@ -12,7 +12,7 @@ const SlideTitle = ({
   icon,
 }: ISlideTitle) => {
   const [typing, setTyping] = useState(false);
-  const { inView, ref } = useInView({ threshold: 0, triggerOnce: true });
+  const { inView, ref } = useInView({ threshold: 0, triggerOnce: true, root: document.body });
   const isMobile = useResponsive({ type: EResponsiveType.smaller });
 
   return (

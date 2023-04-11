@@ -1,5 +1,5 @@
 import { BehaviorSubject } from 'rxjs';
-import { textures } from 'src/assets/resources/textures';
+import { TEXTURES } from 'src/assets/resources/textures';
 import { SnakeModel } from './snake-model';
 import { BaseCanvas } from './base-canvas';
 import { IGameState } from './game-state.interface';
@@ -35,10 +35,10 @@ export class GameModel extends BaseCanvas {
 
   private drawCanvas() {
     const canvasTexture = new Image(
-      textures.backgroundTexture.width,
-      textures.backgroundTexture.height,
+      TEXTURES.backgroundTexture.width,
+      TEXTURES.backgroundTexture.height,
     );
-    canvasTexture.src = textures.backgroundTexture.source;
+    canvasTexture.src = TEXTURES.backgroundTexture.source;
 
     this.canvasContext.drawImage(
       canvasTexture,
@@ -50,10 +50,10 @@ export class GameModel extends BaseCanvas {
 
     this.canvasContext.save();
     const gameFrameTexture = new Image(
-      textures.gameFrameTexture.width,
-      textures.gameFrameTexture.height,
+      TEXTURES.gameFrameTexture.width,
+      TEXTURES.gameFrameTexture.height,
     );
-    gameFrameTexture.src = textures.gameFrameTexture.source;
+    gameFrameTexture.src = TEXTURES.gameFrameTexture.source;
     this.canvasContext.translate(
       this.canvas.width / 2,
       this.canvas.height / 2,
