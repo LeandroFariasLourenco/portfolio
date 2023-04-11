@@ -119,7 +119,6 @@ export const ProjectSlideContainer = styled(Grid)(({ theme }) => `
   }
 
   ${theme.breakpoints.down('md')} {
-    padding-top: 20px;
     height: 100%;
     display: flex;
     flex-flow: column;
