@@ -1,7 +1,8 @@
 export interface IProject {
   title: string;
-  description: string;
+  paragraphs: string[];
   background: string;
   icons: string[];
   link: string;
+  canPreviewInMobile: boolean;
 }

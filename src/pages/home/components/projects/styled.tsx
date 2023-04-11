@@ -1,5 +1,5 @@
 import {
-  Button, css, Grid, styled,
+  Button, Card, css, Grid, styled, Typography,
 } from '@mui/material';
 import { getBucketResource } from 'src/core/functions';
 import { mixins } from 'src/styles/utils';
@@ -9,6 +9,41 @@ export const ProjectsContainer = styled(Grid)(({ theme }) => `
   margin-top: 20px;
   width: 100%;
   border: 2px solid ${theme.palette.secondary.main};
+
+  .swiper {
+    &-slide {
+      &-shadow {
+        display: none;
+      }
+    }
+
+    &-button {
+      &-next {
+        right: -4px;
+      }
+
+      &-prev {
+        left: -4px;
+      }
+      
+      &-next,
+      &-prev {
+        top: unset;
+        bottom: 35%;
+        transform: unset;
+        
+        &::after,
+        &::before {
+          font-size: 32px;
+          color: ${theme.palette.primary.main};
+        }
+      }
+
+      &-disabled {
+        display: none;
+      }
+    }
+  }
 
   ${theme.breakpoints.up('md')} {
     height: 500px;
@@ -42,9 +77,6 @@ export const ProjectsTabs = styled(Grid)(({ theme }) => `
   ${theme.breakpoints.up('md')} {
     height: 100%;
     padding: 10px;
-  }
-
-  .swiper {
   }
 `);
 
@@ -120,6 +152,7 @@ export const ProjectSlideContainer = styled(Grid)(({ theme }) => `
 
   ${theme.breakpoints.down('md')} {
     height: 100%;
+    padding: 10px;
     display: flex;
     flex-flow: column;
     align-items: space-between;
@@ -153,8 +186,6 @@ export const ProjectTechnologiesWrapper = styled(Grid)(({ theme }) => `
   }
 `);
 
-export const ActionButton = styled(Button)`
-  border-radius: 0;
-  text-transform: unset;
-  padding: 5px 10px;
+export const ProjectDescriptionText = styled(Typography)`
+  margin-top: 10px;
 `;

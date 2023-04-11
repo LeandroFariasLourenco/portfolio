@@ -1,31 +1,20 @@
-import snakeHeadTexture from 'src/assets/textures/snake-head.png';
-import snakeBodyTexture from 'src/assets/textures/snake-body.jpg';
-
-import gameBackgroundTexture from 'src/assets/textures/game-background.gif';
-import gameFrameTexture from 'src/assets/textures/game-frame.jpg';
-
-import watermelonTexture from 'src/assets/textures/watermelon.png';
-import melonTexture from 'src/assets/textures/melon.png';
-import strawberryTexture from 'src/assets/textures/strawberry.png';
-import appleTexture from 'src/assets/textures/apple.png';
-import cherryTexture from 'src/assets/textures/cherry.png';
-import bananaTexture from 'src/assets/textures/banana.png';
+import { getBucketResource } from 'src/core/functions';
 
 export const TEXTURES = {
   snakeHeadTexture: {
     width: 10,
     height: 10,
-    source: snakeHeadTexture,
+    source: getBucketResource('/textures/snake-head.png'),
   },
   backgroundTexture: {
     width: 20,
     height: 20,
-    source: gameBackgroundTexture,
+    source: getBucketResource('/textures/game-background.gif'),
   },
   gameFrameTexture: {
     width: 20,
     height: 20,
-    source: gameFrameTexture,
+    source: getBucketResource('/textures/game-frame.jpg'),
   },
   fruitTextures:
     [
@@ -33,42 +22,42 @@ export const TEXTURES = {
         name: 'apple',
         width: 20,
         height: 20,
-        source: appleTexture,
+        source: getBucketResource('/textures/apple.png'),
       },
       {
         name: 'cherry',
         width: 20,
         height: 20,
-        source: cherryTexture,
+        source: getBucketResource('/textures/cherry.png'),
       },
       {
         name: 'banana',
         width: 20,
         height: 20,
-        source: bananaTexture,
+        source: getBucketResource('/textures/banana.png'),
       },
       {
         name: 'melon',
         width: 20,
         height: 20,
-        source: melonTexture,
+        source: getBucketResource('/textures/melon.png'),
       },
       {
         name: 'watermelon',
         width: 20,
         height: 20,
-        source: watermelonTexture,
+        source: getBucketResource('/textures/watermelon.png'),
       },
       {
         name: 'strawberry',
         width: 30,
         height: 20,
-        source: strawberryTexture,
+        source: getBucketResource('/textures/strawberry.png'),
       },
     ],
   snakeBodyTexture: {
     width: 20,
     height: 20,
-    source: snakeBodyTexture,
+    source: getBucketResource('/textures/snake-body.jpg'),
   },
 };

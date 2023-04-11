@@ -65,7 +65,9 @@ const Welcome = () => {
           breakpoint="md"
           type={EResponsiveType.smaller}
         >
-          <Grid item xs={12}><S.ProfileImage src="https://www.github.com/LeandroFariasLourenco.png?size=200" /></Grid>
+          <Grid item xs={12}>
+            <S.ProfileImage src="https://www.github.com/LeandroFariasLourenco.png?size=200" />
+          </Grid>
         </Responsive>
         {isDesktop ? (
           <DesktopTerminal
@@ -79,10 +81,12 @@ const Welcome = () => {
         <Responsive
           breakpoint="md"
         >
-          <Grid item md={4}><S.ProfileImage src="https://www.github.com/LeandroFariasLourenco.png?size=200" /></Grid>
+          <Grid item md={4}>
+            <S.ProfileImage src="https://www.github.com/LeandroFariasLourenco.png?size=200" />
+          </Grid>
         </Responsive>
       </S.WelcomeContainer>
-      {showGame ? (
+      {showGame && isDesktop ? (
         <SnakeGame
           onClose={() => {
             setFadingOutContainer(false);
