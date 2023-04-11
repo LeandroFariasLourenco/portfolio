@@ -16,6 +16,9 @@ const Global = () => {
       img: {
         maxWidth: '100%',
       },
+      'no-scroll': {
+        overflow: 'hidden !important',
+      },
       '::selection': {
         background: 'none',
         color: 'none',

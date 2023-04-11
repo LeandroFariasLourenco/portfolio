@@ -1,5 +1,5 @@
 import {
-  AppBar, Grid, Select,
+  AppBar, Divider, Grid, Select, SwipeableDrawer,
 } from '@mui/material';
 import { HashLink } from 'react-router-hash-link';
 import styled from 'styled-components';
@@ -96,5 +96,27 @@ export const ScrollToTopWrapper = styled(Grid)(({ theme }) => `
 `);
 
 export const MobileDrawerContainer = styled(Grid)`
+  height: 100%;
+  padding: 15px 10px;
+`;
 
+export const MobileDrawer = styled(SwipeableDrawer)`
+  .MuiPaper-root {
+    width: 100%;
+    max-width: 330px;
+  }
+`;
+
+export const MobileDrawerDivider = styled(Divider)(({ theme }) => `
+  &::before,
+  &::after {
+    border-color: ${theme.palette.primary.main};
+  }
+`);
+
+export const Signature = styled('img')`
+  width: 85px;
+  margin: 0 auto;
+  display: block;
+  transform: rotate(-13deg);
 `;

@@ -1,5 +1,6 @@
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EResponsiveType } from 'src/core/models';
+import { memo } from 'react';
 import { IResponsiveProps } from './props.interface';
 
 const Responsive = ({
@@ -19,4 +20,4 @@ const Responsive = ({
   return children!;
 };
 
-export default Responsive;
+export default memo(Responsive);

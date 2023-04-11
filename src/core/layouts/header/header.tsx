@@ -2,22 +2,25 @@ import {
   GitHub, Info, KeyboardArrowUp, Mail, Menu, School, Terminal, Work,
 } from '@mui/icons-material';
 import {
-  Box, Drawer, Grid, IconProps, MenuItem, SelectChangeEvent, Slide, Typography, useScrollTrigger,
+  Box,
+  Chip,
+  Grid, IconProps, MenuItem, SelectChangeEvent, Slide, Typography, useScrollTrigger,
 } from '@mui/material';
 import cx from 'classnames';
 import { observer } from 'mobx-react-lite';
 import {
-  useCallback, cloneElement, useMemo, useState,
+  cloneElement,
+  useCallback,
+  useMemo, useState,
 } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { HashLink } from 'react-router-hash-link';
 import Responsive from 'src/core/components/responsive/responsive';
+import { getBucketResource, smoothScroll } from 'src/core/functions';
 import useIsWindowTop from 'src/core/hooks/useIsWindowTop';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EAppSections, EResponsiveType, Languages } from 'src/core/models';
 import { useGlobalContext } from 'src/core/store/global/context';
-import { APP } from 'src/core/constants';
-import { HashLink } from 'react-router-hash-link';
-import { smoothScroll } from 'src/core/functions';
 import { IMenuOption } from './models/menu-option.interface';
 
 import * as S from './styled';
@@ -55,7 +58,12 @@ const Header = () => {
     <S.HeaderLink
       key={link.label}
       to={link.href}
-      scroll={smoothScroll}
+      scroll={(element) => {
+        if (isMobile) {
+          setMobileMenuOpen(false);
+        }
+        smoothScroll(element);
+      }}
     >
       {cloneElement(link.icon as any, { htmlColor: '#fff', fontSize: 'small' } as IconProps)}
       <Typography><FormattedMessage id={link.label} /></Typography>
@@ -88,20 +96,39 @@ const Header = () => {
                 breakpoint="md"
                 belowComponent={(
                   <>
-                    <Drawer
+                    <S.MobileDrawer
                       anchor="left"
                       open={mobileMenuOpen}
                       onClose={() => {
                         setMobileMenuOpen(false);
                       }}
+                      onOpen={() => {
+                        setMobileMenuOpen(true);
+                      }}
                     >
-                      {menuOptions.map(renderMenuOptions)}
-                    </Drawer>
+                      <S.MobileDrawerContainer container flexDirection="column">
+                        <Grid item xs flex={0}>
+                          <S.MobileDrawerDivider textAlign="center">
+                            <Grid container flexWrap="nowrap" alignItems="center">
+                              <GitHub htmlColor="#fff" style={{ marginRight: 10 }} />
+                              <Typography variant="h2">Leandro</Typography>
+                            </Grid>
+                          </S.MobileDrawerDivider>
+                        </Grid>
+                        <Grid item flex={1}>
+                          {menuOptions.map(renderMenuOptions)}
+                        </Grid>
+                        <Grid item xs flex={0}>
+                          <S.MobileDrawerDivider textAlign="center"><Chip label={<Typography variant="h3">Feito por</Typography>} /></S.MobileDrawerDivider>
+                          <S.Signature src={getBucketResource('/signature.png')} alt="signature" />
+                        </Grid>
+                      </S.MobileDrawerContainer>
+                    </S.MobileDrawer>
                     <Grid onClick={() => {
                       setMobileMenuOpen(true);
                     }}
                     >
-                      <Menu />
+                      <Menu htmlColor="#fff" />
                     </Grid>
                     <Grid
                       item
