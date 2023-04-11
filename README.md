@@ -16,3 +16,5 @@ Remover @ts-ignore do projeto
 Refatorar código do snake game para usar event.key, se atentando que a string diferencia entre maiúsculo e minúsculo
 
 Remover welcome das opções do terminal
+
+Mover imagens para buckets do S3

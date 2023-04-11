@@ -10,12 +10,10 @@ import AnimateHeight from 'react-animate-height';
 import { FormattedMessage } from 'react-intl';
 
 import SwipeRightAnimation from 'src/assets/animations/swipe-right.json';
-import LazyLoadParticles from 'src/core/components/lazy-load/lazy-load';
-import Responsive from 'src/core/components/responsive/responsive';
+import { LazyLoadParticles, Responsive } from 'src/core/components';
 import SwipeAnimation from 'src/core/components/swipe-animation/swipe-animation';
 import { getBucketResource } from 'src/core/functions';
-import { useHidden } from 'src/core/hooks';
-import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
+import { useHidden, useResponsive } from 'src/core/hooks';
 import { Section } from 'src/core/layouts';
 import {
   EAppSections,
@@ -125,11 +123,7 @@ const Academic = () => {
 
   return (
     <S.FormationWrapper id={EAppSections.ACADEMIC}>
-      {/* <Responsive
-        breakpoint="md"
-      > */}
       <LazyLoadParticles id="formation-section" particlesConfig={desktopParticlesConfig} />
-      {/* </Responsive> */}
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString('Formação')

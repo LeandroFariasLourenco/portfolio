@@ -15,9 +15,8 @@ import {
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import LazyLoadParticles from 'src/core/components/lazy-load/lazy-load';
-import Responsive from 'src/core/components/responsive/responsive';
-import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
+import { LazyLoadParticles, Responsive } from 'src/core/components';
+import { useResponsive } from 'src/core/hooks';
 import { EAppSections, EResponsiveType } from 'src/core/models';
 import { IResponsiveSwiper } from 'src/core/models/responsive-swiper.interface';
 import DesktopCard from './components/desktop-card/desktop-card';
@@ -110,7 +109,11 @@ const Experience = () => {
         position: 'relative',
       }}
     >
-      <LazyLoadParticles id="experience-section" particlesConfig={desktopParticlesConfig} />
+      <Responsive
+        breakpoint="md"
+      >
+        <LazyLoadParticles id="experience-section" particlesConfig={desktopParticlesConfig} />
+      </Responsive>
       <S.SwiperContainer>
         <Box className="swiper-pagination">
           {[...Array(experiences.length)].map(renderSwiperPagination)}

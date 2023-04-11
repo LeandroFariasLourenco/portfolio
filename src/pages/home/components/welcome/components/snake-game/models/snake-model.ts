@@ -1,4 +1,4 @@
-import { textures } from 'src/assets/resources/textures';
+import { TEXTURES } from 'src/assets/resources/textures';
 import { BaseCanvas } from './base-canvas';
 import { FoodModel } from './food-model';
 import { GameModel } from './game-model';
@@ -7,13 +7,13 @@ import { ESnakeDirection } from './snake-direction.enum';
 
 export class SnakeModel extends BaseCanvas {
   private snakeHeadTexture = new Image(
-    textures.snakeHeadTexture.width,
-    textures.snakeHeadTexture.height,
+    TEXTURES.snakeHeadTexture.width,
+    TEXTURES.snakeHeadTexture.height,
   );
 
   private snakeBodyTexture = new Image(
-    textures.snakeBodyTexture.width,
-    textures.snakeBodyTexture.height,
+    TEXTURES.snakeBodyTexture.width,
+    TEXTURES.snakeBodyTexture.height,
   );
 
   private score = 0;
@@ -50,8 +50,8 @@ export class SnakeModel extends BaseCanvas {
       this.generateFoodPosition(this.canvas.height - 20),
     );
 
-    this.snakeBodyTexture.src = textures.snakeBodyTexture.source;
-    this.snakeHeadTexture.src = textures.snakeHeadTexture.source;
+    this.snakeBodyTexture.src = TEXTURES.snakeBodyTexture.source;
+    this.snakeHeadTexture.src = TEXTURES.snakeHeadTexture.source;
   }
 
   private generateFoodPosition(max: number, min: number = 0) {

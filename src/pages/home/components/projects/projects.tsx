@@ -1,21 +1,23 @@
-import { Code, DeveloperBoard } from '@mui/icons-material';
-import { Grid, Typography } from '@mui/material';
+import {
+  Code, DeveloperBoard, GitHub, OpenInNew, RemoveRedEye,
+} from '@mui/icons-material';
+import { Button, Grid, Typography } from '@mui/material';
 import {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { FormattedMessage } from 'react-intl';
 import SwipeRightAnimation from 'src/assets/animations/swipe-right.json';
-import { BottomSheet } from 'src/core/components';
 import Responsive from 'src/core/components/responsive/responsive';
 import SwipeAnimation from 'src/core/components/swipe-animation/swipe-animation';
 
+import { TECHNOLOGY_ICONS } from 'src/assets/resources/technology-icons';
 import { getBucketResource } from 'src/core/functions';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { Repository, Section } from 'src/core/layouts';
 import { EAppSections, EResponsiveType, IGithubRepository } from 'src/core/models';
 import { IResponsiveSwiper } from 'src/core/models/responsive-swiper.interface';
 import { GithubService } from 'src/core/services';
-import { Navigation, Pagination } from 'swiper';
+import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { IProject } from './models/project.interface';
 
@@ -26,9 +28,10 @@ const Projects = () => {
   const isMobile = useResponsive({ type: EResponsiveType.smaller });
   const swiperConfig: IResponsiveSwiper = useMemo<IResponsiveSwiper>(() => ({
     desktop: {
-      modules: [Pagination],
-      pagination: {
-        clickable: true,
+      modules: [Navigation],
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       },
     },
     mobile: {
@@ -40,12 +43,71 @@ const Projects = () => {
     },
   }), []);
 
-  const projects = useMemo(() => [
-    { title: '2', description: '', background: getBucketResource('/projects/futawesome.png') },
-    { title: '3', description: '', background: getBucketResource('/projects/snakegame.mp4') },
-    { title: '4', description: '', background: getBucketResource('/projects/solar-system.png') },
-    { title: '5', description: '', background: getBucketResource('/projects/be-the-hero.png') },
-  ] as IProject[], []);
+  const projects: IProject[] = useMemo<IProject[]>(() => [
+    {
+      title: 'Fut Awesome',
+      description: 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum',
+      background: getBucketResource('/projects/futawesome.png'),
+      icons: [TECHNOLOGY_ICONS.DART, TECHNOLOGY_ICONS.FLUTTER],
+      link: '',
+    },
+    {
+      title: 'Zappy code',
+      description: 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum',
+      background: getBucketResource('/projects/zappy-code.jpeg'),
+      icons: [TECHNOLOGY_ICONS.SWIFT],
+      link: '',
+    },
+    {
+      title: 'Simple diary',
+      description: 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum',
+      background: getBucketResource('/projects/diary.jpeg'),
+      icons: [TECHNOLOGY_ICONS.SWIFT],
+      link: '',
+    },
+    {
+      title: 'Petra Assets',
+      description: 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum',
+      background: getBucketResource('/projects/petra.png'),
+      icons: [TECHNOLOGY_ICONS.TYPESCRIPT, TECHNOLOGY_ICONS.ANGULAR, TECHNOLOGY_ICONS.SASS, TECHNOLOGY_ICONS.HTML],
+      link: '',
+    },
+    {
+      title: 'Restaurant Finder',
+      description: 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum',
+      background: getBucketResource('/projects/restaurant-finder.png'),
+      icons: [TECHNOLOGY_ICONS.TYPESCRIPT, TECHNOLOGY_ICONS.SASS, TECHNOLOGY_ICONS.REACT, TECHNOLOGY_ICONS.HTML],
+      link: '',
+    },
+    {
+      title: 'Canvas Matrix',
+      description: 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum',
+      background: getBucketResource('/projects/matrix.gif'),
+      icons: [TECHNOLOGY_ICONS.JAVASCRIPT, TECHNOLOGY_ICONS.CSS, TECHNOLOGY_ICONS.HTML],
+      link: '',
+    },
+    {
+      title: 'Snake Game',
+      description: 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum',
+      background: getBucketResource('/projects/snakegame.gif'),
+      icons: [TECHNOLOGY_ICONS.JAVASCRIPT, TECHNOLOGY_ICONS.REACT, TECHNOLOGY_ICONS.SASS, TECHNOLOGY_ICONS.HTML],
+      link: '',
+    },
+    {
+      title: 'Solar System',
+      description: 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum',
+      background: getBucketResource('/projects/solar-system.png'),
+      icons: [TECHNOLOGY_ICONS.JAVASCRIPT, TECHNOLOGY_ICONS.HTML, TECHNOLOGY_ICONS.CSS],
+      link: '',
+    },
+    {
+      title: 'Be the Hero',
+      description: 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum',
+      background: getBucketResource('/projects/be-the-hero.png'),
+      icons: [TECHNOLOGY_ICONS.JAVASCRIPT, TECHNOLOGY_ICONS.HTML, TECHNOLOGY_ICONS.CSS, TECHNOLOGY_ICONS.REACT],
+      link: '',
+    },
+  ], []);
 
   const fetchRepositories = async () => {
     const response = await GithubService.getRepositories();
@@ -81,8 +143,9 @@ const Projects = () => {
           paddingBottom: 50,
         }}
       >
-        {/* <BottomSheet /> */}
-
+        <Typography>
+          Aqui
+        </Typography>
         <S.ProjectsContainer container>
           <S.RepositoriesWrapper item xs={12} md={3}>
             <S.RepositoryTitle container flexDirection="row" alignItems="center">
@@ -141,21 +204,67 @@ const Projects = () => {
                   style={{ position: 'relative' }}
                   key={project.title}
                 >
-                  <S.ProjectBackgroundVideo src={project.background} autoPlay loop muted />
-                  <S.ProjectBackgroundImage src={project.background} />
-                  <S.ProjectSlideContainer>
-                    <S.ProjectSlideOverlay
-                      container
-                      alignItems="flex-end"
-                      justifyContent="flex-end"
-                      flexDirection="column"
-                    >
-                      <Typography variant="h3"><FormattedMessage id="home.projects.description.title" /></Typography>
+                  <Responsive
+                    breakpoint="md"
+                    aboveComponent={(
+                      <>
+                        <S.ProjectBackgroundImage src={project.background} />
+                        <S.ProjectSlideContainer>
+                          <S.ProjectSlideOverlay
+                            container
+                            alignItems="flex-end"
+                          >
+                            <S.ProjectTechnologiesWrapper container xs={6}>
+                              {project.icons.map((icon, index) => (
+                                <S.ProjectTechnologyIcon
+                                  key={`${project.title}-${index}`}
+                                  src={icon}
+                                />
+                              ))}
+                            </S.ProjectTechnologiesWrapper>
 
-                      <Typography><FormattedMessage id="home.projects.description.content1" /></Typography>
-                      <Typography><FormattedMessage id="home.projects.description.content2" /></Typography>
-                    </S.ProjectSlideOverlay>
-                  </S.ProjectSlideContainer>
+                            <Grid container xs={6}>
+                              <Typography variant="h3">{project.title}</Typography>
+
+                              <Typography>{project.description}</Typography>
+                            </Grid>
+                          </S.ProjectSlideOverlay>
+                        </S.ProjectSlideContainer>
+                      </>
+                    )}
+                    belowComponent={(
+                      <S.ProjectSlideContainer>
+                        <Grid container xs={12}>
+                          <Typography variant="h2">{project.title}</Typography>
+                          <Typography>{project.description}</Typography>
+                        </Grid>
+                        <S.ProjectTechnologiesWrapper container justifyContent="flex-end" xs={12}>
+                          {project.icons.map((icon, index) => (
+                            <S.ProjectTechnologyIcon
+                              key={`${project.title}-${index}`}
+                              src={icon}
+                            />
+                          ))}
+                        </S.ProjectTechnologiesWrapper>
+
+                        <Grid container flexWrap="nowrap" gap={4} justifyContent="space-between" marginTop={1}>
+                          <a href={project.link}>
+                            <S.ActionButton
+                              variant="outlined"
+                              color="secondary"
+                              endIcon={<OpenInNew color="secondary" fontSize="small" />}
+                              startIcon={<GitHub htmlColor="white" fontSize="large" />}
+                            >
+                              <Typography variant="h6" color="secondary">Github</Typography>
+                            </S.ActionButton>
+                          </a>
+                          <S.ActionButton endIcon={<RemoveRedEye color="primary" />} variant="outlined">
+                            <Typography variant="h6" color="primary">Visualizar</Typography>
+                          </S.ActionButton>
+                        </Grid>
+                      </S.ProjectSlideContainer>
+                    )}
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>

@@ -59,7 +59,7 @@ export const FormationTab = styled(Grid)(({ theme }) => `
 `);
 
 export const CardContainer = styled(Grid)(({ theme }) => `
-  background-color: rgba(28, 22, 48, 0.75);
+  background-color: rgba(28, 22, 48, 0.87);
   border: 2px solid ${theme.palette.action.active};
   border-top: 0;
   padding: 20px;

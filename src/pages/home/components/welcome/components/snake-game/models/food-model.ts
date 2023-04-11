@@ -1,13 +1,13 @@
 import randomNumber from 'src/core/functions/random-number';
-import { textures } from 'src/assets/resources/textures';
+import { TEXTURES } from 'src/assets/resources/textures';
 import { BaseCanvas } from './base-canvas';
 
 export class FoodModel extends BaseCanvas {
-  randomTexture = randomNumber(textures.fruitTextures.length);
+  randomTexture = randomNumber(TEXTURES.fruitTextures.length);
 
   texture = new Image(
-    textures.fruitTextures[this.randomTexture].width,
-    textures.fruitTextures[this.randomTexture].height,
+    TEXTURES.fruitTextures[this.randomTexture].width,
+    TEXTURES.fruitTextures[this.randomTexture].height,
   );
 
   public positionY: number;
@@ -20,18 +20,18 @@ export class FoodModel extends BaseCanvas {
     this.positionX = px;
     this.canvas = canvas;
     this.canvasContext = canvas.getContext('2d')!;
-    this.texture.src = textures.fruitTextures[
+    this.texture.src = TEXTURES.fruitTextures[
       this.randomTexture
     ].source;
   }
 
   drawFood(shouldRenderNewTexture: boolean) {
     if (shouldRenderNewTexture) {
-      const newRandomTexture = randomNumber(textures.fruitTextures.length);
+      const newRandomTexture = randomNumber(TEXTURES.fruitTextures.length);
 
-      this.texture.height = textures.fruitTextures[newRandomTexture].height;
-      this.texture.width = textures.fruitTextures[newRandomTexture].width;
-      this.texture.src = textures.fruitTextures[newRandomTexture].source;
+      this.texture.height = TEXTURES.fruitTextures[newRandomTexture].height;
+      this.texture.width = TEXTURES.fruitTextures[newRandomTexture].width;
+      this.texture.src = TEXTURES.fruitTextures[newRandomTexture].source;
     }
 
     this.canvasContext.drawImage(
