@@ -1,5 +1,5 @@
 import {
-  AppBar, Divider, Grid, Select, SwipeableDrawer,
+  AppBar, Box, Divider, Grid, Select, SwipeableDrawer,
 } from '@mui/material';
 import { HashLink } from 'react-router-hash-link';
 import styled from 'styled-components';
@@ -42,6 +42,16 @@ export const HeaderWrapper = styled(Grid)(({ theme }) => `
   transition: background-color 200ms ease-in-out;
   padding: 5px 0;
 
+  .MuiSelect {
+    &-select {
+      padding-bottom: 0;
+    }
+
+    &-iconStandard {
+      color: #fff;
+    }
+  }
+
   ${theme.breakpoints.down('md')} {
     padding: 10px;
   }
@@ -74,7 +84,7 @@ export const ScrollToTopWrapper = styled(Grid)(({ theme }) => `
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
-  z-index: 2;
+  z-index: 10;
   width: 40px;
   height: 40px;
 
@@ -114,9 +124,19 @@ export const MobileDrawerDivider = styled(Divider)(({ theme }) => `
   }
 `);
 
-export const Signature = styled('img')`
+export const Signature = styled.img`
   width: 85px;
   margin: 0 auto;
   display: block;
   transform: rotate(-13deg);
 `;
+
+export const CountryIcon = styled.img`
+  width: 25px;
+`;
+
+export const CountryText = styled(Box)(({ theme }) => `
+  ${theme.breakpoints.up('md')} {
+    margin-left: 10px;
+  }
+`);

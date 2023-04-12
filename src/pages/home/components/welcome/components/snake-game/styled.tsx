@@ -1,8 +1,8 @@
 import {
-  Box, Button, Card, Grid, Typography,
+  Box, Button, Card, Grid, Typography, css, keyframes,
 } from '@mui/material';
 import { mixins } from 'src/styles/utils';
-import styled, { css, keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 const closeAnimation = keyframes`
   from {
@@ -27,7 +27,7 @@ const showGameAnimation = keyframes`
 `;
 
 export const Wrapper = styled(Box)<{ $closeTimer: number }>(({ theme, $closeTimer }) => css`
-  ${theme.mixins.flexCentered};
+  ${mixins.flexCentered};
   width: 700px;
   display: flex;
   flex-flow: column;

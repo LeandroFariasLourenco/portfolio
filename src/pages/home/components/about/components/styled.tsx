@@ -1,7 +1,6 @@
 import {
-  Button, Card, Grid, Typography,
+  Button, Card, Grid, Typography, keyframes, styled,
 } from '@mui/material';
-import styled, { keyframes } from 'styled-components';
 
 const slideDash = keyframes`
   from { transform: translateX(-50%); }
@@ -44,7 +43,7 @@ export const DashedBorder = styled('div')`
 export const StoryPanel = styled(Card)(({ theme }) => `
   padding: 5px;
   position: absolute;
-  width: 140%;
+  width: 100%;
   transition: opacity 300ms, transform 300ms, border-radius 300ms;
   top: 50%;
   left: 50%;

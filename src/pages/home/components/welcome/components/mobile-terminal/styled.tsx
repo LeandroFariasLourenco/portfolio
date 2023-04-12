@@ -1,4 +1,6 @@
-import { Card, Grid, Typography } from '@mui/material';
+import {
+  Card, Grid, Typography,
+} from '@mui/material';
 import styled from 'styled-components';
 
 export const TerminalHeading = styled(Grid)`
@@ -21,7 +23,7 @@ export const TerminalHeading = styled(Grid)`
 
 export const TerminalComponentWrapper = styled(Grid)`
   width: 100%;
-  opacity: 0.75;
+  opacity: 0.50;
 
   &.is--focused {
     opacity: 1;

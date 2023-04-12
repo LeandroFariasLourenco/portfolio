@@ -5,9 +5,9 @@ import { useState } from 'react';
 import languages from 'src/assets/resources/languages.json';
 import { getBucketResource } from 'src/core/functions';
 import { Section } from 'src/core/layouts';
-import Technologies from 'src/core/layouts/technologies/technologies';
 import { EAppSections } from 'src/core/models';
 import * as S from './styled';
+import Technologies from './components/technologies/technologies';
 
 const Languages = () => {
   const [selectedTab, setSelectedTab] = useState<number>(0);
@@ -59,12 +59,6 @@ const Languages = () => {
             </S.TechnologyTabContainer>
           ))}
         </S.TechnologyWrapper>
-        {/* {languageTabs.map((language, index) => {
-        if (selectedTab !== index) {
-          return null;
-        }
-        return language.content;
-      })} */}
       </Section>
     </S.SectionWrapper>
   );

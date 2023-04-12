@@ -1,5 +1,4 @@
-import { Grid, Box } from '@mui/material';
-import styled from 'styled-components';
+import { Grid, Box, styled } from '@mui/material';
 
 export const FormationTabs = styled(Grid)(({ theme }) => `
   border: 2px solid ${theme.palette.action.active};
@@ -34,7 +33,7 @@ export const FormationTabs = styled(Grid)(({ theme }) => `
 export const FormationTab = styled(Grid)(({ theme }) => `
   transition: background-color 200ms ease-in-out;
   padding: 10px 0;
-  background-color: #1C1630;
+  background-color: ${theme.palette.background.default};
   cursor: pointer;
 
   ${theme.breakpoints.down('md')} {

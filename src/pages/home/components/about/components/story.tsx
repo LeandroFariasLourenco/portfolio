@@ -1,6 +1,6 @@
 import { Close } from '@mui/icons-material';
 import {
-  Grid, useTheme,
+  Grid, Typography, useTheme,
 } from '@mui/material';
 import cx from 'classnames';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
@@ -58,7 +58,9 @@ const Story = ({
             borderColor: hobby.color,
           }}
         >
-          {hobby.content}
+          <Typography>
+            {hobby.content}
+          </Typography>
 
           <S.CloseStory
             onClick={() => {

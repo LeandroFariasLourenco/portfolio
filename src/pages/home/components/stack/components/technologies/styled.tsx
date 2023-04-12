@@ -8,6 +8,7 @@ import { mixins } from 'src/styles/utils';
 export const LanguageDescriptionCard = styled(Card)(({ theme }) => `
   border-radius: 0;
   border-top: none;
+  background-color: ${theme.palette.background.default};
   
   ${theme.breakpoints.down('md')} {
     transition: max-height 500ms ease-in;
@@ -21,7 +22,9 @@ export const LanguageDescriptionCard = styled(Card)(({ theme }) => `
   ${theme.breakpoints.up('md')} {
     padding: 15px;
     height: 100%;
-    border: 2px dashed ${theme.palette.secondary.main};
+    border: 2px solid ${theme.palette.secondary.main};
+    border-left-style: dashed;
+    border-top: none;
   }
 `);
 
@@ -33,8 +36,8 @@ export const LanguageDescriptionContainer = styled(Box)(({ theme }) => `
 
 export const LanguagesTabWrapper = styled(Grid)(({ theme }) => `
   height: 100%;
-  border: 2px dashed ${theme.palette.secondary.main};
-  background-color: ${theme.palette.background.paper};
+  border: 2px solid ${theme.palette.secondary.main};
+  background-color: ${theme.palette.background.default};
   border-top: none;
   overflow-y: auto;
   
@@ -105,7 +108,7 @@ export const TechnologyMobileArrow = styled(ArrowUpward)<{ selected: boolean }>(
 export const TabContainer = styled(Grid)(({ theme }) => `
   cursor: pointer;
   transition: background-color 200ms ease-in-out;
-  background-color: ${theme.palette.background.paper} ;
+  background-color: ${theme.palette.background.default} ;
   padding: 0 15px;
   border-radius: 0;
   min-height: 58px;

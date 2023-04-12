@@ -4,7 +4,6 @@ import { IntlProvider } from 'react-intl';
 import Routes from 'src/core/routes/routes';
 import { materialTheme } from 'src/styles/utils';
 
-import 'flag-icons/css/flag-icons.min.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';

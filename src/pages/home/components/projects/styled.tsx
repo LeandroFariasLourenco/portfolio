@@ -1,5 +1,5 @@
 import {
-  Button, Card, css, Grid, styled, Typography,
+  Grid, styled, Typography,
 } from '@mui/material';
 import { getBucketResource } from 'src/core/functions';
 import { mixins } from 'src/styles/utils';
@@ -10,37 +10,16 @@ export const ProjectsContainer = styled(Grid)(({ theme }) => `
   width: 100%;
   border: 2px solid ${theme.palette.secondary.main};
 
-  .swiper {
-    &-slide {
-      &-shadow {
-        display: none;
-      }
-    }
-
-    &-button {
-      &-next {
-        right: -4px;
-      }
-
-      &-prev {
-        left: -4px;
-      }
-      
-      &-next,
-      &-prev {
-        top: unset;
-        bottom: 35%;
-        transform: unset;
-        
-        &::after,
-        &::before {
-          font-size: 32px;
-          color: ${theme.palette.primary.main};
+  ${theme.breakpoints.down('md')} {
+    .swiper {
+      &-button {
+        &-prev,
+        &-next {
+          bottom: 35%;
+          top: unset;
+          transform: unset;
+          right: 0;
         }
-      }
-
-      &-disabled {
-        display: none;
       }
     }
   }
@@ -62,6 +41,7 @@ export const ProjectsTabs = styled(Grid)(({ theme }) => `
   background-size: cover;
   background-position: center;
   z-index: 2;
+  position: relative;
 
   &::before {
     content: '';
@@ -131,58 +111,6 @@ export const RepositoriesList = styled(Grid)(({ theme }) => `
   }
   &::-webkit-scrollbar-track {
     background: ${theme.palette.background.paper};
-  }
-`);
-
-export const ProjectSlideOverlay = styled(Grid)`
-  background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0));
-  position: absolute;
-  bottom: 0;
-  padding: 20px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-`;
-
-export const ProjectSlideContainer = styled(Grid)(({ theme }) => `
-  ${theme.breakpoints.up('md')} {
-    padding: 20px;
-  }
-
-  ${theme.breakpoints.down('md')} {
-    height: 100%;
-    padding: 10px;
-    display: flex;
-    flex-flow: column;
-    align-items: space-between;
-  }
-`);
-
-export const ProjectBackgroundImage = styled('img')`
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-`;
-
-export const ProjectTechnologyIcon = styled('img')(({ theme }) => `
-  width: 50px;
-  height: 50px;
-  
-  ${theme.breakpoints.down('md')} {
-    width: 40px;
-    height: 40px;
-  }
-`);
-
-export const ProjectTechnologiesWrapper = styled(Grid)(({ theme }) => `
-  display: flex;
-
-  ${theme.breakpoints.down('md')} {
-    max-height: 50px;
   }
 `);
 

@@ -2,45 +2,65 @@ import {
   Code, DeveloperBoard,
 } from '@mui/icons-material';
 import {
-  Box,
-  Grid, Typography, useTheme,
+  Box, Typography,
 } from '@mui/material';
 import {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { FormattedMessage } from 'react-intl';
 import SwipeRightAnimation from 'src/assets/animations/swipe-right.json';
+import { TECHNOLOGY_ICONS } from 'src/assets/resources/technology-icons';
+import { CustomSwiperControls } from 'src/core/components';
 import Responsive from 'src/core/components/responsive/responsive';
 import SwipeAnimation from 'src/core/components/swipe-animation/swipe-animation';
-
-import { TECHNOLOGY_ICONS } from 'src/assets/resources/technology-icons';
 import { getBucketResource } from 'src/core/functions';
-import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
-import { Repository, Section } from 'src/core/layouts';
+import { Section } from 'src/core/layouts';
 import { EAppSections, EResponsiveType, IGithubRepository } from 'src/core/models';
+import { IResponsiveSwiper } from 'src/core/models/responsive-swiper.interface';
 import { GithubService } from 'src/core/services';
-import { EffectCards, Navigation } from 'swiper';
+import {
+  EffectCards, Navigation,
+  Pagination,
+  Swiper as SwiperClass,
+} from 'swiper';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
+import { useResponsive } from 'src/core/hooks';
 import { IProject } from './models/project.interface';
 
+import DesktopProject from './components/desktop-project/desktop-project';
 import MobileProject from './components/mobile-project/mobile-project';
+import Repository from './components/repository/repository';
 import * as S from './styled';
 
 const Projects = () => {
   const [repositories, setRepositories] = useState<IGithubRepository[]>([]);
-  const theme = useTheme();
+  const [swiper, setSwiper] = useState<SwiperClass>();
+  const [swiperIndex, setSwiperIndex] = useState<number>(0);
   const isMobile = useResponsive({ type: EResponsiveType.smaller });
-  const swiperProps: SwiperProps = useMemo<SwiperProps>(() => ({
-    modules: [Navigation, EffectCards],
-    effect: 'cards',
-    navigation: {
-      nextEl: '.projects.swiper-button-next',
-      prevEl: '.projects.swiper-button-prev',
+  const swiperProps: IResponsiveSwiper = useMemo<IResponsiveSwiper>(() => ({
+    desktop: {
+      modules: [Navigation, Pagination],
+      effect: 'slide',
+      grabCursor: true,
+      onRealIndexChange: (swiper: SwiperClass) => {
+        setSwiperIndex(swiper.realIndex);
+      },
+      onSwiper: (swiper: SwiperClass) => {
+        setSwiper(swiper);
+      },
     },
-    breakpoints: {
-      [theme.breakpoints.values.md]: {
-        modules: [Navigation],
-        effect: 'slide',
+    mobile: {
+      modules: [Navigation, EffectCards],
+      effect: 'cards',
+      onRealIndexChange: (swiper: SwiperClass) => {
+        setSwiperIndex(swiper.realIndex);
+      },
+      onSwiper: (swiper: SwiperClass) => {
+        setSwiper(swiper);
+      },
+      navigation: {
+        nextEl: '.projects.swiper-button-next',
+        prevEl: '.projects.swiper-button-prev',
       },
     },
   }), []);
@@ -48,10 +68,11 @@ const Projects = () => {
   const projects: IProject[] = useMemo<IProject[]>(() => [
     {
       title: 'Fut Awesome',
-      paragraphs: ['Com o objetivo de aprimorar minhas habilidades em programação para dispositivos móveis, desenvolvi um projeto pessoal em Flutter e Dart voltado para consumo de APIs de futebol. Esse aplicativo permite o acesso a informações sobre jogos de diversas ligas, tais como Brasileirão, Copa do Brasil e Champions League além de disponibilizar notícias sobre o mundo do futebol.',
+      paragraphs: [
+        'Com o objetivo de aprimorar minhas habilidades em programação para dispositivos móveis, desenvolvi um projeto pessoal em Flutter e Dart voltado para consumo de APIs de futebol. Esse aplicativo permite o acesso a informações sobre jogos de diversas ligas, tais como Brasileirão, Copa do Brasil e Champions League além de disponibilizar notícias sobre o mundo do futebol.',
         'Através da integração com as APIs, o aplicativo é capaz de exibir em tempo real os resultados dos jogos, bem como a tabela de classificação das equipes.',
         'Além disso, é possível visualizar informações sobre os jogadores, tais como estatísticas de gols e assistências, e receber notificações sobre os próximos jogos.',
-        'Esse projeto pessoal foi uma grande oportunidade para aprimorar minhas habilidades em programação para dispositivos móveis e me permitiu explorar conceitos importantes como a integração com APIs externas e o desenvolvimento de uma interface de usuário amigável e responsiva.'],
+      ],
       background: getBucketResource('/projects/futawesome.png'),
       icons: [TECHNOLOGY_ICONS.DART, TECHNOLOGY_ICONS.FLUTTER],
       link: '',
@@ -210,7 +231,7 @@ const Projects = () => {
                 height: '100%',
                 width: '100%',
               }}
-              {...swiperProps}
+              {...(isMobile ? swiperProps.mobile : swiperProps.desktop)}
             >
               {projects.map((project) => (
                 <SwiperSlide
@@ -219,39 +240,33 @@ const Projects = () => {
                 >
                   <Responsive
                     breakpoint="md"
-                    aboveComponent={(
-                      <>
-                        <S.ProjectBackgroundImage src={project.background} />
-                        <S.ProjectSlideContainer>
-                          <S.ProjectSlideOverlay
-                            container
-                            alignItems="flex-end"
-                          >
-                            <S.ProjectTechnologiesWrapper container item xs={6}>
-                              {project.icons.map((icon, index) => (
-                                <S.ProjectTechnologyIcon
-                                  key={`${project.title}-${index}`}
-                                  src={icon}
-                                />
-                              ))}
-                            </S.ProjectTechnologiesWrapper>
-
-                            <Grid container item xs={6}>
-                              <Typography variant="h3">{project.title}</Typography>
-                              {/* {project.paragraphs.map(renderProjectParagraph)} */}
-                            </Grid>
-                          </S.ProjectSlideOverlay>
-                        </S.ProjectSlideContainer>
-                      </>
-                    )}
+                    aboveComponent={<DesktopProject project={project} />}
                     belowComponent={<MobileProject project={project} />}
                   />
                 </SwiperSlide>
               ))}
             </Swiper>
+            <Responsive
+              breakpoint="md"
+            >
+              <CustomSwiperControls
+                paginationLayout="vertical"
+                swiper={swiper!}
+                swiperIndex={swiperIndex}
+                totalSlides={projects.length}
+              />
+            </Responsive>
           </S.ProjectsTabs>
-          <Box className="projects swiper-button-next" />
-          <Box className="projects swiper-button-prev" />
+          <Responsive
+            breakpoint="md"
+            type={EResponsiveType.smaller}
+          >
+            <CustomSwiperControls
+              swiper={swiper!}
+              swiperIndex={swiperIndex}
+              totalSlides={projects.length}
+            />
+          </Responsive>
         </S.ProjectsContainer>
       </Section>
     </S.ProjectsWrapper>

@@ -1,5 +1,5 @@
+import { CSSProperties } from 'react';
 import { GridProps } from '@mui/material';
-import { CSSProperties } from 'styled-components';
 import { TypewriterClass } from 'typewriter-effect';
 
 export interface ISectionProps {

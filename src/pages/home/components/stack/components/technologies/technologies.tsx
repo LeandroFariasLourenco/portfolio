@@ -5,20 +5,21 @@ import {
 } from '@mui/material';
 import cx from 'classnames';
 import {
-  Fragment, memo, useCallback, useState,
+  Fragment,
+  useCallback, useState,
 } from 'react';
 import { FormattedMessage } from 'react-intl';
 import Responsive from 'src/core/components/responsive/responsive';
 import { getBucketResource } from 'src/core/functions';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EResponsiveType, ITechnology } from 'src/core/models';
-import { ITechnologiesProps } from './props.interface';
+import { ITechnologiesProps, ITechnologyDetailsProps } from './props.interface';
 import * as S from './styled';
 
 const TechnologyDetails = ({
   technology,
   isSelected,
-}: { technology: ITechnology; isSelected?: boolean; }) => {
+}: ITechnologyDetailsProps) => {
   const renderTechnologyTopic = useCallback((topic: string) => (
     <S.LanguageTopic
       key={topic}
@@ -132,4 +133,4 @@ const Technologies = ({
   );
 };
 
-export default memo(Technologies);
+export default Technologies;

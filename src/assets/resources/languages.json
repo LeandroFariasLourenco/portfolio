@@ -5,13 +5,13 @@
     "technologies": [
       {
         "name": "React",
-        "icon": "/technologies/typescript-javascript/react.svg",
+        "icon": "/technologies/react.png",
         "description": "home.languages1.technologies1.description",
         "topics": ["Redux", "Mobx", "Hooks", "Classes", "Styled Components"]
       },
       {
         "name": "React Native",
-        "icon": "/technologies/typescript-javascript/react-native.svg",
+        "icon": "/technologies/react.png",
         "description": "home.languages1.technologies2.description",
         "topics": [
           "Redux",
@@ -24,7 +24,7 @@
       },
       {
         "name": "Angular",
-        "icon": "/technologies/typescript-javascript/angular.svg",
+        "icon": "/technologies/angularjs.png",
         "description": "home.languages1.technologies3.description",
         "topics": [
           "Observables",
@@ -35,7 +35,7 @@
       },
       {
         "name": "Typescript",
-        "icon": "/technologies/typescript-javascript/typescript.svg",
+        "icon": "/technologies/typescript.png",
         "description": "home.languages1.technologies4.description",
         "topics": [
           "Interfaces",
@@ -46,7 +46,7 @@
       },
       {
         "name": "Javascript",
-        "icon": "/technologies/typescript-javascript/javascript.svg",
+        "icon": "/technologies/javascript.png",
         "description": "home.languages1.technologies5.description",
         "topics": [
           "Async, Promises and general post ES5 syntax",
