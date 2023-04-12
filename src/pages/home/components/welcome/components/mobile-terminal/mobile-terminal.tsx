@@ -2,17 +2,22 @@ import {
   Close, CropDin, Remove,
 } from '@mui/icons-material';
 import { Grid } from '@mui/material';
-import { useEffect, useMemo, useState } from 'react';
+import {
+  useCallback, useEffect, useMemo, useState,
+} from 'react';
 import { useIntl } from 'react-intl';
 import { Typewriter } from 'src/core/components';
 import { getBucketResource } from 'src/core/functions';
 import { TypewriterClass } from 'typewriter-effect';
+import cx from 'classnames';
+import { useIsWindowTop } from 'src/core/hooks';
 import { ITerminalLine } from './models/terminal-line.interface';
 import * as S from './styled';
 
 const MobileTerminal = () => {
   const intl = useIntl();
   const [terminalRows, setTerminalRows] = useState<ITerminalLine[]>([]);
+  const { isWindowOnTop } = useIsWindowTop();
 
   const terminalTexts = useMemo<ITerminalLine[]>(() => ([
     {
@@ -53,7 +58,7 @@ const MobileTerminal = () => {
     },
   ]), [intl]);
 
-  const setupTerminalTimer = () => {
+  const setupTerminalTimer = useCallback(() => {
     terminalTexts.forEach((terminalText) => {
       const timeout = setTimeout(() => {
         if (terminalRows.length !== terminalTexts.length) {
@@ -62,7 +67,7 @@ const MobileTerminal = () => {
         clearTimeout(timeout);
       }, terminalText.timer);
     });
-  };
+  }, []);
 
   useEffect(() => {
     setupTerminalTimer();
@@ -72,6 +77,9 @@ const MobileTerminal = () => {
     <S.TerminalComponentWrapper
       item
       xs={12}
+      className={cx({
+        'is--focused': isWindowOnTop,
+      })}
     >
       <S.TypeWriterBackground
         elevation={3}

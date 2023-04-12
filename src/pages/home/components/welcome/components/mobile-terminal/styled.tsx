@@ -21,6 +21,12 @@ export const TerminalHeading = styled(Grid)`
 
 export const TerminalComponentWrapper = styled(Grid)`
   width: 100%;
+  opacity: 0.75;
+
+  &.is--focused {
+    opacity: 1;
+    pointer-events: unset;
+  }
 `;
 
 export const TypeWriterBackground = styled(Card)(({ theme }) => `

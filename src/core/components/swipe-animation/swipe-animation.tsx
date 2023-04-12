@@ -18,7 +18,9 @@ const SwipeAnimation = ({
 
   const centerAnimationInContainer = () => {
     const lottieContainer = swipeOverlayRef!.firstChild! as HTMLDivElement;
-    const wrapper = swipeOverlayRef!.parentElement!;
+    const wrapper = swipeOverlayRef!.parentElement;
+    if (!wrapper) return;
+
     const centerOffsets = {
       x: wrapper.clientWidth / 3,
       y: wrapper.clientHeight / 5,
