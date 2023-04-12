@@ -47,7 +47,7 @@ const DesktopTerminal = ({
     },
     {
       key: 'second',
-      timer: 2250,
+      timer: 2550,
       typeText: (typewriter: TypewriterClass) => {
         typewriter.typeString(intl.messages['home.welcome.terminal.text2.string1'] as string)
           .start();
@@ -76,6 +76,13 @@ const DesktopTerminal = ({
         typewriter.typeString('Digite /help para mais informações').start();
       },
     },
+    // {
+    //   key: 'fifth',
+    //   timer: 7550,
+    //   typeText: (typewriter: TypewriterClass) => {
+    //     typewriter.typeString('Digite "clear" quando o terminal ficar muito poluído :)').start();
+    //   },
+    // },
   ]), [intl]);
 
   const scrollToTerminalBottom = () => {
@@ -280,8 +287,10 @@ const DesktopTerminal = ({
               </S.TerminalTitle>
             </S.TerminalTitleContainer>
           </S.TerminalHeading>
-          {/* @ts-ignore */}
-          <S.TerminalContent ref={terminalContainerRef}>
+          <S.TerminalContent ref={(ref: HTMLDivElement) => {
+            terminalContainerRef.current = ref;
+          }}
+          >
             <S.TerminalRow>
               <S.TerminalPrefixText variant="h6">{loginTime}</S.TerminalPrefixText>
             </S.TerminalRow>

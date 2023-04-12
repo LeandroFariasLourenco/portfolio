@@ -25,7 +25,7 @@ export const TerminalComponentWrapper = styled(Grid)`
 export const TypeWriterBackground = styled(Card)(({ theme }) => `
   background-color: #1E1E1E;
   border-radius: 5px;
-  max-width: 600px;
+  width: 600px;
   
   ${theme.breakpoints.down('md')} {
     width: 95%;

@@ -1,18 +1,18 @@
 import { Grid } from '@mui/material';
 import cx from 'classnames';
+import { useMemo, useState, useCallback } from 'react';
 import LazyLoadParticles from 'src/core/components/lazy-load/lazy-load';
 import Responsive from 'src/core/components/responsive/responsive';
 import { APP } from 'src/core/constants';
 import useIsWindowTop from 'src/core/hooks/useIsWindowTop';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EAppSections, EResponsiveType } from 'src/core/models';
-import { useMemo, useState } from 'react';
 import DesktopTerminal from './components/desktop-terminal/desktop-terminal';
 import MobileTerminal from './components/mobile-terminal/mobile-terminal';
+import SnakeGame from './components/snake-game/snake-game';
 import { desktopParticlesConfig } from './particles/desktop-config';
 import { mobileParticlesConfig } from './particles/mobile-config';
 import * as S from './styled';
-import SnakeGame from './components/snake-game/snake-game';
 
 const Welcome = () => {
   const isDesktop = useResponsive({});
@@ -21,18 +21,31 @@ const Welcome = () => {
   const [showGame, setShowGame] = useState<boolean>(false);
   const [fadingOutContainer, setFadingOutContainer] = useState<boolean>(false);
 
-  const handleArrowDownClick = () => {
+  const handleArrowDownClick = useCallback(() => {
     window.scrollTo({
       top: window.innerHeight - APP.header.height,
       behavior: 'smooth',
     });
-  };
+  }, []);
 
-  const awaitFadeAnimation = () => {
+  const awaitFadeAnimation = useCallback(() => {
     setTimeout(() => {
       setShowGame(true);
     }, fadeAnimationTimer);
-  };
+  }, []);
+
+  const renderProfileImage = useCallback(() => {
+    const imageWidth = isDesktop ? 280 : 225;
+    return (
+      <S.ProfileImage
+        $width={imageWidth}
+        src={`https://www.github.com/LeandroFariasLourenco.png?size=${imageWidth}`}
+        className={cx({
+          focused: isWindowOnTop,
+        })}
+      />
+    );
+  }, [isWindowOnTop, isDesktop]);
 
   return (
     <S.Wrapper container alignItems="center" item justifyContent="center" md={12} id={EAppSections.WELCOME}>
@@ -66,7 +79,7 @@ const Welcome = () => {
           type={EResponsiveType.smaller}
         >
           <Grid item xs={12}>
-            <S.ProfileImage src="https://www.github.com/LeandroFariasLourenco.png?size=200" />
+            {renderProfileImage()}
           </Grid>
         </Responsive>
         {isDesktop ? (
@@ -82,7 +95,7 @@ const Welcome = () => {
           breakpoint="md"
         >
           <Grid item md={4}>
-            <S.ProfileImage src="https://www.github.com/LeandroFariasLourenco.png?size=200" />
+            {renderProfileImage()}
           </Grid>
         </Responsive>
       </S.WelcomeContainer>

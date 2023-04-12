@@ -5,7 +5,6 @@ import {
 import { mixins } from 'src/styles/utils';
 
 export const Wrapper = styled(Grid)`
-  padding-top: 80px;
   position: relative;
   min-height: 100vh;
   position: relative;
@@ -15,16 +14,33 @@ export const Wrapper = styled(Grid)`
   }
 `;
 
-export const ProfileImage = styled('img')`
-  border-radius: 20px;
-  width: 260px;
+export const ProfileImage = styled('img')<{ $width: number; }>(({ theme, $width }) => `
+  --frame-size: 15px;
+  --border-thickness: 2px;
+  --width: ${$width}px;
+  --color: ${theme.palette.primary.main};
+  --gradient-color: var(--color) var(--border-thickness),#0000 0 calc(100% - var(--border-thickness)),var(--color) 0;
+  
+  width: var(--width);
+  padding: calc(2*var(--frame-size));
+  filter: brightness(0.75) drop-shadow(2px 4px 6px ${theme.palette.secondary.main}) grayscale(0.88);
+  background:
+    linear-gradient(      var(--gradient-color)) 50%/100% var(--_i,100%) no-repeat,
+    linear-gradient(90deg,var(--gradient-color)) 50%/var(--_i,100%) 100% no-repeat;
+  outline: calc(var(--width)/2) solid #0005;
+  outline-offset: calc(var(--width)/-2 - 2*var(--frame-size));
+  transition: 400ms;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
 
-  ${({ theme }) => theme.breakpoints.down('md')} {
-    width: 185px;
-    margin: 0 auto;
-    display: block;
+  &.focused {
+    filter: brightness(0.85) drop-shadow(2px 4px 6px ${theme.palette.secondary.main}) grayscale(0.7);
+    outline: var(--border-thickness) solid var(--color);
+    outline-offset: calc(var(--frame-size)/-2);
+    --_i: calc(100% - 2*var(--frame-size));
   }
-`;
+`);
 
 export const TypeWriterBackground = styled(Card)(({ theme }) => `
   background-color: #1E1E1E;
