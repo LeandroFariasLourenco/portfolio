@@ -1,4 +1,5 @@
-import { Grid, keyframes, styled } from '@mui/material';
+import { Grid, keyframes } from '@mui/material';
+import styled from 'styled-components';
 
 const fadeIn = keyframes`
   from {
@@ -42,7 +43,7 @@ export const CertificateLogoContainer = styled(Grid)(({ theme }) => `
   }
 `);
 
-export const CertificateLogo = styled('img')(({ theme }) => `
+export const CertificateLogo = styled.img(({ theme }) => `
   ${theme.breakpoints.up('md')} {
     object-fit: contain;
     margin: 0 auto;

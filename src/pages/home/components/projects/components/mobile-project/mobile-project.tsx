@@ -12,7 +12,7 @@ const MobileProject = ({
 }: IMobileProjectProps) => {
   const [isPreviewOpen, setIsPreviewOpen] = useState<boolean>(false);
 
-  const renderProjectParagraph = useCallback((paragraph: string) => <Typography>{paragraph}</Typography>, []);
+  const renderProjectParagraph = useCallback((paragraph: string) => <Typography key={paragraph}>{paragraph}</Typography>, []);
 
   const openPreview = () => {
     document.body.classList.add('no-scroll');

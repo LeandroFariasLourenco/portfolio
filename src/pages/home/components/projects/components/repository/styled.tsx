@@ -1,4 +1,5 @@
-import { Grid, styled, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
+import styled from 'styled-components';
 
 export const RepositoryContainer = styled('a')(({ theme }) => `
   transition: 200ms opacity ease-in-out;
@@ -30,7 +31,7 @@ export const RepositoryContainer = styled('a')(({ theme }) => `
   }
 `);
 
-export const RepositoryLanguageIcon = styled('img')`
+export const RepositoryLanguageIcon = styled.img`
   width: 25px;
 `;
 

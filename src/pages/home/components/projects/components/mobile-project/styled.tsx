@@ -1,7 +1,7 @@
 import {
   Button, Card, Grid,
-  styled,
 } from '@mui/material';
+import styled from 'styled-components';
 
 export const ProjectTechnologiesWrapper = styled(Grid)(({ theme }) => `
   display: flex;
@@ -23,7 +23,7 @@ export const ActionLink = styled('a')`
   display: block;
 `;
 
-export const ProjectTechnologyIcon = styled('img')(({ theme }) => `
+export const ProjectTechnologyIcon = styled.img(({ theme }) => `
   width: 50px;
   height: 50px;
   
@@ -70,6 +70,6 @@ export const ProjectPreview = styled(Grid)`
   }
 `;
 
-export const ProjectPreviewImage = styled('img')`
+export const ProjectPreviewImage = styled.img`
   
 `;

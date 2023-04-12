@@ -1,4 +1,5 @@
-import { Grid, keyframes, styled } from '@mui/material';
+import { Grid, keyframes } from '@mui/material';
+import styled from 'styled-components';
 
 const slideUp = keyframes`
   from {
@@ -25,7 +26,7 @@ export const CourseTitleContainer = styled(Grid)`
   height: 115px;
 `;
 
-export const CourseLogo = styled('img')`
+export const CourseLogo = styled.img`
   width: 200px;
   object-fit: contain;
   height: 50px;

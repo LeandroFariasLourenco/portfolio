@@ -6,3 +6,4 @@ export { default as LazyLoadParticles } from './lazy-load/lazy-load';
 export { default as Conditional } from './conditional/conditional';
 export { default as SlideTitle } from './slide-title/slide-title';
 export { default as SeeMore } from './see-more/see-more';
+export { default as CustomSwiperControls } from './custom-swiper-controls/custom-swiper-controls';

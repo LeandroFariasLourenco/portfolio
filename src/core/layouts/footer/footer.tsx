@@ -31,7 +31,7 @@ const Footer = () => (
             <Email fontSize="small" htmlColor="white" />
             <Typography>leandro.farias01@outlook.com</Typography>
           </S.FooterLink>
-          <S.FooterLink>
+          <S.FooterLink href="whatsapp://send/?phone=+5511983732412">
             <Phone fontSize="small" htmlColor="white" />
             <Typography>+55 (11) 98373-2412</Typography>
           </S.FooterLink>

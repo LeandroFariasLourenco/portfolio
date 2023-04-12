@@ -29,7 +29,7 @@ export const ExperienceCardContent = styled(Grid)`
   margin: 0 0 10px;
 `;
 
-export const ExperienceIcon = styled('img')`
+export const ExperienceIcon = styled.img`
   width: 50px;
 `;
 
@@ -83,7 +83,7 @@ export const ExperienceCard = styled(Card)(({ theme }) => `
   }
 `);
 
-export const CompanyLogo = styled('img')`
+export const CompanyLogo = styled.img`
   width: 80px;
 `;
 

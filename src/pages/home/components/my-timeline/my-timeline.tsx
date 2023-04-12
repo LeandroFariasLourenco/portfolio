@@ -28,11 +28,11 @@ const MyTimeline = () => {
 
   return (
     <S.TimelineContainer id={EAppSections.MY_TIMELINE}>
-      {/* <Responsive
+      <Responsive
         breakpoint="md"
-      > */}
-      <LazyLoadParticles id="my-timeline-section" particlesConfig={desktopParticlesConfig} />
-      {/* </Responsive> */}
+      >
+        <LazyLoadParticles id="my-timeline-section" particlesConfig={desktopParticlesConfig} />
+      </Responsive>
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString('Minha trajetória').start();
@@ -40,15 +40,6 @@ const MyTimeline = () => {
         icon={<Timeline htmlColor="white" fontSize="large" />}
       >
         <S.TimelineWrapper>
-          {/* <SwipeAnimation
-            continuous={false}
-            lottieProps={{
-              options: { animationData: SwipeDownAnimation },
-              speed: 0.40,
-              width: 125,
-              height: 'unset',
-            }}
-          /> */}
           <VerticalTimeline
             lineColor={theme.palette.primary.main}
           >
@@ -79,11 +70,15 @@ const MyTimeline = () => {
                 <VerticalTimelineElement
                   key={landmark.name}
                   contentStyle={{
-                    background: theme.palette.background.paper,
+                    background: theme.palette.background.default,
+                    borderBottomColor: background,
+                    borderRadius: 0,
+                    boxShadow: `0 0 2px ${background}`,
                   }}
                   position={landmark.position}
                   contentArrowStyle={{
-                    borderRight: `7px solid ${theme.palette.background.paper}`,
+                    borderRightColor: background,
+                    border: 'none',
                   }}
                   date={landmark.date}
                   dateClassName="landmark-date"

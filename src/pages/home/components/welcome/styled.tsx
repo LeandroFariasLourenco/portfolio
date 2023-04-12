@@ -1,8 +1,9 @@
 import { ArrowDownward } from '@mui/icons-material';
 import {
-  Card, css, Grid, keyframes, styled, Typography,
+  Card, css, Grid, keyframes,
 } from '@mui/material';
 import { mixins } from 'src/styles/utils';
+import styled from 'styled-components';
 
 export const Wrapper = styled(Grid)`
   position: relative;
@@ -14,7 +15,7 @@ export const Wrapper = styled(Grid)`
   }
 `;
 
-export const ProfileImage = styled('img')<{ $width: number; }>(({ theme, $width }) => `
+export const ProfileImage = styled.img<{ $width: number; }>(({ theme, $width }) => `
   --frame-size: 15px;
   --border-thickness: 2px;
   --width: ${$width}px;

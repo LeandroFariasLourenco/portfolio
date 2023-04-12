@@ -1,5 +1,4 @@
-import { Grid } from '@mui/material';
-import styled from 'styled-components';
+import { Grid, styled } from '@mui/material';
 
 export const BottomSheetContainer = styled(Grid)(({ theme }) => `
   position: absolute;

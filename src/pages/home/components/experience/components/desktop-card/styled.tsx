@@ -1,5 +1,4 @@
-import { Typography, Grid } from '@mui/material';
-import styled from 'styled-components';
+import { Typography, Grid, styled } from '@mui/material';
 
 export const CurrentExperience = styled(Typography)`
   position: absolute;

@@ -1,8 +1,9 @@
 import {
-  Box, Grid, keyframes, styled,
+  Box, Grid, keyframes,
 } from '@mui/material';
 import { getBucketResource } from 'src/core/functions';
 import { mixins } from 'src/styles/utils';
+import styled from 'styled-components';
 
 const changeTechnologyTab = keyframes`
   from {
@@ -20,29 +21,34 @@ const changeTechnologyTab = keyframes`
 
 export const StackWrapper = styled(Grid)(({ theme }) => `
   border: 2px solid ${theme.palette.secondary.main};
+  border-bottom: 0;
   margin-top: 30px;
 `);
 
 export const TabContainer = styled(Grid)(({ theme }) => `
   cursor: pointer;
   transition: background-color 250ms ease-in-out;
-  background-color: ${theme.palette.background.paper};
+  background-color: ${theme.palette.background.default};
   padding: 10px;
+
+  &:not(:last-of-type) {
+    border-right: 2px dashed ${theme.palette.action.active};
+  }
 
   &:hover {
     background-color: ${theme.palette.action.hover};
   }
 
-  &.selected {
-    background-color: ${theme.palette.secondary.main};
+  &:not(.selected) {
+    border-bottom: 2px solid ${theme.palette.action.active};
   }
 
-  &:not(&:last-of-type) {
-    border-right: 2px dashed ${theme.palette.secondary.main};
+  &.selected {
+    background-color: ${theme.palette.action.focus};
   }
 `);
 
-export const StackLogo = styled('img')`
+export const StackLogo = styled.img`
   object-fit: contain;
   width: 130px;
   max-height: 65px;

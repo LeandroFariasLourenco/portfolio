@@ -11,6 +11,7 @@ import { observer } from 'mobx-react-lite';
 import {
   cloneElement,
   useCallback,
+  useEffect,
   useMemo, useState,
 } from 'react';
 import { FormattedMessage } from 'react-intl';
@@ -27,6 +28,7 @@ import * as S from './styled';
 
 const Header = () => {
   const globalContext = useGlobalContext();
+  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const { isWindowOnTop } = useIsWindowTop();
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const isMobile = useResponsive({ breakpoint: 'md', type: EResponsiveType.smaller });
@@ -37,7 +39,6 @@ const Header = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
     });
   };
 
@@ -49,6 +50,10 @@ const Header = () => {
     { label: 'header.links.section5', href: `#${EAppSections.PROJECTS}`, icon: <School /> },
     { label: 'header.links.section6', href: `#${EAppSections.MY_TIMELINE}`, icon: <Mail /> },
   ], []);
+
+  useEffect(() => {
+    setDropdownOpen(false);
+  }, []);
 
   const handleLanguageSelect = (event: SelectChangeEvent<unknown>) => {
     globalContext.setLanguage(event.target.value as Languages);
@@ -68,7 +73,7 @@ const Header = () => {
       {cloneElement(link.icon as any, { htmlColor: '#fff', fontSize: 'small' } as IconProps)}
       <Typography><FormattedMessage id={link.label} /></Typography>
     </S.HeaderLink>
-  ), []);
+  ), [isMobile]);
 
   const renderHeaderIcon = useCallback(() => (
     <HashLink scroll={smoothScroll} to={`#${EAppSections.WELCOME}`}>
@@ -91,7 +96,7 @@ const Header = () => {
             xs={12}
             justifyContent="center"
           >
-            <Grid container item alignItems="center" justifyContent="space-between" xs={12} md={8}>
+            <Grid container item alignItems="center" justifyContent="space-between" xs={12} md={10} lg={8}>
               <Responsive
                 breakpoint="md"
                 belowComponent={(
@@ -158,16 +163,41 @@ const Header = () => {
                   value={globalContext.language}
                   onChange={handleLanguageSelect}
                   variant="standard"
+                  open={dropdownOpen}
+                  onOpen={() => setDropdownOpen(true)}
+                  onClose={() => setDropdownOpen(false)}
+                  renderValue={(value) => {
+                    let source: string;
+                    let alt: string;
+                    switch (value) {
+                      case 'pt-BR':
+                        source = getBucketResource('/languages/brazil.png');
+                        alt = 'Brazil flag';
+                        break;
+                      case 'en-US':
+                        source = getBucketResource('/languages/united-states.png');
+                        alt = 'United States Flag';
+                        break;
+                      default:
+                        break;
+                    }
+
+                    return (
+                      <S.CountryIcon src={source!} alt={alt!} />
+                    );
+                  }}
                 >
                   <MenuItem value={Languages.Portuguese}>
-                    <Box component="span" className="fi fi-br" style={{ marginRight: 5 }} />
-                    {' '}
-                    {!isMobile && 'PT'}
+                    <S.CountryIcon src={getBucketResource('/languages/brazil.png')} alt="Brazil flag" />
+                    <S.CountryText component="span">
+                      {!isMobile && 'PT'}
+                    </S.CountryText>
                   </MenuItem>
                   <MenuItem value={Languages.English}>
-                    <Box component="span" className="fi fi-us" style={{ marginRight: 5 }} />
-                    {' '}
-                    {!isMobile && 'EN'}
+                    <S.CountryIcon src={getBucketResource('/languages/united-states.png')} alt="United States flag" />
+                    <S.CountryText component="span">
+                      {!isMobile && 'EN'}
+                    </S.CountryText>
                   </MenuItem>
                 </S.LanguageSelect>
               </Grid>

@@ -1,5 +1,4 @@
-import { Box } from '@mui/material';
-import styled from 'styled-components';
+import { Box, styled } from '@mui/material';
 
 export const SwipeAnimationOverlay = styled(Box)`
   background-color: rgba(0,0,0,0.2);

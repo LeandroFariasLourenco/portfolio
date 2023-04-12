@@ -49,6 +49,7 @@ const Global = () => {
       },
       body: {
         backgroundColor: theme.palette.background.default,
+        scrollBehavior: 'smooth',
       },
     }}
     />

@@ -1,4 +1,5 @@
-import { Grid, keyframes, styled } from '@mui/material';
+import { Grid, keyframes } from '@mui/material';
+import styled from 'styled-components';
 
 const slideUp = keyframes`
   from {
@@ -24,7 +25,7 @@ export const CardTitleContainer = styled(Grid)`
   height: 115px;
 `;
 
-export const CardLogo = styled('img')`
+export const CardLogo = styled.img`
   width: 200px;
   object-fit: contain;
   height: 50px;

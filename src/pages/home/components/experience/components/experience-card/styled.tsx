@@ -1,12 +1,13 @@
 import {
-  Card, Grid, styled, Typography,
+  Card, Grid, Typography,
 } from '@mui/material';
+import styled from 'styled-components';
 
 export const ExperienceCardContent = styled(Grid)`
   margin: 10px 0;
 `;
 
-export const ExperienceIcon = styled('img')`
+export const ExperienceIcon = styled.img`
   width: 50px;
 `;
 
@@ -57,6 +58,6 @@ export const ExperienceCard = styled(Card)<{
   }
 `);
 
-export const CompanyLogo = styled('img')`
+export const CompanyLogo = styled.img`
   width: 100px;
 `;
