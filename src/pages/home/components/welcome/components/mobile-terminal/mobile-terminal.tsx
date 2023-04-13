@@ -108,9 +108,17 @@ const MobileTerminal = () => {
               justifyContent="flex-end"
               alignItems="center"
             >
-              <Remove htmlColor="white" fontSize="small" />
-              <CropDin htmlColor="white" fontSize="small" style={{ marginLeft: 15, marginRight: 15 }} />
-              <Close htmlColor="white" fontSize="small" />
+              <S.TerminalIconContainer>
+                <Remove htmlColor="white" fontSize="small" />
+              </S.TerminalIconContainer>
+
+              <S.TerminalIconContainer>
+                <CropDin htmlColor="white" fontSize="small" />
+              </S.TerminalIconContainer>
+
+              <S.TerminalIconContainer>
+                <Close htmlColor="white" fontSize="small" />
+              </S.TerminalIconContainer>
             </S.TerminalWindowOptions>
           </S.TerminalHeading>
           <S.TerminalContent>

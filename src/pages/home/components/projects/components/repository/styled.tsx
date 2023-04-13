@@ -5,9 +5,9 @@ export const RepositoryContainer = styled('a')(({ theme }) => `
   transition: 200ms opacity ease-in-out;
   display: block;
   border: 1px solid ${theme.palette.action.active};
-  scroll-snap-align: center;
+  scroll-snap-type: x mandatory;
   z-index: 3;
-  
+
   ${theme.breakpoints.up('md')} {
     padding: 5px;
     opacity: 0.45;
@@ -20,9 +20,13 @@ export const RepositoryContainer = styled('a')(({ theme }) => `
 
   ${theme.breakpoints.down('md')} {
     padding: 5px 10px;
-    min-width: 175px;
+    min-width: 190px;
     margin-right: 10px;
     opacity: 0.75;
+    height: 90px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
   }
 
   &:hover {

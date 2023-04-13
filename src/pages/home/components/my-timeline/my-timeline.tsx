@@ -59,7 +59,7 @@ const MyTimeline = () => {
               const { background, icon } = {
                 [EAchievementType.START]: { background: '#015a44', icon: <Star fontSize="large" htmlColor="white" /> },
                 [EAchievementType.CERTIFICATE]: { background: '#fc8e27', icon: <CardMembership fontSize="large" htmlColor="white" /> },
-                [EAchievementType.EDUCATION]: { background: '#001a63', icon: <School fontSize="large" htmlColor="white" /> },
+                [EAchievementType.EDUCATION]: { background: '#2b51b8', icon: <School fontSize="large" htmlColor="white" /> },
                 [EAchievementType.JOB]: { background: '#ff8902', icon: <Work fontSize="large" htmlColor="white" /> },
                 [EAchievementType.PROJECT]: { background: '#ff3a04', icon: <PresentToAll fontSize="large" htmlColor="white" /> },
                 [EAchievementType.PROMOTION]: { background: '#406794', icon: <Upgrade fontSize="large" htmlColor="white" /> },

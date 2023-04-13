@@ -1,5 +1,5 @@
 import {
-  Code, DeveloperBoard,
+  Code, DeveloperBoard, Star,
 } from '@mui/icons-material';
 import {
   Box, Typography,
@@ -25,6 +25,7 @@ import {
 } from 'swiper';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 import { useResponsive } from 'src/core/hooks';
+import SlideTitle from 'src/core/components/slide-title/slide-title';
 import { IProject } from './models/project.interface';
 
 import DesktopProject from './components/desktop-project/desktop-project';
@@ -226,6 +227,12 @@ const Projects = () => {
             flexDirection="column"
             flexWrap="nowrap"
           >
+            <SlideTitle
+              icon={<Star htmlColor="#fff" />}
+              onTitleShow={(typewriter) => {
+                typewriter.typeString('Em destaque').start();
+              }}
+            />
             <Swiper
               style={{
                 height: '100%',

@@ -1,6 +1,7 @@
 import { TypewriterClass } from 'typewriter-effect';
 
-export interface ISlideTitle {
+export interface ISlideTitleProps {
   onTitleShow: (t: TypewriterClass) => void;
-  icon: JSX.Element
+  icon: JSX.Element;
+  ignoreObserver?: boolean;
 }

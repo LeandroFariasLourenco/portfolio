@@ -1,12 +1,13 @@
 import { DeveloperMode } from '@mui/icons-material';
 import cx from 'classnames';
 import { useCallback, useRef, useState } from 'react';
-
+import SwipeRightAnimation from 'src/assets/animations/swipe-right.json';
 import languages from 'src/assets/resources/languages.json';
 import { getBucketResource } from 'src/core/functions';
 import { Section } from 'src/core/layouts';
 import { EAppSections, EResponsiveType } from 'src/core/models';
 import { useResponsive } from 'src/core/hooks';
+import { SwipeAnimation } from 'src/core/components';
 import * as S from './styled';
 import Technologies from './components/technologies/technologies';
 
@@ -53,6 +54,15 @@ const Languages = () => {
         }}
       >
         <S.StackWrapper container>
+          <SwipeAnimation lottieProps={{
+            height: 60,
+            speed: 1.25,
+            width: 155,
+            options: {
+              animationData: SwipeRightAnimation,
+            },
+          }}
+          />
           {languages.map(renderLanguageTab)}
         </S.StackWrapper>
         <S.TechnologyWrapper

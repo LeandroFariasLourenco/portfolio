@@ -9,15 +9,20 @@ export const FooterWrapper = styled(Grid)(({ theme }) => `
 
 export const FooterColumn = styled(Grid)(({ theme }) => `
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
 
   ${theme.breakpoints.up('md')} {
     align-items: center;
+
+    &:nth-of-type(3) {
+      align-items: flex-end;
+    }
   }
 
   ${theme.breakpoints.down('md')} {
     align-items: flex-start;
+
     & + & {
       margin-top: 30px;
     }
@@ -33,6 +38,7 @@ export const Title = styled(Typography)(({ theme }) => `
     content: '';
     display: block;
     width: 40%;
+    max-width: 60px;
     height: 2px;
     background-color: ${theme.palette.secondary.main};
   }

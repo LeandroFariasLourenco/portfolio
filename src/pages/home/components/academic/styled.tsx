@@ -1,4 +1,5 @@
-import { Grid, Box, styled } from '@mui/material';
+import { Grid, styled } from '@mui/material';
+import { mixins } from 'src/styles/utils';
 
 export const FormationTabs = styled(Grid)(({ theme }) => `
   border: 2px solid ${theme.palette.action.active};
@@ -14,19 +15,8 @@ export const FormationTabs = styled(Grid)(({ theme }) => `
     overflow-x: auto;
     overflow-y: hidden;
     padding-bottom: 5px;
-
-    &::-webkit-scrollbar {
-      height: 5px;
-    },
-    &::-webkit-scrollbar-thumb {
-      background-color: ${theme.palette.action.active};
-    },
-    &::-webkit-scrollbar-thumb:hover {
-      background-color: ${theme.palette.action.active};
-    },
-    &::-webkit-scrollbar-track {
-      background: ${theme.palette.background.paper};
-    },
+    scroll-snap-type: x mandatory;
+    ${mixins.scrollbarStyle({ backgroundThumbColor: theme.palette.action.active, backgroundTrackColor: theme.palette.background.paper, height: '2px' })};
   }
 `);
 

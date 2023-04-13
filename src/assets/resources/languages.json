@@ -5,13 +5,13 @@
     "technologies": [
       {
         "name": "React",
-        "icon": "/technologies/react.png",
+        "icon": "/technologies/typescript-javascript/react.png",
         "description": "home.languages1.technologies1.description",
         "topics": ["Redux", "Mobx", "Hooks", "Classes", "Styled Components"]
       },
       {
         "name": "React Native",
-        "icon": "/technologies/react.png",
+        "icon": "/technologies/typescript-javascript/react.png",
         "description": "home.languages1.technologies2.description",
         "topics": [
           "Redux",
@@ -24,7 +24,7 @@
       },
       {
         "name": "Angular",
-        "icon": "/technologies/angularjs.png",
+        "icon": "/technologies/typescript-javascript/angularjs.png",
         "description": "home.languages1.technologies3.description",
         "topics": [
           "Observables",
@@ -35,7 +35,7 @@
       },
       {
         "name": "Typescript",
-        "icon": "/technologies/typescript.png",
+        "icon": "/technologies/typescript-javascript/typescript.png",
         "description": "home.languages1.technologies4.description",
         "topics": [
           "Interfaces",
@@ -46,7 +46,7 @@
       },
       {
         "name": "Javascript",
-        "icon": "/technologies/javascript.png",
+        "icon": "/technologies/typescript-javascript/javascript.png",
         "description": "home.languages1.technologies5.description",
         "topics": [
           "Async, Promises and general post ES5 syntax",
@@ -147,13 +147,13 @@
       },
       {
         "name": "HTML",
-        "icon": "/technologies/html-css/html.svg",
+        "icon": "/technologies/html-css/html-5.png",
         "description": "home.languages4.technologies3.description",
         "topics": ["17", "18", "19", "20"]
       },
       {
         "name": "CSS",
-        "icon": "/technologies/html-css/css.svg",
+        "icon": "/technologies/html-css/css3.png",
         "description": "home.languages4.technologies4.description",
         "topics": ["21", "22", "23", "24"]
       }
@@ -161,17 +161,17 @@
   },
   {
     "name": "Dart",
-    "icon": "/technologies/dart/dart.svg",
+    "icon": "/technologies/dart/dart.png",
     "technologies": [
       {
         "name": "Flutter",
-        "icon": "/technologies/dart/flutter.svg",
+        "icon": "/technologies/dart/flutter.png",
         "description": "home.languages3.technologies1.description",
         "topics": ["1", "2", "3", "4"]
       },
       {
         "name": "Dart",
-        "icon": "/technologies/dart/dart.svg",
+        "icon": "/technologies/dart/dart.png",
         "description": "home.languages3.technologies2.description",
         "topics": ["5", "6", "7", "8"]
       }
@@ -179,11 +179,11 @@
   },
   {
     "name": "Swift",
-    "icon": "/technologies/swift.png",
+    "icon": "/technologies/swift/swift.png",
     "technologies": [
       {
         "name": "Swift",
-        "icon": "/technologies/swift.png",
+        "icon": "/technologies/swift/swift.png",
         "description": "home.languages1.technologies1.description",
         "topics": ["Redux", "Mobx", "Hooks", "Classes", "Styled Components"]
       }

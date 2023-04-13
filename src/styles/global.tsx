@@ -47,9 +47,23 @@ const Global = () => {
         top: 0,
         zIndex: -1,
       },
+      // html: {
+      //   width: '100vw',
+      //   height: '100vh',
+      //   position: 'fixed',
+      //   top: 0,
+      //   left: 0,
+      //   overflowY: 'auto',
+      // },
       body: {
         backgroundColor: theme.palette.background.default,
         scrollBehavior: 'smooth',
+        // width: '100vw',
+        // height: '100vh',
+        // position: 'fixed',
+        // top: 0,
+        // left: 0,
+        // overflowY: 'auto',
       },
     }}
     />
