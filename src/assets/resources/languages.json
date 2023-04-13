@@ -1,7 +1,7 @@
 [
   {
     "name": "Typescript/Javascript",
-    "icon": "/technologies/typescript-javascript/javascript-typescript.svg",
+    "icon": "/technologies/typescript-javascript/typescript-javascript.png",
     "technologies": [
       {
         "name": "React",
@@ -130,24 +130,6 @@
     ]
   },
   {
-    "name": "Dart",
-    "icon": "/technologies/dart/dart.svg",
-    "technologies": [
-      {
-        "name": "Flutter",
-        "icon": "/technologies/dart/flutter.svg",
-        "description": "home.languages3.technologies1.description",
-        "topics": ["1", "2", "3", "4"]
-      },
-      {
-        "name": "Dart",
-        "icon": "/technologies/dart/dart.svg",
-        "description": "home.languages3.technologies2.description",
-        "topics": ["5", "6", "7", "8"]
-      }
-    ]
-  },
-  {
     "name": "HTML/CSS",
     "icon": "/technologies/html-css/html-css.svg",
     "technologies": [
@@ -174,6 +156,36 @@
         "icon": "/technologies/html-css/css.svg",
         "description": "home.languages4.technologies4.description",
         "topics": ["21", "22", "23", "24"]
+      }
+    ]
+  },
+  {
+    "name": "Dart",
+    "icon": "/technologies/dart/dart.svg",
+    "technologies": [
+      {
+        "name": "Flutter",
+        "icon": "/technologies/dart/flutter.svg",
+        "description": "home.languages3.technologies1.description",
+        "topics": ["1", "2", "3", "4"]
+      },
+      {
+        "name": "Dart",
+        "icon": "/technologies/dart/dart.svg",
+        "description": "home.languages3.technologies2.description",
+        "topics": ["5", "6", "7", "8"]
+      }
+    ]
+  },
+  {
+    "name": "Swift",
+    "icon": "/technologies/swift.png",
+    "technologies": [
+      {
+        "name": "Swift",
+        "icon": "/technologies/swift.png",
+        "description": "home.languages1.technologies1.description",
+        "topics": ["Redux", "Mobx", "Hooks", "Classes", "Styled Components"]
       }
     ]
   }

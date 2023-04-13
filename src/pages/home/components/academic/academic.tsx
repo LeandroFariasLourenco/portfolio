@@ -157,7 +157,7 @@ const Academic = () => {
                 setActiveTab(index);
                 if (isMobile) return;
                 cardContainerRef.current!.scrollIntoView({
-                  block: isMobile ? 'start' : 'center',
+                  block: 'center',
                   behavior: 'smooth',
                 });
               }}

@@ -25,11 +25,30 @@ export const StackWrapper = styled(Grid)(({ theme }) => `
   margin-top: 30px;
 `);
 
+export const StackLogo = styled.img(({ theme }) => `
+  object-fit: contain;
+  width: 130px;
+  max-height: 65px;
+
+  ${theme.breakpoints.down('md')} {
+    max-width: 40px;
+  }
+`);
+
 export const TabContainer = styled(Grid)(({ theme }) => `
   cursor: pointer;
   transition: background-color 250ms ease-in-out;
   background-color: ${theme.palette.background.default};
   padding: 10px;
+
+  ${theme.breakpoints.down('md')} {
+    padding: 10px 0;
+    &:nth-of-type(4) {
+      ${StackLogo} {
+        width: 30px;
+      }
+    }
+  }
 
   &:not(:last-of-type) {
     border-right: 2px dashed ${theme.palette.action.active};
@@ -47,12 +66,6 @@ export const TabContainer = styled(Grid)(({ theme }) => `
     background-color: ${theme.palette.action.focus};
   }
 `);
-
-export const StackLogo = styled.img`
-  object-fit: contain;
-  width: 130px;
-  max-height: 65px;
-`;
 
 export const TechnologyWrapper = styled(Box)``;
 

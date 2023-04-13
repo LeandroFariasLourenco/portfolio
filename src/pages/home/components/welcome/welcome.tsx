@@ -37,13 +37,15 @@ const Welcome = () => {
   const renderProfileImage = useCallback(() => {
     const imageWidth = isDesktop ? 280 : 225;
     return (
-      <S.ProfileImage
-        $width={imageWidth}
-        src={`https://www.github.com/LeandroFariasLourenco.png?size=${imageWidth}`}
-        className={cx({
-          focused: isWindowOnTop,
-        })}
-      />
+      <a href="https://github.com/LeandroFariasLourenco" target={isDesktop ? '_blank' : '_self'} rel="noreferrer">
+        <S.ProfileImage
+          $width={imageWidth}
+          src={`https://www.github.com/LeandroFariasLourenco.png?size=${imageWidth}`}
+          className={cx({
+            focused: isWindowOnTop,
+          })}
+        />
+      </a>
     );
   }, [isWindowOnTop, isDesktop]);
 

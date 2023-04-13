@@ -6,7 +6,8 @@ import {
 import cx from 'classnames';
 import {
   Fragment,
-  useCallback, useState,
+  useCallback,
+  useState,
 } from 'react';
 import { FormattedMessage } from 'react-intl';
 import Responsive from 'src/core/components/responsive/responsive';
