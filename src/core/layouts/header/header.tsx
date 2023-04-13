@@ -2,7 +2,6 @@ import {
   GitHub, Info, KeyboardArrowUp, Mail, Menu, School, Terminal, Work,
 } from '@mui/icons-material';
 import {
-  Box,
   Chip,
   Grid, IconProps, MenuItem, SelectChangeEvent, Slide, Typography, useScrollTrigger,
 } from '@mui/material';
@@ -11,7 +10,6 @@ import { observer } from 'mobx-react-lite';
 import {
   cloneElement,
   useCallback,
-  useEffect,
   useMemo, useState,
 } from 'react';
 import { FormattedMessage } from 'react-intl';
@@ -28,9 +26,12 @@ import * as S from './styled';
 
 const Header = () => {
   const globalContext = useGlobalContext();
-  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const { isWindowOnTop } = useIsWindowTop();
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const languageOptions = useMemo(() => [
+    getBucketResource('/languages/brazil.png'),
+    getBucketResource('/languages/united-states.png'),
+  ], []);
   const isMobile = useResponsive({ breakpoint: 'md', type: EResponsiveType.smaller });
   const triggerScroll = useScrollTrigger({
     threshold: 0,
@@ -51,9 +52,9 @@ const Header = () => {
     { label: 'header.links.section6', href: `#${EAppSections.MY_TIMELINE}`, icon: <Mail /> },
   ], []);
 
-  useEffect(() => {
-    setDropdownOpen(false);
-  }, []);
+  const setupLanguageOptions = () => {
+    languageOptions.forEach(() => {});
+  };
 
   const handleLanguageSelect = (event: SelectChangeEvent<unknown>) => {
     globalContext.setLanguage(event.target.value as Languages);
@@ -163,9 +164,9 @@ const Header = () => {
                   value={globalContext.language}
                   onChange={handleLanguageSelect}
                   variant="standard"
-                  open={dropdownOpen}
-                  onOpen={() => setDropdownOpen(true)}
-                  onClose={() => setDropdownOpen(false)}
+                  MenuProps={{
+                    keepMounted: true,
+                  }}
                   renderValue={(value) => {
                     let source: string;
                     let alt: string;

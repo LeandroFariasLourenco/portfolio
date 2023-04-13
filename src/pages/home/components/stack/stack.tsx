@@ -1,16 +1,43 @@
 import { DeveloperMode } from '@mui/icons-material';
 import cx from 'classnames';
-import { useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import languages from 'src/assets/resources/languages.json';
 import { getBucketResource } from 'src/core/functions';
 import { Section } from 'src/core/layouts';
-import { EAppSections } from 'src/core/models';
+import { EAppSections, EResponsiveType } from 'src/core/models';
+import { useResponsive } from 'src/core/hooks';
 import * as S from './styled';
 import Technologies from './components/technologies/technologies';
 
 const Languages = () => {
   const [selectedTab, setSelectedTab] = useState<number>(0);
+  const isMobile = useResponsive({ type: EResponsiveType.smaller });
+  const tabContainerRef = useRef<HTMLDivElement>();
+
+  const renderLanguageTab = useCallback((language: typeof languages[0], index: number) => (
+    <S.TabContainer
+      key={language.name}
+      container
+      alignItems="center"
+      justifyContent="center"
+      flex={1}
+      onClick={() => {
+        setSelectedTab(index);
+        if (isMobile) return;
+        tabContainerRef.current!.scrollIntoView({
+          block: 'center',
+          behavior: 'smooth',
+        });
+      }}
+      className={cx({ selected: selectedTab === index })}
+    >
+      <S.StackLogo
+        src={getBucketResource(language.icon)}
+        alt={language.name}
+      />
+    </S.TabContainer>
+  ), [selectedTab]);
 
   return (
     <S.SectionWrapper id={EAppSections.STACK}>
@@ -26,26 +53,13 @@ const Languages = () => {
         }}
       >
         <S.StackWrapper container>
-          {languages.map((language, index) => (
-            <S.TabContainer
-              key={language.name}
-              container
-              alignItems="center"
-              justifyContent="center"
-              flex={1}
-              onClick={() => {
-                setSelectedTab(index);
-              }}
-              className={cx({ selected: selectedTab === index })}
-            >
-              <S.StackLogo
-                src={getBucketResource(language.icon)}
-                alt={language.name}
-              />
-            </S.TabContainer>
-          ))}
+          {languages.map(renderLanguageTab)}
         </S.StackWrapper>
-        <S.TechnologyWrapper>
+        <S.TechnologyWrapper
+          ref={(ref: HTMLDivElement) => {
+            tabContainerRef.current = ref;
+          }}
+        >
           {languages.map(({ name, technologies }, index) => (
             <S.TechnologyTabContainer
               key={`${name}-tecnologies`}

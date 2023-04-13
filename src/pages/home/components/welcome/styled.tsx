@@ -36,7 +36,7 @@ export const ProfileImage = styled.img<{ $width: number; }>(({ theme, $width }) 
   display: block;
 
   &.focused {
-    filter: brightness(0.85) drop-shadow(2px 4px 6px ${theme.palette.secondary.main}) grayscale(0.7);
+    filter: brightness(0.85) drop-shadow(2px 4px 6px ${theme.palette.secondary.main}) grayscale(0.25);
     outline: var(--border-thickness) solid var(--color);
     outline-offset: calc(var(--frame-size)/-2);
     --_i: calc(100% - 2*var(--frame-size));

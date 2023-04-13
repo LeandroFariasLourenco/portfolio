@@ -24,11 +24,17 @@ export class SnakeModel extends BaseCanvas {
 
   private distanceY = 0;
 
+  private readonly INITIAL_SPEED = 100;
+
+  private readonly SPEED_DECREMENT = 10;
+
+  private readonly MINIMUM_SPEED = 20;
+
   private game: GameModel;
 
   public food: FoodModel;
 
-  public speed = 110;
+  public speed = this.INITIAL_SPEED;
 
   public snakeBody = [
     { x: 200, y: 200 },
@@ -129,8 +135,8 @@ export class SnakeModel extends BaseCanvas {
     const hasEatenFood = newSnakeHead.x === this.food.positionX
       && newSnakeHead.y === this.food.positionY;
 
-    if (hasEatenFood && this.speed - 10 > 35) {
-      this.speed -= 5;
+    if (hasEatenFood && this.speed - 10 > this.MINIMUM_SPEED) {
+      this.speed -= this.SPEED_DECREMENT;
     }
 
     if (hasEatenFood

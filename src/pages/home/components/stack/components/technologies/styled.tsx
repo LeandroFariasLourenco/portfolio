@@ -11,11 +11,11 @@ export const LanguageDescriptionCard = styled(Card)(({ theme }) => `
   background-color: ${theme.palette.background.default};
   
   ${theme.breakpoints.down('md')} {
-    transition: max-height 500ms ease-in;
+    transition: max-height 200ms ease-in;
     max-height: 0;
     
     &.is--selected {
-      max-height: 2000px
+      max-height: 2000px;
     }
   }
   
@@ -30,7 +30,7 @@ export const LanguageDescriptionCard = styled(Card)(({ theme }) => `
 
 export const LanguageDescriptionContainer = styled(Box)(({ theme }) => `
   ${theme.breakpoints.down('md')} {
-    padding: 15px;
+    padding: 15px 10px;
   }
 `);
 
