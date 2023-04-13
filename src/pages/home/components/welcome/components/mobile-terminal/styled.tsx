@@ -1,6 +1,7 @@
 import {
   Card, Grid, Typography,
 } from '@mui/material';
+import { mixins } from 'src/styles/utils';
 import styled from 'styled-components';
 
 export const TerminalHeading = styled(Grid)`
@@ -24,6 +25,7 @@ export const TerminalHeading = styled(Grid)`
 export const TerminalComponentWrapper = styled(Grid)`
   width: 100%;
   opacity: 0.50;
+  max-width: 525px;
 
   &.is--focused {
     opacity: 1;
@@ -61,7 +63,7 @@ export const TerminalTab = styled(Grid)`
   align-items: center;
   padding: 5px;
   margin-bottom: 0;
-  max-width: 200px;
+  max-width: 160px;
   background-color: black;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -85,31 +87,45 @@ export const TerminalTabCommandPrefix = styled(Typography)(({ theme }) => `
 `);
 
 export const TerminalTabText = styled(Typography)(({ theme }) => `
-  /* color: ${theme.palette.text.secondary}; */
   color: white;
   white-space: nowrap;
   font-size: 14px;
 `);
 
-export const TerminalText = styled(Grid)(({ theme }) => `
+export const TerminalText = styled(Grid)`
   font-size: 12px;
-`);
+`;
 
-export const TerminalTextUser = styled(Typography)(({ theme }) => `
+export const TerminalTextUser = styled(Typography)`
   font-size: 12px;
   color: #4a9206;
-`);
+`;
 
-export const TerminalTextCPU = styled(Typography)(({ theme }) => `
+export const TerminalTextCPU = styled(Typography)`
   font-size: 12px;
   color: #644469;
   margin: 0 5px;
-`);
+`;
 
-export const TerminalTextPath = styled(Typography)(({ theme }) => `
+export const TerminalTextPath = styled(Typography)`
   color: #c4a000;
   font-size: 12px;
-`);
+`;
+
+export const TerminalIconContainer = styled(Grid)`
+  ${mixins.flexCentered};
+  height: 100%;
+  padding: 8px 10px;
+  transition: background-color 200ms ease-in-out;
+
+  &:hover {
+    background-color: rgba(0,0,0,0.2);
+
+    &:last-of-type {
+      background-color: rgba(117, 16, 16, 0.75);
+    }
+  }
+`;
 
 export const TerminalRow = styled(Grid)``;
 
@@ -122,6 +138,10 @@ export const TerminalTitle = styled(Typography)(({ theme }) => `
 
 export const TerminalWindowOptions = styled(Grid)`
   margin-bottom: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
 `;
 
 export const TerminalWindowCircle = styled('div')<{

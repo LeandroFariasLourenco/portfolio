@@ -118,7 +118,7 @@ const DesktopTerminal = ({
       if (!prevState[currentIndex]) return prevState;
       const newState = [...prevState];
       const userInput = newState[currentIndex];
-      const appSections = Object.values(EAppSections) as string[];
+      const appSections = Object.values(EAppSections).filter((section) => section !== EAppSections.WELCOME) as string[];
 
       if (appSections.includes(userInput.replace('/', ''))) {
         requestAnimationFrame(() => {

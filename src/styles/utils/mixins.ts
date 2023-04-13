@@ -6,14 +6,13 @@ export const mixins = {
     align-items: center;
     justify-content: center;
   `,
-  scrollbarStyle({
+  scrollbarStyle: ({
     height,
     backgroundThumbColor,
     backgroundTrackColor,
-  }: { height: string; backgroundThumbColor: string, backgroundTrackColor: string }) {
-    return css`
+  }: { height: string; backgroundThumbColor: string; backgroundTrackColor: string; }) => `
       &::-webkit-scrollbar {
-        width: 10px;
+        width: 8px;
         height: ${height};
       }
       &::-webkit-scrollbar-thumb {
@@ -25,9 +24,7 @@ export const mixins = {
       &::-webkit-scrollbar-track {
         background: ${backgroundTrackColor};
       }
-    `;
-  },
-
+    `,
   visibilityTransition: css`
     transition: all 200ms ease-in-out;
     opacity: 0;

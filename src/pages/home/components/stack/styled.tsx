@@ -23,6 +23,15 @@ export const StackWrapper = styled(Grid)(({ theme }) => `
   border: 2px solid ${theme.palette.secondary.main};
   border-bottom: 0;
   margin-top: 30px;
+
+  ${theme.breakpoints.down('md')} {
+    position: relative;
+    flex-flow: row nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    ${mixins.scrollbarStyle({ backgroundThumbColor: theme.palette.action.active, backgroundTrackColor: theme.palette.background.paper, height: '2px' })};
+    padding-bottom: 5px;
+  }
 `);
 
 export const StackLogo = styled.img(({ theme }) => `
@@ -31,7 +40,7 @@ export const StackLogo = styled.img(({ theme }) => `
   max-height: 65px;
 
   ${theme.breakpoints.down('md')} {
-    max-width: 40px;
+    max-width: 55px;
   }
 `);
 
@@ -42,12 +51,7 @@ export const TabContainer = styled(Grid)(({ theme }) => `
   padding: 10px;
 
   ${theme.breakpoints.down('md')} {
-    padding: 10px 0;
-    &:nth-of-type(4) {
-      ${StackLogo} {
-        width: 30px;
-      }
-    }
+    padding: 10px;
   }
 
   &:not(:last-of-type) {

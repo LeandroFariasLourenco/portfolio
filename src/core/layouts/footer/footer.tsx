@@ -15,7 +15,9 @@ const Footer = () => (
     <Grid
       item
       container
-      xs={8}
+      xs={10}
+      md={8}
+      justifyContent="center"
     >
       <S.FooterColumn item xs={12} md={4}>
         <S.FooterContainer
@@ -45,7 +47,14 @@ const Footer = () => (
         </S.FooterRow>
       </S.FooterColumn>
       <S.FooterColumn item xs={12} md={4}>
-        <S.Title variant="h5"><FormattedMessage id="home.footer.requirements.title" /></S.Title>
+        <S.FooterContainer>
+          <S.Title variant="h5"><FormattedMessage id="home.footer.requirements.title" /></S.Title>
+          <S.FooterRow>
+            <Typography>
+              © 2022 - 2023 - Todos os direitos reservados.
+            </Typography>
+          </S.FooterRow>
+        </S.FooterContainer>
       </S.FooterColumn>
     </Grid>
   </S.FooterWrapper>

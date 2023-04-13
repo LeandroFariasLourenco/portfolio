@@ -58,6 +58,10 @@ export const ProjectsTabs = styled(Grid)(({ theme }) => `
     height: 100%;
     padding: 10px;
   }
+
+  ${theme.breakpoints.down('md')} {
+    padding-top: 15px;
+  }
 `);
 
 export const RepositoryTitle = styled(Grid)(({ theme }) => `
@@ -82,7 +86,7 @@ export const RepositoriesWrapper = styled(Grid)(({ theme }) => `
 export const RepositoriesList = styled(Grid)(({ theme }) => `
   padding-right: 10px;
   position: relative;
-  scroll-snap-type: both mandatory;
+  scroll-snap-type: x mandatory;
   
   ${theme.breakpoints.up('md')} {
     overflow-y: auto;
@@ -96,22 +100,11 @@ export const RepositoriesList = styled(Grid)(({ theme }) => `
     padding-bottom: 10px;
   }
 
-  &::-webkit-scrollbar {
-    width: 5px;
-
-    ${theme.breakpoints.down('md')} {
-      height: 5px;
-    }
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: ${theme.palette.secondary.main};
-  }
-  &::-webkit-scrollbar-thumb:hover {
-    background-color: ${theme.palette.primary.main};
-  }
-  &::-webkit-scrollbar-track {
-    background: ${theme.palette.background.paper};
-  }
+  ${mixins.scrollbarStyle({
+    backgroundThumbColor: theme.palette.secondary.main,
+    backgroundTrackColor: theme.palette.background.paper,
+    height: '5px',
+  })}
 `);
 
 export const ProjectDescriptionText = styled(Typography)`
