@@ -91,13 +91,14 @@ const SnakeGame = ({
     </S.GobackButton>
   ), []);
 
-  const renderScoreText = () => (
+  const renderScoreText = useCallback(() => (
     <S.ScoreText variant="h5">
       Pontuação:
       {' '}
       {gameState!.score}
     </S.ScoreText>
-  );
+  ), [gameState]);
+
   return (
     <S.Wrapper $closeTimer={closeAnimationTimer} className={cx({ closed: unmounting })}>
       <S.CanvasContainer>

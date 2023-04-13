@@ -38,7 +38,7 @@ const Languages = () => {
         alt={language.name}
       />
     </S.TabContainer>
-  ), [selectedTab]);
+  ), [selectedTab, isMobile]);
 
   return (
     <S.SectionWrapper id={EAppSections.STACK}>

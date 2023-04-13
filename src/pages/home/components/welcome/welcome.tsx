@@ -4,8 +4,7 @@ import { useMemo, useState, useCallback } from 'react';
 import LazyLoadParticles from 'src/core/components/lazy-load/lazy-load';
 import Responsive from 'src/core/components/responsive/responsive';
 import { APP } from 'src/core/constants';
-import useIsWindowTop from 'src/core/hooks/useIsWindowTop';
-import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
+import { useResponsive, useIsWindowTop } from 'src/core/hooks';
 import { EAppSections, EResponsiveType } from 'src/core/models';
 import DesktopTerminal from './components/desktop-terminal/desktop-terminal';
 import MobileTerminal from './components/mobile-terminal/mobile-terminal';
@@ -70,11 +69,10 @@ const Welcome = () => {
         container
         justifyContent="center"
         alignItems="center"
-        md={10}
-        lg={8}
-        sm={8}
+        md={12}
+        xs={8}
         item
-        spacing={isDesktop ? 10 : 5}
+        spacing={isDesktop ? 0 : 5}
       >
         <Responsive
           breakpoint="md"

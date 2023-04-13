@@ -96,6 +96,11 @@ const hide = keyframes`
 export const WelcomeContainer = styled(Grid)<{ $animationTimer: number }>(({ $animationTimer }) => css`
   z-index: 1;
   transition: opacity ${$animationTimer}ms ease-in-out;
+  max-width: 1200px;
+
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    padding: 0 20px;
+  }
 
   &.playing {
     opacity: 0;
