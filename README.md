@@ -25,3 +25,5 @@ Ajustar estilo de arrow do componente de paginação para conseguir ser customiz
 Ajustar bug de recomeçar no snake game e do jogo não acabar quando a cobra bater nela mesma
 
 Verificar responsividade do retrato
+
+Implementar efeito de hover no terminal mobile e alinhar botao de fechar aba
