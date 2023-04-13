@@ -26,4 +26,10 @@ Ajustar bug de recomeçar no snake game e do jogo não acabar quando a cobra bat
 
 Verificar responsividade do retrato
 
+Carrosel no mobile nas abas de tecnologia
+
+Overlay de imagem no visualizar dos projetos
+
+Mudar a cor azul escuro para ser mais visível
+
 Implementar efeito de hover no terminal mobile e alinhar botao de fechar aba
