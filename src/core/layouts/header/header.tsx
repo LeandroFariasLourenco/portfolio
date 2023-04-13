@@ -16,8 +16,7 @@ import { FormattedMessage } from 'react-intl';
 import { HashLink } from 'react-router-hash-link';
 import Responsive from 'src/core/components/responsive/responsive';
 import { getBucketResource, smoothScroll } from 'src/core/functions';
-import useIsWindowTop from 'src/core/hooks/useIsWindowTop';
-import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
+import { useResponsive, useIsWindowTop, usePreloadImages } from 'src/core/hooks';
 import { EAppSections, EResponsiveType, Languages } from 'src/core/models';
 import { useGlobalContext } from 'src/core/store/global/context';
 import { IMenuOption } from './models/menu-option.interface';
@@ -28,10 +27,10 @@ const Header = () => {
   const globalContext = useGlobalContext();
   const { isWindowOnTop } = useIsWindowTop();
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
-  const languageOptions = useMemo(() => [
+  const { imagesLoaded } = usePreloadImages([
     getBucketResource('/languages/brazil.png'),
     getBucketResource('/languages/united-states.png'),
-  ], []);
+  ]);
   const isMobile = useResponsive({ breakpoint: 'md', type: EResponsiveType.smaller });
   const triggerScroll = useScrollTrigger({
     threshold: 0,
@@ -52,10 +51,6 @@ const Header = () => {
     { label: 'header.links.section5', href: `#${EAppSections.PROJECTS}`, icon: <School /> },
     { label: 'header.links.section6', href: `#${EAppSections.MY_TIMELINE}`, icon: <Mail /> },
   ], []);
-
-  const setupLanguageOptions = () => {
-    languageOptions.forEach(() => {});
-  };
 
   const handleLanguageSelect = (event: SelectChangeEvent<unknown>) => {
     globalContext.setLanguage(event.target.value as Languages);
@@ -161,47 +156,49 @@ const Header = () => {
                 )}
               />
               <Grid item md={1}>
-                <S.LanguageSelect
-                  value={globalContext.language}
-                  onChange={handleLanguageSelect}
-                  variant="standard"
-                  MenuProps={{
-                    keepMounted: true,
-                  }}
-                  renderValue={(value) => {
-                    let source: string;
-                    let alt: string;
-                    switch (value) {
-                      case 'pt-BR':
-                        source = getBucketResource('/languages/brazil.png');
-                        alt = 'Brazil flag';
-                        break;
-                      case 'en-US':
-                        source = getBucketResource('/languages/united-states.png');
-                        alt = 'United States Flag';
-                        break;
-                      default:
-                        break;
-                    }
+                {imagesLoaded && (
+                  <S.LanguageSelect
+                    value={globalContext.language}
+                    onChange={handleLanguageSelect}
+                    variant="standard"
+                    MenuProps={{
+                      keepMounted: true,
+                    }}
+                    renderValue={(value) => {
+                      let source: string;
+                      let alt: string;
+                      switch (value) {
+                        case 'pt-BR':
+                          source = getBucketResource('/languages/brazil.png');
+                          alt = 'Brazil flag';
+                          break;
+                        case 'en-US':
+                          source = getBucketResource('/languages/united-states.png');
+                          alt = 'United States Flag';
+                          break;
+                        default:
+                          break;
+                      }
 
-                    return (
-                      <S.CountryIcon src={source!} alt={alt!} />
-                    );
-                  }}
-                >
-                  <MenuItem value={Languages.Portuguese}>
-                    <S.CountryIcon src={getBucketResource('/languages/brazil.png')} alt="Brazil flag" />
-                    <S.CountryText component="span">
-                      {!isMobile && 'PT'}
-                    </S.CountryText>
-                  </MenuItem>
-                  <MenuItem value={Languages.English}>
-                    <S.CountryIcon src={getBucketResource('/languages/united-states.png')} alt="United States flag" />
-                    <S.CountryText component="span">
-                      {!isMobile && 'EN'}
-                    </S.CountryText>
-                  </MenuItem>
-                </S.LanguageSelect>
+                      return (
+                        <S.CountryIcon src={source!} alt={alt!} />
+                      );
+                    }}
+                  >
+                    <MenuItem value={Languages.Portuguese}>
+                      <S.CountryIcon src={getBucketResource('/languages/brazil.png')} alt="Brazil flag" />
+                      <S.CountryText component="span">
+                        {!isMobile && 'PT'}
+                      </S.CountryText>
+                    </MenuItem>
+                    <MenuItem value={Languages.English}>
+                      <S.CountryIcon src={getBucketResource('/languages/united-states.png')} alt="United States flag" />
+                      <S.CountryText component="span">
+                        {!isMobile && 'EN'}
+                      </S.CountryText>
+                    </MenuItem>
+                  </S.LanguageSelect>
+                )}
               </Grid>
             </Grid>
           </S.HeaderWrapper>

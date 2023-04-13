@@ -135,12 +135,12 @@ export class SnakeModel extends BaseCanvas {
     const hasEatenFood = newSnakeHead.x === this.food.positionX
       && newSnakeHead.y === this.food.positionY;
 
-    if (hasEatenFood && this.speed - 10 > this.MINIMUM_SPEED) {
+    if (hasEatenFood && this.speed - this.SPEED_DECREMENT > this.MINIMUM_SPEED) {
       this.speed -= this.SPEED_DECREMENT;
     }
 
     if (hasEatenFood
-      && (this.game.canvasDimensions.height - 10 > 260 || this.game.canvasDimensions.width - 20 > 360)) {
+      && (this.game.canvasDimensions.height - this.SPEED_DECREMENT > 260 || this.game.canvasDimensions.width - 20 > 360)) {
       this.game.canvasDimensions.width -= this.game.frameDecrement;
       this.game.canvasDimensions.height -= this.game.frameDecrement;
       this.game.sizeMultiplier += 1;
@@ -149,7 +149,7 @@ export class SnakeModel extends BaseCanvas {
     if (!hasEatenFood) {
       this.snakeBody.pop();
     } else {
-      const minPosition = this.game.sizeMultiplier * 10 + 20;
+      const minPosition = this.game.sizeMultiplier * this.SPEED_DECREMENT + 20;
 
       this.food.positionX = this.generateFoodPosition(this.game.canvasDimensions.width - 20, minPosition);
       this.food.positionY = this.generateFoodPosition(this.game.canvasDimensions.height - 20, minPosition);

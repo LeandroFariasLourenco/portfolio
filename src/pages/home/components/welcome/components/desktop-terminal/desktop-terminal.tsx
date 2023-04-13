@@ -11,8 +11,7 @@ import {
 import { useIntl } from 'react-intl';
 import { Typewriter } from 'src/core/components';
 import { deleteLastCharacter } from 'src/core/functions';
-import { useLoginTime } from 'src/core/hooks';
-import useIsWindowTop from 'src/core/hooks/useIsWindowTop';
+import { useIsWindowTop, useLoginTime } from 'src/core/hooks';
 import { EAppSections } from 'src/core/models';
 import { TypewriterClass } from 'typewriter-effect';
 import { ITerminalLine } from '../mobile-terminal/models/terminal-line.interface';
