@@ -22,9 +22,25 @@ export const AboutCardHoverContainer = styled(Grid)<{
   }
 `);
 
-export const AboutMeSummary = styled(Typography)`
+export const AboutMeSummary = styled(Typography)(({ theme }) => `
   font-size: 15px;
-`;
+
+  &::first-letter {
+    margin-left: 20px;
+  }
+
+  & + & {
+    margin-top: 5px;
+  }
+
+  &:last-of-type {
+    margin-bottom: 30px;
+
+    ${theme.breakpoints.down('md')} {
+      margin-bottom: 10px;
+    }
+  }
+`);
 
 export const HobbyText = styled(Box)(({ theme }) => `
   position: relative;

@@ -1,4 +1,10 @@
 {
+  "general.button.close": "Fechar",
+  "general.button.open": "Abrir",
+  "general.button.see": "Visualizar",
+  "general.button.see-more": "Ver mais",
+  "general.button.see-less": "Ver menos",
+
   "header.links.section1": "Sobre mim",
   "header.links.section2": "Experiência",
   "header.links.section3": "Stack",
@@ -14,17 +20,33 @@
   "home.welcome.terminal.text4.string1": "Não se esqueça de entrar em contato!",
 
   "home.about-me.title": "Sobre mim",
-  "home.about-me.summary": "Desde muito cedo pensei em trilhar uma carreira de desenvolvedor. No início, pretendia seguir no caminho de desenvolver jogos, porém acabei entrando no mundo de desenvolvimento de software por conta da oportunidade que tive de fazer um curso técnico na área, enquanto seguia no ensino médio. No meu tempo livre gosto especialmente de jogar, uma vez ou outra realizar algum projeto pessoal, estudar, ler livros, assistir...",
+  "home.about-me.summary1": "Sou um jovem desenvolvedor front-end pleno, com 4 anos de experiência. Minha trajetória inclui trabalhos em empresas de diferentes portes, desde pequenas startups até grandes empresas multinacionais. Estou sempre pronto para enfrentar novos desafios e me reinventar diante de mudanças constantes. Sou conhecido por ser uma pessoa colaborativa e empática, sempre disposto a ajudar e trocar conhecimentos com meus colegas.",
+  "home.about-me.summary2": "Desde cedo, tive interesse por tecnologia e computação. Aos 16 anos, comecei meus estudos por um curso técnico e seguindo para o técnologo logo no fim de minha formação técnica. Com o passar dos anos, continuei estudando e me atualizando constantemente, acompanhando as tendências e novidades do mercado de TI, em especial no ecossistema Javascript e Typescript.",
+  "home.about-me.summary3": "Sempre estou em busca de novos desafios e aprendizados, e sei que esse é um caminho que não tem fim, pois a tecnologia está em constante evolução e é preciso estar sempre atualizado para acompanhar esse ritmo acelerado.",
 
+  "home.about-me.overview": "Visão geral",
+  
   "home.about-me.objectives": "Objetivos",
   "home.about-me.stack": "Stack",
-  "home.about-me.books": "Livros/Assisir",
-  "home.about-me.games": "Jogos",
+  "home.about-me.formation": "Formação",
+  "home.about-me.hobbies": "Hobbies",
 
   "home.about-me.objectives.first": "Um emprego que me traga estabilidade e confiança para sempre trabalhar com excelência.",
-  "home.about-me.objectives.second": "Mudar para um país no exterior",
-  "home.about-me.objectives.third": "Realizar uma pós graduação na área de desenvolvimento de software.",
-  "home.about-me.objectives.fourth": "Me tornar um dev full stack",
+  "home.about-me.objectives.second": "Aprofundar meus conhecimentos em cloud.",
+  "home.about-me.objectives.third": "Me tornar um dev full stack",
+  "home.about-me.objectives.fourth": "Realizar uma pós graduação na área de desenvolvimento de software.",
+
+  "home.about-me.stack.first": "Ampla experiência com Typescript",
+  "home.about-me.stack.second": "Ampla experiência com Javascript",
+  "home.about-me.stack.third": "Git e Gitflow",
+  "home.about-me.stack.fourth": "Conhecimentos em Cloud (AWS)",
+  
+  "home.about-me.formation.first": "Técnologo em Análise e Desenvolvimento de Sistemas pela FIAP",
+  "home.about-me.formation.second": "Técnico em informática para Internet pela ETEC",
+
+  "home.about-me.hobbies.first": "1",
+  "home.about-me.hobbies.second": "2",
+  "home.about-me.hobbies.third": "3",
 
   "home.experience1.title": "Front-End Pleno",
   "home.experience1.company": "IBM",

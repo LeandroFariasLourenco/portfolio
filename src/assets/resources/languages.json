@@ -60,6 +60,24 @@
         "icon": "/technologies/typescript-javascript/jquery.svg",
         "description": "home.languages1.technologies6.description",
         "topics": ["Selectors", "Plugins", "Specific query methods"]
+      },
+      {
+        "name": "Webpack",
+        "icon": "/technologies/typescript-javascript/webpack.png",
+        "description": "home.languages1.technologies6.description",
+        "topics": ["Selectors", "Plugins", "Specific query methods"]
+      },
+      {
+        "name": "Gulp",
+        "icon": "/technologies/typescript-javascript/gulp.png",
+        "description": "home.languages1.technologies6.description",
+        "topics": ["Selectors", "Plugins", "Specific query methods"]
+      },
+      {
+        "name": "Grunt",
+        "icon": "/technologies/typescript-javascript/grunt.png",
+        "description": "home.languages1.technologies6.description",
+        "topics": ["Selectors", "Plugins", "Specific query methods"]
       }
     ]
   },

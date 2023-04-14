@@ -69,8 +69,7 @@ const Welcome = () => {
         container
         justifyContent="center"
         alignItems="center"
-        md={12}
-        xs={8}
+        xs={12}
         item
         spacing={isDesktop ? 0 : 5}
       >

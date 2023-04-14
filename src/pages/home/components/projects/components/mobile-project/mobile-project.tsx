@@ -33,14 +33,14 @@ const MobileProject = ({
         <S.ProjectPreviewImage src={project.background} />
       </S.ProjectPreview>
       <S.ProjectSlideContainer>
-        <Grid container xs={12}>
+        <Grid container item xs={12}>
           <Typography variant="h2">{project.title}</Typography>
 
           <SeeMore>
             {project.paragraphs.map(renderProjectParagraph)}
           </SeeMore>
         </Grid>
-        <S.ProjectTechnologiesWrapper container justifyContent="flex-end" xs={12}>
+        <S.ProjectTechnologiesWrapper container justifyContent="flex-end" item xs={12}>
           {project.icons.map((icon, index) => (
             <S.ProjectTechnologyIcon
               key={`${project.title}-${index}`}

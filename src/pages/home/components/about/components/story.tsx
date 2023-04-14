@@ -5,6 +5,7 @@ import {
 import cx from 'classnames';
 import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
 import { EResponsiveType } from 'src/core/models';
+import { FormattedMessage } from 'react-intl';
 import * as S from './styled';
 import { IStoryProps } from './props.interface';
 
@@ -58,16 +59,14 @@ const Story = ({
             borderColor: hobby.color,
           }}
         >
-          <Typography>
-            {hobby.content}
-          </Typography>
+          {hobby.content}
 
           <S.CloseStory
             onClick={() => {
               onClick(hobby.label, false);
             }}
           >
-            Close
+            <FormattedMessage id="general.button.close" />
             <Close htmlColor={theme.palette.grey['100']} />
           </S.CloseStory>
         </S.StoryPanel>

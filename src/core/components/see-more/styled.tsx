@@ -1,12 +1,14 @@
 import {
-  Button, Grid, Typography, styled,
+  Box,
+  Button, Grid,
+  styled,
 } from '@mui/material';
 
-export const Wrapper = styled(Grid)`
-  min-height: 100px;
-`;
+export const Wrapper = styled(Grid)<{ $minHeight: number }>(({ $minHeight }) => `
+  min-height: ${$minHeight}px;
+`);
 
-export const TextContainer = styled(Typography)<{ $height: number }>`
+export const TextContainer = styled(Box)<{ $height: number }>`
   overflow: hidden;
   transition: height 0.5s ease-in-out;
   height: ${({ $height }) => $height}px;

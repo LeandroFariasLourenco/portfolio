@@ -7,7 +7,7 @@ import {
 import {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import SwipeRightAnimation from 'src/assets/animations/swipe-right.json';
 import { TECHNOLOGY_ICONS } from 'src/assets/resources/technology-icons';
 import { CustomSwiperControls } from 'src/core/components';
@@ -36,6 +36,7 @@ import * as S from './styled';
 const Projects = () => {
   const [repositories, setRepositories] = useState<IGithubRepository[]>([]);
   const [swiper, setSwiper] = useState<SwiperClass>();
+  const intl = useIntl();
   const [swiperIndex, setSwiperIndex] = useState<number>(0);
   const isMobile = useResponsive({ type: EResponsiveType.smaller });
   const swiperProps: IResponsiveSwiper = useMemo<IResponsiveSwiper>(() => ({
@@ -143,7 +144,7 @@ const Projects = () => {
       link: '',
       canPreviewInMobile: false,
     },
-  ], []);
+  ], [intl]);
 
   const fetchRepositories = async () => {
     const response = await GithubService.getRepositories();
