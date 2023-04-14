@@ -22,6 +22,7 @@ export const ProfileImage = styled.img<{ $width: number; }>(({ theme, $width }) 
   --color: ${theme.palette.primary.main};
   --gradient-color: var(--color) var(--border-thickness),#0000 0 calc(100% - var(--border-thickness)),var(--color) 0;
   
+  min-height: 165px;
   width: var(--width);
   padding: calc(2*var(--frame-size));
   filter: brightness(0.75) drop-shadow(2px 4px 6px ${theme.palette.secondary.main}) grayscale(0.88);
@@ -40,20 +41,6 @@ export const ProfileImage = styled.img<{ $width: number; }>(({ theme, $width }) 
     outline: var(--border-thickness) solid var(--color);
     outline-offset: calc(var(--frame-size)/-2);
     --_i: calc(100% - 2*var(--frame-size));
-  }
-`);
-
-export const TypeWriterBackground = styled(Card)(({ theme }) => `
-  background-color: #1E1E1E;
-  border-radius: 5px;
-  
-  ${theme.breakpoints.down('md')} {
-    width: 95%;
-    margin: 0 auto;
-  }
-  
-  ${theme.breakpoints.up('md')} {
-    max-width: 600px;
   }
 `);
 

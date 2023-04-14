@@ -1,4 +1,5 @@
 import {
+  Box,
   Button, Card, Grid, Typography, keyframes, styled,
 } from '@mui/material';
 
@@ -24,7 +25,7 @@ export const AboutMeStoryTopicContainer = styled(Grid)`
   height: 175px;
   position: relative;
 `;
-export const DashedBorder = styled('div')`
+export const DashedBorder = styled(Box)`
   display: block;
   width: 100%;
   height: 100%;
@@ -47,10 +48,10 @@ export const StoryPanel = styled(Card)(({ theme }) => `
   transition: opacity 300ms, transform 300ms, border-radius 300ms;
   top: 50%;
   left: 50%;
+  z-index: 10;
 
   ${theme.breakpoints.down('md')} {
     width: 115%;
-    top: 25%;
   }
   
   &.is--open {

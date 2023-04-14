@@ -24,9 +24,9 @@ export class SnakeModel extends BaseCanvas {
 
   private distanceY = 0;
 
-  private readonly INITIAL_SPEED = 100;
+  private readonly INITIAL_SPEED = 95;
 
-  private readonly SPEED_DECREMENT = 10;
+  private readonly SPEED_DECREMENT = 5;
 
   private readonly MINIMUM_SPEED = 20;
 
