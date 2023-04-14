@@ -15,12 +15,20 @@ import * as S from './styled';
 const SeeMore = ({
   children,
   startHeight: minHeight = 144,
+  isInitialHidden = false,
+  onToggle = () => {},
 }: ISeeMoreProps) => {
   const [isOverflow, setIsOverflow] = useState<boolean>(false);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const intl = useIntl();
   const theme = useTheme();
-  const defaultHeight = useMemo(() => minHeight, [minHeight]);
+  const defaultHeight = useMemo(() => {
+    if (isInitialHidden) {
+      return 0;
+    }
+
+    return minHeight;
+  }, [minHeight]);
 
   const [heightCurr, setHeightCurr] = useState<number>(defaultHeight);
   const [heightMin, setHeightMin] = useState<number>(defaultHeight);
@@ -30,6 +38,9 @@ const SeeMore = ({
   const handleClick = useCallback(() => {
     setHeightCurr(isExpanded ? heightMin : heightMax);
     setIsExpanded((prevState) => !prevState);
+    setTimeout(() => {
+      onToggle();
+    }, 50);
   }, [isExpanded, heightMin, heightMax]);
 
   useEffect(() => {
@@ -45,7 +56,7 @@ const SeeMore = ({
 
   return (
     <S.Wrapper
-      $minHeight={minHeight}
+      $minHeight={defaultHeight}
     >
       <S.TextContainer ref={(ref: HTMLParagraphElement) => { textElementRef.current = ref; }} $height={heightCurr}>
         {children}
@@ -60,8 +71,8 @@ const SeeMore = ({
 }
         >
           {isExpanded
-            ? intl.messages['general.button.see-less'] as string
-            : intl.messages['general.button.see-more'] as string}
+            ? intl.formatMessage({ id: 'general.button.see-less' })
+            : intl.formatMessage({ id: 'general.button.see-more' })}
         </S.ToggleButton>
       )}
     </S.Wrapper>

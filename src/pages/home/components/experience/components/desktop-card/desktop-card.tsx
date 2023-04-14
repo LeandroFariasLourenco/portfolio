@@ -3,8 +3,8 @@ import { FormattedMessage } from 'react-intl';
 import ExperienceCard from '../experience-card/experience-card';
 import ExperienceDetails from '../experience-details/experience-details';
 
-import * as S from './styled';
 import { IDesktopCardProps } from './props.interface';
+import * as S from './styled';
 
 const DesktopCard = ({
   LeftBorderComponent,

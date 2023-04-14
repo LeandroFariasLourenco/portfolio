@@ -1,10 +1,5 @@
-import { ITechnology } from 'src/core/models';
+import { ITechnology } from './models/technology.interface';
 
 export interface ITechnologiesProps {
   technologies: ITechnology[];
-}
-
-export interface ITechnologyDetailsProps {
-  technology: ITechnology;
-  isSelected?: boolean;
 }

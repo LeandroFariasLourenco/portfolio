@@ -72,13 +72,15 @@ export const TerminalTab = styled(Grid)`
   position: relative;
 `;
 
-export const TerminalTabClose = styled(Grid)(({ theme }) => `
+export const TerminalTabClose = styled(Grid)`
   background-color: black;
   padding: 4px;
   position: absolute;
   right: 0;
-  top: 0;
-`);
+  top: 50%;
+  transform: translateY(-50%);
+  ${mixins.flexCentered};
+`;
 
 export const TerminalTabCommandPrefix = styled(Typography)(({ theme }) => `
   font-size: 14px;

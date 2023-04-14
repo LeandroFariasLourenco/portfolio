@@ -161,11 +161,11 @@ export const SwiperContainer = styled(Grid)(({ theme }) => `
         }
 
         &-next {
-          right: -5.5%;
+          right: -10px;
         }
 
         &-prev {
-          left: -5%;
+          left: -10px;
         }
       }
 

@@ -10,35 +10,21 @@ import { useResponsive } from 'src/core/hooks';
 import { SwipeAnimation } from 'src/core/components';
 import * as S from './styled';
 import Technologies from './components/technologies/technologies';
+import LanguageTab from './components/language-tab/language-tab';
 
 const Languages = () => {
   const [selectedTab, setSelectedTab] = useState<number>(0);
   const isMobile = useResponsive({ type: EResponsiveType.smaller });
   const tabContainerRef = useRef<HTMLDivElement>();
 
-  const renderLanguageTab = useCallback((language: typeof languages[0], index: number) => (
-    <S.TabContainer
-      key={language.name}
-      container
-      alignItems="center"
-      justifyContent="center"
-      flex={1}
-      onClick={() => {
-        setSelectedTab(index);
-        if (isMobile) return;
-        tabContainerRef.current!.scrollIntoView({
-          block: 'center',
-          behavior: 'smooth',
-        });
-      }}
-      className={cx({ selected: selectedTab === index })}
-    >
-      <S.StackLogo
-        src={getBucketResource(language.icon)}
-        alt={language.name}
-      />
-    </S.TabContainer>
-  ), [selectedTab, isMobile]);
+  const onLanguageTabToggle = useCallback((index: number) => {
+    setSelectedTab(index);
+    if (isMobile) return;
+    tabContainerRef.current!.scrollIntoView({
+      block: 'center',
+      behavior: 'smooth',
+    });
+  }, [isMobile]);
 
   return (
     <S.SectionWrapper id={EAppSections.STACK}>
@@ -55,7 +41,7 @@ const Languages = () => {
       >
         <S.StackWrapper container>
           <SwipeAnimation lottieProps={{
-            height: 60,
+            height: 75,
             speed: 1.25,
             width: 155,
             options: {
@@ -63,7 +49,15 @@ const Languages = () => {
             },
           }}
           />
-          {languages.map(renderLanguageTab)}
+          {languages.map((language, index) => (
+            <LanguageTab
+              language={language}
+              key={language.name}
+              onToggle={onLanguageTabToggle}
+              selectedTab={selectedTab}
+              index={index}
+            />
+          ))}
         </S.StackWrapper>
         <S.TechnologyWrapper
           ref={(ref: HTMLDivElement) => {

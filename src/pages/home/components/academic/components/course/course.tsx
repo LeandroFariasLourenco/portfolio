@@ -37,7 +37,7 @@ const Course = ({
       </S.CourseTitleContainer>
 
       <S.CourseContainer>
-        <Typography><FormattedMessage id={card.description} /></Typography>
+        {card.description}
       </S.CourseContainer>
 
       <S.CourseContainer>

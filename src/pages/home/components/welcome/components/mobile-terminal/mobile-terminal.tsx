@@ -24,11 +24,11 @@ const MobileTerminal = () => {
       key: 'first',
       timer: 0,
       typeText: (typewriter: TypewriterClass) => {
-        typewriter.typeString(intl.messages['home.welcome.terminal.text1.string1'] as string)
+        typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.text1.string1' }))
           .deleteChars(4)
-          .typeString(intl.messages['home.welcome.terminal.text1.string2'] as string)
+          .typeString(intl.formatMessage({ id: 'home.welcome.terminal.text1.string2' }))
           .deleteChars(2)
-          .typeString(intl.messages['home.welcome.terminal.text1.string3'] as string)
+          .typeString(intl.formatMessage({ id: 'home.welcome.terminal.text1.string3' }))
           .start();
       },
     },
@@ -36,7 +36,7 @@ const MobileTerminal = () => {
       key: 'second',
       timer: 2250,
       typeText: (typewriter: TypewriterClass) => {
-        typewriter.typeString(intl.messages['home.welcome.terminal.text2.string1'] as string)
+        typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.text2.string1' }))
           .start();
       },
     },
@@ -44,7 +44,7 @@ const MobileTerminal = () => {
       key: 'third',
       timer: 4750,
       typeText: (typewriter: TypewriterClass) => {
-        typewriter.typeString(intl.messages['home.welcome.terminal.text3.string1'] as string)
+        typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.text3.string1' }))
           .start();
       },
     },
@@ -52,7 +52,7 @@ const MobileTerminal = () => {
       key: 'fourth',
       timer: 5750,
       typeText: (typewriter: TypewriterClass) => {
-        typewriter.typeString(intl.messages['home.welcome.terminal.text4.string1'] as string)
+        typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.text4.string1' }))
           .start();
       },
     },

@@ -29,7 +29,7 @@ const About = () => {
   const hobbies = useMemo<IHobbie[]>(() => [
     {
       color: '#fff',
-      label: intl.messages['home.about-me.objectives'] as string,
+      label: intl.formatMessage({ id: 'home.about-me.objectives' }),
       icon: <EmojiEvents htmlColor="#fff" fontSize="large" />,
       content: (
         <S.HobbyContainer>
@@ -42,7 +42,7 @@ const About = () => {
     },
     {
       color: theme.palette.action.active,
-      label: intl.messages['home.about-me.stack'] as string,
+      label: intl.formatMessage({ id: 'home.about-me.stack' }),
       icon: <Terminal htmlColor={theme.palette.action.active} fontSize="large" />,
       content: (
         <S.HobbyContainer>
@@ -55,7 +55,7 @@ const About = () => {
     },
     {
       color: theme.palette.secondary.main,
-      label: intl.messages['home.about-me.formation'] as string,
+      label: intl.formatMessage({ id: 'home.about-me.formation' }),
       icon: <School htmlColor={theme.palette.secondary.main} fontSize="large" />,
       content: (
         <S.HobbyContainer>
@@ -66,7 +66,7 @@ const About = () => {
     },
     {
       color: theme.palette.primary.main,
-      label: intl.messages['home.about-me.hobbies'] as string,
+      label: intl.formatMessage({ id: 'home.about-me.hobbies' }),
       icon: <Theaters htmlColor={theme.palette.primary.main} fontSize="large" />,
       content: (
         <S.HobbyContainer>
@@ -95,7 +95,7 @@ const About = () => {
     <S.AboutMeWrapper id={EAppSections.ABOUT}>
       <Section
         onTitleShow={(typewriter) => {
-          typewriter.typeString(intl.messages['home.about-me.title'] as string)
+          typewriter.typeString(intl.formatMessage({ id: 'home.about-me.title' }))
             .start();
         }}
         gridStyle={{
@@ -162,7 +162,7 @@ const About = () => {
             <Grid container item xs={12} marginTop="20px" alignItems="center" justifyContent="center">
               <SlideTitle
                 onTitleShow={(typewriter) => {
-                  typewriter.typeString(intl.messages['home.about-me.overview'] as string).start();
+                  typewriter.typeString(intl.formatMessage({ id: 'home.about-me.overview' })).start();
                 }}
                 icon={<Info fontSize="large" htmlColor="white" />}
               />
@@ -173,7 +173,7 @@ const About = () => {
             <Grid container flexDirection="column">
               <SlideTitle
                 onTitleShow={(typewriter) => {
-                  typewriter.typeString(intl.messages['home.about-me.overview'] as string).start();
+                  typewriter.typeString(intl.formatMessage({ id: 'home.about-me.overview' })).start();
                 }}
                 icon={<Info fontSize="large" htmlColor="white" />}
               />

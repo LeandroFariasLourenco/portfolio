@@ -42,7 +42,7 @@ export const AboutMeSummary = styled(Typography)(({ theme }) => `
   }
 `);
 
-export const HobbyText = styled(Box)(({ theme }) => `
+export const HobbyText = styled(Typography)(({ theme }) => `
   position: relative;
   padding-left: 16px;
   font-size: 16px;

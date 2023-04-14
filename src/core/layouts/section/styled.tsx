@@ -9,6 +9,6 @@ export const SectionContainer = styled(Grid) <{
   padding: 20px 0 60px 0;
 
   ${({ theme }) => theme.breakpoints.down('md')} {
-    padding: 15px;
+    padding: 15px 10px;
   }
 `;

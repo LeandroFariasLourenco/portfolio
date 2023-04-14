@@ -1,8 +1,8 @@
-import experiences from 'src/assets/resources/experiences.json';
+import { IExperience } from '../../models/experience.interface';
 
 export interface IDesktopCardProps {
   LeftBorderComponent: JSX.Element;
   RightBorderComponent: JSX.Element;
   index: number;
-  experience: typeof experiences[0];
+  experience: IExperience;
 }

@@ -28,6 +28,7 @@ export const StackWrapper = styled(Grid)(({ theme }) => `
     position: relative;
     flex-flow: row nowrap;
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     ${mixins.scrollbarStyle({ backgroundThumbColor: theme.palette.action.active, backgroundTrackColor: theme.palette.background.paper, height: '2px' })};
     padding-bottom: 5px;

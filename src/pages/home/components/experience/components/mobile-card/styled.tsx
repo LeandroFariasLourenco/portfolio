@@ -95,3 +95,11 @@ export const StackTechnologyListItem = styled(Box)(({ theme }) => `
   display: inline-block;
   margin: 2px;
 `);
+
+export const ExperienceTextDescription = styled(Box)`
+  p {
+    &::first-letter {
+      margin-left: 20px;
+    }
+  }
+`;

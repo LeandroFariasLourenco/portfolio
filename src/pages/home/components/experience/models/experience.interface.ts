@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 interface ICompany {
   name: string;
   logo: string;
@@ -6,7 +8,7 @@ interface ICompany {
 
 export interface IExperience {
   date: string;
-  description: string;
+  description: ReactNode;
   title: string;
   location: string;
   type: string;

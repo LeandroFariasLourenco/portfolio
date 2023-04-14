@@ -5,6 +5,9 @@ export const materialTheme = createTheme({
     allVariants: {
       color: '#9AA5C6',
     },
+    body1: {
+      fontSize: 15,
+    },
     h1: {
       fontFamily: "'Share Tech Mono', monospace",
       fontSize: 38,
