@@ -10,7 +10,7 @@ export const TECHNOLOGY_ICONS = {
   FLUTTER: getBucketResource('/technologies/dart/flutter.png'),
 
   CSS: getBucketResource('/technologies/html-css/css3.png'),
-  SASS: getBucketResource('/technologies/html-css/sass.png'),
+  SASS: getBucketResource('/technologies/html-css/sass.svg'),
   HTML: getBucketResource('/technologies/html-css/html-5.png'),
 
   PYTHON: getBucketResource('/technologies/misc/python.png'),

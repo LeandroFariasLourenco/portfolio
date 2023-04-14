@@ -51,7 +51,7 @@ const Footer = () => (
           <S.Title variant="h5"><FormattedMessage id="home.footer.requirements.title" /></S.Title>
           <S.FooterRow>
             <Typography>
-              © 2022 - 2023 - Todos os direitos reservados.
+              <FormattedMessage id="home.footer.copyright" />
             </Typography>
           </S.FooterRow>
         </S.FooterContainer>

@@ -1,4 +1,4 @@
-import { Grid, styled } from '@mui/material';
+import { Grid, Typography, styled } from '@mui/material';
 import { mixins } from 'src/styles/utils';
 
 export const FormationTabs = styled(Grid)(({ theme }) => `
@@ -60,7 +60,16 @@ export const CardContainer = styled(Grid)(({ theme }) => `
 
 export const FormationWrapper = styled(Grid)`
   position: relative;
-  ${({ theme }) => theme.breakpoints.up('md')} {
-    height: 815px;
+`;
+
+export const FormationDescriptionContainer = styled(Typography)`
+  &::first-letter {
+    margin-left: 20px;
+  }
+
+  & + & {
+    p {
+      margin-top: 10px;
+    }
   }
 `;

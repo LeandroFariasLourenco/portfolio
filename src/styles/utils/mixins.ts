@@ -9,8 +9,14 @@ export const mixins = {
   scrollbarStyle: ({
     height,
     backgroundThumbColor,
+    backgroundHoverColor,
     backgroundTrackColor,
-  }: { height: string; backgroundThumbColor: string; backgroundTrackColor: string; }) => `
+  }: {
+    height: string;
+    backgroundThumbColor: string;
+    backgroundTrackColor: string;
+    backgroundHoverColor?: string;
+  }) => `
       &::-webkit-scrollbar {
         width: 8px;
         height: ${height};
@@ -19,7 +25,7 @@ export const mixins = {
         background-color: ${backgroundThumbColor};
       }
       &::-webkit-scrollbar-thumb:hover {
-        background-color: ${backgroundThumbColor};
+        background-color: ${backgroundHoverColor || backgroundThumbColor};
       }
       &::-webkit-scrollbar-track {
         background: ${backgroundTrackColor};

@@ -12,7 +12,7 @@ import {
   useCallback,
   useMemo, useState,
 } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { HashLink } from 'react-router-hash-link';
 import Responsive from 'src/core/components/responsive/responsive';
 import { getBucketResource, smoothScroll } from 'src/core/functions';
@@ -26,6 +26,7 @@ import * as S from './styled';
 const Header = () => {
   const globalContext = useGlobalContext();
   const { isWindowOnTop } = useIsWindowTop();
+  const intl = useIntl();
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const { imagesLoaded } = usePreloadImages([
     getBucketResource('/languages/brazil.png'),
@@ -44,17 +45,17 @@ const Header = () => {
   };
 
   const menuOptions: IMenuOption[] = useMemo<IMenuOption[]>(() => [
-    { label: 'header.links.section1', href: `#${EAppSections.ABOUT}`, icon: <Info /> },
-    { label: 'header.links.section2', href: `#${EAppSections.EXPERIENCES}`, icon: <Work /> },
-    { label: 'header.links.section3', href: `#${EAppSections.STACK}`, icon: <Work /> },
-    { label: 'header.links.section4', href: `#${EAppSections.ACADEMIC}`, icon: <Terminal /> },
-    { label: 'header.links.section5', href: `#${EAppSections.PROJECTS}`, icon: <School /> },
-    { label: 'header.links.section6', href: `#${EAppSections.MY_TIMELINE}`, icon: <Mail /> },
-  ], []);
+    { label: 'header.links.section.about-me', href: `#${EAppSections.ABOUT}`, icon: <Info /> },
+    { label: 'header.links.section.experience', href: `#${EAppSections.EXPERIENCES}`, icon: <Work /> },
+    { label: 'header.links.section.stack', href: `#${EAppSections.STACK}`, icon: <Work /> },
+    { label: 'header.links.section.formation', href: `#${EAppSections.ACADEMIC}`, icon: <Terminal /> },
+    { label: 'header.links.section.projects', href: `#${EAppSections.PROJECTS}`, icon: <School /> },
+    { label: 'header.links.section.trajectory', href: `#${EAppSections.MY_TIMELINE}`, icon: <Mail /> },
+  ], [intl]);
 
-  const handleLanguageSelect = (event: SelectChangeEvent<unknown>) => {
+  const handleLanguageSelect = useCallback((event: SelectChangeEvent<unknown>) => {
     globalContext.setLanguage(event.target.value as Languages);
-  };
+  }, [globalContext]);
 
   const renderMenuOptions = useCallback((link: IMenuOption) => (
     <S.HeaderLink

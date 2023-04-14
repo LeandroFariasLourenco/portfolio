@@ -15,7 +15,13 @@ export const StackTechnologyListItem = styled(Box)(({ theme }) => `
   margin: 5px;
 `);
 
-export const ExperienceDescriptionContainer = styled(Grid)``;
+export const ExperienceDescriptionContainer = styled(Grid)`
+  p {
+    &::first-letter {
+      margin-left: 20px;
+    }
+  }
+`;
 
 export const ExperienceCard = styled(Card)<{
   $direction: 'left' | 'right'

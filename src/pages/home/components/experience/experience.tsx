@@ -1,35 +1,184 @@
 import { WorkHistory } from '@mui/icons-material';
 import {
-  Box, useTheme,
+  Box, Typography, useTheme,
 } from '@mui/material';
 import cx from 'classnames';
 import {
-  useCallback, useMemo, useState,
+  ReactNode,
+  useCallback, useMemo, useRef, useState,
 } from 'react';
-import experiences from 'src/assets/resources/experiences.json';
 import { Section } from 'src/core/layouts';
 import {
   Mousewheel, Navigation, Pagination,
   Swiper as SwiperClass,
 } from 'swiper';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { SwiperSlide } from 'swiper/react';
 
+import { FormattedMessage, useIntl } from 'react-intl';
 import { LazyLoadParticles, Responsive } from 'src/core/components';
-import { useResponsive } from 'src/core/hooks';
+import ResponsiveSwiper from 'src/core/components/responsive-swiper/responsive-swiper';
+import SeeMore from 'src/core/components/see-more/see-more';
 import { EAppSections, EResponsiveType } from 'src/core/models';
 import { IResponsiveSwiper } from 'src/core/models/responsive-swiper.interface';
+import { useResponsive } from 'src/core/hooks';
 import DesktopCard from './components/desktop-card/desktop-card';
 import MobileCard from './components/mobile-card/mobile-card';
 
+import { IExperience } from './models/experience.interface';
 import { desktopParticlesConfig } from './particles/desktop-config';
 import * as S from './styled';
 
 const Experience = () => {
   const theme = useTheme();
-  const [swiper, setSwiper] = useState<SwiperClass>();
+  const swiperRef = useRef<SwiperClass>();
   const [swiperIndex, setSwiperIndex] = useState<number>(0);
-  const isMobile = useResponsive({ type: EResponsiveType.smaller, breakpoint: 'md' });
+  const isMobile = useResponsive({ type: EResponsiveType.smaller });
+  const intl = useIntl();
+
+  const renderSeeMore = useCallback((children: JSX.Element) => (
+    <SeeMore
+      isInitialHidden
+      onToggle={() => {
+        swiperRef.current!.updateAutoHeight(250);
+      }}
+    >
+      {children}
+    </SeeMore>
+  ), [swiperRef.current]);
+  const experiences: IExperience[] = useMemo<IExperience[]>(() => [
+    {
+      title: 'home.experience.ibm-mid-level.title',
+      date: 'home.experience.ibm-mid-level.date',
+      description: (
+        <>
+          <Typography><FormattedMessage id="home.experience.ibm-mid-level.description1" /></Typography>
+          {isMobile ? renderSeeMore(
+            <Typography><FormattedMessage id="home.experience.ibm-mid-level.description2" /></Typography>,
+          ) : <Typography><FormattedMessage id="home.experience.ibm-mid-level.description2" /></Typography>}
+        </>
+      ),
+      location: 'São Paulo - SP',
+      icon: '/badges/mid-level.png',
+      type: 'home.experience.ibm-mid-level.type',
+      stack: 'home.experience.ibm-mid-level.stack',
+      company: {
+        name: 'home.experience.ibm-mid-level.company',
+        logo: 'companies/ibm.png',
+        query: 'IBM Rua Tutóia',
+      },
+    },
+    {
+      title: 'home.experience.gft-mid-level.title',
+      date: 'home.experience.gft-mid-level.date',
+      description: (
+        <>
+          <Typography><FormattedMessage id="home.experience.gft-mid-level.description1" /></Typography>
+          {isMobile ? renderSeeMore(
+            <Typography><FormattedMessage id="home.experience.gft-mid-level.description2" /></Typography>,
+          ) : <Typography><FormattedMessage id="home.experience.gft-mid-level.description2" /></Typography>}
+        </>
+      ),
+      location: 'São Paulo - SP',
+      icon: '/badges/mid-level.png',
+      type: 'home.experience.gft-mid-level.type',
+      stack: 'home.experience.gft-mid-level.stack',
+      company: {
+        name: 'home.experience.gft-mid-level.company',
+        logo: 'companies/gft.jpg',
+        query: 'GFT Alphaville',
+      },
+    },
+    {
+      title: 'home.experience.nbm-junior.title',
+      date: 'home.experience.nbm-junior.date',
+      description: (
+        <>
+          <Typography><FormattedMessage id="home.experience.nbm-junior.description1" /></Typography>
+          {isMobile ? renderSeeMore(
+            <Typography><FormattedMessage id="home.experience.nbm-junior.description2" /></Typography>,
+          ) : <Typography><FormattedMessage id="home.experience.nbm-junior.description2" /></Typography>}
+        </>
+      ),
+      location: 'São Paulo - SP',
+      icon: '/badges/junior.png',
+      type: 'home.experience.nbm-junior.type',
+      stack: 'home.experience.nbm-junior.stack',
+      company: {
+        name: 'home.experience.nbm-junior.company',
+        logo: 'companies/nbm-informatica.png',
+        query: 'NBM Informática',
+      },
+    },
+    {
+      title: 'home.experience.enext-junior.title',
+      date: 'home.experience.enext-junior.date',
+      description: (
+        <>
+          <Typography>
+            <FormattedMessage id="home.experience.enext-junior.description1" />
+          </Typography>
+          {isMobile ? renderSeeMore(
+            <Typography><FormattedMessage id="home.experience.enext-junior.description2" /></Typography>,
+          ) : <Typography><FormattedMessage id="home.experience.enext-junior.description2" /></Typography>}
+        </>
+      ),
+      location: 'São Paulo - SP',
+      icon: '/badges/junior.png',
+      type: 'home.experience.enext-junior.type',
+      stack: 'home.experience.enext-junior.stack',
+      company: {
+        name: 'home.experience.enext-junior.company',
+        logo: 'companies/enext.jpg',
+        query: 'Enext',
+      },
+    },
+    {
+      title: 'home.experience.enext-intern.title',
+      date: 'home.experience.enext-intern.date',
+      description: (
+        <>
+          <Typography>
+            <FormattedMessage id="home.experience.enext-intern.description1" />
+          </Typography>
+          {isMobile ? renderSeeMore(
+            <Typography><FormattedMessage id="home.experience.enext-intern.description2" /></Typography>,
+          ) : <Typography><FormattedMessage id="home.experience.enext-intern.description2" /></Typography>}
+        </>
+      ),
+      location: 'São Paulo - SP',
+      icon: '/badges/intern.png',
+      type: 'home.experience.enext-intern.type',
+      stack: 'home.experience.enext-intern.stack',
+      company: {
+        name: 'home.experience.enext-intern.company',
+        logo: 'companies/enext.jpg',
+        query: 'Enext',
+      },
+    },
+    {
+      title: 'home.experience.enext-development-program.title',
+      date: 'home.experience.enext-development-program.date',
+      description: (
+        <>
+          <Typography><FormattedMessage id="home.experience.enext-development-program.description1" /></Typography>
+          {isMobile ? renderSeeMore(
+            <Typography><FormattedMessage id="home.experience.enext-development-program.description2" /></Typography>,
+          ) : <Typography><FormattedMessage id="home.experience.enext-development-program.description2" /></Typography>}
+        </>
+      ),
+      location: 'Barueri - SP',
+      icon: '/badges/beginner.png',
+      type: 'home.experience.enext-development-program.type',
+      stack: 'home.experience.enext-development-program.stack',
+      company: {
+        name: 'home.experience.enext-development-program.company',
+        logo: 'companies/enext.jpg',
+        query: 'Enext',
+      },
+    },
+  ], [intl]);
+
   const swiperProps: IResponsiveSwiper = useMemo<IResponsiveSwiper>(() => ({
     mobile: {
       modules: [Pagination, Navigation],
@@ -42,29 +191,29 @@ const Experience = () => {
         setSwiperIndex(swiper.realIndex);
       },
       onSwiper: (swiper) => {
-        setSwiper(swiper);
+        swiperRef.current = swiper;
       },
       autoHeight: true,
       direction: 'horizontal',
       style: { paddingBottom: 50 },
     },
     desktop: {
+      modules: [Navigation, Pagination, Mousewheel],
       spaceBetween: 30,
       style: { height: 550 },
-      modules: [Pagination, Navigation, Mousewheel],
       direction: 'vertical',
       onRealIndexChange: (swiper) => {
         setSwiperIndex(swiper.realIndex);
       },
       onSwiper: (swiper) => {
-        setSwiper(swiper);
+        swiperRef.current = swiper;
       },
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       },
       mousewheel: true,
-      grabCursor: true,
+      pagination: true,
     },
   }), []);
 
@@ -90,12 +239,12 @@ const Experience = () => {
         first: index === 0,
       })}
       onClick={() => {
-        swiper?.slideTo(index);
+        swiperRef.current!.slideTo(index);
       }}
       component="span"
       key={index}
     />
-  ), [swiper, swiperIndex]);
+  ), [swiperRef.current, swiperIndex]);
 
   return (
     <Section
@@ -120,8 +269,9 @@ const Experience = () => {
         </Box>
         <Box className="swiper-button-next" />
         <Box className="swiper-button-prev" />
-        <Swiper
-          {...(isMobile ? swiperProps.mobile : swiperProps.desktop)}
+        <ResponsiveSwiper
+          mobileProps={swiperProps.mobile}
+          desktopProps={swiperProps.desktop}
         >
           {experiences.map((experience, index) => {
             const {
@@ -154,7 +304,7 @@ const Experience = () => {
               </SwiperSlide>
             );
           })}
-        </Swiper>
+        </ResponsiveSwiper>
       </S.SwiperContainer>
     </Section>
   );

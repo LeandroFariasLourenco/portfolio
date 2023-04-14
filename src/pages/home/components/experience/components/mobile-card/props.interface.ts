@@ -1,7 +1,7 @@
-import experiences from 'src/assets/resources/experiences.json';
+import { IExperience } from '../../models/experience.interface';
 
 export interface IMobileCardProps {
   index: number;
-  experience: typeof experiences[0]
+  experience: IExperience;
   BorderComponent: JSX.Element;
 }

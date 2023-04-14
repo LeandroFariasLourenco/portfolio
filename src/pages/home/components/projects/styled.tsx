@@ -103,6 +103,7 @@ export const RepositoriesList = styled(Grid)(({ theme }) => `
   ${mixins.scrollbarStyle({
     backgroundThumbColor: theme.palette.secondary.main,
     backgroundTrackColor: theme.palette.background.paper,
+    backgroundHoverColor: theme.palette.primary.main,
     height: '5px',
   })}
 `);

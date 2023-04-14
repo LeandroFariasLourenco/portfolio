@@ -36,11 +36,11 @@ const DesktopTerminal = ({
       key: 'first',
       timer: 0,
       typeText: (typewriter: TypewriterClass) => {
-        typewriter.typeString(intl.messages['home.welcome.terminal.text1.string1'] as string)
+        typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.text1.string1' }))
           .deleteChars(4)
-          .typeString(intl.messages['home.welcome.terminal.text1.string2'] as string)
+          .typeString(intl.formatMessage({ id: 'home.welcome.terminal.text1.string2' }))
           .deleteChars(2)
-          .typeString(intl.messages['home.welcome.terminal.text1.string3'] as string)
+          .typeString(intl.formatMessage({ id: 'home.welcome.terminal.text1.string3' }))
           .start();
       },
     },
@@ -48,7 +48,7 @@ const DesktopTerminal = ({
       key: 'second',
       timer: 2550,
       typeText: (typewriter: TypewriterClass) => {
-        typewriter.typeString(intl.messages['home.welcome.terminal.text2.string1'] as string)
+        typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.text2.string1' }))
           .start();
       },
     },
@@ -56,7 +56,7 @@ const DesktopTerminal = ({
       key: 'third',
       timer: 4750,
       typeText: (typewriter: TypewriterClass) => {
-        typewriter.typeString(intl.messages['home.welcome.terminal.text3.string1'] as string)
+        typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.text3.string1' }))
           .start();
       },
     },
@@ -64,7 +64,7 @@ const DesktopTerminal = ({
       key: 'fourth',
       timer: 5750,
       typeText: (typewriter: TypewriterClass) => {
-        typewriter.typeString(intl.messages['home.welcome.terminal.text4.string1'] as string)
+        typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.text4.string1' }))
           .start();
       },
     },
@@ -75,24 +75,18 @@ const DesktopTerminal = ({
         typewriter.typeString('Digite /help para mais informações').start();
       },
     },
-    // {
-    //   key: 'fifth',
-    //   timer: 7550,
-    //   typeText: (typewriter: TypewriterClass) => {
-    //     typewriter.typeString('Digite "clear" quando o terminal ficar muito poluído :)').start();
-    //   },
     // },
   ]), [intl]);
 
-  const scrollToTerminalBottom = () => {
+  const scrollToTerminalBottom = useCallback(() => {
     requestAnimationFrame(() => {
       terminalContainerRef.current!.scrollTo({
         top: terminalContainerRef.current!.scrollHeight,
       });
     });
-  };
+  }, [terminalContainerRef]);
 
-  const handleSpacePress = (event: KeyboardEvent) => {
+  const handleSpacePress = useCallback((event: KeyboardEvent) => {
     setTerminalRowsCount((prevState) => {
       const newState = [...prevState];
       newState[newState.length - 1] += '&nbsp;';
@@ -100,18 +94,18 @@ const DesktopTerminal = ({
     });
     event.preventDefault();
     scrollToTerminalBottom();
-  };
+  }, []);
 
-  const handleBackspacePress = () => {
+  const handleBackspacePress = useCallback(() => {
     setTerminalRowsCount((prevState) => {
       const newState = [...prevState];
       const currentIndex = newState.length - 1;
       newState[currentIndex] = deleteLastCharacter(newState[currentIndex]);
       return newState;
     });
-  };
+  }, [intl]);
 
-  const handleEnterPress = () => {
+  const handleEnterPress = useCallback(() => {
     setTerminalRowsCount((prevState) => {
       const currentIndex = prevState.length - 1;
       if (!prevState[currentIndex]) return prevState;
@@ -141,13 +135,13 @@ const DesktopTerminal = ({
       }
 
       if (userInput === '/game') {
-        newState.push('Qual jogo foi inspirado pelo Blockade de 1976? (Digite apenas o nome)');
+        newState.push(intl.formatMessage({ id: 'home.welcome.terminal.game.question' }));
         scrollToTerminalBottom();
         return [...newState, ''];
       }
 
       if (userInput === '/help') {
-        newState.push('Aqui está uma lista de comandos possíveis:');
+        newState.push(intl.formatMessage({ id: 'home.welcome.terminal.possible-commands' }));
         appSections.forEach((section) => {
           newState.push(`/${section}`);
         });
@@ -157,11 +151,11 @@ const DesktopTerminal = ({
       }
 
       scrollToTerminalBottom();
-      return [...newState, `Bash: comando não encontrado: ${userInput}`, ''];
+      return [...newState, `${intl.formatMessage({ id: 'home.welcome.terminal.not-found' })} ${userInput}`, ''];
     });
-  };
+  }, [intl]);
 
-  const handleKeyPress = (key: string) => {
+  const handleKeyPress = useCallback((key: string) => {
     setTerminalRowsCount((prevState) => {
       const currentIndex = prevState.length - 1;
       const newState = [...prevState];
@@ -169,7 +163,7 @@ const DesktopTerminal = ({
       scrollToTerminalBottom();
       return newState;
     });
-  };
+  }, [intl]);
 
   const setupTerminalActions = useCallback((event: KeyboardEvent) => {
     if (!isWindowOnTopRef.current) {

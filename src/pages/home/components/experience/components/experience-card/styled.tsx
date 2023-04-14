@@ -1,7 +1,7 @@
 import {
   Card, Grid, Typography,
 } from '@mui/material';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const ExperienceCardContent = styled(Grid)`
   margin: 10px 0;
@@ -31,7 +31,7 @@ export const ExperienceTopic = styled(Grid)`
 
 export const ExperienceCard = styled(Card)<{
   $direction: 'left' | 'right'
-}>(({ theme, $direction }) => `
+}>(({ theme, $direction }) => css`
   padding: 16px;
   height: 98%;
   width: 98%;

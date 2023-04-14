@@ -13,20 +13,18 @@ const ExperienceDetails = ({
       elevation={5}
       $direction="right"
     >
-      <Grid container gap={10}>
+      <Grid container>
         <S.ExperienceDescriptionContainer item xs={12}>
           <Typography variant="h3"><FormattedMessage id="home.experience.description" /></Typography>
 
-          <Typography>
-            <FormattedMessage id={experience.description} />
-          </Typography>
+          {experience.description}
         </S.ExperienceDescriptionContainer>
 
         <S.ExperienceStackContainer item xs={12}>
           <Typography variant="h3"><FormattedMessage id="home.experience.stack" /></Typography>
 
           <S.StackTechnologyListContainer component="ul">
-            {(intl.messages[experience.stack] as string).split(',').map((name: string) => (
+            {intl.formatMessage({ id: experience.stack }).split(',').map((name: string) => (
               <S.StackTechnologyListItem
                 key={name}
                 component="ul"

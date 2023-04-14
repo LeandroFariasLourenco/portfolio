@@ -19,6 +19,7 @@ import {
   EAppSections,
   EResponsiveType, ICertificate, ICourse, IExtracurricular,
 } from 'src/core/models';
+import SeeMore from 'src/core/components/see-more/see-more';
 import Certificate from './components/certificate/certificate';
 import Course from './components/course/course';
 import Extracurricular from './components/extracurricular/extracurricular';
@@ -42,18 +43,28 @@ const Academic = () => {
     certificates: ICertificate[]
   }>(() => ({
     courses: [{
-      title: 'home.formation1.title',
-      type: 'home.formation1.type',
-      location: 'home.formation1.location',
-      description: 'home.formation1.description',
+      title: 'home.formation.fiap.title',
+      type: 'home.formation.fiap.type',
+      location: 'home.formation.fiap.location',
+      description: (
+        <>
+          <S.FormationDescriptionContainer><FormattedMessage id="home.formation.fiap.description1" /></S.FormationDescriptionContainer>
+          <S.FormationDescriptionContainer><FormattedMessage id="home.formation.fiap.description2" /></S.FormationDescriptionContainer>
+        </>
+      ),
       duration: '2019 - 2020',
       logo: `${getBucketResource('/companies/fiap.png')}`,
     },
     {
-      title: 'home.formation2.title',
-      type: 'home.formation2.type',
-      location: 'home.formation2.location',
-      description: 'home.formation2.description',
+      title: 'home.formation.etec.title',
+      type: 'home.formation.etec.type',
+      location: 'home.formation.etec.location',
+      description: (
+        <>
+          <S.FormationDescriptionContainer><FormattedMessage id="home.formation.etec.description1" /></S.FormationDescriptionContainer>
+          <S.FormationDescriptionContainer><FormattedMessage id="home.formation.etec.description2" /></S.FormationDescriptionContainer>
+        </>
+      ),
       duration: '2017 - 2018',
       logo: `${getBucketResource('/companies/etec.png')}`,
     }],

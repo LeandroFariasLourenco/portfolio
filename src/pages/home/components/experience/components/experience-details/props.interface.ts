@@ -1,4 +1,4 @@
-import { IExperience } from 'src/core/models';
+import { IExperience } from '../../models/experience.interface';
 
 export interface IExperienceDetailsProps {
   experience: IExperience;

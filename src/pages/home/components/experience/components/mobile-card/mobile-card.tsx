@@ -60,14 +60,14 @@ const MobileCard = ({
               </Grid>
             </S.ExperienceCardContent>
 
-            <Typography variant="subtitle2">
-              <FormattedMessage id={experience.description} />
-            </Typography>
+            <S.ExperienceTextDescription>
+              {experience.description}
+            </S.ExperienceTextDescription>
 
             <Grid container marginTop="10px">
               <Grid item container xs={8}>
                 <S.StackTechnologyListContainer component="ul">
-                  {(intl.messages[experience.stack] as string).split(',').map((name: string) => (
+                  {(intl.formatMessage({ id: experience.stack })).split(',').map((name: string) => (
                     <S.StackTechnologyListItem
                       key={name}
                       component="ul"

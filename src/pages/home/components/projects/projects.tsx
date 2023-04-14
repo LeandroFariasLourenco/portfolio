@@ -2,16 +2,18 @@ import {
   Code, DeveloperBoard, Star,
 } from '@mui/icons-material';
 import {
-  Box, Typography,
+  Typography,
 } from '@mui/material';
 import {
-  useCallback, useEffect, useMemo, useState,
+  useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import SwipeRightAnimation from 'src/assets/animations/swipe-right.json';
 import { TECHNOLOGY_ICONS } from 'src/assets/resources/technology-icons';
 import { CustomSwiperControls } from 'src/core/components';
+import ResponsiveSwiper from 'src/core/components/responsive-swiper/responsive-swiper';
 import Responsive from 'src/core/components/responsive/responsive';
+import SlideTitle from 'src/core/components/slide-title/slide-title';
 import SwipeAnimation from 'src/core/components/swipe-animation/swipe-animation';
 import { getBucketResource } from 'src/core/functions';
 import { Section } from 'src/core/layouts';
@@ -23,9 +25,7 @@ import {
   Pagination,
   Swiper as SwiperClass,
 } from 'swiper';
-import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
-import { useResponsive } from 'src/core/hooks';
-import SlideTitle from 'src/core/components/slide-title/slide-title';
+import { SwiperSlide } from 'swiper/react';
 import { IProject } from './models/project.interface';
 
 import DesktopProject from './components/desktop-project/desktop-project';
@@ -35,30 +35,31 @@ import * as S from './styled';
 
 const Projects = () => {
   const [repositories, setRepositories] = useState<IGithubRepository[]>([]);
-  const [swiper, setSwiper] = useState<SwiperClass>();
+  const swiperRef = useRef<SwiperClass>();
   const intl = useIntl();
   const [swiperIndex, setSwiperIndex] = useState<number>(0);
-  const isMobile = useResponsive({ type: EResponsiveType.smaller });
   const swiperProps: IResponsiveSwiper = useMemo<IResponsiveSwiper>(() => ({
     desktop: {
       modules: [Navigation, Pagination],
       effect: 'slide',
+      style: { width: '100%', height: '100%' },
       grabCursor: true,
       onRealIndexChange: (swiper: SwiperClass) => {
         setSwiperIndex(swiper.realIndex);
       },
       onSwiper: (swiper: SwiperClass) => {
-        setSwiper(swiper);
+        swiperRef.current = swiper;
       },
     },
     mobile: {
       modules: [Navigation, EffectCards],
       effect: 'cards',
+      style: { width: '100%', height: '100%' },
       onRealIndexChange: (swiper: SwiperClass) => {
         setSwiperIndex(swiper.realIndex);
       },
       onSwiper: (swiper: SwiperClass) => {
-        setSwiper(swiper);
+        swiperRef.current = swiper;
       },
       navigation: {
         nextEl: '.projects.swiper-button-next',
@@ -71,77 +72,96 @@ const Projects = () => {
     {
       title: 'Fut Awesome',
       paragraphs: [
-        'Com o objetivo de aprimorar minhas habilidades em programação para dispositivos móveis, desenvolvi um projeto pessoal em Flutter e Dart voltado para consumo de APIs de futebol. Esse aplicativo permite o acesso a informações sobre jogos de diversas ligas, tais como Brasileirão, Copa do Brasil e Champions League além de disponibilizar notícias sobre o mundo do futebol.',
-        'Através da integração com as APIs, o aplicativo é capaz de exibir em tempo real os resultados dos jogos, bem como a tabela de classificação das equipes.',
-        'Além disso, é possível visualizar informações sobre os jogadores, tais como estatísticas de gols e assistências, e receber notificações sobre os próximos jogos.',
+        intl.formatMessage({ id: 'home.projects.fut-awesome.paragraph1' }),
+        intl.formatMessage({ id: 'home.projects.fut-awesome.paragraph2' }),
+        intl.formatMessage({ id: 'home.projects.fut-awesome.paragraph3' }),
       ],
       background: getBucketResource('/projects/futawesome.png'),
       icons: [TECHNOLOGY_ICONS.DART, TECHNOLOGY_ICONS.FLUTTER],
-      link: '',
+      link: 'https://github.com/LeandroFariasLourenco/futawesome',
       canPreviewInMobile: true,
     },
     {
       title: 'Zappy code',
-      paragraphs: ['Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum'],
+      paragraphs: [
+        intl.formatMessage({ id: 'home.projects.zappy-code.paragraph1' }),
+        intl.formatMessage({ id: 'home.projects.zappy-code.paragraph2' }),
+      ],
       background: getBucketResource('/projects/zappy-code.jpeg'),
       icons: [TECHNOLOGY_ICONS.SWIFT],
-      link: '',
+      link: 'https://github.com/LeandroFariasLourenco/ZappyCode',
       canPreviewInMobile: true,
     },
     {
-      title: 'Simple diary',
-      paragraphs: ['Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum'],
-      background: getBucketResource('/projects/diary.jpeg'),
-      icons: [TECHNOLOGY_ICONS.SWIFT],
-      link: '',
-      canPreviewInMobile: true,
-    },
-    {
-      title: 'Petra Assets',
-      paragraphs: ['Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum'],
+      title: 'Finantial Data Chart',
+      paragraphs: [
+        intl.formatMessage({ id: 'home.projects.finantial-data-chart.paragraph1' }),
+        intl.formatMessage({ id: 'home.projects.finantial-data-chart.paragraph2' }),
+      ],
       background: getBucketResource('/projects/petra.png'),
       icons: [TECHNOLOGY_ICONS.TYPESCRIPT, TECHNOLOGY_ICONS.ANGULAR, TECHNOLOGY_ICONS.SASS, TECHNOLOGY_ICONS.HTML],
-      link: '',
+      link: 'https://github.com/LeandroFariasLourenco/finantial-data-chart',
       canPreviewInMobile: false,
     },
     {
       title: 'Restaurant Finder',
-      paragraphs: ['Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum'],
+      paragraphs: [
+        intl.formatMessage({ id: 'home.projects.restaurant-finder.paragraph1' }),
+      ],
       background: getBucketResource('/projects/restaurant-finder.png'),
       icons: [TECHNOLOGY_ICONS.TYPESCRIPT, TECHNOLOGY_ICONS.SASS, TECHNOLOGY_ICONS.REACT, TECHNOLOGY_ICONS.HTML],
-      link: '',
+      link: 'https://github.com/LeandroFariasLourenco/restaurants-maps-api',
       canPreviewInMobile: false,
     },
     {
+      title: 'Daily journal',
+      paragraphs: [
+        intl.formatMessage({ id: 'home.projects.daily-journal.paragraph1' }),
+        intl.formatMessage({ id: 'home.projects.daily-journal.paragraph2' }),
+      ],
+      background: getBucketResource('/projects/diary.jpeg'),
+      icons: [TECHNOLOGY_ICONS.SWIFT],
+      link: 'https://github.com/LeandroFariasLourenco/Daily-Journal',
+      canPreviewInMobile: true,
+    },
+    {
       title: 'Canvas Matrix',
-      paragraphs: ['Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum'],
+      paragraphs: [
+        intl.formatMessage({ id: 'home.projects.canvas-matrix.paragraph1' }),
+      ],
       background: getBucketResource('/projects/matrix.gif'),
       icons: [TECHNOLOGY_ICONS.JAVASCRIPT, TECHNOLOGY_ICONS.CSS, TECHNOLOGY_ICONS.HTML],
-      link: '',
+      link: 'https://github.com/LeandroFariasLourenco/matrix',
       canPreviewInMobile: false,
     },
     {
       title: 'Snake Game',
-      paragraphs: ['Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum'],
+      paragraphs: [
+        intl.formatMessage({ id: 'home.projects.snake-game.paragraph1' }),
+      ],
       background: getBucketResource('/projects/snakegame.gif'),
       icons: [TECHNOLOGY_ICONS.JAVASCRIPT, TECHNOLOGY_ICONS.REACT, TECHNOLOGY_ICONS.SASS, TECHNOLOGY_ICONS.HTML],
-      link: '',
+      link: 'https://github.com/LeandroFariasLourenco/snake-game',
       canPreviewInMobile: false,
     },
     {
       title: 'Solar System',
-      paragraphs: ['Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum'],
+      paragraphs: [
+        intl.formatMessage({ id: 'home.projects.solar-system.paragraph1' }),
+      ],
       background: getBucketResource('/projects/solar-system.png'),
       icons: [TECHNOLOGY_ICONS.JAVASCRIPT, TECHNOLOGY_ICONS.HTML, TECHNOLOGY_ICONS.CSS],
-      link: '',
+      link: 'https://github.com/LeandroFariasLourenco/solar-system',
       canPreviewInMobile: false,
     },
     {
       title: 'Be the Hero',
-      paragraphs: ['Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum'],
+      paragraphs: [
+        intl.formatMessage({ id: 'home.projects.be-the-hero.paragraph1' }),
+      ],
       background: getBucketResource('/projects/be-the-hero.png'),
       icons: [TECHNOLOGY_ICONS.JAVASCRIPT, TECHNOLOGY_ICONS.HTML, TECHNOLOGY_ICONS.CSS, TECHNOLOGY_ICONS.REACT],
-      link: '',
+      link: 'https://github.com/LeandroFariasLourenco/be-the-hero',
       canPreviewInMobile: false,
     },
   ], [intl]);
@@ -181,7 +201,7 @@ const Projects = () => {
         }}
       >
         <S.ProjectDescriptionText>
-          Este é o local onde você pode encontrar meus projetos pessoais mais notáveis. Caso haja interesse em obter informações mais detalhadas sobre meus projetos profissionais, por favor, entre em contato comigo.
+          <FormattedMessage id="home.projects.description" />
         </S.ProjectDescriptionText>
         <S.ProjectsContainer container>
           <S.RepositoriesWrapper item xs={12} md={3}>
@@ -234,12 +254,9 @@ const Projects = () => {
                 typewriter.typeString('Em destaque').start();
               }}
             />
-            <Swiper
-              style={{
-                height: '100%',
-                width: '100%',
-              }}
-              {...(isMobile ? swiperProps.mobile : swiperProps.desktop)}
+            <ResponsiveSwiper
+              desktopProps={swiperProps.desktop}
+              mobileProps={swiperProps.mobile}
             >
               {projects.map((project) => (
                 <SwiperSlide
@@ -253,13 +270,13 @@ const Projects = () => {
                   />
                 </SwiperSlide>
               ))}
-            </Swiper>
+            </ResponsiveSwiper>
             <Responsive
               breakpoint="md"
             >
               <CustomSwiperControls
                 paginationLayout="vertical"
-                swiper={swiper!}
+                swiper={swiperRef.current!}
                 swiperIndex={swiperIndex}
                 totalSlides={projects.length}
               />
@@ -270,7 +287,7 @@ const Projects = () => {
             type={EResponsiveType.smaller}
           >
             <CustomSwiperControls
-              swiper={swiper!}
+              swiper={swiperRef.current!}
               swiperIndex={swiperIndex}
               totalSlides={projects.length}
             />
