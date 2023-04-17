@@ -3,12 +3,15 @@ import { Typography } from '@mui/material';
 import { memo } from 'react';
 import { TECHNOLOGY_ICONS } from 'src/assets/resources/technology-icons';
 import Responsive from 'src/core/components/responsive/responsive';
+import { useResponsive } from 'src/core/hooks';
 import { IRepositoryProps } from './props.interface';
 import * as S from './styled';
 
 const Repository = ({
   repository,
 }: IRepositoryProps) => {
+  const isDesktop = useResponsive({});
+
   const getRepositoryLanguageIcon = (language: string) => {
     switch (language?.toLowerCase()) {
       case 'javascript':
@@ -29,6 +32,8 @@ const Repository = ({
         return TECHNOLOGY_ICONS.JAVA;
       case 'ejs':
         return TECHNOLOGY_ICONS.EJS;
+      case 'swift':
+        return TECHNOLOGY_ICONS.SWIFT;
       default:
         return TECHNOLOGY_ICONS.NOT_FOUND;
     }
@@ -36,7 +41,7 @@ const Repository = ({
 
   return (
     <S.RepositoryContainer
-      target="_blank"
+      target={isDesktop ? '_blank' : '_self'}
       href={repository.html_url}
     >
       <S.RepositoryRow>

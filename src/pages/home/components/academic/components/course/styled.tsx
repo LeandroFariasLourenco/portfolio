@@ -17,7 +17,6 @@ export const CourseWrapper = styled(Grid)`
   position: relative;
   border: 2px dashed ${({ theme }) => theme.palette.secondary.main};
   padding: 10px;
-  min-height: 550px;
   animation-name: ${slideUp};
   animation-fill-mode: forwards;
 `;

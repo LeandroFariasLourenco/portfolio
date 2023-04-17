@@ -29,7 +29,7 @@
   "home.about-me.summary3": "Sempre estou em busca de novos desafios e aprendizados, e sei que esse é um caminho que não tem fim, pois a tecnologia está em constante evolução e é preciso estar sempre atualizado para acompanhar esse ritmo acelerado.",
 
   "home.about-me.overview": "Visão geral",
-  
+
   "home.about-me.objectives": "Objetivos",
   "home.about-me.stack": "Stack",
   "home.about-me.formation": "Formação",
@@ -44,7 +44,7 @@
   "home.about-me.stack.second": "Ampla experiência com Javascript",
   "home.about-me.stack.third": "Git e Gitflow",
   "home.about-me.stack.fourth": "Conhecimentos em Cloud (AWS)",
-  
+
   "home.about-me.formation.first": "Técnologo em Análise e Desenvolvimento de Sistemas pela FIAP",
   "home.about-me.formation.second": "Técnico em informática para Internet pela ETEC",
 
@@ -134,6 +134,7 @@
   "home.languages4.technologies3.description": "O 'esqueleto' de todas páginas web. Normalmente utilizo para estrutar páginas e layouts, porém com o crescente uso de frameworks SPA, acaba que não utilizo mais com tanta frequência como quando trabalhava com projetos vanilla (HTML, CSS, Javascript).",
   "home.languages4.technologies4.description": "Normalmente utilizo SCSS ou implementações como Styled Components pois escrever CSS da maneira tradicional está ficando cada vez mais obsoleto por conta também do crescimento de frameworks. Entretanto, ele nunca vai ir embora porque no final das contas, o CSS é o que faz o navegador estilizar uma página.",
 
+  "home.formation.title": "Formação",
   "home.formation.tabs1.title": "Cursos",
   "home.formation.tabs2.title": "Extracurrículares",
   "home.formation.tabs3.title": "Certificações",
@@ -147,7 +148,7 @@
   "home.formation.etec.title": "Informática p/ Internet",
   "home.formation.etec.type": "Técnico",
   "home.formation.etec.description1": "Minha primeira formação na área de TI. Tive a oportunidade de aprender sobre diversos temas essenciais para o desenvolvimento de sistemas para a web, incluindo Linux, redes, front-end, back-end e banco de dados. Também pude estudar diversas linguagens de programação, como SQL, Java, Javascript, PHP, HTML, CSS e até mesmo JQuery.",
-   "home.formation.etec.description2": "Foi uma experiência enriquecedora e fundamental para minha carreira profissional. Servindo com base para minha formação superior e principalmente para minha primeira experiência como estágio em Front End.",
+  "home.formation.etec.description2": "Foi uma experiência enriquecedora e fundamental para minha carreira profissional. Servindo com base para minha formação superior e principalmente para minha primeira experiência como estágio em Front End.",
   "home.formation.etec.location": "Diadema - SP",
 
   "home.extracurricular1.title": "Curso de inglês",
@@ -169,6 +170,28 @@
   "home.certifications7.title": "Web Designer",
 
   "home.certifications.seemore": "Ver mais",
+
+  "home.projects.title": "Repositórios",
+  "home.projects.description": "Este é o local onde você pode encontrar meus projetos pessoais mais notáveis. Caso haja interesse em obter informações mais detalhadas sobre meus projetos profissionais, por favor, entre em contato comigo.",
+  "home.projects.my-projects.title": "Meus projetos",
+  "home.projects.highlights.title": "Em destaque",
+
+  "home.projects.fut-awesome.paragraph1": "Com o objetivo de aprimorar minhas habilidades em programação para dispositivos móveis, desenvolvi um projeto pessoal em Flutter e Dart voltado para consumo de APIs de futebol. Esse aplicativo permite o acesso a informações sobre jogos de diversas ligas, tais como Brasileirão, Copa do Brasil e Champions League além de disponibilizar notícias sobre o mundo do futebol.",
+  "home.projects.fut-awesome.paragraph2": "Através da integração com as APIs, o aplicativo é capaz de exibir em tempo real os resultados dos jogos, bem como a tabela de classificação das equipes.",
+  "home.projects.fut-awesome.paragraph3": "Além disso, é possível visualizar informações sobre os jogadores, tais como estatísticas de gols e assistências, e receber notificações sobre os próximos jogos.",
+
+  "home.projects.zappy-code.paragraph1": "Meu primeiro projeto em Swift para IOS foi um aplicativo que lista os cursos de um professor na plataforma Udemy. O objetivo principal desse projeto foi fornecer aos usuários uma forma mais fácil e intuitiva de encontrar e se inscrever nos cursos do professor.",
+  "home.projects.zappy-code.paragraph2": "O aplicativo foi desenvolvido utilizando a linguagem de programação Swift e a plataforma de desenvolvimento Xcode. ",
+
+  "home.projects.daily-journal.paragraph1": "Desenvolvido em Swift para IOS foi um aplicativo que permite ao usuário digitar entradas para cada dia, semelhante a um diário pessoal. Ao abrir o aplicativo, o usuário é direcionado para uma tela onde pode digitar uma entrada para o dia atual. As entradas diárias são organizadas por data e podem ser facilmente acessadas através de uma lista, que mostra todos os dias em que o usuário escreveu algo. Cada entrada diária possui um título e um campo de texto onde o usuário pode escrever livremente.",
+  "home.projects.daily-journal.paragraph2": "Foram utilizados recursos avançados do Swift, como o armazenamento de dados localmente com Core Data. Em resumo, esse projeto em Swift para IOS foi uma oportunidade para aplicar meus conhecimentos em programação e desenvolvimento de aplicativos móveis.",
+
+  "home.projects.finantial-data-chart.paragraph1": "Projeto desenvolvido para estudo pessoal em Angular utilizando a API do Yahoo Finance para listar valores de ações de diversas empresas. Sendo possível acompanhar a evolução dos preços das ações em tempo real, podendo ser possível filtrar de minuto-a-minuto, dia-a-dia, mês, dia.",
+  "home.projects.finantial-data-chart.paragraph2": "Desenvolvido em Angular com uso da biblioteca chart-js para a criação de gráficos interativos. Foi um projeto para aplicar meus conhecimentos utilizando uma API financeira, algo inédito para mim até então.",
+
+  "home.projects.description.title": "Sobre meus projetos",
+  "home.projects.description.content1": "Teste",
+  "home.projects.description.content2": "Teste Teste Teste",
 
   "home.mytimeline.landmark1.name": "Início de minha jornada",
   "home.mytimeline.landmark1.description": "O marco zero, meu 'pontapé' inicial.",
@@ -214,26 +237,6 @@
 
   "home.mytimeline.landmark15.name": "Certified Cloud Practitioner",
   "home.mytimeline.landmark15.description": "Minha primeira certificação com AWS. Apesar de ter tido um pouco de experiência prévia com desenvolvimento em nuvem. Agora comecei oficialmente minha jornada como Cloud Practitioner.",
-
-  "home.projects.title": "Repositórios",
-  "home.projects.description": "Este é o local onde você pode encontrar meus projetos pessoais mais notáveis. Caso haja interesse em obter informações mais detalhadas sobre meus projetos profissionais, por favor, entre em contato comigo.",
-
-  "home.projects.fut-awesome.paragraph1": "Com o objetivo de aprimorar minhas habilidades em programação para dispositivos móveis, desenvolvi um projeto pessoal em Flutter e Dart voltado para consumo de APIs de futebol. Esse aplicativo permite o acesso a informações sobre jogos de diversas ligas, tais como Brasileirão, Copa do Brasil e Champions League além de disponibilizar notícias sobre o mundo do futebol.",
-  "home.projects.fut-awesome.paragraph2": "Através da integração com as APIs, o aplicativo é capaz de exibir em tempo real os resultados dos jogos, bem como a tabela de classificação das equipes.",
-  "home.projects.fut-awesome.paragraph3": "Além disso, é possível visualizar informações sobre os jogadores, tais como estatísticas de gols e assistências, e receber notificações sobre os próximos jogos.",
-
-  "home.projects.zappy-code.paragraph1": "Meu primeiro projeto em Swift para IOS foi um aplicativo que lista os cursos de um professor na plataforma Udemy. O objetivo principal desse projeto foi fornecer aos usuários uma forma mais fácil e intuitiva de encontrar e se inscrever nos cursos do professor.",
-  "home.projects.zappy-code.paragraph2": "O aplicativo foi desenvolvido utilizando a linguagem de programação Swift e a plataforma de desenvolvimento Xcode. ",
-
-  "home.projects.daily-journal.paragraph1": "Desenvolvido em Swift para IOS foi um aplicativo que permite ao usuário digitar entradas para cada dia, semelhante a um diário pessoal. Ao abrir o aplicativo, o usuário é direcionado para uma tela onde pode digitar uma entrada para o dia atual. As entradas diárias são organizadas por data e podem ser facilmente acessadas através de uma lista, que mostra todos os dias em que o usuário escreveu algo. Cada entrada diária possui um título e um campo de texto onde o usuário pode escrever livremente.",
-  "home.projects.daily-journal.paragraph2": "Foram utilizados recursos avançados do Swift, como o armazenamento de dados localmente com Core Data. Em resumo, esse projeto em Swift para IOS foi uma oportunidade para aplicar meus conhecimentos em programação e desenvolvimento de aplicativos móveis.",
-
-  "home.projects.finantial-data-chart.paragraph1": "Projeto desenvolvido para estudo pessoal em Angular utilizando a API do Yahoo Finance para listar valores de ações de diversas empresas. Sendo possível acompanhar a evolução dos preços das ações em tempo real, podendo ser possível filtrar de minuto-a-minuto, dia-a-dia, mês, dia.",
-  "home.projects.finantial-data-chart.paragraph2": "Desenvolvido em Angular com uso da biblioteca chart-js para a criação de gráficos interativos. Foi um projeto para aplicar meus conhecimentos utilizando uma API financeira, algo inédito para mim até então.",
-
-  "home.projects.description.title": "Sobre meus projetos",
-  "home.projects.description.content1": "Teste",
-  "home.projects.description.content2": "Teste Teste Teste",
 
   "home.footer.contact.title": "Contato",
   "home.footer.socialmedia.title": "Redes sociais",

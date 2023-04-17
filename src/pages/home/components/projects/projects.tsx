@@ -191,7 +191,7 @@ const Projects = () => {
     <S.ProjectsWrapper id={EAppSections.PROJECTS}>
       <Section
         onTitleShow={(typewriter) => {
-          typewriter.typeString('Meus projetos')
+          typewriter.typeString(intl.formatMessage({ id: 'home.projects.my-projects.title' }))
             .start();
         }}
         icon={<DeveloperBoard htmlColor="white" fontSize="large" />}
@@ -211,32 +211,20 @@ const Projects = () => {
             </S.RepositoryTitle>
             <Responsive
               breakpoint="md"
-              aboveComponent={(
-                <S.RepositoriesList container flexWrap="wrap">{repositories.map(renderRepository)}</S.RepositoriesList>
-              )}
+              aboveComponent={<S.RepositoriesList container flexWrap="wrap">{repositories.map(renderRepository)}</S.RepositoriesList>}
               belowComponent={(
-                <Responsive
-                  breakpoint="md"
-                  aboveComponent={(
-                    <S.RepositoriesList container flexWrap="nowrap" flexDirection="row">
-                      {repositories.map(renderRepository)}
-                    </S.RepositoriesList>
-                  )}
-                  belowComponent={(
-                    <S.RepositoriesList container flexWrap="nowrap" flexDirection="row">
-                      <SwipeAnimation lottieProps={{
-                        height: 80,
-                        width: 'unset',
-                        speed: 1.25,
-                        options: {
-                          animationData: SwipeRightAnimation,
-                        },
-                      }}
-                      />
-                      {repositories.map(renderRepository)}
-                    </S.RepositoriesList>
-                  )}
-                />
+                <S.RepositoriesList container flexWrap="nowrap" flexDirection="row">
+                  <SwipeAnimation lottieProps={{
+                    height: 80,
+                    width: 'unset',
+                    speed: 1.25,
+                    options: {
+                      animationData: SwipeRightAnimation,
+                    },
+                  }}
+                  />
+                  {repositories.map(renderRepository)}
+                </S.RepositoriesList>
               )}
             />
           </S.RepositoriesWrapper>
@@ -251,7 +239,7 @@ const Projects = () => {
             <SlideTitle
               icon={<Star htmlColor="#fff" />}
               onTitleShow={(typewriter) => {
-                typewriter.typeString('Em destaque').start();
+                typewriter.typeString(intl.formatMessage({ id: 'home.projects.highlights.title' })).start();
               }}
             />
             <ResponsiveSwiper

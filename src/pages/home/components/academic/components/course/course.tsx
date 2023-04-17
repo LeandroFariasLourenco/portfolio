@@ -4,6 +4,7 @@ import { useRef } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
+import { Responsive, SeeMore } from 'src/core/components';
 import { ICourseProps } from './props.interface';
 import * as S from './styled';
 
@@ -37,7 +38,15 @@ const Course = ({
       </S.CourseTitleContainer>
 
       <S.CourseContainer>
-        {card.description}
+        <Responsive
+          breakpoint="md"
+          belowComponent={(
+            <SeeMore>
+              {card.description}
+            </SeeMore>
+        )}
+          aboveComponent={card.description}
+        />
       </S.CourseContainer>
 
       <S.CourseContainer>

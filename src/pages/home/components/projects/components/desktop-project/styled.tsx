@@ -32,10 +32,13 @@ export const ProjectDescriptionCard = styled(Card)(({ theme }) => `
   max-height: 330px;
 `);
 
-export const TogglePreview = styled(Grid)`
+export const Actions = styled(Grid)`
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  left: 20px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const ProjectSlideOverlay = styled(Grid)`
@@ -56,7 +59,7 @@ export const ProjectSlideOverlay = styled(Grid)`
   &.closed {
     background-image: unset;
   
-    ${TogglePreview} {
+    ${Actions} {
       opacity: 1;
     }
 
