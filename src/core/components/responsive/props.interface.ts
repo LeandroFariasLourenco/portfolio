@@ -5,7 +5,7 @@ import { EResponsiveType } from 'src/core/models';
 export interface IResponsiveProps {
   breakpoint: Breakpoint;
   type?: EResponsiveType;
-  aboveComponent?: JSX.Element;
-  belowComponent?: JSX.Element;
+  aboveComponent?: ReactNode | JSX.Element;
+  belowComponent?: ReactNode | JSX.Element;
   children?: JSX.Element;
 }

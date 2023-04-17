@@ -177,7 +177,7 @@ const Experience = () => {
         query: 'Enext',
       },
     },
-  ], [intl]);
+  ], [intl, isMobile]);
 
   const swiperProps: IResponsiveSwiper = useMemo<IResponsiveSwiper>(() => ({
     mobile: {

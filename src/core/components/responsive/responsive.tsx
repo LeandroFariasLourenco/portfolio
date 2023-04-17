@@ -13,7 +13,7 @@ const Responsive = ({
   const shouldShow = useResponsive({ breakpoint, type });
   const componentToRender = shouldShow ? aboveComponent : belowComponent;
 
-  if (!children && componentToRender) { return componentToRender!; }
+  if (!children && componentToRender) { return componentToRender! as JSX.Element; }
 
   if (!shouldShow) return null;
 

@@ -4,10 +4,11 @@ import {
 import { Grid, Typography } from '@mui/material';
 import cx from 'classnames';
 import {
+  useCallback,
   useMemo, useRef, useState,
 } from 'react';
 import AnimateHeight from 'react-animate-height';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import SwipeRightAnimation from 'src/assets/animations/swipe-right.json';
 import { LazyLoadParticles, Responsive } from 'src/core/components';
@@ -19,7 +20,6 @@ import {
   EAppSections,
   EResponsiveType, ICertificate, ICourse, IExtracurricular,
 } from 'src/core/models';
-import SeeMore from 'src/core/components/see-more/see-more';
 import Certificate from './components/certificate/certificate';
 import Course from './components/course/course';
 import Extracurricular from './components/extracurricular/extracurricular';
@@ -30,12 +30,12 @@ const Academic = () => {
   const [activeTab, setActiveTab] = useState(0);
   const cardContainerRef = useRef<HTMLDivElement>();
   const isMobile = useResponsive({ breakpoint: 'md', type: EResponsiveType.smaller });
-
-  const formationTabs = useMemo(() => [
+  const intl = useIntl();
+  const formationTabs: string[] = useMemo<string[]>(() => [
     'home.formation.tabs1.title',
     'home.formation.tabs2.title',
     'home.formation.tabs3.title',
-  ], []);
+  ], [intl]);
 
   const formations = useMemo<{
     courses: ICourse[],
@@ -130,14 +130,73 @@ const Academic = () => {
         width: { desktop: '125px', mobile: '65px' },
       },
     ],
-  }), []);
+  }), [intl]);
+
+  const renderFormationTab = useCallback((tab: string, index: number) => (
+    <S.FormationTab
+      container
+      key={tab}
+      alignItems="center"
+      justifyContent="center"
+      onClick={() => {
+        setActiveTab(index);
+        if (isMobile) return;
+        cardContainerRef.current!.scrollIntoView({
+          block: 'center',
+          behavior: 'smooth',
+        });
+      }}
+      className={cx({
+        selected: activeTab === index,
+      })}
+    >
+      <Typography variant={isMobile ? 'h5' : 'h4'}><FormattedMessage id={tab} /></Typography>
+    </S.FormationTab>
+  ), [intl, isMobile]);
+
+  const renderCourse = useCallback((course: ICourse, index: number) => (
+    <Grid key={course.title} item xs={12} md={4}>
+      <Course index={index} course={course} />
+    </Grid>
+  ), [intl]);
+
+  const renderExtracurricular = useCallback((extracurricular: IExtracurricular, index: number) => (
+    <Grid key={extracurricular.title} item xs={12} md={4}>
+      <Extracurricular index={index} extracurricular={extracurricular} />
+    </Grid>
+  ), [intl]);
+
+  const renderCertificate = useCallback((certificate: ICertificate, index: number) => (
+    <Responsive
+      key={certificate.title}
+      breakpoint="md"
+      belowComponent={(
+        <Certificate
+          index={index}
+          certificate={certificate}
+        />
+      )}
+      aboveComponent={(
+        <Grid
+          container
+          item
+          md={4}
+        >
+          <Certificate
+            index={index}
+            certificate={certificate}
+          />
+        </Grid>
+      )}
+    />
+  ), []);
 
   return (
     <S.FormationWrapper id={EAppSections.ACADEMIC}>
       <LazyLoadParticles id="formation-section" particlesConfig={desktopParticlesConfig} />
       <Section
         onTitleShow={(typewriter) => {
-          typewriter.typeString('Formação')
+          typewriter.typeString(intl.formatMessage({ id: 'home.formation.title' }))
             .start();
         }}
         icon={<School fontSize="large" htmlColor="white" />}
@@ -158,27 +217,7 @@ const Academic = () => {
             },
           }}
           />
-          {formationTabs.map((tab, index) => (
-            <S.FormationTab
-              container
-              key={tab}
-              alignItems="center"
-              justifyContent="center"
-              onClick={() => {
-                setActiveTab(index);
-                if (isMobile) return;
-                cardContainerRef.current!.scrollIntoView({
-                  block: 'center',
-                  behavior: 'smooth',
-                });
-              }}
-              className={cx({
-                selected: activeTab === index,
-              })}
-            >
-              <Typography variant={isMobile ? 'h5' : 'h4'}><FormattedMessage id={tab} /></Typography>
-            </S.FormationTab>
-          ))}
+          {formationTabs.map(renderFormationTab)}
         </S.FormationTabs>
 
         <AnimateHeight
@@ -202,11 +241,7 @@ const Academic = () => {
                 display: useHidden(activeTab !== 0),
               }}
             >
-              {formations.courses.map((course, index) => (
-                <Grid key={course.title} item xs={12} md={4}>
-                  <Course index={index} course={course} />
-                </Grid>
-              ))}
+              {formations.courses.map(renderCourse)}
             </Grid>
             <Grid
               container
@@ -215,11 +250,7 @@ const Academic = () => {
               }}
               spacing={2}
             >
-              {formations.extracurriculars.map((extracurricular, index) => (
-                <Grid key={extracurricular.title} item xs={12} md={4}>
-                  <Extracurricular index={index} extracurricular={extracurricular} />
-                </Grid>
-              ))}
+              {formations.extracurriculars.map(renderExtracurricular)}
             </Grid>
             <Grid
               container
@@ -228,30 +259,7 @@ const Academic = () => {
                 display: useHidden(activeTab !== 2),
               }}
             >
-              {formations.certificates.map((certificate, index) => (
-                <Responsive
-                  key={certificate.title}
-                  breakpoint="md"
-                  belowComponent={(
-                    <Certificate
-                      index={index}
-                      certificate={certificate}
-                    />
-                  )}
-                  aboveComponent={(
-                    <Grid
-                      container
-                      item
-                      md={4}
-                    >
-                      <Certificate
-                        index={index}
-                        certificate={certificate}
-                      />
-                    </Grid>
-                  )}
-                />
-              ))}
+              {formations.certificates.map(renderCertificate)}
             </Grid>
           </S.CardContainer>
         </AnimateHeight>

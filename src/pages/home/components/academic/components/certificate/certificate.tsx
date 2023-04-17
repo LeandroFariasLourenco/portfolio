@@ -40,7 +40,7 @@ const Certificate = ({
             <Typography variant="h5" fontSize="20px" textAlign="center"><FormattedMessage id={card.title} /></Typography>
             <S.CertificateLink
               href={card.link}
-              target="_blank"
+              target={!isMobile ? '_blank' : '_self'}
             >
               <RemoveRedEye color="primary" />
               <Responsive
@@ -55,7 +55,7 @@ const Certificate = ({
         belowComponent={(
           <S.CertificateLink
             href={card.link}
-            target="_blank"
+            target={!isMobile ? '_blank' : '_self'}
           >
             <S.CertificateContainer
               container

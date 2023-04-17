@@ -41,7 +41,10 @@ const CustomSwiperControls = ({
         })}`}
       />
       <Box
-        onClick={() => swiper?.slidePrev()}
+        onClick={() => {
+          console.log(swiper);
+          swiper?.slidePrev();
+        }}
         className={`swiper-button-prev ${cx({
           disabled: swiper?.isBeginning,
         })}`}
