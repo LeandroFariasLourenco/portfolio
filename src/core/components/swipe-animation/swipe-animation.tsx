@@ -1,5 +1,7 @@
 import cx from 'classnames';
-import { useEffect, useRef, useState } from 'react';
+import {
+  useEffect, useRef, useState, memo,
+} from 'react';
 import Lottie from 'react-lottie';
 import { EResponsiveType } from 'src/core/models';
 import Responsive from '../responsive/responsive';
@@ -87,4 +89,4 @@ const SwipeAnimation = ({
   );
 };
 
-export default SwipeAnimation;
+export default memo(SwipeAnimation);

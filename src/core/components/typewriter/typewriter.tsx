@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import cx from 'classnames';
 import TypewriterEffect from 'typewriter-effect';
 import { ITypewriterProps } from './props.interface';
@@ -34,4 +34,4 @@ const Typewriter = ({
     </S.TypewriterWrapper>
   );
 };
-export default Typewriter;
+export default memo(Typewriter);

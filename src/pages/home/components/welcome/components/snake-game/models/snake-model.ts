@@ -2,8 +2,11 @@ import { TEXTURES } from 'src/assets/resources/textures';
 import { BaseCanvas } from './base-canvas';
 import { FoodModel } from './food-model';
 import { GameModel } from './game-model';
-import { ESnakeDirectionAngle } from './snake-direction-angles.enum';
-import { ESnakeDirection } from './snake-direction.enum';
+import {
+  ISnakeBodyPosition,
+  ESnakeDirectionAngle,
+  ESnakeDirection,
+} from './interfaces';
 
 export class SnakeModel extends BaseCanvas {
   private snakeHeadTexture = new Image(
@@ -16,13 +19,13 @@ export class SnakeModel extends BaseCanvas {
     TEXTURES.snakeBodyTexture.height,
   );
 
-  private score = 0;
+  private score!: number;
 
-  private direction: ESnakeDirection = ESnakeDirection.RIGHT;
+  private direction!: ESnakeDirection;
 
-  private distanceX = 10;
+  private distanceX!: number;
 
-  private distanceY = 0;
+  private distanceY!: number;
 
   private readonly INITIAL_SPEED = 95;
 
@@ -36,13 +39,22 @@ export class SnakeModel extends BaseCanvas {
 
   public speed = this.INITIAL_SPEED;
 
-  public snakeBody = [
-    { x: 200, y: 200 },
-    { x: 190, y: 200 },
-    { x: 180, y: 200 },
-    { x: 170, y: 200 },
-    { x: 160, y: 200 },
-  ];
+  public bodyPosition: ISnakeBodyPosition[] = [];
+
+  public setupInitialState(): void {
+    this.speed = this.INITIAL_SPEED;
+    this.distanceX = 10;
+    this.distanceY = 0;
+    this.direction = ESnakeDirection.RIGHT;
+    this.score = 0;
+    this.bodyPosition = [
+      { x: 200, y: 200 },
+      { x: 190, y: 200 },
+      { x: 180, y: 200 },
+      { x: 170, y: 200 },
+      { x: 160, y: 200 },
+    ];
+  }
 
   constructor(
     canvas: HTMLCanvasElement,
@@ -58,6 +70,7 @@ export class SnakeModel extends BaseCanvas {
 
     this.snakeBodyTexture.src = TEXTURES.snakeBodyTexture.source;
     this.snakeHeadTexture.src = TEXTURES.snakeHeadTexture.source;
+    this.setupInitialState();
   }
 
   private generateFoodPosition(max: number, min: number = 0) {
@@ -72,7 +85,7 @@ export class SnakeModel extends BaseCanvas {
   }
 
   public drawSnake() {
-    this.snakeBody.forEach(({ x, y }) => {
+    this.bodyPosition.forEach(({ x, y }) => {
       this.canvasContext.drawImage(
         this.snakeBodyTexture,
         x,
@@ -106,7 +119,7 @@ export class SnakeModel extends BaseCanvas {
     }
 
     const radianDegree = Math.PI / 180;
-    this.canvasContext.translate(this.snakeBody[0].x, this.snakeBody[0].y);
+    this.canvasContext.translate(this.bodyPosition[0].x, this.bodyPosition[0].y);
     this.canvasContext.translate(
       this.snakeHeadTexture.width / 2,
       this.snakeHeadTexture.height / 2,
@@ -128,10 +141,10 @@ export class SnakeModel extends BaseCanvas {
 
   public moveSnake() {
     const newSnakeHead = {
-      x: this.snakeBody[0].x + this.distanceX,
-      y: this.snakeBody[0].y + this.distanceY,
+      x: this.bodyPosition[0].x + this.distanceX,
+      y: this.bodyPosition[0].y + this.distanceY,
     };
-    this.snakeBody.unshift(newSnakeHead);
+    this.bodyPosition.unshift(newSnakeHead);
     const hasEatenFood = newSnakeHead.x === this.food.positionX
       && newSnakeHead.y === this.food.positionY;
 
@@ -147,7 +160,7 @@ export class SnakeModel extends BaseCanvas {
     }
 
     if (!hasEatenFood) {
-      this.snakeBody.pop();
+      this.bodyPosition.pop();
     } else {
       const minPosition = this.game.sizeMultiplier * this.SPEED_DECREMENT + 20;
 

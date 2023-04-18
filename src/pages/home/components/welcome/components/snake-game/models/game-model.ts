@@ -2,7 +2,7 @@ import { BehaviorSubject } from 'rxjs';
 import { TEXTURES } from 'src/assets/resources/textures';
 import { SnakeModel } from './snake-model';
 import { BaseCanvas } from './base-canvas';
-import { IGameState } from './game-state.interface';
+import { IGameState } from './interfaces/game-state.interface';
 
 export class GameModel extends BaseCanvas {
   private snake: SnakeModel;
@@ -69,15 +69,19 @@ export class GameModel extends BaseCanvas {
   }
 
   private checkGameState() {
-    const snakeHead = this.snake.snakeBody[0];
-    for (let i = 1, len = this.snake.snakeBody.length; i < len; i += 1) {
-      const hasCollidedWithItself = this.snake.snakeBody[i].x === snakeHead.x
-        && this.snake.snakeBody[i].y === snakeHead.y;
+    const snakeHead = this.snake.bodyPosition[0];
+    this.snake.bodyPosition.slice(
+      1,
+    ).forEach(({ x, y }, index, array) => {
+      const hasCollidedWithItself = x === snakeHead.x
+        && y === snakeHead.y;
 
       if (hasCollidedWithItself) {
         this.setGameFinished(true);
+        array.splice(0, array.length - 1);
       }
-    }
+    });
+    if (this.gameState.ended) return;
 
     const frameBoundary = this.frameDecrement / 2;
     const frameMinPosition = this.sizeMultiplier * frameBoundary;
@@ -115,8 +119,8 @@ export class GameModel extends BaseCanvas {
       this.checkGameState();
       if (this.gameState.ended) return;
 
-      this.snake.food.drawFood(false);
       this.snake.drawSnake();
+      this.snake.food.drawFood(false);
 
       if (this.gameState.paused) return;
 
@@ -129,7 +133,15 @@ export class GameModel extends BaseCanvas {
     return this.gameStateSubject$.value;
   }
 
-  public setGameFinished(ended: boolean) {
+  public resetGame() {
+    this.setGameFinished(false);
+    this.setScore(0);
+    this.sizeMultiplier = 0;
+    this.snake.setupInitialState();
+    this.renderGame();
+  }
+
+  private setGameFinished(ended: boolean) {
     return this.gameStateSubject$.next({ ...this.gameStateSubject$.value, ended });
   }
 

@@ -36,4 +36,4 @@ const LazyLoadParticles = ({ particlesConfig, id }: ILazyLoadProps) => {
   );
 };
 
-export default memo(LazyLoadParticles);
+export default memo(LazyLoadParticles, () => true);

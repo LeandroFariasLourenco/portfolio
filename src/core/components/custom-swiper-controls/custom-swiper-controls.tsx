@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import cx from 'classnames';
-import { useCallback } from 'react';
+import { useCallback, memo } from 'react';
 import { ICustomSwiperControlsProps } from './props.interface';
 
 import * as S from './styled';
@@ -53,4 +53,4 @@ const CustomSwiperControls = ({
   );
 };
 
-export default CustomSwiperControls;
+export default memo(CustomSwiperControls);
