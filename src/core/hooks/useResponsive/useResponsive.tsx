@@ -8,25 +8,24 @@ const useResponsive = ({
   type = EResponsiveType.bigger,
 }: IUseResponsiveProps) => {
   const { breakpoints } = useTheme();
-  const [shouldShow, setShouldShow] = useState(false);
+
+  const getBreakpointState = () => (type === EResponsiveType.bigger
+    ? window.innerWidth > breakpoints.values[breakpoint]
+    : window.innerWidth < breakpoints.values[breakpoint]);
+  const [shouldShow, setShouldShow] = useState<boolean>(getBreakpointState());
 
   const handleShouldShow = () => {
-    setShouldShow(type === EResponsiveType.bigger
-      ? window.innerWidth > breakpoints.values[breakpoint]
-      : window.innerWidth < breakpoints.values[breakpoint]);
+    setShouldShow(getBreakpointState());
   };
 
   useEffect(() => {
     handleShouldShow();
-  }, []);
-
-  useEffect(() => {
     window.addEventListener('resize', handleShouldShow);
 
     return () => {
       window.removeEventListener('resize', handleShouldShow);
     };
-  }, [window.innerWidth]);
+  }, []);
 
   return shouldShow;
 };

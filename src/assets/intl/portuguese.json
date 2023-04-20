@@ -52,6 +52,8 @@
   "home.about-me.hobbies.second": "Filmes, séries",
   "home.about-me.hobbies.third": "Jogos e jogos de mesa",
 
+  "home.experience.title": "Experiência profissional",
+
   "home.experience.ibm-mid-level.title": "Front-End Pleno",
   "home.experience.ibm-mid-level.company": "IBM",
   "home.experience.ibm-mid-level.date": "09/2022 - Atual",
@@ -218,12 +220,12 @@
 
   "home.extracurricular1.title": "Curso de inglês",
   "home.extracurricular1.type": "Extracurricular",
-  "home.extracurricular1.description": "Por 5 anos estudei começando pelo nível básico e avançando até eventualmente realizar a prova do TOEFL ITP e conseguir minha certificação de inglês nível B2.",
+  "home.extracurricular1.description": "Curso de inglês pelo CCAA entre os anos de 2013 e 2018. Iniciei meus estudos no nível básico seguindo pelos semestres gradualmente até o nível avançado, sem a necessidade de repetir nenhum semestre. Esse aprendizado me proporcionou uma base sólida em gramática, vocabulário e compreensão auditiva. Graças a essa preparação, tive a oportunidade de realizar o exame TOEFL ITP. Atingindo meu nível B2 em inglês.",
   "home.extracurricular1.location": "Diadema - SP",
 
   "home.extracurricular2.title": "Certified Cloud Practitioner (course)",
   "home.extracurricular2.type": "Extracurricular",
-  "home.extracurricular2.description": "Um curto aprendizado de 14 horas instruído pelo Sthephane Maarek que cobre todos os detalhes para preparação do exame Cloud Practitioner da AWS.",
+  "home.extracurricular2.description": "Curto aprendizado de 14 horas instruído pelo Sthephane Maarek que cobre todos os detalhes para preparação do exame Cloud Practitioner da AWS. Foi fundamental em meus estudos para conseguir a renomada certificação.",
   "home.extracurricular2.location": "Online",
 
   "home.certifications1.title": "Certified Cloud Practitioner",
@@ -233,8 +235,6 @@
   "home.certifications5.title": "Informática p/ Internet",
   "home.certifications6.title": "App Developer",
   "home.certifications7.title": "Web Designer",
-
-  "home.certifications.seemore": "Ver mais",
 
   "home.projects.title": "Repositórios",
   "home.projects.description": "Este é o local onde você pode encontrar meus projetos pessoais mais notáveis. Caso haja interesse em obter informações mais detalhadas sobre meus projetos profissionais, por favor, entre em contato comigo.",

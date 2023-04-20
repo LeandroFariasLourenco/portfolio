@@ -46,7 +46,7 @@ const Certificate = ({
               <Responsive
                 breakpoint="md"
               >
-                <Typography><FormattedMessage id="home.certifications.seemore" /></Typography>
+                <Typography><FormattedMessage id="general.button.see-more" /></Typography>
               </Responsive>
               <OpenInNew color="primary" />
             </S.CertificateLink>

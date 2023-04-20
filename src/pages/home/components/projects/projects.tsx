@@ -18,14 +18,13 @@ import { getBucketResource } from 'src/core/functions';
 import { useSwiperProps } from 'src/core/hooks';
 import { Section } from 'src/core/layouts';
 import { EAppSections, EResponsiveType } from 'src/core/models';
+import { IGithubRepository } from 'src/core/models/github-repository.interface';
 import { GithubService } from 'src/core/services';
 import {
-  EffectCards, Navigation,
-  Pagination,
+  EffectCards,
   Swiper as SwiperClass,
 } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { IGithubRepository } from 'src/core/models/github-repository.interface';
 import { IProject } from './models/project.interface';
 
 import DesktopProject from './components/desktop-project/desktop-project';

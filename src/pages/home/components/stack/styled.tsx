@@ -93,5 +93,6 @@ export const TechnologyTabContainer = styled(Grid)`
   &:not(&.selected) {
     position: absolute;
     opacity: 0;
+    transform: scale(0);
   }
 `;
