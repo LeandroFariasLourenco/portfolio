@@ -4,145 +4,96 @@
     "icon": "/technologies/typescript-javascript/typescript-javascript.png",
     "technologies": [
       {
-        "name": "React",
-        "icon": "/technologies/typescript-javascript/react.png",
-        "description": "home.languages1.technologies1.description",
-        "topics": ["Redux", "Mobx", "Hooks", "Classes", "Styled Components"]
-      },
-      {
-        "name": "React Native",
-        "icon": "/technologies/typescript-javascript/react.png",
-        "description": "home.languages1.technologies2.description",
-        "topics": [
-          "Redux",
-          "Mobx",
-          "Hooks",
-          "Classes",
-          "Styled Components",
-          "JS Bridge"
-        ]
-      },
-      {
-        "name": "Angular",
-        "icon": "/technologies/typescript-javascript/angularjs.png",
-        "description": "home.languages1.technologies3.description",
-        "topics": [
-          "Observables",
-          "RxJs",
-          "Providers",
-          "Inputs/Outputs Emitters"
-        ]
-      },
-      {
         "name": "Typescript",
         "icon": "/technologies/typescript-javascript/typescript.png",
-        "description": "home.languages1.technologies4.description",
+        "description": "home.js-ts.technologies.typescript.description",
         "topics": [
-          "Interfaces",
-          "Generics",
-          "Unions, Enums, Non-null assertion",
-          "Project level TSConfigs"
+          "home.js-ts.technologies.typescript.typing",
+          "home.js-ts.technologies.typescript.interfaces",
+          "home.js-ts.technologies.typescript.generics",
+          "home.js-ts.technologies.typescript.unions.etc",
+          "home.js-ts.technologies.typescript.tsconfigs"
         ]
       },
       {
         "name": "Javascript",
         "icon": "/technologies/typescript-javascript/javascript.png",
-        "description": "home.languages1.technologies5.description",
+        "description": "home.js-ts.technologies.javascript.description",
         "topics": [
-          "Async, Promises and general post ES5 syntax",
-          "Closures",
-          "Modules and packages",
-          "Optional Chaining"
+          "home.js-ts.technologies.javascript.async",
+          "home.js-ts.technologies.javascript.closures",
+          "home.js-ts.technologies.javascript.modules",
+          "home.js-ts.technologies.javascript.optional-chaining",
+          "home.js-ts.technologies.javascript.dom",
+          "home.js-ts.technologies.javascript.websockets"
+        ]
+      },
+      {
+        "name": "Angular",
+        "icon": "/technologies/typescript-javascript/angularjs.png",
+        "description": "home.js-ts.technologies.angular.description",
+        "topics": [
+          "home.js-ts.technologies.angular.rxjs",
+          "home.js-ts.technologies.angular.providers",
+          "home.js-ts.technologies.angular.inputs-outputs",
+          "home.js-ts.technologies.angular.modules",
+          "home.js-ts.technologies.angular.unit-testing",
+          "home.js-ts.technologies.angular.services",
+          "home.js-ts.technologies.angular.routing",
+          "home.js-ts.technologies.angular.dependency-injection"
+        ]
+      },
+      {
+        "name": "React",
+        "icon": "/technologies/typescript-javascript/react.png",
+        "description": "home.js-ts.technologies.react.description",
+        "topics": [
+          "home.js-ts.technologies.react.redux",
+          "home.js-ts.technologies.react.mobx",
+          "home.js-ts.technologies.react.props",
+          "home.js-ts.technologies.react.context",
+          "home.js-ts.technologies.react.hooks",
+          "home.js-ts.technologies.react.classes",
+          "home.js-ts.technologies.react.styled-components"
+        ]
+      },
+      {
+        "name": "React Native",
+        "icon": "/technologies/typescript-javascript/react.png",
+        "description": "home.js-ts.technologies.react-native.description",
+        "topics": [
+          "home.js-ts.technologies.react-native.redux",
+          "home.js-ts.technologies.react-native.mobx",
+          "home.js-ts.technologies.react.props",
+          "home.js-ts.technologies.react-native.context",
+          "home.js-ts.technologies.react-native.hooks",
+          "home.js-ts.technologies.react-native.classes",
+          "home.js-ts.technologies.react-native.styled-components",
+          "home.js-ts.technologies.react-native.js-bridge"
         ]
       },
       {
         "name": "Jquery",
         "icon": "/technologies/typescript-javascript/jquery.svg",
-        "description": "home.languages1.technologies6.description",
-        "topics": ["Selectors", "Plugins", "Specific query methods"]
+        "description": "home.js-ts.technologies.jquery.description",
+        "topics": ["home.js-ts.technologies.jquery.selectors", "home.js-ts.technologies.jquery.plugins"]
       },
       {
         "name": "Webpack",
         "icon": "/technologies/typescript-javascript/webpack.png",
-        "description": "home.languages1.technologies6.description",
-        "topics": ["Selectors", "Plugins", "Specific query methods"]
+        "description": "home.js-ts.technologies.webpack.description",
+        "topics": []
       },
       {
         "name": "Gulp",
         "icon": "/technologies/typescript-javascript/gulp.png",
-        "description": "home.languages1.technologies6.description",
-        "topics": ["Selectors", "Plugins", "Specific query methods"]
+        "description": "home.js-ts.technologies.gulp.description",
+        "topics": []
       },
       {
         "name": "Grunt",
         "icon": "/technologies/typescript-javascript/grunt.png",
-        "description": "home.languages1.technologies6.description",
-        "topics": ["Selectors", "Plugins", "Specific query methods"]
-      }
-    ]
-  },
-  {
-    "name": "AWS",
-    "icon": "/technologies/aws/aws.svg",
-    "technologies": [
-      {
-        "name": "Cloudformation",
-        "icon": "/technologies/aws/cloudformation.svg",
-        "description": "home.languages2.technologies1.description",
-        "topics": []
-      },
-      {
-        "name": "Api Gateway",
-        "icon": "/technologies/aws/api-gateway.svg",
-        "description": "home.languages2.technologies2.description",
-        "topics": []
-      },
-      {
-        "name": "Lambda",
-        "icon": "/technologies/aws/lambda.svg",
-        "description": "home.languages2.technologies3.description",
-        "topics": []
-      },
-      {
-        "name": "Cloudfront",
-        "icon": "/technologies/aws/cloudfront.svg",
-        "description": "home.languages2.technologies4.description",
-        "topics": []
-      },
-      {
-        "name": "Cloud Dev Kit",
-        "icon": "/technologies/aws/cdk.svg",
-        "description": "home.languages2.technologies5.description",
-        "topics": []
-      },
-      {
-        "name": "Codecommit",
-        "icon": "/technologies/aws/codecommit.svg",
-        "description": "home.languages2.technologies6.description",
-        "topics": []
-      },
-      {
-        "name": "Codebuild",
-        "icon": "/technologies/aws/codebuild.svg",
-        "description": "home.languages2.technologies7.description",
-        "topics": []
-      },
-      {
-        "name": "Cognito",
-        "icon": "/technologies/aws/cognito.svg",
-        "description": "home.languages2.technologies8.description",
-        "topics": []
-      },
-      {
-        "name": "Amplify",
-        "icon": "/technologies/aws/amplify.svg",
-        "description": "home.languages2.technologies9.description",
-        "topics": []
-      },
-      {
-        "name": "S3",
-        "icon": "/technologies/aws/s3.svg",
-        "description": "home.languages2.technologies10.description",
+        "description": "home.js-ts.technologies.grunt.description",
         "topics": []
       }
     ]
@@ -154,26 +105,31 @@
       {
         "name": "SCSS",
         "icon": "/technologies/html-css/sass.svg",
-        "description": "home.languages4.technologies1.description",
-        "topics": ["9", "10", "11", "12"]
+        "description": "home.html-css.sass.description",
+        "topics": [
+          "home.html-css.sass.mixins",
+          "home.html-css.sass.variables",
+          "home.html-css.sass.functions",
+          "home.html-css.sass.nesting"
+        ]
       },
       {
         "name": "PUG",
         "icon": "/technologies/html-css/pug.svg",
-        "description": "home.languages4.technologies2.description",
-        "topics": ["13", "14", "15", "16"]
+        "description": "home.html-css.pug.description",
+        "topics": []
       },
       {
         "name": "HTML",
         "icon": "/technologies/html-css/html-5.png",
-        "description": "home.languages4.technologies3.description",
-        "topics": ["17", "18", "19", "20"]
+        "description": "home.html-css.html.description",
+        "topics": []
       },
       {
         "name": "CSS",
         "icon": "/technologies/html-css/css3.png",
-        "description": "home.languages4.technologies4.description",
-        "topics": ["21", "22", "23", "24"]
+        "description": "home.html-css.css.description",
+        "topics": []
       }
     ]
   },
@@ -184,26 +140,108 @@
       {
         "name": "Flutter",
         "icon": "/technologies/dart/flutter.png",
-        "description": "home.languages3.technologies1.description",
-        "topics": ["1", "2", "3", "4"]
+        "description": "home.dart.flutter.description",
+        "topics": [
+          "home.dart.flutter.widgets",
+          "home.dart.flutter.material-design-cupertino",
+          "home.dart.flutter.state-management",
+          "home.dart.flutter.dart"
+        ]
       },
       {
         "name": "Dart",
         "icon": "/technologies/dart/dart.png",
-        "description": "home.languages3.technologies2.description",
-        "topics": ["5", "6", "7", "8"]
+        "description": "home.dart.description",
+        "topics": [
+          "home.dart.typing",
+          "home.dart.async-await",
+          "home.dart.collections"
+        ]
       }
     ]
   },
-  {
+  { 
     "name": "Swift",
     "icon": "/technologies/swift/swift.png",
     "technologies": [
       {
         "name": "Swift",
         "icon": "/technologies/swift/swift.png",
-        "description": "home.languages1.technologies1.description",
-        "topics": ["Redux", "Mobx", "Hooks", "Classes", "Styled Components"]
+        "description": "home.swift.description",
+        "topics": [
+          "home.swift.topics.optionals",
+          "home.swift.topics.type-safety",
+          "home.swift.topics.collection-manipulation",
+          "home.swift.topics.type-infer",
+          "home.swift.topics.error-handling",
+          "home.swift.topics.core-data"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "AWS",
+    "icon": "/technologies/aws/aws.svg",
+    "technologies": [
+      {
+        "name": "Cloudformation",
+        "icon": "/technologies/aws/cloudformation.svg",
+        "description": "home.aws.cloudformation.description",
+        "topics": []
+      },
+      {
+        "name": "Api Gateway",
+        "icon": "/technologies/aws/api-gateway.svg",
+        "description": "home.aws.api-gateway.description",
+        "topics": []
+      },
+      {
+        "name": "Lambda",
+        "icon": "/technologies/aws/lambda.svg",
+        "description": "home.aws.lambda.description",
+        "topics": []
+      },
+      {
+        "name": "Cloudfront",
+        "icon": "/technologies/aws/cloudfront.svg",
+        "description": "home.aws.cloudfront.description",
+        "topics": []
+      },
+      {
+        "name": "Cloud Dev Kit",
+        "icon": "/technologies/aws/cdk.svg",
+        "description": "home.aws.cloud-dev-kit.description",
+        "topics": []
+      },
+      {
+        "name": "Codecommit",
+        "icon": "/technologies/aws/codecommit.svg",
+        "description": "home.aws.codecommit.description",
+        "topics": []
+      },
+      {
+        "name": "Codebuild",
+        "icon": "/technologies/aws/codebuild.svg",
+        "description": "home.aws.codebuild.description",
+        "topics": []
+      },
+      {
+        "name": "Cognito",
+        "icon": "/technologies/aws/cognito.svg",
+        "description": "home.aws.cognito.description",
+        "topics": []
+      },
+      {
+        "name": "Amplify",
+        "icon": "/technologies/aws/amplify.svg",
+        "description": "home.aws.amplify.description",
+        "topics": []
+      },
+      {
+        "name": "S3",
+        "icon": "/technologies/aws/s3.svg",
+        "description": "home.aws.s3.description",
+        "topics": []
       }
     ]
   }
