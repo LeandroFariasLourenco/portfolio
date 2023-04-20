@@ -15,3 +15,5 @@ Ajustar bug de recomeçar no snake game e do jogo não acabar quando a cobra bat
 Overlay de imagem no visualizar dos projetos
 
 Remover refs de dependências de useEffect
+
+Criar splash screen para tablets

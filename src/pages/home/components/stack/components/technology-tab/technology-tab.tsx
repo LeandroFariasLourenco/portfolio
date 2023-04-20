@@ -33,6 +33,7 @@ const TechnologyTab = ({
         onClick={() => {
           if (!isMobile) {
             onDesktopToggle(index);
+            return;
           }
           setOpen((prevState) => !prevState);
         }}
