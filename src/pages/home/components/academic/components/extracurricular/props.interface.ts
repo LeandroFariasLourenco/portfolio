@@ -1,4 +1,4 @@
-import { IExtracurricular } from 'src/core/models';
+import { IExtracurricular } from '../../models/extracurricular.interface';
 
 export interface ICardProps {
   extracurricular: IExtracurricular;

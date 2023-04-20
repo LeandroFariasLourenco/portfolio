@@ -1,13 +1,87 @@
 import { Box, styled } from '@mui/material';
 
-export const SwiperControls = styled(Box)<{ $paginationLayout?: 'horizontal' | 'vertical' }>(({ theme, $paginationLayout }) => `
+export const SwiperControls = styled(Box)(({ theme }) => `
+  &.horizontal {
+    .swiper {
+      &-button {
+        &-next {
+          bottom: -40px;
+          top: unset;
+        }
+        
+        &-prev {
+          top: -20px;
+          bottom: unset;
+        }
+
+        &-next,
+        &-prev {
+          left: 50%;
+          right: 0;
+          transform: translateX(-50%) rotate(90deg);
+        }
+      }
+
+      &-pagination {
+        left: -36px;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &-bullet {
+          margin-bottom: 20px;
+
+          &:not(&:last-of-type) {
+            &::before {
+              width: 5px;
+              height: 35px;
+              left: 50%;
+              bottom: -35px;
+              transform: translateX(-50%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.vertical {
+    .swiper {
+      &-button {
+        &-next {
+          right: -4px;
+        }
+
+        &-prev {
+          left: -4px;
+        }
+      }
+
+      &-pagination {
+        display: flex;
+        left: 50%;
+        bottom: -6px;
+        transform: translateX(-50%);
+
+        &-bullet {
+          margin-right: 10px;
+          
+          &:not(&:last-of-type) {
+            &::before {
+              width: 30px;
+              left: 100%;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+
   .swiper {
     &-pagination {
-      display: ${$paginationLayout === 'vertical' ? 'flex' : 'unset'};
       position: absolute;
-      bottom: -6px;
-      left: 50%;
-      transform: translateX(-50%);
 
       &-bullet {
         width: 25px;
@@ -20,7 +94,6 @@ export const SwiperControls = styled(Box)<{ $paginationLayout?: 'horizontal' | '
         align-items: center;
         justify-content: center;
         position: relative;
-        margin-right: 10px;
 
         &.first {
           border-color: ${theme.palette.primary.main};
@@ -38,11 +111,6 @@ export const SwiperControls = styled(Box)<{ $paginationLayout?: 'horizontal' | '
             display: block;
             position: absolute;
             transition: background-color 500ms ease-in-out;
-            width: 30px;
-            left: 100%;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 5px;
           }
         }
 
@@ -63,15 +131,7 @@ export const SwiperControls = styled(Box)<{ $paginationLayout?: 'horizontal' | '
       }
     }
 
-    &-button {
-      &-next {
-        right: -4px;
-      }
-
-      &-prev {
-        left: -4px;
-      }
-      
+    &-button {      
       &-next,
       &-prev {
         &.disabled {

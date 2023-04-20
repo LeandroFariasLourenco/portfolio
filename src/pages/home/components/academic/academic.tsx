@@ -18,13 +18,16 @@ import { useHidden, useResponsive } from 'src/core/hooks';
 import { Section } from 'src/core/layouts';
 import {
   EAppSections,
-  EResponsiveType, ICertificate, ICourse, IExtracurricular,
+  EResponsiveType,
 } from 'src/core/models';
 import Certificate from './components/certificate/certificate';
 import Course from './components/course/course';
 import Extracurricular from './components/extracurricular/extracurricular';
 import { desktopParticlesConfig } from './particles/desktop-config';
 import * as S from './styled';
+import { IExtracurricular } from './models/extracurricular.interface';
+import { ICertificate } from './models/certificate.interface';
+import { ICourse } from './models/course.interface';
 
 const Academic = () => {
   const [activeTab, setActiveTab] = useState(0);

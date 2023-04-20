@@ -65,7 +65,7 @@ export const ExperienceCard = styled(Card)(({ theme }) => `
     position: absolute;
     display: block;
     width: 10px;
-    height: 175px;
+    height: 50%;
     border: 2px dashed ${theme.palette.secondary.main};
     padding: 5px;
     background-color: ${theme.palette.secondary.main};

@@ -1,4 +1,4 @@
-import { ICertificate } from 'src/core/models';
+import { ICertificate } from '../../models/certificate.interface';
 
 export interface ICardProps {
   certificate: ICertificate;
