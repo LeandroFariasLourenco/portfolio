@@ -155,7 +155,7 @@ const Academic = () => {
     >
       <Typography variant={isMobile ? 'h5' : 'h4'}><FormattedMessage id={tab} /></Typography>
     </S.FormationTab>
-  ), [intl, isMobile]);
+  ), [intl, isMobile, activeTab]);
 
   const renderCourse = useCallback((course: ICourse, index: number) => (
     <Grid key={course.title} item xs={12} md={4}>

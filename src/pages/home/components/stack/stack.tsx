@@ -11,6 +11,7 @@ import { SwipeAnimation } from 'src/core/components';
 import * as S from './styled';
 import Technologies from './components/technologies/technologies';
 import LanguageTab from './components/language-tab/language-tab';
+import { ILanguage } from './components/language-tab/models/language.interface';
 
 const Languages = () => {
   const [selectedTab, setSelectedTab] = useState<number>(0);
@@ -25,6 +26,19 @@ const Languages = () => {
       behavior: 'smooth',
     });
   }, [isMobile]);
+
+  const renderLanguages = useCallback(({ name, technologies }: ILanguage, index: number) => (
+    <S.TechnologyTabContainer
+      key={`${name}-tecnologies`}
+      className={cx({
+        selected: selectedTab === index,
+      })}
+    >
+      <Technologies
+        technologies={technologies}
+      />
+    </S.TechnologyTabContainer>
+  ), [selectedTab]);
 
   return (
     <S.SectionWrapper id={EAppSections.STACK}>
@@ -64,18 +78,7 @@ const Languages = () => {
             tabContainerRef.current = ref;
           }}
         >
-          {languages.map(({ name, technologies }, index) => (
-            <S.TechnologyTabContainer
-              key={`${name}-tecnologies`}
-              className={cx({
-                selected: selectedTab === index,
-              })}
-            >
-              <Technologies
-                technologies={technologies}
-              />
-            </S.TechnologyTabContainer>
-          ))}
+          {languages.map(renderLanguages)}
         </S.TechnologyWrapper>
       </Section>
     </S.SectionWrapper>

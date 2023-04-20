@@ -3,7 +3,7 @@ import {
   Typography, useTheme,
 } from '@mui/material';
 import {
-  useCallback, useMemo, useRef, useState,
+  useCallback, useMemo, useRef, useState, useEffect,
 } from 'react';
 import { Section } from 'src/core/layouts';
 import {
@@ -32,13 +32,17 @@ const Experience = () => {
   const isMobile = useResponsive({ type: EResponsiveType.smaller });
   const intl = useIntl();
 
-  const updateSwiperHeight = (transitionDuration: number) => {
+  const updateSwiperHeight = (transitionDuration?: number) => {
     const paddingBottom = 50;
     const swiperContainer = (swiperRef.current!.$el[0] as HTMLDivElement);
     const activeSlide = swiperRef.current!.slides.filter(({ classList }) => classList.contains('swiper-slide-active'))[0];
     const interval = setInterval(() => {
       swiperContainer.style.height = `${activeSlide.children[0].scrollHeight + paddingBottom}px`;
     });
+
+    if (!transitionDuration) {
+      clearInterval(interval);
+    }
     setTimeout(() => {
       clearInterval(interval);
     }, transitionDuration);
@@ -252,11 +256,15 @@ const Experience = () => {
     );
   }, []);
 
+  useEffect(() => {
+    updateSwiperHeight();
+  }, []);
+
   return (
     <Section
       id={EAppSections.EXPERIENCES}
       onTitleShow={(typewriter) => {
-        typewriter.typeString('Experiência profissional')
+        typewriter.typeString(intl.formatMessage({ id: 'home.experience.title' }))
           .start();
       }}
       icon={<WorkHistory fontSize="large" htmlColor="white" />}
@@ -278,6 +286,7 @@ const Experience = () => {
             setSwiperIndex(realIndex);
           }}
           onTransitionStart={({ $el }) => {
+            if (!isMobile) return;
             const swiperContainer = ($el[0] as HTMLDivElement);
             swiperContainer.style.height = 'auto';
           }}

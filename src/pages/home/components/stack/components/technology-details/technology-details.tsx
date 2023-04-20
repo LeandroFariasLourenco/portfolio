@@ -32,12 +32,12 @@ const TechnologyDetails = ({
           <FormattedMessage id={technology.description} />
         </S.LanguageDescription>
 
-        {technology.topics.length ? (
+        {technology.topics.length && (
           <S.LanguageTopics>
             <S.LanguageDividerTitle variant="h4"><FormattedMessage id="home.languages.knowledge" /></S.LanguageDividerTitle>
             {technology.topics.map((topic) => renderTechnologyTopic(topic))}
           </S.LanguageTopics>
-        ) : null}
+        )}
       </S.LanguageDescriptionContainer>
     </S.LanguageDescriptionCard>
   );

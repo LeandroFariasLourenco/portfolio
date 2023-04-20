@@ -18,4 +18,4 @@ Remover refs de dependências de useEffect
 
 Criar splash screen para tablets
 
-Ajustar seção de projetos no destkop não estar funcionando o swiper
+Refator useResponsive para não ficar adicionando listeners toda vez que é criado um hook

@@ -24,7 +24,6 @@ export const TimelineWrapper = styled(Grid)(({ theme }) => `
 
   ${theme.breakpoints.down('md')} {
     overflow-x: hidden;
-    /* max-height: 475px; */
   }
 
   svg {
