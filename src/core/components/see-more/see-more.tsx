@@ -34,13 +34,12 @@ const SeeMore = ({
   const [heightMin, setHeightMin] = useState<number>(defaultHeight);
   const [heightMax, setHeightMax] = useState<number>(defaultHeight);
   const textElementRef = useRef<HTMLParagraphElement>();
+  const transitionDuration = useMemo(() => 500, []);
 
   const handleClick = useCallback(() => {
     setHeightCurr(isExpanded ? heightMin : heightMax);
     setIsExpanded((prevState) => !prevState);
-    setTimeout(() => {
-      onToggle();
-    }, 50);
+    onToggle(transitionDuration);
   }, [isExpanded, heightMin, heightMax]);
 
   useEffect(() => {
@@ -58,7 +57,11 @@ const SeeMore = ({
     <S.Wrapper
       $minHeight={defaultHeight}
     >
-      <S.TextContainer ref={(ref: HTMLParagraphElement) => { textElementRef.current = ref; }} $height={heightCurr}>
+      <S.TextContainer
+        ref={(ref: HTMLParagraphElement) => { textElementRef.current = ref; }}
+        $height={heightCurr}
+        $heightTransitionDuration={transitionDuration}
+      >
         {children}
       </S.TextContainer>
       {isOverflow && (

@@ -3,11 +3,10 @@ import {
 } from '@mui/icons-material';
 import { Grid, Typography } from '@mui/material';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { APP } from 'src/core/constants';
 import { getBucketResource } from 'src/core/functions';
 
-import * as S from './styled';
 import { IMobileCardProps } from './props.interface';
+import * as S from './styled';
 
 const MobileCard = ({
   index,

@@ -1,6 +1,7 @@
 const download = require('image-downloader');
 const path = require('path');
 const prompt = require('prompt-sync')();
+const fs = require('fs');
 
 const manifestProps = {
   name: '',
@@ -25,16 +26,16 @@ const manifestProps = {
   ],
   display: 'standalone',
 };
-manifestProps.short_name = prompt('Fill in the short_name (default, Portfolio):');
-manifestProps.name = prompt('Fill in the full name (default, My portfolio):');
+manifestProps.short_name = prompt('Fill in the short_name (default, Portfolio):') || 'Portfolio';
+manifestProps.name = prompt('Fill in the full name (default, My portfolio):') || 'My portfolio';
 
-const filesToDownload = [
-  { fileName: 'favicon.ico', size: '64x64' },
-  { fileName: 'logo192.png', size: '192x192' },
-  { fileName: 'logo512.png', size: '512x512' },
-];
+const filesToDownload = manifestProps.icons.map(({ src, sizes }) => ({ fileName: src, size: sizes.split(/\/s/g)[0] }));
 
-Promise.all(filesToDownload.map(({ size, fileName }) => download.image({
-  url: `https://www.github.com/LeandroFariasLourenco.png?size=${size}`,
-  dest: path.join(__dirname, `./public/${fileName}`),
-})));
+(async () => {
+  await Promise.all(filesToDownload.map(({ size, fileName }) => download.image({
+    url: `https://www.github.com/LeandroFariasLourenco.png?size=${size}`,
+    dest: path.join(__dirname, `./public/${fileName}`),
+  })));
+
+  fs.writeFile('./public/manifest.json', JSON.stringify(manifestProps), 'utf-8', () => {});
+})();

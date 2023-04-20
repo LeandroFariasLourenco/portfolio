@@ -18,7 +18,7 @@ const CustomSwiperControls = ({
         first: index === 0,
       })}
       onClick={() => {
-        swiper?.slideTo(index);
+        swiper!.slideTo(index);
       }}
       component="span"
       key={index}
@@ -27,7 +27,7 @@ const CustomSwiperControls = ({
 
   return (
     <S.SwiperControls
-      $paginationLayout={paginationLayout}
+      className={cx({ horizontal: paginationLayout === 'horizontal', vertical: paginationLayout === 'vertical' })}
     >
       {paginationLayout !== undefined ? (
         <Box className="swiper-pagination">
@@ -35,15 +35,14 @@ const CustomSwiperControls = ({
         </Box>
       ) : null}
       <Box
-        onClick={() => swiper?.slideNext()}
+        onClick={() => swiper!.slideNext()}
         className={`swiper-button-next ${cx({
           disabled: swiper?.isEnd,
         })}`}
       />
       <Box
         onClick={() => {
-          console.log(swiper);
-          swiper?.slidePrev();
+          swiper!.slidePrev();
         }}
         className={`swiper-button-prev ${cx({
           disabled: swiper?.isBeginning,

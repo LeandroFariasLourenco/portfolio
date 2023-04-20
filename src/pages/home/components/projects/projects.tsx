@@ -11,21 +11,21 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import SwipeRightAnimation from 'src/assets/animations/swipe-right.json';
 import { TECHNOLOGY_ICONS } from 'src/assets/resources/technology-icons';
 import { CustomSwiperControls } from 'src/core/components';
-import ResponsiveSwiper from 'src/core/components/responsive-swiper/responsive-swiper';
 import Responsive from 'src/core/components/responsive/responsive';
 import SlideTitle from 'src/core/components/slide-title/slide-title';
 import SwipeAnimation from 'src/core/components/swipe-animation/swipe-animation';
 import { getBucketResource } from 'src/core/functions';
+import { useSwiperProps } from 'src/core/hooks';
 import { Section } from 'src/core/layouts';
-import { EAppSections, EResponsiveType, IGithubRepository } from 'src/core/models';
-import { IResponsiveSwiper } from 'src/core/models/responsive-swiper.interface';
+import { EAppSections, EResponsiveType } from 'src/core/models';
 import { GithubService } from 'src/core/services';
 import {
   EffectCards, Navigation,
   Pagination,
   Swiper as SwiperClass,
 } from 'swiper';
-import { SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { IGithubRepository } from 'src/core/models/github-repository.interface';
 import { IProject } from './models/project.interface';
 
 import DesktopProject from './components/desktop-project/desktop-project';
@@ -38,35 +38,23 @@ const Projects = () => {
   const swiperRef = useRef<SwiperClass>();
   const intl = useIntl();
   const [swiperIndex, setSwiperIndex] = useState<number>(0);
-  const swiperProps: IResponsiveSwiper = useMemo<IResponsiveSwiper>(() => ({
+  const { swiperProps } = useSwiperProps({
     desktop: {
-      modules: [Navigation, Pagination],
       effect: 'slide',
-      style: { width: '100%', height: '100%' },
       grabCursor: true,
-      onRealIndexChange: (swiper: SwiperClass) => {
-        setSwiperIndex(swiper.realIndex);
-      },
-      onSwiper: (swiper: SwiperClass) => {
-        swiperRef.current = swiper;
-      },
+      pagination: true,
     },
     mobile: {
-      modules: [Navigation, EffectCards],
+      modules: [EffectCards],
       effect: 'cards',
+    },
+    commonProps: {
       style: { width: '100%', height: '100%' },
       onRealIndexChange: (swiper: SwiperClass) => {
         setSwiperIndex(swiper.realIndex);
       },
-      onSwiper: (swiper: SwiperClass) => {
-        swiperRef.current = swiper;
-      },
-      navigation: {
-        nextEl: '.projects.swiper-button-next',
-        prevEl: '.projects.swiper-button-prev',
-      },
     },
-  }), []);
+  });
 
   const projects: IProject[] = useMemo<IProject[]>(() => [
     {
@@ -187,6 +175,19 @@ const Projects = () => {
     />
   ), [repositories]);
 
+  const renderProject = useCallback((project: IProject) => (
+    <SwiperSlide
+      style={{ position: 'relative' }}
+      key={project.title}
+    >
+      <Responsive
+        breakpoint="md"
+        aboveComponent={<DesktopProject project={project} />}
+        belowComponent={<MobileProject project={project} />}
+      />
+    </SwiperSlide>
+  ), []);
+
   return (
     <S.ProjectsWrapper id={EAppSections.PROJECTS}>
       <Section
@@ -242,23 +243,9 @@ const Projects = () => {
                 typewriter.typeString(intl.formatMessage({ id: 'home.projects.highlights.title' })).start();
               }}
             />
-            <ResponsiveSwiper
-              desktopProps={swiperProps.desktop}
-              mobileProps={swiperProps.mobile}
-            >
-              {projects.map((project) => (
-                <SwiperSlide
-                  style={{ position: 'relative' }}
-                  key={project.title}
-                >
-                  <Responsive
-                    breakpoint="md"
-                    aboveComponent={<DesktopProject project={project} />}
-                    belowComponent={<MobileProject project={project} />}
-                  />
-                </SwiperSlide>
-              ))}
-            </ResponsiveSwiper>
+            <Swiper onInit={(swiper) => { swiperRef.current = swiper; }} {...swiperProps}>
+              {projects.map(renderProject)}
+            </Swiper>
             <Responsive
               breakpoint="md"
             >

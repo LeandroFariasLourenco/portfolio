@@ -18,10 +18,11 @@ import landmarks from 'src/assets/resources/landmarks.json';
 import { Section } from 'src/core/layouts';
 
 import LazyLoadParticles from 'src/core/components/lazy-load/lazy-load';
-import { EAchievementType, EAppSections } from 'src/core/models';
+import { EAppSections } from 'src/core/models';
 import { Responsive } from 'src/core/components';
 import { desktopParticlesConfig } from './particles/desktop-config';
 import * as S from './styled';
+import { EAchievementType } from './models/achievement-type.enum';
 
 const MyTimeline = () => {
   const theme = useTheme();

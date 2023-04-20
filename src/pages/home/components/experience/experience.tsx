@@ -1,27 +1,23 @@
 import { WorkHistory } from '@mui/icons-material';
 import {
-  Box, Typography, useTheme,
+  Typography, useTheme,
 } from '@mui/material';
-import cx from 'classnames';
 import {
-  ReactNode,
   useCallback, useMemo, useRef, useState,
 } from 'react';
 import { Section } from 'src/core/layouts';
 import {
-  Mousewheel, Navigation, Pagination,
+  Mousewheel,
   Swiper as SwiperClass,
 } from 'swiper';
 
-import { SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
-import { LazyLoadParticles, Responsive } from 'src/core/components';
-import ResponsiveSwiper from 'src/core/components/responsive-swiper/responsive-swiper';
+import { CustomSwiperControls, LazyLoadParticles, Responsive } from 'src/core/components';
 import SeeMore from 'src/core/components/see-more/see-more';
+import { useResponsive, useSwiperProps } from 'src/core/hooks';
 import { EAppSections, EResponsiveType } from 'src/core/models';
-import { IResponsiveSwiper } from 'src/core/models/responsive-swiper.interface';
-import { useResponsive } from 'src/core/hooks';
 import DesktopCard from './components/desktop-card/desktop-card';
 import MobileCard from './components/mobile-card/mobile-card';
 
@@ -36,16 +32,29 @@ const Experience = () => {
   const isMobile = useResponsive({ type: EResponsiveType.smaller });
   const intl = useIntl();
 
+  const updateSwiperHeight = (transitionDuration: number) => {
+    const paddingBottom = 50;
+    const swiperContainer = (swiperRef.current!.$el[0] as HTMLDivElement);
+    const activeSlide = swiperRef.current!.slides.filter(({ classList }) => classList.contains('swiper-slide-active'))[0];
+    const interval = setInterval(() => {
+      swiperContainer.style.height = `${activeSlide.children[0].scrollHeight + paddingBottom}px`;
+    });
+    setTimeout(() => {
+      clearInterval(interval);
+    }, transitionDuration);
+  };
+
   const renderSeeMore = useCallback((children: JSX.Element) => (
     <SeeMore
       isInitialHidden
-      onToggle={() => {
-        swiperRef.current!.updateAutoHeight(250);
+      onToggle={(transitionDuration) => {
+        updateSwiperHeight(transitionDuration);
       }}
     >
       {children}
     </SeeMore>
   ), [swiperRef.current]);
+
   const experiences: IExperience[] = useMemo<IExperience[]>(() => [
     {
       title: 'home.experience.ibm-mid-level.title',
@@ -179,43 +188,22 @@ const Experience = () => {
     },
   ], [intl, isMobile]);
 
-  const swiperProps: IResponsiveSwiper = useMemo<IResponsiveSwiper>(() => ({
-    mobile: {
-      modules: [Pagination, Navigation],
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      spaceBetween: 15,
-      onRealIndexChange: (swiper) => {
-        setSwiperIndex(swiper.realIndex);
-      },
-      onSwiper: (swiper) => {
-        swiperRef.current = swiper;
-      },
-      autoHeight: true,
-      direction: 'horizontal',
-      style: { paddingBottom: 50 },
-    },
+  const { swiperProps } = useSwiperProps({
     desktop: {
-      modules: [Navigation, Pagination, Mousewheel],
+      modules: [Mousewheel],
       spaceBetween: 30,
       style: { height: 550 },
       direction: 'vertical',
-      onRealIndexChange: (swiper) => {
-        setSwiperIndex(swiper.realIndex);
-      },
-      onSwiper: (swiper) => {
-        swiperRef.current = swiper;
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
       mousewheel: true,
-      pagination: true,
+      grabCursor: true,
     },
-  }), []);
+    mobile: {
+      direction: 'horizontal',
+      spaceBetween: 15,
+      style: { paddingBottom: 50 },
+      autoHeight: true,
+    },
+  });
 
   const renderAnimatedBorder = (index: number) => ({
     LeftBorderComponent: (
@@ -232,19 +220,37 @@ const Experience = () => {
     ),
   });
 
-  const renderSwiperPagination = useCallback((_: any, index: number) => (
-    <Box
-      className={cx('swiper-pagination-bullet', {
-        filled: index >= swiperIndex,
-        first: index === 0,
-      })}
-      onClick={() => {
-        swiperRef.current!.slideTo(index);
-      }}
-      component="span"
-      key={index}
-    />
-  ), [swiperRef.current, swiperIndex]);
+  const renderExperience = useCallback((experience: IExperience, index: number) => {
+    const {
+      LeftBorderComponent,
+      RightBorderComponent,
+    } = renderAnimatedBorder(index);
+
+    return (
+      <SwiperSlide
+        key={experience.date}
+      >
+        <Responsive
+          breakpoint="md"
+          aboveComponent={(
+            <DesktopCard
+              LeftBorderComponent={LeftBorderComponent}
+              RightBorderComponent={RightBorderComponent}
+              experience={experience}
+              index={index}
+            />
+          )}
+          belowComponent={(
+            <MobileCard
+              BorderComponent={LeftBorderComponent}
+              index={index}
+              experience={experience}
+            />
+          )}
+        />
+      </SwiperSlide>
+    );
+  }, []);
 
   return (
     <Section
@@ -264,47 +270,27 @@ const Experience = () => {
         <LazyLoadParticles id="experience-section" particlesConfig={desktopParticlesConfig} />
       </Responsive>
       <S.SwiperContainer>
-        <Box className="swiper-pagination">
-          {[...Array(experiences.length)].map(renderSwiperPagination)}
-        </Box>
-        <Box className="swiper-button-next" />
-        <Box className="swiper-button-prev" />
-        <ResponsiveSwiper
-          mobileProps={swiperProps.mobile}
-          desktopProps={swiperProps.desktop}
+        <Swiper
+          onInit={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          onRealIndexChange={({ realIndex }) => {
+            setSwiperIndex(realIndex);
+          }}
+          onTransitionStart={({ $el }) => {
+            const swiperContainer = ($el[0] as HTMLDivElement);
+            swiperContainer.style.height = 'auto';
+          }}
+          {...swiperProps}
         >
-          {experiences.map((experience, index) => {
-            const {
-              LeftBorderComponent,
-              RightBorderComponent,
-            } = renderAnimatedBorder(index);
-
-            return (
-              <SwiperSlide
-                key={experience.date}
-              >
-                <Responsive
-                  breakpoint="md"
-                  aboveComponent={(
-                    <DesktopCard
-                      LeftBorderComponent={LeftBorderComponent}
-                      RightBorderComponent={RightBorderComponent}
-                      experience={experience}
-                      index={index}
-                    />
-                  )}
-                  belowComponent={(
-                    <MobileCard
-                      BorderComponent={LeftBorderComponent}
-                      index={index}
-                      experience={experience}
-                    />
-                  )}
-                />
-              </SwiperSlide>
-            );
-          })}
-        </ResponsiveSwiper>
+          {experiences.map(renderExperience)}
+        </Swiper>
+        <CustomSwiperControls
+          swiper={swiperRef.current!}
+          swiperIndex={swiperIndex}
+          paginationLayout={isMobile ? 'vertical' : 'horizontal'}
+          totalSlides={experiences.length}
+        />
       </S.SwiperContainer>
     </Section>
   );
