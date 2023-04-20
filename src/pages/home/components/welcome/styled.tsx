@@ -30,7 +30,8 @@ export const ProfileImage = styled.img<{ $width: number; }>(({ theme, $width }) 
     linear-gradient(      var(--gradient-color)) 50%/100% var(--_i,100%) no-repeat,
     linear-gradient(90deg,var(--gradient-color)) 50%/var(--_i,100%) 100% no-repeat;
   outline: calc(var(--width)/2) solid #0005;
-  outline-offset: calc(var(--width)/-2 - 2*var(--frame-size));
+  //outline-offset: calc(var(--width)/-2 - 2*var(--frame-size));
+  outline-offset: ${-($width)}px;
   transition: 400ms;
   cursor: pointer;
   margin: 0 auto;

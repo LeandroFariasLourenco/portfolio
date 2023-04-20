@@ -107,7 +107,7 @@ const SnakeGame = ({
           height={500}
           ref={canvasRef}
         />
-        {gameState ? (
+        {gameState && (
           <S.OverlayContainer
             className={cx({ show: gameState.paused || gameState.ended })}
             container
@@ -115,7 +115,7 @@ const SnakeGame = ({
             justifyContent="center"
             direction="column"
           >
-            {gameState.ended ? (
+            {gameState.ended && (
               <>
                 <Grid container alignItems="center" justifyContent="center" flexDirection="column">
                   <S.GameoverText variant="h1">
@@ -125,26 +125,28 @@ const SnakeGame = ({
                   <Button
                     startIcon={<Replay />}
                     color="primary"
-                    onClick={() => game.current!.setGameFinished(false)}
+                    onClick={() => {
+                      game.current!.resetGame();
+                    }}
                   >
                     Recomeçar
                   </Button>
                 </Grid>
                 {renderBackButton()}
               </>
-            ) : null}
+            )}
 
-            {gameState.paused ? (
+            {gameState.paused && (
               <S.PauseText variant="h2">
                 Paused
               </S.PauseText>
-            ) : null}
+            )}
 
           </S.OverlayContainer>
-        ) : null}
+        )}
       </S.CanvasContainer>
 
-      {gameState && !gameState.ended ? (
+      {gameState && !gameState.ended && (
         <S.FooterContainer>
           <S.FooterSection>
             {renderScoreText()}
@@ -178,7 +180,7 @@ const SnakeGame = ({
             </S.CommandWrapper>
           </S.FooterSection>
         </S.FooterContainer>
-      ) : null}
+      )}
     </S.Wrapper>
   );
 };
