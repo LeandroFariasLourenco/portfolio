@@ -29,11 +29,7 @@ const MyTimeline = () => {
 
   return (
     <S.TimelineContainer id={EAppSections.MY_TIMELINE}>
-      <Responsive
-        breakpoint="md"
-      >
-        <LazyLoadParticles id="my-timeline-section" particlesConfig={desktopParticlesConfig} />
-      </Responsive>
+      <LazyLoadParticles id="my-timeline-section" particlesConfig={desktopParticlesConfig} />
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString('Minha trajetória').start();
