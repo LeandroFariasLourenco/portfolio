@@ -12,7 +12,7 @@ Ajustar textos introdutórios do terminal em um arquivo separado tanto para mobi
 
 Ajustar bug de recomeçar no snake game e do jogo não acabar quando a cobra bater nela mesma
 
-Overlay de imagem no visualizar dos projetos
+Reformar imagens do carrosel de projetos
 
 Remover refs de dependências de useEffect
 

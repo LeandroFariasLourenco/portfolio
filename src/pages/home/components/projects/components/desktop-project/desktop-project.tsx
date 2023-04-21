@@ -17,7 +17,7 @@ const DesktopProject = ({
 
   return (
     <>
-      <S.ProjectBackgroundImage src={project.background} />
+      <S.ProjectBackgroundImage src={project.image} />
       <S.ProjectSlideContainer>
         <S.ProjectSlideOverlay
           className={cx({

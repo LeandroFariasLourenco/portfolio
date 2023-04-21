@@ -14,6 +14,7 @@ import { deleteLastCharacter } from 'src/core/functions';
 import { useIsWindowTop, useLoginTime } from 'src/core/hooks';
 import { EAppSections } from 'src/core/models';
 import { TypewriterClass } from 'typewriter-effect';
+import { APP } from 'src/core/constants';
 import { ITerminalLine } from '../mobile-terminal/models/terminal-line.interface';
 import { IDesktopTerminalProps } from './props.interface';
 import * as S from './styled';
@@ -113,6 +114,12 @@ const DesktopTerminal = ({
       const userInput = newState[currentIndex];
       const appSections = Object.values(EAppSections).filter((section) => section !== EAppSections.WELCOME) as string[];
 
+      if (userInput === '/curriculum') {
+        window.location.href = APP.aws.curriculum;
+        scrollToTerminalBottom();
+        return [...newState, ''];
+      }
+
       if (appSections.includes(userInput.replace('/', ''))) {
         requestAnimationFrame(() => {
           document.querySelector(`#${userInput.replace('/', '')}`)!.scrollIntoView();
@@ -145,6 +152,7 @@ const DesktopTerminal = ({
         appSections.forEach((section) => {
           newState.push(`/${section}`);
         });
+        newState.push('/curriculum');
         newState.push('/game');
         scrollToTerminalBottom();
         return [...newState, ''];

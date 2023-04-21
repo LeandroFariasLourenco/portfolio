@@ -1,4 +1,5 @@
 import {
+  Article,
   GitHub, Info, KeyboardArrowUp, Mail, Menu, School, Terminal, Work,
 } from '@mui/icons-material';
 import {
@@ -19,6 +20,7 @@ import { getBucketResource, smoothScroll } from 'src/core/functions';
 import { useResponsive, useIsWindowTop, usePreloadImages } from 'src/core/hooks';
 import { EAppSections, EResponsiveType, Languages } from 'src/core/models';
 import { useGlobalContext } from 'src/core/store/global/context';
+import { APP } from 'src/core/constants';
 import { IMenuOption } from './models/menu-option.interface';
 
 import * as S from './styled';
@@ -44,14 +46,21 @@ const Header = () => {
     });
   };
 
-  const menuOptions: IMenuOption[] = useMemo<IMenuOption[]>(() => [
+  const desktopMenuOptions: IMenuOption[] = useMemo<IMenuOption[]>(() => [
     { label: 'header.links.section.about-me', href: `#${EAppSections.ABOUT}`, icon: <Info /> },
     { label: 'header.links.section.experience', href: `#${EAppSections.EXPERIENCES}`, icon: <Work /> },
     { label: 'header.links.section.stack', href: `#${EAppSections.STACK}`, icon: <Work /> },
     { label: 'header.links.section.formation', href: `#${EAppSections.ACADEMIC}`, icon: <Terminal /> },
     { label: 'header.links.section.projects', href: `#${EAppSections.PROJECTS}`, icon: <School /> },
     { label: 'header.links.section.trajectory', href: `#${EAppSections.MY_TIMELINE}`, icon: <Mail /> },
-  ], [intl]);
+  ], []);
+
+  const mobileMenuOptions: IMenuOption[] = useMemo<IMenuOption[]>(() => [
+    ...desktopMenuOptions,
+    { label: 'header.links.section.curriculum', href: APP.aws.curriculum, icon: <Article /> },
+  ], []);
+
+  const menuOptions: IMenuOption[] = useMemo<IMenuOption[]>(() => (isMobile ? mobileMenuOptions : desktopMenuOptions), [isMobile]);
 
   const handleLanguageSelect = useCallback((event: SelectChangeEvent<unknown>) => {
     globalContext.setLanguage(event.target.value as Languages);
@@ -71,7 +80,7 @@ const Header = () => {
       {cloneElement(link.icon as any, { htmlColor: '#fff', fontSize: 'small' } as IconProps)}
       <Typography><FormattedMessage id={link.label} /></Typography>
     </S.HeaderLink>
-  ), [isMobile]);
+  ), [isMobile, intl]);
 
   const renderHeaderIcon = useCallback(() => (
     <HashLink scroll={smoothScroll} to={`#${EAppSections.WELCOME}`}>

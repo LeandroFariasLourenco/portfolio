@@ -1,5 +1,5 @@
 import { useTheme } from '@mui/material';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { EResponsiveType } from '../../models';
 import { IUseResponsiveProps } from './props.interface';
 
@@ -14,9 +14,9 @@ const useResponsive = ({
     : window.innerWidth < breakpoints.values[breakpoint]);
   const [shouldShow, setShouldShow] = useState<boolean>(getBreakpointState());
 
-  const handleShouldShow = () => {
+  const handleShouldShow = useCallback(() => {
     setShouldShow(getBreakpointState());
-  };
+  }, []);
 
   useEffect(() => {
     handleShouldShow();
