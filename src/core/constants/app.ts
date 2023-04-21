@@ -4,5 +4,6 @@ export const APP = {
   },
   aws: {
     assets: 'https://portfolio-assets-us-east-1.s3.us-east-1.amazonaws.com/assets',
+    curriculum: 'https://portfolio-assets-us-east-1.s3.amazonaws.com/assets/curriculum.pdf',
   },
 };

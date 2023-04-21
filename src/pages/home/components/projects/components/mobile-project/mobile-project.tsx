@@ -1,37 +1,28 @@
-import cx from 'classnames';
-import { Typography, Grid } from '@mui/material';
-import SeeMore from 'src/core/components/see-more/see-more';
 import { GitHub, OpenInNew, RemoveRedEye } from '@mui/icons-material';
-import { useCallback, useState } from 'react';
+import { Grid, Typography } from '@mui/material';
+import { useCallback, useContext } from 'react';
+import SeeMore from 'src/core/components/see-more/see-more';
 import { IMobileProjectProps } from './props.interface';
 
+import { ProjectsContext } from '../../context/projects.context';
 import * as S from './styled';
 
 const MobileProject = ({
   project,
 }: IMobileProjectProps) => {
-  const [isPreviewOpen, setIsPreviewOpen] = useState<boolean>(false);
+  const { mobile: { lightbox: { setOpen } } } = useContext(ProjectsContext);
 
   const renderProjectParagraph = useCallback((paragraph: string) => <Typography key={paragraph}>{paragraph}</Typography>, []);
 
-  const openPreview = () => {
-    document.body.classList.add('no-scroll');
-    setIsPreviewOpen(true);
-  };
-
-  const closePreview = () => {
-    document.body.classList.remove('no-scroll');
-    setIsPreviewOpen(false);
-  };
+  const renderProjectIcons = useCallback((icon: string, index: number) => (
+    <S.ProjectTechnologyIcon
+      key={`${project.title}-${index}`}
+      src={icon}
+    />
+  ), []);
 
   return (
     <S.ProjectSlideCard>
-      <S.ProjectPreview className={cx({
-        'is--open': isPreviewOpen,
-      })}
-      >
-        <S.ProjectPreviewImage src={project.background} />
-      </S.ProjectPreview>
       <S.ProjectSlideContainer>
         <Grid container item xs={12}>
           <Typography variant="h2">{project.title}</Typography>
@@ -41,24 +32,19 @@ const MobileProject = ({
           </SeeMore>
         </Grid>
         <S.ProjectTechnologiesWrapper container justifyContent="flex-end" item xs={12}>
-          {project.icons.map((icon, index) => (
-            <S.ProjectTechnologyIcon
-              key={`${project.title}-${index}`}
-              src={icon}
-            />
-          ))}
+          {project.icons.map(renderProjectIcons)}
         </S.ProjectTechnologiesWrapper>
 
         <Grid container gap={1} justifyContent="space-between" marginTop={1}>
-          {project.canPreviewInMobile ? (
-            <S.ActionButton
-              onClick={openPreview}
-              endIcon={<RemoveRedEye color="primary" />}
-              variant="outlined"
-            >
-              <Typography variant="h6" color="primary">Visualizar</Typography>
-            </S.ActionButton>
-          ) : null}
+          <S.ActionButton
+            onClick={() => {
+              setOpen(true);
+            }}
+            endIcon={<RemoveRedEye color="primary" />}
+            variant="outlined"
+          >
+            <Typography variant="h6" color="primary">Visualizar</Typography>
+          </S.ActionButton>
           <S.ActionLink href={project.link}>
             <S.ActionButton
               variant="outlined"

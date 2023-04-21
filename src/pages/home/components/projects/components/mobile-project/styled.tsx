@@ -53,23 +53,3 @@ export const ProjectSlideCard = styled(Card)(({ theme }) => `
   border-radius: 0;
   background-color: rgb(19 22 38 / 98%);
 `);
-
-export const ProjectPreview = styled(Grid)`
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: rgba(0,0,0,0.75);
-  transform: scale(0);
-  transition: transform 350ms ease-in-out;
-
-  &.is--open {
-    transform: scale(1);
-    transform-origin: center;
-  }
-`;
-
-export const ProjectPreviewImage = styled.img`
-  
-`;

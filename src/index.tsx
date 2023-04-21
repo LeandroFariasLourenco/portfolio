@@ -7,6 +7,8 @@ import { materialTheme } from 'src/styles/utils';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'yet-another-react-lightbox/styles.css';
+import 'yet-another-react-lightbox/plugins/thumbnails.css';
 
 import 'react-vertical-timeline-component/style.min.css';
 
