@@ -1,34 +1,34 @@
-import { ParticlesProps } from 'react-tsparticles';
+import { IParticlesProps } from 'react-tsparticles';
 
-export const mobileParticlesConfig: ParticlesProps['options'] = {
+export const mobileParticlesConfig: IParticlesProps['options'] = {
+  fpsLimit: 20,
   fullScreen: {
     enable: false,
   },
-  fpsLimit: 30,
   particles: {
     number: {
-      value: 40,
+      value: 2,
       density: {
         enable: true,
         value_area: 800,
       },
     },
     color: {
-      value: '#06d674',
+      value: '#0aa1cf',
     },
     shape: {
-      type: 'edge',
+      type: 'polygon',
       stroke: {
         width: 0,
-        color: '#06d674',
+        color: '#000',
       },
       polygon: {
-        nb_sides: 5,
+        nb_sides: 6,
       },
     },
     opacity: {
-      value: 0.5,
-      random: false,
+      value: 0.3,
+      random: true,
       anim: {
         enable: false,
         speed: 1,
@@ -37,21 +37,14 @@ export const mobileParticlesConfig: ParticlesProps['options'] = {
       },
     },
     size: {
-      value: 3.945738208161363,
-      random: true,
+      value: 100,
+      random: false,
       anim: {
-        enable: false,
-        speed: 40,
-        size_min: 0.1,
+        enable: true,
+        speed: 10,
+        size_min: 40,
         sync: false,
       },
-    },
-    line_linked: {
-      enable: true,
-      distance: 150,
-      color: '#06d674',
-      opacity: 0.4,
-      width: 1,
     },
     move: {
       enable: true,

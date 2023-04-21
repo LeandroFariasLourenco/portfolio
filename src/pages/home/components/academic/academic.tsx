@@ -28,6 +28,7 @@ import * as S from './styled';
 import { IExtracurricular } from './models/extracurricular.interface';
 import { ICertificate } from './models/certificate.interface';
 import { ICourse } from './models/course.interface';
+import { mobileParticlesConfig } from './particles/mobile-config';
 
 const Academic = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -196,7 +197,7 @@ const Academic = () => {
 
   return (
     <S.FormationWrapper id={EAppSections.ACADEMIC}>
-      <LazyLoadParticles id="formation-section" particlesConfig={desktopParticlesConfig} />
+      <LazyLoadParticles id="formation-section" particlesConfig={isMobile ? mobileParticlesConfig : desktopParticlesConfig} />
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString(intl.formatMessage({ id: 'home.formation.title' }))
