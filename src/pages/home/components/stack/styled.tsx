@@ -77,7 +77,7 @@ export const TechnologyWrapper = styled(Box)``;
 export const SectionWrapper = styled(Grid)`
   ${mixins.linearGradientBackground({
     backgroundImage: getBucketResource('/wallpapers/developer.png'),
-    gradientColor: 'linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75))',
+    gradientColor: 'linear-gradient(rgba(28, 22, 48, 0.95), rgba(28, 22, 48, 1))',
   })}
 `;
 

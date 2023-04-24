@@ -3,7 +3,9 @@ import {
   Typography, useTheme,
 } from '@mui/material';
 import {
-  useCallback, useMemo, useRef, useState, useEffect,
+  useCallback,
+  useEffect,
+  useMemo, useRef, useState,
 } from 'react';
 import { Section } from 'src/core/layouts';
 import {
@@ -14,10 +16,11 @@ import {
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
-import { CustomSwiperControls, LazyLoadParticles, Responsive } from 'src/core/components';
+import { CustomSwiperControls, Responsive } from 'src/core/components';
 import SeeMore from 'src/core/components/see-more/see-more';
 import { useResponsive, useSwiperProps } from 'src/core/hooks';
 import { EAppSections, EResponsiveType } from 'src/core/models';
+import LoadParticles from 'src/core/components/load-particles/load-particles';
 import DesktopCard from './components/desktop-card/desktop-card';
 import MobileCard from './components/mobile-card/mobile-card';
 
@@ -275,7 +278,7 @@ const Experience = () => {
       <Responsive
         breakpoint="md"
       >
-        <LazyLoadParticles id="experience-section" particlesConfig={desktopParticlesConfig} />
+        <LoadParticles id="experience-section" options={desktopParticlesConfig} />
       </Responsive>
       <S.SwiperContainer>
         <Swiper

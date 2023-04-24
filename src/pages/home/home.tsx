@@ -1,32 +1,37 @@
-import { useMemo } from 'react';
+import {
+  LazyExoticComponent,
+  Suspense,
+  lazy, useCallback, useMemo,
+} from 'react';
+import { LazyLoad } from 'src/core/components';
 import { CommonLayout } from 'src/core/layouts';
-import About from './components/about/about';
-import Academic from './components/academic/academic';
-import Experience from './components/experience/experience';
-import Languages from './components/stack/stack';
-import Welcome from './components/welcome/welcome';
 
-import MyTimeline from './components/my-timeline/my-timeline';
-import Projects from './components/projects/projects';
 import * as S from './styled';
 
 const Home = () => {
   const components = useMemo(() => ([
-    <Welcome key="welcome" />,
-    <About key="about" />,
-    <Experience key="experience" />,
-    <Languages key="languages" />,
-    <Academic key="academic" />,
-    <Projects key="projects" />,
-    <MyTimeline key="timeline" />,
+    lazy(() => import('./components/welcome/welcome')),
+    lazy(() => import('./components/about/about')),
+    lazy(() => import('./components/experience/experience')),
+    lazy(() => import('./components/stack/stack')),
+    lazy(() => import('./components/academic/academic')),
+    lazy(() => import('./components/projects/projects')),
+    lazy(() => import('./components/my-timeline/my-timeline')),
   ]), []);
+
+  const renderComponent = useCallback((Component: LazyExoticComponent<() => JSX.Element>, index: number) => (
+    <LazyLoad key={index}>
+      <Component />
+    </LazyLoad>
+  ), []);
 
   return (
     <S.HomeContainer>
       <CommonLayout>
-        {components.map((component) => component)}
+        {components.map(renderComponent)}
       </CommonLayout>
     </S.HomeContainer>
   );
 };
+
 export default Home;

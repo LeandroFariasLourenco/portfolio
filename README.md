@@ -27,3 +27,7 @@ Remover mobx e usar react context
 Traduzir textos de instruções do snake-game
 
 Mudar plano de fundo do snake-game para video
+
+Verificar quantidade de requisições nas bandeiras de linguagem
+
+Ajustar intersection observer com document.root

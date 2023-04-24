@@ -1,5 +1,4 @@
 import {
-  ArrowDownward,
   CardMembership,
   CastForEducation,
   DeveloperMode,
@@ -23,7 +22,7 @@ import {
   Fragment, useCallback, useMemo, useState,
 } from 'react';
 import { Responsive } from 'src/core/components';
-import LazyLoadParticles from 'src/core/components/lazy-load/lazy-load';
+import LoadParticles from 'src/core/components/load-particles/load-particles';
 import { EAppSections } from 'src/core/models';
 import { EAchievementType } from './models/achievement-type.enum';
 import { desktopParticlesConfig } from './particles/desktop-config';
@@ -110,11 +109,6 @@ const MyTimeline = () => {
 
   return (
     <S.TimelineContainer id={EAppSections.MY_TIMELINE}>
-      <Responsive
-        breakpoint="md"
-      >
-        <LazyLoadParticles id="my-timeline-section" particlesConfig={desktopParticlesConfig} />
-      </Responsive>
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString(intl.formatMessage({ id: 'home.mytimeline.title' })).start();

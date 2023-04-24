@@ -5,6 +5,7 @@ export const SectionContainer = styled(Grid) <{
 }>`
   position: relative;
   overflow-x: hidden;
+  overflow-y: hidden;
   padding: 20px 0 60px 0;
 
   ${({ theme }) => theme.breakpoints.down('md')} {

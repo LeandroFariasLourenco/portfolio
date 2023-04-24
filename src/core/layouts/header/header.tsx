@@ -9,6 +9,7 @@ import {
 import cx from 'classnames';
 import { observer } from 'mobx-react-lite';
 import {
+  ReactNode,
   cloneElement,
   useCallback,
   useMemo, useState,
@@ -30,21 +31,22 @@ const Header = () => {
   const { isWindowOnTop } = useIsWindowTop();
   const intl = useIntl();
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
-  const { imagesLoaded } = usePreloadImages([
+  const imagesToPreload = useMemo(() => [
     getBucketResource('/languages/brazil.png'),
     getBucketResource('/languages/united-states.png'),
-  ]);
+  ], []);
+  const { imagesLoaded } = usePreloadImages(imagesToPreload);
   const isMobile = useResponsive({ breakpoint: 'md', type: EResponsiveType.smaller });
   const triggerScroll = useScrollTrigger({
     threshold: 0,
   });
 
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
-  };
+  }, []);
 
   const desktopMenuOptions: IMenuOption[] = useMemo<IMenuOption[]>(() => [
     { label: 'header.links.section.about-me', href: `#${EAppSections.ABOUT}`, icon: <Info /> },
@@ -88,9 +90,30 @@ const Header = () => {
     </HashLink>
   ), []);
 
+  const renderCountryIcon = useCallback((value: Languages): ReactNode => {
+    let source: string;
+    let alt: string;
+    switch (value) {
+      case Languages.Portuguese:
+        source = getBucketResource('/languages/brazil.png');
+        alt = 'Brazil flag';
+        break;
+      case Languages.English:
+        source = getBucketResource('/languages/united-states.png');
+        alt = 'United States Flag';
+        break;
+      default:
+        break;
+    }
+
+    return (
+      <S.CountryIcon src={source!} alt={alt!} />
+    );
+  }, []);
+
   return (
     <>
-      <Slide in={!triggerScroll}>
+      <Slide in={!triggerScroll} mountOnEnter unmountOnExit={false}>
         <S.HeaderBar
           color="transparent"
         >
@@ -174,26 +197,8 @@ const Header = () => {
                     MenuProps={{
                       keepMounted: true,
                     }}
-                    renderValue={(value) => {
-                      let source: string;
-                      let alt: string;
-                      switch (value) {
-                        case 'pt-BR':
-                          source = getBucketResource('/languages/brazil.png');
-                          alt = 'Brazil flag';
-                          break;
-                        case 'en-US':
-                          source = getBucketResource('/languages/united-states.png');
-                          alt = 'United States Flag';
-                          break;
-                        default:
-                          break;
-                      }
-
-                      return (
-                        <S.CountryIcon src={source!} alt={alt!} />
-                      );
-                    }}
+                    native={false}
+                    renderValue={renderCountryIcon as (value: any) => ReactNode}
                   >
                     <MenuItem value={Languages.Portuguese}>
                       <S.CountryIcon src={getBucketResource('/languages/brazil.png')} alt="Brazil flag" />

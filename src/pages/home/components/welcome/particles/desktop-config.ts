@@ -4,7 +4,7 @@ export const desktopParticlesConfig: ParticlesProps['options'] = {
   fullScreen: {
     enable: false,
   },
-  fpsLimit: 30,
+  fpsLimit: 45,
   particles: {
     number: {
       value: 60,

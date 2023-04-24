@@ -1,39 +1,44 @@
-import { Box } from '@mui/material';
-import { memo, useCallback } from 'react';
+import {
+  Suspense,
+  memo,
+  useCallback, useMemo,
+} from 'react';
 import { useInView } from 'react-intersection-observer';
-import { Particles } from 'react-tsparticles';
-import { loadFull } from 'tsparticles';
-import { Engine } from 'tsparticles-engine';
+import { v4 as uuid } from 'uuid';
 import { ILazyLoadProps } from './props.interface';
 
-const LazyLoadParticles = ({ particlesConfig, id }: ILazyLoadProps) => {
-  const { inView, ref } = useInView({
-    threshold: 0,
-    triggerOnce: true,
-    root: document.body,
-  });
+import * as S from './styled';
 
-  const loadParticlesEngine = useCallback(async (engine: Engine) => {
-    await loadFull(engine);
-  }, []);
+import './styles.scss';
+
+const LazyLoad = ({
+  children,
+}: ILazyLoadProps) => {
+  const { inView, ref } = useInView({
+    threshold: 0.05,
+    triggerOnce: true,
+    initialInView: false,
+    // root: document.body,
+  });
+  const loaderBlocksCount = useMemo(() => 25, []);
+  const renderLoaderBlock = useCallback(() => <li className="loader-block" key={uuid()} />, []);
 
   return (
-    <Box
+    <S.LazyloadWrapper
       ref={ref}
-      style={{
-        position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
-      }}
+      $inView={inView}
     >
-      {inView ? (
-        <Particles
-          id={id}
-          canvasClassName="background-canvas"
-          init={loadParticlesEngine}
-          options={particlesConfig}
-        />
-      ) : null}
-    </Box>
+      {inView ? children : (
+        <S.LoaderContainer>
+          <div className="wrapper">
+            <ul className="loader-wrapper">
+              {[...Array(loaderBlocksCount)].map(renderLoaderBlock)}
+            </ul>
+          </div>
+        </S.LoaderContainer>
+      )}
+    </S.LazyloadWrapper>
   );
 };
 
-export default memo(LazyLoadParticles, () => true);
+export default memo(LazyLoad);
