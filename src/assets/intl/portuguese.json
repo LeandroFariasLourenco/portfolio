@@ -109,6 +109,7 @@
   "home.experience.stack": "Tecnologias",
 
   "home.languages.knowledge": "Conhecimentos",
+  "home.languages.title": "Minha stack",
 
   "home.js-ts.technologies.react.description": "Como uma biblioteca JavaScript que pode ser integrada ao Typescript e desenvolvido pelo Facebook, tive meu primeiro contato com a tecnologia ainda nos meus dias de estágio. Possuo um conhecimento sólido em seus principais conceitos, em especial sobre a síntaxe de hooks. Trabalhei em diversos projetos React com diversas estruturas e padrões de projetos, mas não apenas isso como também tive a oportunidade de realizar sessões de mentorias durante meu tempo na IBM para compartilhar e ensinar sobre React.",
   "home.js-ts.technologies.react.redux": "Redux",
@@ -252,15 +253,22 @@
   "home.projects.daily-journal.paragraph1": "Desenvolvido em Swift para IOS foi um aplicativo que permite ao usuário digitar entradas para cada dia, semelhante a um diário pessoal. Ao abrir o aplicativo, o usuário é direcionado para uma tela onde pode digitar uma entrada para o dia atual. As entradas diárias são organizadas por data e podem ser facilmente acessadas através de uma lista, que mostra todos os dias em que o usuário escreveu algo. Cada entrada diária possui um título e um campo de texto onde o usuário pode escrever livremente.",
   "home.projects.daily-journal.paragraph2": "Foram utilizados recursos avançados do Swift, como o armazenamento de dados localmente com Core Data. Em resumo, esse projeto em Swift para IOS foi uma oportunidade para aplicar meus conhecimentos em programação e desenvolvimento de aplicativos móveis.",
 
-  "home.projects.restaurant-finder.paragraph1": "temp",
+  "home.projects.restaurant-finder.paragraph1": "Um projeto utilizando as tecnologias React e Typescript, com o objetivo de permitir que o usuário encontre restaurantes próximos e possa ver avaliações e comentários diretamente na interface do Google Maps. Além disso, as avaliações e comentários foram disponibilizados pela API de Maps, simulando o que você consegue encontrar no próprio aplicativo do Maps.",
+  "home.projects.restaurant-finder.paragraph2": "Em resumo, este projeto foi desenvolvido como uma prova de conceito para aprender sobre os serviços que o google oferece em sua cloud e aprender mais sobre o React, assim como também tive meu primeiro contato com a biblioteca Lottie, para trabalhar com animações em JSON.",
 
-  "home.projects.canvas-matrix.paragraph1": "temp",
+  "home.projects.canvas-matrix.paragraph1": "Utilizando Javascript, HTML e CSS. Desenvolvi um projeto com o objetivo de simular o efeito de letras aleatórias caindo em diferentes intervalos, em um fundo preto, imitando o icônico efeito do filme Matrix. Para isso, utilizei a funcionalidade nativa do Canvas para gerar o fundo preto e desenhar as letras, além de implementar a lógica em Javascript para criar a animação das letras caindo aleatoriamente na tela.",
+  "home.projects.canvas-matrix.paragraph2": "A implementação dessa funcionalidade foi desafiadora, exigindo o uso de recursos avançados de Javascript, como animação de quadros e manipulação do DOM, além de conhecimentos avançados em HTML e CSS. O resultado final foi uma simulação de letras caindo de forma fluida e aleatória na tela.",
 
-  "home.projects.solar-system.paragraph1": "temp",
+  "home.projects.solar-system.paragraph1": "Projeto criado com Javascript, CSS e HTML para criar um ambiente 3D do Sistema Solar, utilizando a biblioteca ThreeJS para modelagem 3D. O objetivo do era simular um pequeno ambiente com alguns planetas orbitando ao redor do sol, permitindo ao usuário navegar por eles através do teclado. O projeto utilizou o Canvas para criar um ambiente 3D do Sistema Solar, com texturas simples. Utilizei também técnicas de iluminação para criar uma simples atmosfera no ambiente.",
+  "home.projects.solar-system.paragraph2": "Apesar de não ser uma réplica fiel, o projeto me permitiu estudar e aprender bastante sobre modelagem 3D no geral e como ela funciona na Web.",
 
-  "home.projects.snake-game.paragraph1": "temp",
+  "home.projects.snake-game.paragraph1": "Jogo desenvolvido com Javascript, HTML e SCSS, uma recriação do clássico jogo da cobrinha de celular. Ele funciona nativamente no navegador, utilizando a funcionalidade do Canvas para desenhar o jogo. O jogador pode controlar a cobra utilizando as teclas WASD ou as setas direcionais, com o objetivo de coletar alimentos e aumentar sua pontuação. A dificuldade do jogo aumenta a cada ponto, com a tela diminuindo e a velocidade da cobra aumentando.",
+  "home.projects.snake-game.paragraph2": "Para criar o jogo, utilizei as funcionalidades do Javascript Vanilla, manipulando o DOM e o Canvas, além de implementar animações e lógica. A grande ideia desse projeto, era me aprofundar um pouco em como criar um jogo na Web com Canvas, juntando assim, duas coisas que eu amo.",
+  "home.projects.snake-game.paragraph3": " Além disso, o jogo pode ser jogado diretamente em meu portfólio, através de um comando no terminal na versão desktop.",
 
-  "home.projects.be-the-hero.paragraph1": "temp",
+  "home.projects.be-the-hero.paragraph1": "Aplicação para conectar ONGs e outras instituições a pessoas que tem disponibilidade para ajudar. Este foi meu primeiro projeto que desenvolvi com o intuito de estudar. Foi uma solução que foi construída tendo como base o conteúdo da semana Omnistack ocorrida entre 23/03/2020 até 27/03/2020",
+  "home.projects.be-the-hero.paragraph2": "A semana Omnistack foi uma espécie de mini bootcampo, aonde cada dia construímos uma parte diferente da aplicação. No primeiro dia o Front End, seguido para o Back End e Banco de Dados, Mobile com React Native e por fim a integração de todas as partes.",
+  "home.projects.be-the-hero.paragraph3": "Foi um projeto crucial para me ajudar com meu aprendizado de React. Que na época, ainda era bem iniciante.",
 
   "home.projects.finantial-data-chart.paragraph1": "Projeto desenvolvido para estudo pessoal em Angular utilizando a API do Yahoo Finance para listar valores de ações de diversas empresas. Sendo possível acompanhar a evolução dos preços das ações em tempo real, podendo ser possível filtrar de minuto-a-minuto, dia-a-dia, mês, dia.",
   "home.projects.finantial-data-chart.paragraph2": "Desenvolvido em Angular com uso da biblioteca chart-js para a criação de gráficos interativos. Foi um projeto para aplicar meus conhecimentos utilizando uma API financeira, algo inédito para mim até então.",
@@ -269,51 +277,80 @@
   "home.projects.description.content1": "Teste",
   "home.projects.description.content2": "Teste Teste Teste",
 
-  "home.mytimeline.landmark1.name": "Início de minha jornada",
-  "home.mytimeline.landmark1.description": "O marco zero, meu 'pontapé' inicial.",
+  "home.mytimeline.title": "Minha trajetória",
 
-  "home.mytimeline.landmark2.name": "Começo do meu curso de Inglês",
-  "home.mytimeline.landmark2.description": "Ainda nos meus anos de pré adolescência, comecei minha preparação com a língua inglesa.",
+  "home.mytimeline.first-mentoring-session.title": "Seção de mentoria",
+  "home.mytimeline.first-mentoring-session.date": "13/03/2023",
+  "home.mytimeline.first-mentoring-session.description": "Como colaborador da IBM, tive minha primeira oportunidade de organizar uma série de sessões para meus colegas que duraram uma semana aonde pude apresentar o que é o React, com projetos práticos aonde eles podiam tirar dúvidas ao vivo conforme necessário.",
+  
+  "home.mytimeline.ibm.title": "Oportunidade na IBM",
+  "home.mytimeline.ibm.date": "12/09/2022",
+  "home.mytimeline.ibm.description": "Um novo capítulo da minha vida, dessa vez na renomada IBM. Trabalhei principalmente com Angular mas o que de fato proporcionou uma evolução enorme para minha carreira foi minha primeira experiência com desenvolvimento orientado a testes e também todas as plataformas de estudos que a IBM possui.",
 
-  "home.mytimeline.landmark3.name": "Curso técnico",
-  "home.mytimeline.landmark3.description": "Meu primeiro contato técnico com a área de informática. O conhecimento não foi apenas em programação mas em todos os conceitos de T.I, computação, virtualização...",
-
-  "home.mytimeline.landmark4.name": "Formação técnica",
-  "home.mytimeline.landmark4.description": "Juntamente com o término do ensino médio, realizei meu TCC e terminei minha primeira formação na área de T.I",
-
-  "home.mytimeline.landmark5.name": "Término inglês",
-  "home.mytimeline.landmark5.description": "Após longos 5 anos, realizei minha prova do TOEFL ITP e consegui minha certificação de inglês avançado.",
-
-  "home.mytimeline.landmark6.name": "Ingressão na faculdade",
-  "home.mytimeline.landmark6.description": "Meu primeiro contato com o ensino superior. Foi a partir deste ponto que realmente comecei a procurar ativamente vagas de estágio e ingressar no mundo profissional de T.I",
-
-  "home.mytimeline.landmark7.name": "Primeiro emprego",
-  "home.mytimeline.landmark7.description": "Não foi exatamente um 'emprego' em si, mas uma experiência que a empresa ofereceu como parte de um processo seletivo.",
-
-  "home.mytimeline.landmark8.name": "Estágio",
-  "home.mytimeline.landmark8.description": "Resultado do meu desempenho no programa de capacitação da empresa. Acabei sendo escolhido para a vaga de estágio.",
-
-  "home.mytimeline.landmark9.name": "Evento Next da FIAP",
-  "home.mytimeline.landmark9.description": "Com o projeto desenvolvido no decorrer do ano de 2019 no meu primeiro ano da FIAP, nosso projeto foi apresentado no evento organizado pela FIAP em parceria com diversas empresas de tecnologia. Ao decorrer do evento, apresentamos nosso projeto e acabamos ficando em 2º lugar.",
-
-  "home.mytimeline.landmark10.name": "Promovido",
-  "home.mytimeline.landmark10.description": "Promovido de meu cargo como estagiário antes do término de meu contrato. Foi minha primeira experiência em um emprego de período integral como CLT e júnior.",
-
-  "home.mytimeline.landmark11.name": "Diploma de graduação",
-  "home.mytimeline.landmark11.description": "Com o fim de meu curso superior, também veio diversas reflexões sobre o que fazer daqui em diante, porém eu tinha certeza de que independente de como as coisas fossem, a área de T.I é para mim.",
-
-  "home.mytimeline.landmark12.name": "Projeto freelancer",
-  "home.mytimeline.landmark12.description": "Um grande amigo meu da área de elétrica trabalhava em uma empresa que necessitava de um aplicativo para auxiliar em processos internos para coleta de informações. Como ele me conhecia, ele me contou sobre e acabei acertando sobre o projeto e foi minha primeira experiência trabalhando em um projeto sozinho.",
-
-  "home.mytimeline.landmark13.name": "Mudança de emprego",
-  "home.mytimeline.landmark13.description": "De olhos em novas oportunidades. Fui contactado por um amigo meu da época da faculdade sobre sua empresa que necessitava de um desenvolvedor para não só desenvolver mas também auxiliar desenvolvedores dentro da empresa.",
-
-  "home.mytimeline.landmark14.name": "Mudança de emprego",
-  "home.mytimeline.landmark14.description": "Acabei recebendo uma proposta que na época estava alinhada com minhas expectativas e desafios. Acabei ingressando na GFT em sua unidade no Brasil e participei de diversos projetos e até mesmo internacionais.",
-
-  "home.mytimeline.landmark15.name": "Certified Cloud Practitioner",
-  "home.mytimeline.landmark15.description": "Minha primeira certificação com AWS. Apesar de ter tido um pouco de experiência prévia com desenvolvimento em nuvem. Agora comecei oficialmente minha jornada como Cloud Practitioner.",
-
+  "home.mytimeline.aws-certification.title": "Certificação AWS Cloud Practitioner",
+  "home.mytimeline.aws-certification.date": "15/08/2022",
+  "home.mytimeline.aws-certification.description": "Minha primeira certificação com AWS. Apesar de ter tido experiência prévia com desenvolvimento em nuvem. Agora comecei oficialmente minha jornada como Cloud Practitioner.",
+  
+  "home.mytimeline.gft.title": "Oportunidade na GFT",
+  "home.mytimeline.gft.date": "01/04/2022",
+  "home.mytimeline.gft.description": "Foi aqui aonde tive minha primeira experiência com desenvolvimento em nuvem. Utilizando até mesmo um pouco de back end para a manutenção da APIs Lambda em Node, realização de deploys e stacks com Cloud Formation e desenvolvimento Front End com React, MobX.",
+  
+  "home.mytimeline.nbm.title": "Oportunidade na NBM Informática",
+  "home.mytimeline.nbm.date": "01/03/2021",
+  "home.mytimeline.nbm.description": "Aonde obtive minha primeira experiência não apenas com desenvolvimento mas sendo responsável pelo gerenciamento e auxílio de colegas dentro da empresa. Também acabou sendo meu primeiro contato com Typescript e Angular.",
+  
+  "home.mytimeline.freelance-project.title": "Projeto Freelancer",
+  "home.mytimeline.freelance-project.date": "15/12/2020",
+  "home.mytimeline.freelance-project.description": "No meio tempo entre minha transição de minha ex-empresa e uma nova, tive minha primeira oportunidade de desenvolvimento Full Stack. Uma pequena empresa de elétrica, necessitava de um app para coletar informações de No Breaks de clientes, aonde tanto o colaborador como o cliente assinavam um documento para ser enviado um e-mail com PDF para ambas as partes. Utilizei AWS com funções Lambdas para disparar e-mails e gerar PDFs, enquanto o App foi feito com React Native.",
+  
+  "home.mytimeline.fiap-end.title": "Formação Ensino Superior",
+  "home.mytimeline.fiap-end.date": "07/12/2020",
+  "home.mytimeline.fiap-end.description": "Consegui concluir meu curso de nível Tecnólogo em Análise e Desenvolvimento de Sistemas pela FIAP. O diploma sinalizou o fim de um capítulo particularmente desafiador de minha vida profissional, tendo em mente o equilíbrio de vida acadêmica, profissional e pessoal. Mas ainda sim, foi uma trajetória que me proporcionou muito crescimento.",
+  
+  "home.mytimeline.junior-promotion.title": "Promoção para Júnior",
+  "home.mytimeline.junior-promotion.date": "01/09/2020",
+  "home.mytimeline.junior-promotion.description": "Antes do término de meu contrato como estagiário, tive o reconhecimento de ser promovido para Front End Júnior. Sendo minha primeira experiência na área de T.I em tempo integral.",
+  
+  "home.mytimeline.omnistack-week.title": "Semana Omnistack",
+  "home.mytimeline.omnistack-week.date": "23/03/2020",
+  "home.mytimeline.omnistack-week.description": "Foi um 'mini bootcamp' fornecido pela Rocketseat, com o intuito de ajudar desenvolvedores a terem uma experiência de projeto full stack. Mas me forneceu grande conhecimento em especial com React.",
+  
+  "home.mytimeline.next-fiap.title": "Evento Next da Fiap",
+  "home.mytimeline.next-fiap.date": "03/11/2019",
+  "home.mytimeline.next-fiap.description": "Projeto desenvolvido no decorrer do ano de 2019 quando estava na FIAP. O projeto acabou sendo escolhido para ser apresentado na feira da FIAP em parceria com diversas empresas de tecnologia. Ao decorrer do evento, apresentamos nosso projeto e acabamos ficando em segundo lugar.",
+  
+  "home.mytimeline.intern.title": "Estágio",
+  "home.mytimeline.intern.date": "01/10/2019",
+  "home.mytimeline.intern.description": "Resultado de meu desempenho no programa de capacitação. Acabei sendo escolhido para a vaga de estágio.",
+  
+  "home.mytimeline.capacitation-program.title": "Primeiro emprego",
+  "home.mytimeline.capacitation-program.date": "01/09/2019",
+  "home.mytimeline.capacitation-program.description": "Acabou sendo um processo seletivo com duração de 1 mês para concorrer para vaga de estágio, mas ainda sim tive contato com diversos profissionais da empresa no decorrer desse tempo.",
+  
+  "home.mytimeline.fiap-start.title": "Ingressão na faculdade",
+  "home.mytimeline.fiap-start.date": "18/02/2019",
+  "home.mytimeline.fiap-start.description": "Foi o ponto de partida de minha carreira na área de T.I. Aonde comecei a procurar de forma ativa minha primeira oportunidade.",
+  
+  "home.mytimeline.english-conclusion.title": "Término inglês",
+  "home.mytimeline.english-conclusion.date": "13/12/2018",
+  "home.mytimeline.english-conclusion.description": "Após 5 anos de aprendizado, realizei minha prova do TOEFL ITP, terminando assim meu curso de inglês e atingindo meu nível de inglês avançado.",
+  
+  "home.mytimeline.technical-formation.title": "Formação Técnica",
+  "home.mytimeline.technical-formation.date": "07/12/2018",
+  "home.mytimeline.technical-formation.description": "Coincidindo com meu término do ensino médio, realizei a apresentação de meu TCC, terminando assim, meu primeiro curso na área de T.I",
+  
+  "home.mytimeline.technical-start.title": "Ingressão no curso técnico",
+  "home.mytimeline.technical-start.date": "23/07/2017",
+  "home.mytimeline.technical-start.description": "Aqui foi aonde começou meu primeiro contato com a área de T.I. Em especial, na área de programação e com conceitos como virtualização, computação e diversos.",
+  
+  "home.mytimeline.english-start.title": "Curso de inglês",
+  "home.mytimeline.english-start.date": "17/07/2013",
+  "home.mytimeline.english-start.description": "Apesar de começar bem cedo, ainda em minha pré-adolescência, considero como um dos cursos mais importantes para minha carreira, pois consegui realizar 5 anos de aulas, 2 vezes por semana, aprendendo bastante sobre a lingua inglesa, desde escrita e fala.",
+  
+  "home.mytimeline.start.title": "Marco zero",
+  "home.mytimeline.start.date": "05/02/2001",
+  "home.mytimeline.start.description": "Como toda trajetória possui um começo, aqui é aonde começa a minha.",
+  
   "home.footer.contact.title": "Contato",
   "home.footer.socialmedia.title": "Redes sociais",
   "home.footer.requirements.title": "Autoria",

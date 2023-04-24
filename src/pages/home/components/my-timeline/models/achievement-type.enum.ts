@@ -5,6 +5,8 @@ export enum EAchievementType {
   PROJECT = 'project',
   CERTIFICATE = 'certificate',
   JOB = 'job',
-  EXIT = 'exit',
   FREELANCE = 'freelance',
+  MENTORING = 'mentoring',
+  CONCLUSION = 'conclusion',
+  INITIAL = 'initial',
 }

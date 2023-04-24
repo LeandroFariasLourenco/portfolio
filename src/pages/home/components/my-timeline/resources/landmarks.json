@@ -1,0 +1,128 @@
+[
+  {
+    "name": "home.mytimeline.first-mentoring-session.title",
+    "description": "home.mytimeline.first-mentoring-session.description",
+    "date": "home.mytimeline.first-mentoring-session.date",
+    "position": "left",
+    "type": "mentoring"
+  },
+  {
+    "name": "home.mytimeline.ibm.title",
+    "description": "home.mytimeline.ibm.description",
+    "date": "home.mytimeline.ibm.date",
+    "position": "left",
+    "type": "job"
+  },
+  {
+    "name": "home.mytimeline.aws-certification.title",
+    "description": "home.mytimeline.aws-certification.description",
+    "date": "home.mytimeline.aws-certification.date",
+    "position": "right",
+    "type": "certificate"
+  },
+  {
+    "name": "home.mytimeline.gft.title",
+    "description": "home.mytimeline.gft.description",
+    "date": "home.mytimeline.gft.date",
+    "position": "right",
+    "type": "job"
+  },
+  {
+    "name": "home.mytimeline.nbm.title",
+    "description": "home.mytimeline.nbm.description",
+    "date": "home.mytimeline.nbm.date",
+    "position": "left",
+    "type": "job"
+  },
+  {
+    "name": "home.mytimeline.freelance-project.title",
+    "description": "home.mytimeline.freelance-project.description",
+    "date": "home.mytimeline.freelance-project.date",
+    "position": "right",
+    "type": "project"
+  },
+  {
+    "name": "home.mytimeline.fiap-end.title",
+    "description": "home.mytimeline.fiap-end.description",
+    "date": "home.mytimeline.fiap-end.date",
+    "position": "left",
+    "type": "conclusion"
+  },
+  {
+    "name": "home.mytimeline.junior-promotion.title",
+    "description": "home.mytimeline.junior-promotion.description",
+    "date": "home.mytimeline.junior-promotion.date",
+    "position": "right",
+    "type": "promotion"
+  },
+  {
+    "name": "home.mytimeline.omnistack-week.title",
+    "description": "home.mytimeline.omnistack-week.description",
+    "date": "home.mytimeline.omnistack-week.date",
+    "position": "left",
+    "type": "education"
+  },
+  {
+    "name": "home.mytimeline.next-fiap.title",
+    "description": "home.mytimeline.next-fiap.description",
+    "date": "home.mytimeline.next-fiap.date",
+    "position": "left",
+    "type": "education"
+  },
+  {
+    "name": "home.mytimeline.intern.title",
+    "description": "home.mytimeline.intern.description",
+    "date": "home.mytimeline.intern.date",
+    "position": "right",
+    "type": "promotion"
+  },
+  {
+    "name": "home.mytimeline.capacitation-program.title",
+    "description": "home.mytimeline.capacitation-program.description",
+    "date": "home.mytimeline.capacitation-program.date",
+    "position": "right",
+    "type": "job"
+  },
+  {
+    "name": "home.mytimeline.fiap-start.title",
+    "description": "home.mytimeline.fiap-start.description",
+    "date": "home.mytimeline.fiap-start.date",
+    "position": "left",
+    "type": "start"
+  },
+  {
+    "name": "home.mytimeline.english-conclusion.title",
+    "description": "home.mytimeline.english-conclusion.description",
+    "date": "home.mytimeline.english-conclusion.date",
+    "position": "right",
+    "type": "conclusion"
+  },
+  {
+    "name": "home.mytimeline.technical-formation.title",
+    "description": "home.mytimeline.technical-formation.description",
+    "date": "home.mytimeline.technical-formation.date",
+    "position": "left",
+    "type": "conclusion"
+  },
+  {
+    "name": "home.mytimeline.technical-start.title",
+    "description": "home.mytimeline.technical-start.description",
+    "date": "home.mytimeline.technical-start.date",
+    "position": "left",
+    "type": "start"
+  },
+  {
+    "name": "home.mytimeline.english-start.title",
+    "description": "home.mytimeline.english-start.description",
+    "date": "home.mytimeline.english-start.date",
+    "position": "right",
+    "type": "start"
+  },
+  {
+    "name": "home.mytimeline.start.title",
+    "description": "home.mytimeline.start.description",
+    "date": "home.mytimeline.start.date",
+    "position": "left",
+    "type": "initial"
+  }
+]

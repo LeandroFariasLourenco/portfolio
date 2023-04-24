@@ -23,12 +23,11 @@ import {
 import Certificate from './components/certificate/certificate';
 import Course from './components/course/course';
 import Extracurricular from './components/extracurricular/extracurricular';
-import { desktopParticlesConfig } from './particles/desktop-config';
-import * as S from './styled';
-import { IExtracurricular } from './models/extracurricular.interface';
 import { ICertificate } from './models/certificate.interface';
 import { ICourse } from './models/course.interface';
-import { mobileParticlesConfig } from './particles/mobile-config';
+import { IExtracurricular } from './models/extracurricular.interface';
+import { desktopParticlesConfig } from './particles/desktop-config';
+import * as S from './styled';
 
 const Academic = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -197,7 +196,11 @@ const Academic = () => {
 
   return (
     <S.FormationWrapper id={EAppSections.ACADEMIC}>
-      <LazyLoadParticles id="formation-section" particlesConfig={isMobile ? mobileParticlesConfig : desktopParticlesConfig} />
+      <Responsive
+        breakpoint="md"
+      >
+        <LazyLoadParticles id="formation-section" particlesConfig={desktopParticlesConfig} />
+      </Responsive>
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString(intl.formatMessage({ id: 'home.formation.title' }))

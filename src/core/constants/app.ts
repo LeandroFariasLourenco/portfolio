@@ -3,7 +3,7 @@ export const APP = {
     height: 55,
   },
   aws: {
-    assets: 'https://portfolio-assets-us-east-1.s3.us-east-1.amazonaws.com/assets',
-    curriculum: 'https://portfolio-assets-us-east-1.s3.amazonaws.com/assets/curriculum.pdf',
+    assets: 'https://d255kommyg5uck.cloudfront.net',
+    curriculum: 'https://d255kommyg5uck.cloudfront.net/curriculum.pdf',
   },
 };
