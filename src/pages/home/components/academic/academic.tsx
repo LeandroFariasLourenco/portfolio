@@ -11,7 +11,8 @@ import AnimateHeight from 'react-animate-height';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import SwipeRightAnimation from 'src/assets/animations/swipe-right.json';
-import { LazyLoadParticles, Responsive } from 'src/core/components';
+import { Responsive } from 'src/core/components';
+import LoadParticles from 'src/core/components/load-particles/load-particles';
 import SwipeAnimation from 'src/core/components/swipe-animation/swipe-animation';
 import { getBucketResource } from 'src/core/functions';
 import { useHidden, useResponsive } from 'src/core/hooks';
@@ -196,11 +197,6 @@ const Academic = () => {
 
   return (
     <S.FormationWrapper id={EAppSections.ACADEMIC}>
-      <Responsive
-        breakpoint="md"
-      >
-        <LazyLoadParticles id="formation-section" particlesConfig={desktopParticlesConfig} />
-      </Responsive>
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString(intl.formatMessage({ id: 'home.formation.title' }))

@@ -42,23 +42,8 @@ const ExperienceCard = ({
           <Typography variant="subtitle1"><FormattedMessage id={experience.type} /></Typography>
         </S.ExperienceTopic>
       </S.ExperienceCardContent>
-      <Grid container>
-        <Grid item xs={6}>
-          <iframe
-            width={200}
-            height={200}
-            title={experience.company.name}
-            src={`https://maps.google.com/maps?q=${experience.company.query}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
-            frameBorder={0}
-            scrolling="no"
-            marginHeight={0}
-            marginWidth={0}
-          />
-        </Grid>
-
-        <Grid item xs={6} container alignItems="flex-end" justifyContent="flex-end">
-          <S.CompanyLogo src={getBucketResource(`/${experience.company.logo}`)} alt={experience.company.name} />
-        </Grid>
+      <Grid item xs={12} container alignItems="flex-end" justifyContent="flex-end">
+        <S.CompanyLogo src={getBucketResource(`/${experience.company.logo}`)} alt={experience.company.name} />
       </Grid>
     </Grid>
   </S.ExperienceCard>

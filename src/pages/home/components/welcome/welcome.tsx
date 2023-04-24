@@ -1,10 +1,10 @@
 import { Grid } from '@mui/material';
 import cx from 'classnames';
-import { useMemo, useState, useCallback } from 'react';
-import LazyLoadParticles from 'src/core/components/lazy-load/lazy-load';
-import Responsive from 'src/core/components/responsive/responsive';
+import { useCallback, useMemo, useState } from 'react';
+import { Responsive } from 'src/core/components';
+import LoadParticles from 'src/core/components/load-particles/load-particles';
 import { APP } from 'src/core/constants';
-import { useResponsive, useIsWindowTop } from 'src/core/hooks';
+import { useIsWindowTop, useResponsive } from 'src/core/hooks';
 import { EAppSections, EResponsiveType } from 'src/core/models';
 import DesktopTerminal from './components/desktop-terminal/desktop-terminal';
 import MobileTerminal from './components/mobile-terminal/mobile-terminal';
@@ -50,7 +50,7 @@ const Welcome = () => {
 
   return (
     <S.Wrapper container alignItems="center" item justifyContent="center" md={12} id={EAppSections.WELCOME}>
-      <LazyLoadParticles id="welcome-section" particlesConfig={isDesktop ? desktopParticlesConfig : mobileParticlesConfig} />
+      <LoadParticles id="welcome-section" options={isDesktop ? desktopParticlesConfig : mobileParticlesConfig} />
       <Responsive
         breakpoint="md"
       >

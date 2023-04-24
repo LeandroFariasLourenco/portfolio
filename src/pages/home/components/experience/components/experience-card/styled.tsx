@@ -29,6 +29,10 @@ export const ExperienceTopic = styled(Grid)`
   }
 `;
 
+export const ExperienceCardContainer = styled(Grid)`
+  height: 100%;
+`;
+
 export const ExperienceCard = styled(Card)<{
   $direction: 'left' | 'right'
 }>(({ theme, $direction }) => css`
