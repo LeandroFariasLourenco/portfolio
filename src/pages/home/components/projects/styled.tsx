@@ -11,8 +11,18 @@ export const ProjectsContainer = styled(Grid)(({ theme }) => `
   border: 2px solid ${theme.palette.secondary.main};
 
   ${theme.breakpoints.down('md')} {
+    padding: 5px;
+
     .swiper {
       &-button {
+        &-prev {
+          left: -1px;
+        }
+
+        &-next {
+          right: -7px;
+        }
+
         &-prev,
         &-next {
           bottom: 35%;
@@ -29,13 +39,16 @@ export const ProjectsContainer = styled(Grid)(({ theme }) => `
   }
 `);
 
-export const ProjectsWrapper = styled(Grid)`
+export const ProjectsWrapper = styled(Grid)(({ theme }) => `
   ${mixins.linearGradientBackground({
     backgroundImage: getBucketResource('/wallpapers/terminal.png'),
     gradientColor: 'linear-gradient(rgba(28, 22, 48, 0.88), rgba(28, 22, 48,0.95))',
   })};
-  background-attachment: fixed;
-`;
+
+  ${theme.breakpoints.up('md')} {
+    background-attachment: fixed;
+  }
+`);
 
 export const ProjectsTabs = styled(Grid)(({ theme }) => `
   background-size: cover;

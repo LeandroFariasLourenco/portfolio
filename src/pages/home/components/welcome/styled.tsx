@@ -30,7 +30,6 @@ export const ProfileImage = styled.img<{ $width: number; }>(({ theme, $width }) 
     linear-gradient(      var(--gradient-color)) 50%/100% var(--_i,100%) no-repeat,
     linear-gradient(90deg,var(--gradient-color)) 50%/var(--_i,100%) 100% no-repeat;
   outline: calc(var(--width)/2) solid #0005;
-  //outline-offset: calc(var(--width)/-2 - 2*var(--frame-size));
   outline-offset: ${-($width)}px;
   transition: 400ms;
   cursor: pointer;
@@ -45,27 +44,9 @@ export const ProfileImage = styled.img<{ $width: number; }>(({ theme, $width }) 
   }
 `);
 
-const arrowDownAnimation = keyframes`
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  to {
-    transform: translateY(90%);
-    opacity: 0;
-  }
-`;
-
 export const ArrowDown = styled(ArrowDownward)`
-  animation: ${arrowDownAnimation} 1.5s ease-in-out alternate-reverse infinite;
-`;
-
-const pulse = keyframes`
-  to {
-    transform: scale(1.5);
-    opacity: 0;
-  }
+  animation: ${mixins.arrowDownAnimation} 1.5s ease-in-out alternate-reverse infinite;
+  transition: transform 200ms ease-in-out;
 `;
 
 export const TerminalComponentWrapper = styled(Grid)(({ theme }) => `
@@ -109,30 +90,18 @@ export const ArrowDownContainer = styled(Grid)`
   align-items: center;
   justify-content: center;
   padding: 7.5px;
-  cursor: pointer;
-  z-index: 1;
+  ${mixins.pulseStyle};
 
-  &::before,
+  &:not(:hover) {
+    &::after {
+      animation-name: ${mixins.pulseAnimation};
+    }
+  }
+
   &::after {
-    content: '';
     border-radius: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: ${({ theme }) => theme.palette.primary.main};
-    animation-name: ${pulse};
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    z-index: -1;
   }
-
-
-  &::before {
-    animation-delay: 1s;
-  }
-
+  
   &:hover {
     background-color: ${({ theme }) => theme.palette.secondary.main};
     ${ArrowDown} {

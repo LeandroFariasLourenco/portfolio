@@ -4,10 +4,10 @@ export const mobileParticlesConfig: ParticlesProps['options'] = {
   fullScreen: {
     enable: false,
   },
-  fpsLimit: 30,
+  fpsLimit: 25,
   particles: {
     number: {
-      value: 40,
+      value: 35,
       density: {
         enable: true,
         value_area: 800,

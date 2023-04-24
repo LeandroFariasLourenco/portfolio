@@ -45,10 +45,7 @@ const Projects = () => {
       grabCursor: true,
       pagination: true,
     },
-    mobile: {
-      modules: [EffectCards],
-      effect: 'cards',
-    },
+    mobile: {},
     commonProps: {
       style: { width: '100%', height: '100%' },
       onRealIndexChange: (swiper: SwiperClass) => {
@@ -93,6 +90,7 @@ const Projects = () => {
       title: 'Restaurant Finder',
       paragraphs: [
         intl.formatMessage({ id: 'home.projects.restaurant-finder.paragraph1' }),
+        intl.formatMessage({ id: 'home.projects.restaurant-finder.paragraph2' }),
       ],
       image: getBucketResource('/projects/restaurant-finder.png'),
       icons: [TECHNOLOGY_ICONS.TYPESCRIPT, TECHNOLOGY_ICONS.SASS, TECHNOLOGY_ICONS.REACT, TECHNOLOGY_ICONS.HTML],
@@ -112,8 +110,9 @@ const Projects = () => {
       title: 'Canvas Matrix',
       paragraphs: [
         intl.formatMessage({ id: 'home.projects.canvas-matrix.paragraph1' }),
+        intl.formatMessage({ id: 'home.projects.canvas-matrix.paragraph2' }),
       ],
-      image: getBucketResource('/projects/matrix.gif'),
+      image: getBucketResource('/projects/matrix.mp4'),
       icons: [TECHNOLOGY_ICONS.JAVASCRIPT, TECHNOLOGY_ICONS.CSS, TECHNOLOGY_ICONS.HTML],
       link: 'https://github.com/LeandroFariasLourenco/matrix',
     },
@@ -121,8 +120,10 @@ const Projects = () => {
       title: 'Snake Game',
       paragraphs: [
         intl.formatMessage({ id: 'home.projects.snake-game.paragraph1' }),
+        intl.formatMessage({ id: 'home.projects.snake-game.paragraph2' }),
+        intl.formatMessage({ id: 'home.projects.snake-game.paragraph3' }),
       ],
-      image: getBucketResource('/projects/snakegame.gif'),
+      image: getBucketResource('/projects/snake-game.mp4'),
       icons: [TECHNOLOGY_ICONS.JAVASCRIPT, TECHNOLOGY_ICONS.REACT, TECHNOLOGY_ICONS.SASS, TECHNOLOGY_ICONS.HTML],
       link: 'https://github.com/LeandroFariasLourenco/snake-game',
     },
@@ -130,6 +131,7 @@ const Projects = () => {
       title: 'Solar System',
       paragraphs: [
         intl.formatMessage({ id: 'home.projects.solar-system.paragraph1' }),
+        intl.formatMessage({ id: 'home.projects.solar-system.paragraph2' }),
       ],
       image: getBucketResource('/projects/solar-system.png'),
       icons: [TECHNOLOGY_ICONS.JAVASCRIPT, TECHNOLOGY_ICONS.HTML, TECHNOLOGY_ICONS.CSS],
@@ -139,6 +141,8 @@ const Projects = () => {
       title: 'Be the Hero',
       paragraphs: [
         intl.formatMessage({ id: 'home.projects.be-the-hero.paragraph1' }),
+        intl.formatMessage({ id: 'home.projects.be-the-hero.paragraph2' }),
+        intl.formatMessage({ id: 'home.projects.be-the-hero.paragraph3' }),
       ],
       image: getBucketResource('/projects/be-the-hero.png'),
       icons: [TECHNOLOGY_ICONS.JAVASCRIPT, TECHNOLOGY_ICONS.HTML, TECHNOLOGY_ICONS.CSS, TECHNOLOGY_ICONS.REACT],

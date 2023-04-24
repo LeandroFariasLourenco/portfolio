@@ -8,6 +8,7 @@ import { Section } from 'src/core/layouts';
 import { EAppSections, EResponsiveType } from 'src/core/models';
 import { useResponsive } from 'src/core/hooks';
 import { SwipeAnimation } from 'src/core/components';
+import { useIntl } from 'react-intl';
 import * as S from './styled';
 import Technologies from './components/technologies/technologies';
 import LanguageTab from './components/language-tab/language-tab';
@@ -17,6 +18,7 @@ const Languages = () => {
   const [selectedTab, setSelectedTab] = useState<number>(0);
   const isMobile = useResponsive({ type: EResponsiveType.smaller });
   const tabContainerRef = useRef<HTMLDivElement>();
+  const intl = useIntl();
 
   const onLanguageTabToggle = useCallback((index: number) => {
     setSelectedTab(index);
@@ -44,7 +46,7 @@ const Languages = () => {
     <S.SectionWrapper id={EAppSections.STACK}>
       <Section
         onTitleShow={(typewriter) => {
-          typewriter.typeString('Minha stack')
+          typewriter.typeString(intl.formatMessage({ id: 'home.languages.title' }))
             .start();
         }}
         icon={<DeveloperMode fontSize="large" htmlColor="white" />}

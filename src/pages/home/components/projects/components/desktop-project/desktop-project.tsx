@@ -1,6 +1,6 @@
 import { Grid, IconButton, Typography } from '@mui/material';
 import cx from 'classnames';
-import { useCallback, useState } from 'react';
+import { useMemo, useCallback, useState } from 'react';
 import SeeMore from 'src/core/components/see-more/see-more';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { GithubIcon } from 'src/core/layouts/footer/styled';
@@ -14,10 +14,13 @@ const DesktopProject = ({
   const [previewing, setPreviewing] = useState<boolean>(false);
   const isDesktop = useResponsive({});
   const renderProjectParagraph = useCallback((paragraph: string) => <Typography key={paragraph}>{paragraph}</Typography>, []);
+  const isVideoBackground = useMemo(() => /\.mp4$/.test(project.image), []);
 
   return (
     <>
-      <S.ProjectBackgroundImage src={project.image} />
+      {isVideoBackground ? (
+        <S.ProjectBackgroundVideo src={project.image} autoPlay muted loop />
+      ) : <S.ProjectBackgroundImage src={project.image} />}
       <S.ProjectSlideContainer>
         <S.ProjectSlideOverlay
           className={cx({

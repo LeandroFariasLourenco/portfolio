@@ -1,13 +1,21 @@
 import { Card, Grid } from '@mui/material';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const ProjectBackgroundImage = styled.img`
+const background = css`
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
+`;
+
+export const ProjectBackgroundVideo = styled.video`
+  ${background};
+`;
+
+export const ProjectBackgroundImage = styled.img`
+  ${background};
 `;
 
 export const ProjectSlideContainer = styled(Grid)``;
