@@ -1,10 +1,10 @@
-import { Box, Button } from '@mui/material';
-import Lottie from 'react-lottie';
-import { useNavigate, useNavigation } from 'react-router-dom';
-import NotFoundAnimation from 'src/assets/animations/404.json';
-import { useIntl } from 'react-intl';
-import { ROUTES } from 'src/core/constants';
+import { Lottie } from '@alfonmga/react-lottie-light-ts';
 import { ArrowBack } from '@mui/icons-material';
+import { Box, Button } from '@mui/material';
+import { useIntl } from 'react-intl';
+import { useNavigate } from 'react-router-dom';
+import NotFoundAnimation from 'src/assets/animations/404.json';
+import { ROUTES } from 'src/core/constants';
 import * as S from './styled';
 
 const NotFound = () => {
@@ -14,11 +14,11 @@ const NotFound = () => {
   return (
     <S.NotFoundWrapper>
       <Lottie
-        width={315}
-        height={175}
-        style={{ marginBottom: 10 }}
+        width="315px"
+        height="175px"
+        style={{ marginBottom: '10px' }}
         speed={0.25}
-        options={{
+        config={{
           animationData: NotFoundAnimation,
         }}
       />

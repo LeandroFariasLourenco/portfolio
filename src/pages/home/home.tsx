@@ -32,8 +32,8 @@ const Home = () => {
     </LazyLoad>
   ), []);
 
-  const handleWindowResize = useCallback((window: Window) => {
-    if (window.innerWidth >= breakpoints.values.lg || window.innerWidth <= breakpoints.values.sm) {
+  const handleWindowResize = useCallback(({ target }: any) => {
+    if (target.innerWidth >= breakpoints.values.lg || target.innerWidth <= breakpoints.values.sm) {
       navigate(ROUTES.home);
       return;
     }
@@ -55,13 +55,9 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    window.addEventListener('resize', ({ currentTarget }) => {
-      handleWindowResize(currentTarget as Window);
-    });
+    window.addEventListener('resize', handleWindowResize as any);
 
-    window.addEventListener('orientationchange', (window) => {
-      handleOrientationChange(window as unknown as Window);
-    });
+    window.addEventListener('orientationchange', handleOrientationChange as any);
 
     return () => {
       window.removeEventListener('orientationchange', handleOrientationChange as any);

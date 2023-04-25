@@ -1,22 +1,20 @@
-import { useEffect, useCallback } from 'react';
-import { useIntl } from 'react-intl';
-import Lottie from 'react-lottie';
-import RobotAnimation from 'src/assets/animations/robot.json';
+import { Lottie } from '@alfonmga/react-lottie-light-ts';
 import { Grid, useTheme } from '@mui/material';
-import { LanguageSelect } from 'src/core/components';
-import { useResponsive } from 'src/core/hooks';
+import { useCallback, useEffect } from 'react';
+import { useIntl } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
+import RobotAnimation from 'src/assets/animations/robot.json';
+import { LanguageSelect } from 'src/core/components';
 import { ROUTES } from 'src/core/constants';
 import * as S from './styled';
 
 const NotAvailable = () => {
   const intl = useIntl();
-  const isDesktop = useResponsive({});
   const navigate = useNavigate();
   const { breakpoints } = useTheme();
 
-  const handleWindowResize = useCallback((window: Window) => {
-    if (window.innerWidth >= breakpoints.values.lg || window.innerWidth <= breakpoints.values.sm) {
+  const handleWindowResize = useCallback(({ target }: any) => {
+    if (target.innerWidth >= breakpoints.values.lg || target.innerWidth <= breakpoints.values.sm) {
       navigate(ROUTES.home);
       return;
     }
@@ -38,13 +36,8 @@ const NotAvailable = () => {
   }, []);
 
   useEffect(() => {
-    window.addEventListener('resize', ({ currentTarget }) => {
-      handleWindowResize(currentTarget as Window);
-    });
-
-    window.addEventListener('orientationchange', (window) => {
-      handleOrientationChange(window as unknown as Window);
-    });
+    window.addEventListener('resize', handleWindowResize as any);
+    window.addEventListener('orientationchange', handleOrientationChange as any);
 
     return () => {
       window.removeEventListener('orientationchange', handleOrientationChange as any);
@@ -65,11 +58,11 @@ const NotAvailable = () => {
           </Grid>
           <Grid item>
             <Lottie
-              width={isDesktop ? 300 : 200}
-              height={isDesktop ? 200 : 100}
-              style={{ marginRight: -40 }}
+              width="300px"
+              height="200px"
+              style={{ marginRight: '-40px' }}
               speed={0.25}
-              options={{
+              config={{
                 animationData: RobotAnimation,
               }}
             />

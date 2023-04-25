@@ -8,7 +8,7 @@ import {
   useState,
 } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import Lottie from 'react-lottie';
+import { Lottie } from '@alfonmga/react-lottie-light-ts';
 import { Section } from 'src/core/layouts';
 
 import PersonComputerAnimation from 'src/assets/animations/person-on-computer.json';
@@ -147,9 +147,9 @@ const About = () => {
           >
             <Grid item xs={12} md={5} container justifyContent="flex-end">
               <Lottie
-                width={315}
-                style={{ margin: 0 }}
-                options={{
+                width="315px"
+                style={{ margin: '0' }}
+                config={{
                   animationData: PersonComputerAnimation,
                 }}
               />

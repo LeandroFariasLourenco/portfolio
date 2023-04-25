@@ -123,13 +123,13 @@ const Academic = () => {
       },
       {
         title: 'home.certifications6.title',
-        link: `${getBucketResource('/profissional-web-designer')}.pdf`,
+        link: `${getBucketResource('/certificates/profissional-web-designer')}.pdf`,
         logo: `${getBucketResource('/companies/fiap.png')}`,
         width: { desktop: '125px', mobile: '65px' },
       },
       {
         title: 'home.certifications7.title',
-        link: `${getBucketResource('/profissional-app-developer')}.pdf`,
+        link: `${getBucketResource('/certificates/profissional-app-developer')}.pdf`,
         logo: `${getBucketResource('/companies/fiap.png')}`,
         width: { desktop: '125px', mobile: '65px' },
       },
@@ -212,10 +212,10 @@ const Academic = () => {
           flexWrap="nowrap"
         >
           <SwipeAnimation lottieProps={{
-            height: 55,
+            height: '55px',
             speed: 1.25,
-            width: 135,
-            options: {
+            width: '135px',
+            config: {
               animationData: SwipeRightAnimation,
             },
           }}

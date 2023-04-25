@@ -213,10 +213,10 @@ const Projects = () => {
                 belowComponent={(
                   <S.RepositoriesList container flexWrap="nowrap" flexDirection="row">
                     <SwipeAnimation lottieProps={{
-                      height: 80,
+                      height: '80px',
                       width: 'unset',
                       speed: 1.25,
-                      options: {
+                      config: {
                         animationData: SwipeRightAnimation,
                       },
                     }}
