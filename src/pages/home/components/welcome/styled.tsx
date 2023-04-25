@@ -126,6 +126,7 @@ export const FpsOption = styled(Button)(({ theme }) => `
   background-color: ${theme.palette.background.default};
   cursor: pointer;
   transition: background-color 200ms ease-in-out;
+  z-index: 1;
 
   &.current {
     background-color: ${theme.palette.background.paper};

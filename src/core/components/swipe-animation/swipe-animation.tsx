@@ -2,7 +2,7 @@ import cx from 'classnames';
 import {
   useEffect, useRef, useState, memo,
 } from 'react';
-import Lottie from 'react-lottie';
+import { Lottie } from '@alfonmga/react-lottie-light-ts'
 import { EResponsiveType } from 'src/core/models';
 import Responsive from '../responsive/responsive';
 

@@ -18,7 +18,7 @@ const SlideTitle = ({
 }: ISlideTitleProps) => {
   const intl = useIntl();
   const { inView, ref } = useInView({
-    threshold: 0.9, initialInView: false, triggerOnce: true,
+    threshold: 0.8, initialInView: false, triggerOnce: true,
   });
   const isMobile = useResponsive({ type: EResponsiveType.smaller });
   const [typewriterRef, setTypewriterRef] = useState<TypewriterClass | null>(null);
@@ -33,17 +33,18 @@ const SlideTitle = ({
   useEffect(() => {
     if (!typewriterRef) return;
 
-    typewriterRef.deleteAll();
+    typewriterRef.deleteAll(5);
     onTitleShow(typewriterRef);
   }, [intl, typewriterRef]);
 
   return (
     <Grid container flexWrap="nowrap" justifyContent="space-between" alignItems="center" ref={ref}>
-      <Box component="div">
+      <Box>
         {shouldShowTitle ? (
           <Typewriter
             onInit={(typewriter) => {
-              setTypewriterRef(typewriter);
+              typewriter.deleteAll(5);
+              onTitleShow(typewriter);
             }}
             typographyProps={{ fontSize: isMobile ? '24px' : '32px' }}
           />

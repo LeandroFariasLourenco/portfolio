@@ -1,6 +1,6 @@
-import { LottieProps } from 'react-lottie';
+import { ReactLottieOwnProps } from '@alfonmga/react-lottie-light-ts';
 
 export interface ISwipeAnimationProps {
-  lottieProps: LottieProps;
+  lottieProps: ReactLottieOwnProps;
   continuous?: boolean;
 }

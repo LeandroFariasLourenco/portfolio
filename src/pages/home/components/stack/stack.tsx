@@ -57,10 +57,10 @@ const Languages = () => {
       >
         <S.StackWrapper container>
           <SwipeAnimation lottieProps={{
-            height: 75,
+            height: '75px',
             speed: 1.25,
-            width: 155,
-            options: {
+            width: '155px',
+            config: {
               animationData: SwipeRightAnimation,
             },
           }}

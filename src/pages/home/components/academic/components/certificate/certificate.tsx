@@ -1,11 +1,10 @@
 import { OpenInNew, RemoveRedEye } from '@mui/icons-material';
-import { Typography, Grid } from '@mui/material';
+import { Typography } from '@mui/material';
 import { useRef } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import Responsive from 'src/core/components/responsive/responsive';
-import { useLinkTarget, useResponsive } from 'src/core/hooks';
-import { EResponsiveType } from 'src/core/models';
+import { useLinkTarget } from 'src/core/hooks';
 
 import { ICardProps } from './props.interface';
 import * as S from './styled';
@@ -15,7 +14,6 @@ const Certificate = ({
   index,
 }: ICardProps) => {
   const cardWrapperRef = useRef<HTMLDivElement>();
-  const isMobile = useResponsive({ breakpoint: 'md', type: EResponsiveType.smaller });
   const linkTarget = useLinkTarget();
 
   return (

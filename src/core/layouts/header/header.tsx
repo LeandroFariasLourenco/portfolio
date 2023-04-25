@@ -109,23 +109,25 @@ const Header = () => {
                         setMobileMenuOpen(true);
                       }}
                     >
-                      <S.MobileDrawerContainer container flexDirection="column">
-                        <Grid item xs flex={0}>
-                          <S.MobileDrawerDivider textAlign="center">
-                            <Grid container flexWrap="nowrap" alignItems="center">
-                              <GitHub htmlColor="#fff" style={{ marginRight: 10 }} />
-                              <Typography variant="h2">Leandro</Typography>
-                            </Grid>
-                          </S.MobileDrawerDivider>
-                        </Grid>
-                        <Grid item flex={1}>
-                          {menuOptions.map(renderMenuOptions)}
-                        </Grid>
-                        <Grid item xs flex={0}>
-                          <S.MobileDrawerDivider textAlign="center"><Chip label={<Typography variant="h3">Feito por</Typography>} /></S.MobileDrawerDivider>
-                          <S.Signature src={getBucketResource('/signature.png')} alt="signature" />
-                        </Grid>
-                      </S.MobileDrawerContainer>
+                      {mobileMenuOpen ? (
+                        <S.MobileDrawerContainer container flexDirection="column">
+                          <Grid item xs flex={0}>
+                            <S.MobileDrawerDivider textAlign="center">
+                              <Grid container flexWrap="nowrap" alignItems="center">
+                                <GitHub htmlColor="#fff" style={{ marginRight: 10 }} />
+                                <Typography variant="h2">Leandro</Typography>
+                              </Grid>
+                            </S.MobileDrawerDivider>
+                          </Grid>
+                          <Grid item flex={1}>
+                            {menuOptions.map(renderMenuOptions)}
+                          </Grid>
+                          <Grid item xs flex={0}>
+                            <S.MobileDrawerDivider textAlign="center"><Chip label={<Typography variant="h3">Feito por</Typography>} /></S.MobileDrawerDivider>
+                            <S.Signature src={getBucketResource('/signature.png')} alt="signature" />
+                          </Grid>
+                        </S.MobileDrawerContainer>
+                      ) : null}
                     </S.MobileDrawer>
                     <Grid onClick={() => {
                       setMobileMenuOpen(true);

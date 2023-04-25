@@ -27,7 +27,9 @@ const Section = ({
     <Grid item xs={12} width="100%" style={{ maxWidth: 1000 }}>
       <SlideTitle
         icon={icon}
-        onTitleShow={onTitleShow}
+        onTitleShow={(typewriter) => {
+          onTitleShow(typewriter);
+        }}
       />
       <Box {...childrenWrapperProps}>
         {children}

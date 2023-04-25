@@ -12,15 +12,11 @@ Remover refs de dependências de useEffect
 
 Refatorar useResponsive para não ficar adicionando listeners toda vez que é criado um hook
 
-Ajustar links de certificações
-
 Traduzir textos de instruções do snake-game
 
 Mudar plano de fundo do snake-game para video
 
 Ajustar intersection observer com document.root
-
-Ajustar animação na aba de stack no mobile
 
 Revisar textos em inglês
 
