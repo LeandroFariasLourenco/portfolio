@@ -49,16 +49,16 @@ const MyTimeline = () => {
 
   const renderLandmark = useCallback((landmark: typeof landmarks[0], index: number) => {
     const { background, icon } = {
-      [EAchievementType.INITIAL]: { background: '#015a44', icon: <Flag fontSize="large" htmlColor="white" /> },
-      [EAchievementType.START]: { background: '#015a44', icon: <Star fontSize="large" htmlColor="white" /> },
+      [EAchievementType.INITIAL]: { background: '#0a5f15', icon: <Flag fontSize="large" htmlColor="white" /> },
+      [EAchievementType.START]: { background: '#25967a', icon: <Star fontSize="large" htmlColor="white" /> },
       [EAchievementType.CERTIFICATE]: { background: '#fc8e27', icon: <CardMembership fontSize="large" htmlColor="white" /> },
       [EAchievementType.EDUCATION]: { background: '#2b51b8', icon: <School fontSize="large" htmlColor="white" /> },
       [EAchievementType.JOB]: { background: '#ff8902', icon: <Work fontSize="large" htmlColor="white" /> },
       [EAchievementType.PROJECT]: { background: '#ff3a04', icon: <PresentToAll fontSize="large" htmlColor="white" /> },
       [EAchievementType.PROMOTION]: { background: '#406794', icon: <Upgrade fontSize="large" htmlColor="white" /> },
-      [EAchievementType.FREELANCE]: { background: '#005842', icon: <DeveloperMode fontSize="large" htmlColor="white" /> },
-      [EAchievementType.MENTORING]: { background: '#005842', icon: <CastForEducation fontSize="large" htmlColor="white" /> },
-      [EAchievementType.CONCLUSION]: { background: '#005842', icon: <WorkspacePremium fontSize="large" htmlColor="white" /> },
+      [EAchievementType.FREELANCE]: { background: '#211f8d', icon: <DeveloperMode fontSize="large" htmlColor="white" /> },
+      [EAchievementType.MENTORING]: { background: '#5e0d94', icon: <CastForEducation fontSize="large" htmlColor="white" /> },
+      [EAchievementType.CONCLUSION]: { background: '#0c55c4', icon: <WorkspacePremium fontSize="large" htmlColor="white" /> },
     }[landmark.type]!;
     return (
       <Fragment
@@ -88,6 +88,7 @@ const MyTimeline = () => {
               height: 0,
               padding: 0,
               width: 0,
+              boxShadow: 'none',
             }}
             icon={(
               <S.ShowMore
@@ -121,8 +122,8 @@ const MyTimeline = () => {
           >
             <VerticalTimelineElement
               iconStyle={{
-                background: '#015a44',
-                boxShadow: '0 0 0 4px #015a44, inset 0 2px 0 rgb(0 0 0 / 8%), 0 3px 0 4px rgb(0 0 0 / 5%)',
+                background: '#0a5f15',
+                boxShadow: '0 0 0 4px #0a5f15, inset 0 2px 0 rgb(0 0 0 / 8%), 0 3px 0 4px rgb(0 0 0 / 5%)',
               }}
               icon={(
                 <SettingsEthernet

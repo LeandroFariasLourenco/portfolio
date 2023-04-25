@@ -4,6 +4,7 @@ $squareColors: #06d674 !default;
   width: $w;
   height: $h;
   background: $bg;
+  margin: 7px;
 }
 
 @mixin anim($listName, $delay) {
@@ -27,7 +28,13 @@ $squareColors: #06d674 !default;
   }
 
   &-block {
-    @include obj(55px, 55px, $squareColors);
+    @media only screen and (max-width: 600px) {
+      @include obj(15px, 15px, $squareColors);
+    }
+
+    @media only screen and (min-width: 1200px) {
+      @include obj(55px, 55px, $squareColors);
+    }
     border-radius: 4px;
     box-shadow: 0 0 1px #fff, 0 0 5px $squareColors, 0 0 10px $squareColors, 0 0 15px $squareColors,
       0 0 25px $squareColors, 0 0 55px $squareColors;

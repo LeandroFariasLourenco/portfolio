@@ -6,15 +6,17 @@ import { useTheme } from '@mui/material';
 import cx from 'classnames';
 import {
   useCallback,
-  useEffect, useMemo, useRef, useState,
+  useEffect,
+  useRef, useState,
 } from 'react';
 import { useIntl } from 'react-intl';
 import { Typewriter } from 'src/core/components';
+import { APP } from 'src/core/constants';
 import { deleteLastCharacter } from 'src/core/functions';
 import { useIsWindowTop, useLoginTime } from 'src/core/hooks';
 import { EAppSections } from 'src/core/models';
 import { TypewriterClass } from 'typewriter-effect';
-import { APP } from 'src/core/constants';
+import useIntroTerminalTexts from '../../hooks/use-intro-terminal-texts';
 import { ITerminalLine } from '../mobile-terminal/models/terminal-line.interface';
 import { IDesktopTerminalProps } from './props.interface';
 import * as S from './styled';
@@ -30,54 +32,17 @@ const DesktopTerminal = ({
   const { isWindowOnTop } = useIsWindowTop();
   const isWindowOnTopRef = useRef<boolean>(isWindowOnTop);
   const terminalContainerRef = useRef<HTMLDivElement>();
+  const animationQueue = useRef<number[]>([]);
   const { loginTime } = useLoginTime();
-
-  const introTerminalTexts = useMemo<ITerminalLine[]>(() => ([
-    {
-      key: 'first',
-      timer: 0,
-      typeText: (typewriter: TypewriterClass) => {
-        typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.text1.string1' }))
-          .deleteChars(4)
-          .typeString(intl.formatMessage({ id: 'home.welcome.terminal.text1.string2' }))
-          .deleteChars(2)
-          .typeString(intl.formatMessage({ id: 'home.welcome.terminal.text1.string3' }))
-          .start();
-      },
-    },
-    {
-      key: 'second',
-      timer: 2550,
-      typeText: (typewriter: TypewriterClass) => {
-        typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.text2.string1' }))
-          .start();
-      },
-    },
-    {
-      key: 'third',
-      timer: 4750,
-      typeText: (typewriter: TypewriterClass) => {
-        typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.text3.string1' }))
-          .start();
-      },
-    },
-    {
-      key: 'fourth',
-      timer: 5750,
-      typeText: (typewriter: TypewriterClass) => {
-        typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.text4.string1' }))
-          .start();
-      },
-    },
+  const introTerminalTexts = useIntroTerminalTexts([
     {
       key: 'fifth',
-      timer: 6850,
+      timer: 3425,
       typeText: (typewriter: TypewriterClass) => {
-        typewriter.typeString('Digite /help para mais informações').start();
+        typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.helper-command' })).start();
       },
     },
-    // },
-  ]), [intl]);
+  ]);
 
   const scrollToTerminalBottom = useCallback(() => {
     requestAnimationFrame(() => {
@@ -132,7 +97,7 @@ const DesktopTerminal = ({
         return [''];
       }
 
-      const answers = ['jogodacobrinha', 'cobrinha', 'serpente', 'jogo da serpente', 'snake', 'snakegame', 'jogodacobra'];
+      const answers = ['jogodacobrinha', 'cobrinha', 'serpente', 'jogodaserpente', 'snake', 'snakegame', 'jogodacobra'];
       if (answers.includes(userInput
         .trim()
         .toLowerCase()
@@ -219,7 +184,12 @@ const DesktopTerminal = ({
     isWindowOnTopRef.current = isWindowOnTop;
   }, [isWindowOnTop]);
 
-  const setupTerminalTimer = () => {
+  const initTerminal = useCallback(() => {
+    animationQueue.current.forEach((timeout) => { clearTimeout(timeout); });
+    animationQueue.current = [];
+    setTerminalRowsCount(['']);
+    setWelcomeMessages([]);
+
     introTerminalTexts.forEach((terminalText) => {
       const timeout = setTimeout(() => {
         if (welcomeMessages.length !== introTerminalTexts.length) {
@@ -227,12 +197,49 @@ const DesktopTerminal = ({
         }
         clearTimeout(timeout);
       }, terminalText.timer);
+      animationQueue.current.push(timeout);
     });
-  };
+  }, []);
+
+  const renderTerminalMessage = useCallback((text: string, index: number) => (
+    <S.TerminalRow key={`${text}-${index}`}>
+      <S.TerminalPrefixText variant="h6">
+        <ArrowRightAlt fontSize="small" />
+        ~
+      </S.TerminalPrefixText>
+      <S.TerminalText
+        variant="h6"
+        className={cx({
+          'is--current--line': index === terminalRows.length - 1,
+        })}
+        dangerouslySetInnerHTML={{ __html: text }}
+      />
+    </S.TerminalRow>
+  ), [intl]);
+
+  const renderWelcomeMessage = useCallback((text: ITerminalLine, index: number) => (
+    <S.TerminalRow
+      key={`${text.key}-${index}`}
+    >
+      <S.TerminalPrefixText variant="h6">
+        <ArrowRightAlt fontSize="small" />
+        ~
+      </S.TerminalPrefixText>
+      <Typewriter
+        options={{
+          delay: 10,
+        }}
+        typographyProps={{
+          variant: 'h6',
+        }}
+        onInit={introTerminalTexts[index].typeText}
+      />
+    </S.TerminalRow>
+  ), [intl]);
 
   useEffect(() => {
-    setupTerminalTimer();
-  }, []);
+    initTerminal();
+  }, [intl]);
 
   return (
     <S.TerminalComponentWrapper
@@ -295,40 +302,8 @@ const DesktopTerminal = ({
             <S.TerminalRow>
               <S.TerminalPrefixText variant="h6">{loginTime}</S.TerminalPrefixText>
             </S.TerminalRow>
-            {welcomeMessages.map((text, index) => (
-              <S.TerminalRow
-                key={`${text.key}-${index}`}
-              >
-                <S.TerminalPrefixText variant="h6">
-                  <ArrowRightAlt fontSize="small" />
-                  ~
-                </S.TerminalPrefixText>
-                <Typewriter
-                  options={{
-                    delay: 25,
-                  }}
-                  typographyProps={{
-                    variant: 'h6',
-                  }}
-                  onInit={introTerminalTexts[index].typeText}
-                />
-              </S.TerminalRow>
-            ))}
-            {welcomeMessages.length === introTerminalTexts.length && terminalRows.map((text, index) => (
-              <S.TerminalRow key={`${text}-${index}`}>
-                <S.TerminalPrefixText variant="h6">
-                  <ArrowRightAlt fontSize="small" />
-                  ~
-                </S.TerminalPrefixText>
-                <S.TerminalText
-                  variant="h6"
-                  className={cx({
-                    'is--current--line': index === terminalRows.length - 1,
-                  })}
-                  dangerouslySetInnerHTML={{ __html: text }}
-                />
-              </S.TerminalRow>
-            ))}
+            {welcomeMessages.map(renderWelcomeMessage)}
+            {welcomeMessages.length === introTerminalTexts.length && terminalRows.map(renderTerminalMessage)}
           </S.TerminalContent>
         </S.TerminalWrapper>
       </S.TypeWriterBackground>

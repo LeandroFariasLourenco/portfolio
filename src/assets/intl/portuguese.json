@@ -4,6 +4,9 @@
   "general.button.see": "Visualizar",
   "general.button.see-more": "Ver mais",
   "general.button.see-less": "Ver menos",
+  "general.button.go-back": "Voltar",
+
+  "not-available.text": "Parece que você acessou esta tela com um dispositivo que ainda não é suportado. Mas não se preocupe, em um tempo não tão distante isso será resolvido. Enquanto isso, que tal aproveitar para relaxar e tomar uma xícara de café enquanto aguarda? Ou melhor ainda, tentar acessar meu portfólio pelo desktop ou celular?",
 
   "header.links.section.about-me": "Sobre mim",
   "header.links.section.experience": "Experiência",
@@ -13,12 +16,23 @@
   "header.links.section.trajectory": "Trajetória",
   "header.links.section.curriculum": "Currículo",
 
+  "home.welcome.terminal.last-login": "Último login:",
+  "home.welcome.terminal.console": "no console.",
+  "home.welcome.terminal.helper-command": "Digite /help para mais informações",
+
   "home.welcome.terminal.text1.string1": "Olá, eu s",
   "home.welcome.terminal.text1.string2": "sou o Leon",
   "home.welcome.terminal.text1.string3": "andro Farias!",
   "home.welcome.terminal.text2.string1": "Este é o meu portfólio que montei para você conhecer um pouco de mim.",
   "home.welcome.terminal.text3.string1": "Espero que goste!",
   "home.welcome.terminal.text4.string1": "Não se esqueça de entrar em contato!",
+
+  "home.welcome.snake-game.score": "Pontuação",
+  "home.welcome.snake-game.restart": "Recomeçar",
+  "home.welcome.snake-game.game-over": "Game Over",
+  "home.welcome.snake-game.paused": "Pausado",
+  "home.welcome.snake-game.pause": "Pausar",
+  "home.welcome.snake-game.movement-keys": "Teclas de movimento",
 
   "home.welcome.terminal.not-found": "Bash: comando não encontrado:",
   "home.welcome.terminal.possible-commands": "Aqui está uma lista de comandos possíveis:",

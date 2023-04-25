@@ -3,14 +3,14 @@ import { Typography } from '@mui/material';
 import { memo } from 'react';
 import { TECHNOLOGY_ICONS } from 'src/assets/resources/technology-icons';
 import Responsive from 'src/core/components/responsive/responsive';
-import { useResponsive } from 'src/core/hooks';
+import { useLinkTarget } from 'src/core/hooks';
 import { IRepositoryProps } from './props.interface';
 import * as S from './styled';
 
 const Repository = ({
   repository,
 }: IRepositoryProps) => {
-  const isDesktop = useResponsive({});
+  const linkTarget = useLinkTarget();
 
   const getRepositoryLanguageIcon = (language: string) => {
     switch (language?.toLowerCase()) {
@@ -41,7 +41,7 @@ const Repository = ({
 
   return (
     <S.RepositoryContainer
-      target={isDesktop ? '_blank' : '_self'}
+      target={linkTarget}
       href={repository.html_url}
     >
       <S.RepositoryRow>

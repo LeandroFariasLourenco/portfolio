@@ -12,8 +12,12 @@ const rotationKeyframe = keyframes`
   }
 `;
 
-export const Container = styled(Grid)`
-  
+export const ExperienceContainer = styled(Grid)`
+  background-color: rgba(28, 22, 48, 0.70);
+
+  .background-canvas {
+    opacity: 0.30;
+  }
 `;
 
 export const SwiperContainer = styled(Grid)(({ theme }) => `
@@ -69,7 +73,6 @@ export const ExperienceAnimatedContainer = styled(Box) <{
   animation-delay: ${({ $index }) => $index * 2}s;
   animation-name: ${rotationKeyframe};
   animation-duration: 40s;
-  /* animation-direction: ${({ $index }) => ($index % 2 === 0 ? 'normal' : 'reverse')}; */
   animation-direction: ${({ $direction }) => ($direction === 'left' ? 'normal' : 'reverse')};
   animation-iteration-count: infinite;
 

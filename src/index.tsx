@@ -12,12 +12,11 @@ import 'yet-another-react-lightbox/plugins/thumbnails.css';
 
 import 'react-vertical-timeline-component/style.min.css';
 
-import { observer } from 'mobx-react-lite';
-import GlobalProvider, { useGlobalContext } from './core/store/global/context';
+import GlobalProvider, { useGlobalContext } from './core/context/global/context';
 import reportWebVitals from './reportWebVitals';
 import Global from './styles/global';
 
-const IntlComponent = observer(() => {
+const IntlComponent = () => {
   const globalContext = useGlobalContext();
 
   return (
@@ -29,7 +28,7 @@ const IntlComponent = observer(() => {
       <Routes />
     </IntlProvider>
   );
-});
+};
 
 const Providers = () => (
   <StyledEngineProvider injectFirst>

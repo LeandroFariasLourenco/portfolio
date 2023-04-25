@@ -1,34 +1,31 @@
-import { Add, ArrowDownward } from '@mui/icons-material';
+import { ArrowDownward } from '@mui/icons-material';
 import {
-  Grid, styled, Box, css,
+  Box,
+  Grid,
+  css,
+  styled,
 } from '@mui/material';
 import { VerticalTimelineElement } from 'react-vertical-timeline-component';
-import { getBucketResource } from 'src/core/functions';
 import { mixins } from 'src/styles/utils';
 
 export const TimelineContainer = styled(Box)`
-  ${mixins.linearGradientBackground({
-    backgroundImage: getBucketResource('/wallpapers/terminal.png'),
-    gradientColor: 'linear-gradient(rgba(28, 22, 48, 0.88), rgba(28, 22, 48,0.95))',
-  })};
-  
-  ${({ theme }) => theme.breakpoints.up('md')} {
-    background-attachment: fixed;
-  }
+  background-color: rgba(28, 22, 48, 0.10);
 `;
 
 export const CustomTimelineElement = styled(VerticalTimelineElement)<{
   $background: string;
 }>(({ theme, $background }) => `
-  .vertical-timeline-element-content {
-    background-color: ${theme.palette.background.paper};
-    border-bottom: none;
-    border-radius: 0;
-    padding: 15px;
-    box-shadow: 0 0 2px ${$background};
+  .vertical-timeline-element {
+    &-content {
+      background-color: ${theme.palette.background.paper};
+      border-bottom: none;
+      border-radius: 0;
+      padding: 15px;
+      box-shadow: 0 0 2px ${$background};
 
-    .landmark-date {
-      text-shadow: 0 0 5px ${$background};
+      .landmark-date {
+        text-shadow: 0 0 5px ${$background};
+      }
     }
   }
 
@@ -54,14 +51,22 @@ export const ArrowDown = styled(ArrowDownward)`
 
 export const ShowMore = styled(Grid)(({ theme }) => css`
   position: relative;
-  height: 55px;
-  width: 55px;
   background-color: ${theme.palette.primary.main};
   z-index: 1;
   cursor: pointer;
-  margin-left: calc(55px / -2);
-  margin-top: -15px;
   ${mixins.pulseStyle};
+
+  ${theme.breakpoints.down('md')} {
+    width: 40px;
+    height: 40px;
+  }
+
+  ${theme.breakpoints.up('md')} {
+    margin-left: calc(55px / -2);
+    margin-top: -15px;
+    height: 55px;
+    width: 55px;
+  }
 
   svg {
     margin: 0 !important;

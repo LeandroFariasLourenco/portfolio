@@ -14,6 +14,7 @@ import { CustomSwiperControls } from 'src/core/components';
 import Responsive from 'src/core/components/responsive/responsive';
 import SlideTitle from 'src/core/components/slide-title/slide-title';
 import SwipeAnimation from 'src/core/components/swipe-animation/swipe-animation';
+import { APP } from 'src/core/constants';
 import { getBucketResource } from 'src/core/functions';
 import { useSwiperProps } from 'src/core/hooks';
 import { Section } from 'src/core/layouts';
@@ -21,7 +22,6 @@ import { EAppSections, EResponsiveType } from 'src/core/models';
 import { IGithubRepository } from 'src/core/models/github-repository.interface';
 import { GithubService } from 'src/core/services';
 import {
-  EffectCards,
   Swiper as SwiperClass,
 } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -31,8 +31,8 @@ import DesktopProject from './components/desktop-project/desktop-project';
 import MobileLightbox from './components/mobile-lightbox/mobile-lightbox';
 import MobileProject from './components/mobile-project/mobile-project';
 import Repository from './components/repository/repository';
-import * as S from './styled';
 import ProjectsProvider from './context/projects.context';
+import * as S from './styled';
 
 const Projects = () => {
   const [repositories, setRepositories] = useState<IGithubRepository[]>([]);
@@ -64,7 +64,7 @@ const Projects = () => {
       ],
       image: getBucketResource('/projects/futawesome.png'),
       icons: [TECHNOLOGY_ICONS.DART, TECHNOLOGY_ICONS.FLUTTER],
-      link: 'https://github.com/LeandroFariasLourenco/futawesome',
+      link: `${APP.socials.github}/futawesome`,
     },
     {
       title: 'Zappy code',
@@ -74,7 +74,7 @@ const Projects = () => {
       ],
       image: getBucketResource('/projects/zappy-code.jpeg'),
       icons: [TECHNOLOGY_ICONS.SWIFT],
-      link: 'https://github.com/LeandroFariasLourenco/ZappyCode',
+      link: `${APP.socials.github}/ZappyCode`,
     },
     {
       title: 'Finantial Data Chart',
@@ -84,7 +84,7 @@ const Projects = () => {
       ],
       image: getBucketResource('/projects/petra.png'),
       icons: [TECHNOLOGY_ICONS.TYPESCRIPT, TECHNOLOGY_ICONS.ANGULAR, TECHNOLOGY_ICONS.SASS, TECHNOLOGY_ICONS.HTML],
-      link: 'https://github.com/LeandroFariasLourenco/finantial-data-chart',
+      link: `${APP.socials.github}/finantial-data-chart`,
     },
     {
       title: 'Restaurant Finder',
@@ -94,7 +94,7 @@ const Projects = () => {
       ],
       image: getBucketResource('/projects/restaurant-finder.png'),
       icons: [TECHNOLOGY_ICONS.TYPESCRIPT, TECHNOLOGY_ICONS.SASS, TECHNOLOGY_ICONS.REACT, TECHNOLOGY_ICONS.HTML],
-      link: 'https://github.com/LeandroFariasLourenco/restaurants-maps-api',
+      link: `${APP.socials.github}/restaurants-maps-api`,
     },
     {
       title: 'Daily journal',
@@ -104,7 +104,7 @@ const Projects = () => {
       ],
       image: getBucketResource('/projects/diary.jpeg'),
       icons: [TECHNOLOGY_ICONS.SWIFT],
-      link: 'https://github.com/LeandroFariasLourenco/Daily-Journal',
+      link: `${APP.socials.github}/Daily-Journal`,
     },
     {
       title: 'Canvas Matrix',
@@ -114,7 +114,7 @@ const Projects = () => {
       ],
       image: getBucketResource('/projects/matrix.mp4'),
       icons: [TECHNOLOGY_ICONS.JAVASCRIPT, TECHNOLOGY_ICONS.CSS, TECHNOLOGY_ICONS.HTML],
-      link: 'https://github.com/LeandroFariasLourenco/matrix',
+      link: `${APP.socials.github}/matrix`,
     },
     {
       title: 'Snake Game',
@@ -125,7 +125,7 @@ const Projects = () => {
       ],
       image: getBucketResource('/projects/snake-game.mp4'),
       icons: [TECHNOLOGY_ICONS.JAVASCRIPT, TECHNOLOGY_ICONS.REACT, TECHNOLOGY_ICONS.SASS, TECHNOLOGY_ICONS.HTML],
-      link: 'https://github.com/LeandroFariasLourenco/snake-game',
+      link: `${APP.socials.github}/snake-game`,
     },
     {
       title: 'Solar System',
@@ -135,7 +135,7 @@ const Projects = () => {
       ],
       image: getBucketResource('/projects/solar-system.png'),
       icons: [TECHNOLOGY_ICONS.JAVASCRIPT, TECHNOLOGY_ICONS.HTML, TECHNOLOGY_ICONS.CSS],
-      link: 'https://github.com/LeandroFariasLourenco/solar-system',
+      link: `${APP.socials.github}/solar-system`,
     },
     {
       title: 'Be the Hero',
@@ -146,7 +146,7 @@ const Projects = () => {
       ],
       image: getBucketResource('/projects/be-the-hero.png'),
       icons: [TECHNOLOGY_ICONS.JAVASCRIPT, TECHNOLOGY_ICONS.HTML, TECHNOLOGY_ICONS.CSS, TECHNOLOGY_ICONS.REACT],
-      link: 'https://github.com/LeandroFariasLourenco/be-the-hero',
+      link: `${APP.socials.github}/be-the-hero`,
     },
   ], [intl]);
 

@@ -1,14 +1,14 @@
-import { useContext, useMemo } from 'react';
+import { useMemo } from 'react';
 import Lightbox, { Slide } from 'yet-another-react-lightbox';
 import { Thumbnails } from 'yet-another-react-lightbox/plugins';
+import { useProjectsContext } from '../../context/projects.context';
 import { IMobileLightboxProps } from './props.interface';
-import { ProjectsContext } from '../../context/projects.context';
 
 const MobileLightbox = ({
   projects,
   swiperIndex,
 }: IMobileLightboxProps) => {
-  const { mobile: { lightbox: { open, setOpen } } } = useContext(ProjectsContext);
+  const { mobile: { lightbox: { open, setOpen } } } = useProjectsContext();
   const slides: Slide[] = useMemo<Slide[]>(() => projects.map(({
     image: background,
   }) => ({

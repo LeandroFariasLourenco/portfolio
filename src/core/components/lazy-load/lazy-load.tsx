@@ -1,7 +1,6 @@
 import {
-  Suspense,
   memo,
-  useCallback, useMemo,
+  useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { v4 as uuid } from 'uuid';
@@ -15,20 +14,38 @@ const LazyLoad = ({
   children,
 }: ILazyLoadProps) => {
   const { inView, ref } = useInView({
-    threshold: 0.05,
-    triggerOnce: true,
+    threshold: 0.25,
+    triggerOnce: false,
     initialInView: false,
     // root: document.body,
   });
+  const minimumTimeToShow = useMemo(() => 750, []);
+  const [inViewDebounce, setInViewDebounce] = useState<boolean>(false);
   const loaderBlocksCount = useMemo(() => 25, []);
   const renderLoaderBlock = useCallback(() => <li className="loader-block" key={uuid()} />, []);
+
+  useEffect(() => {
+    if (inView) {
+      const timeout = setTimeout(() => {
+        setInViewDebounce(true);
+      }, minimumTimeToShow);
+
+      return () => clearTimeout(timeout);
+    }
+
+    return undefined;
+  }, [inView]);
 
   return (
     <S.LazyloadWrapper
       ref={ref}
-      $inView={inView}
+      $inView={inViewDebounce}
     >
-      {inView ? children : (
+      {inViewDebounce ? (
+        <S.ChildrenWrapper>
+          {children}
+        </S.ChildrenWrapper>
+      ) : (
         <S.LoaderContainer>
           <div className="wrapper">
             <ul className="loader-wrapper">

@@ -32,8 +32,8 @@ const useLoginTime = () => {
       11: 'Dez',
     }[date.getMonth()];
 
-    setLoginTime(`Último login: ${day} ${month} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} no console`);
-  }, []);
+    setLoginTime(`${intl.formatMessage({ id: 'home.welcome.terminal.last-login' })} ${day} ${month} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} ${intl.formatMessage({ id: 'home.welcome.terminal.console' })}`);
+  }, [intl]);
 
   return { loginTime };
 };

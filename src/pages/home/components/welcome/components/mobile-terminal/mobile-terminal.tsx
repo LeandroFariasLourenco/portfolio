@@ -2,61 +2,22 @@ import {
   Close, CropDin, Remove,
 } from '@mui/icons-material';
 import { Grid } from '@mui/material';
+import cx from 'classnames';
 import {
-  useCallback, useEffect, useMemo, useState,
+  useCallback, useEffect,
+  useState,
 } from 'react';
-import { useIntl } from 'react-intl';
 import { Typewriter } from 'src/core/components';
 import { getBucketResource } from 'src/core/functions';
-import { TypewriterClass } from 'typewriter-effect';
-import cx from 'classnames';
 import { useIsWindowTop } from 'src/core/hooks';
+import useIntroTerminalTexts from '../../hooks/use-intro-terminal-texts';
 import { ITerminalLine } from './models/terminal-line.interface';
 import * as S from './styled';
 
 const MobileTerminal = () => {
-  const intl = useIntl();
   const [terminalRows, setTerminalRows] = useState<ITerminalLine[]>([]);
   const { isWindowOnTop } = useIsWindowTop();
-
-  const terminalTexts = useMemo<ITerminalLine[]>(() => ([
-    {
-      key: 'first',
-      timer: 0,
-      typeText: (typewriter: TypewriterClass) => {
-        typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.text1.string1' }))
-          .deleteChars(4)
-          .typeString(intl.formatMessage({ id: 'home.welcome.terminal.text1.string2' }))
-          .deleteChars(2)
-          .typeString(intl.formatMessage({ id: 'home.welcome.terminal.text1.string3' }))
-          .start();
-      },
-    },
-    {
-      key: 'second',
-      timer: 2250,
-      typeText: (typewriter: TypewriterClass) => {
-        typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.text2.string1' }))
-          .start();
-      },
-    },
-    {
-      key: 'third',
-      timer: 4750,
-      typeText: (typewriter: TypewriterClass) => {
-        typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.text3.string1' }))
-          .start();
-      },
-    },
-    {
-      key: 'fourth',
-      timer: 5750,
-      typeText: (typewriter: TypewriterClass) => {
-        typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.text4.string1' }))
-          .start();
-      },
-    },
-  ]), [intl]);
+  const terminalTexts = useIntroTerminalTexts();
 
   const setupTerminalTimer = useCallback(() => {
     terminalTexts.forEach((terminalText) => {
@@ -145,7 +106,7 @@ const MobileTerminal = () => {
                   <S.TerminalTabCommandPrefix variant="h6">$</S.TerminalTabCommandPrefix>
                   <Typewriter
                     options={{
-                      delay: 25,
+                      delay: 10,
                     }}
                     typographyProps={{
                       variant: 'h6',

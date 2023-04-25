@@ -68,8 +68,5 @@ export const HobbyText = styled(Typography)(({ theme }) => `
 export const HobbyContainer = styled(Grid)``;
 
 export const AboutMeWrapper = styled(Grid)`
-  ${mixins.linearGradientBackground({
-    backgroundImage: getBucketResource('/wallpapers/web-developer-background.png'),
-    gradientColor: 'linear-gradient(to top, rgba(28, 22, 45), rgba(28, 22, 48,0.95))',
-  })}
+  background-color: rgba(28, 22, 48, 0.85);
 `;

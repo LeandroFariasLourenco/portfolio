@@ -4,7 +4,7 @@ import { useRef } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import Responsive from 'src/core/components/responsive/responsive';
-import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
+import { useLinkTarget, useResponsive } from 'src/core/hooks';
 import { EResponsiveType } from 'src/core/models';
 
 import { ICardProps } from './props.interface';
@@ -16,6 +16,7 @@ const Certificate = ({
 }: ICardProps) => {
   const cardWrapperRef = useRef<HTMLDivElement>();
   const isMobile = useResponsive({ breakpoint: 'md', type: EResponsiveType.smaller });
+  const linkTarget = useLinkTarget();
 
   return (
     <S.CertificateWrapper
@@ -40,7 +41,7 @@ const Certificate = ({
             <Typography variant="h5" fontSize="20px" textAlign="center"><FormattedMessage id={card.title} /></Typography>
             <S.CertificateLink
               href={card.link}
-              target={!isMobile ? '_blank' : '_self'}
+              target={linkTarget}
             >
               <RemoveRedEye color="primary" />
               <Responsive
@@ -55,7 +56,7 @@ const Certificate = ({
         belowComponent={(
           <S.CertificateLink
             href={card.link}
-            target={!isMobile ? '_blank' : '_self'}
+            target={linkTarget}
           >
             <S.CertificateContainer
               container

@@ -1,26 +1,28 @@
 import {
   Typography, Grid, Card, Box,
 } from '@mui/material';
+import { mixins } from 'src/styles/utils';
 import styled from 'styled-components';
 
 export const CurrentExperience = styled(Typography)`
   position: absolute;
-  top: 5px;
-  left: -26px;
+  top: 2%;  
+  left: -10%;
   background-color: ${({ theme }) => theme.palette.primary.main};
   display: block;
   z-index: 1;
   transform: rotate(-45deg);
   font-size: 20px;
   color: white;
-  padding: 5px 30px;
+  width: 132px;
+  height: 40px;
+  ${mixins.flexCentered};
   text-shadow: 0 0 2px black;
 `;
 
 export const ExperienceContainer = styled(Grid)(({ theme }) => `
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
   padding-bottom: 8px;
   isolation: isolate;
 `);
@@ -57,7 +59,9 @@ export const ExperienceCard = styled(Card)(({ theme }) => `
   width: 100%;
   margin: 4px;
   transition: background-color 500ms ease-in-out;
-  border-radius: 10px;
+  border-radius: 0;
+  background-color: ${theme.palette.background.paper};
+  border: 1px solid ${theme.palette.secondary.main};
 
   &::after,
   &::before {
@@ -72,6 +76,7 @@ export const ExperienceCard = styled(Card)(({ theme }) => `
     background-clip: content-box;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 1;
   }
   
   &::after {

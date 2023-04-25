@@ -264,47 +264,49 @@ const Experience = () => {
   }, []);
 
   return (
-    <Section
-      id={EAppSections.EXPERIENCES}
-      onTitleShow={(typewriter) => {
-        typewriter.typeString(intl.formatMessage({ id: 'home.experience.title' }))
-          .start();
-      }}
-      icon={<WorkHistory fontSize="large" htmlColor="white" />}
-      gridStyle={{
-        position: 'relative',
-      }}
-    >
-      <Responsive
-        breakpoint="md"
+    <S.ExperienceContainer>
+      <Section
+        id={EAppSections.EXPERIENCES}
+        onTitleShow={(typewriter) => {
+          typewriter.typeString(intl.formatMessage({ id: 'home.experience.title' }))
+            .start();
+        }}
+        icon={<WorkHistory fontSize="large" htmlColor="white" />}
+        gridStyle={{
+          position: 'relative',
+        }}
       >
-        <LoadParticles id="experience-section" options={desktopParticlesConfig} />
-      </Responsive>
-      <S.SwiperContainer>
-        <Swiper
-          onInit={(swiper) => {
-            swiperRef.current = swiper;
-          }}
-          onRealIndexChange={({ realIndex }) => {
-            setSwiperIndex(realIndex);
-          }}
-          onTransitionStart={({ $el }) => {
-            if (!isMobile) return;
-            const swiperContainer = ($el[0] as HTMLDivElement);
-            swiperContainer.style.height = 'auto';
-          }}
-          {...swiperProps}
+        <Responsive
+          breakpoint="md"
         >
-          {experiences.map(renderExperience)}
-        </Swiper>
-        <CustomSwiperControls
-          swiper={swiperRef.current!}
-          swiperIndex={swiperIndex}
-          paginationLayout={isMobile ? 'vertical' : 'horizontal'}
-          totalSlides={experiences.length}
-        />
-      </S.SwiperContainer>
-    </Section>
+          <LoadParticles id="experience-section" options={desktopParticlesConfig} />
+        </Responsive>
+        <S.SwiperContainer>
+          <Swiper
+            onInit={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            onRealIndexChange={({ realIndex }) => {
+              setSwiperIndex(realIndex);
+            }}
+            onTransitionStart={({ $el }) => {
+              if (!isMobile) return;
+              const swiperContainer = ($el[0] as HTMLDivElement);
+              swiperContainer.style.height = 'auto';
+            }}
+            {...swiperProps}
+          >
+            {experiences.map(renderExperience)}
+          </Swiper>
+          <CustomSwiperControls
+            swiper={swiperRef.current!}
+            swiperIndex={swiperIndex}
+            paginationLayout={isMobile ? 'vertical' : 'horizontal'}
+            totalSlides={experiences.length}
+          />
+        </S.SwiperContainer>
+      </Section>
+    </S.ExperienceContainer>
   );
 };
 

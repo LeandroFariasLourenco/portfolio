@@ -1,4 +1,4 @@
-import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
+import { useResponsive } from 'src/core/hooks';
 import { EResponsiveType } from 'src/core/models';
 import { memo } from 'react';
 import { IResponsiveProps } from './props.interface';

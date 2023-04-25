@@ -20,20 +20,6 @@ const ExperienceDetails = ({
           {experience.description}
         </S.ExperienceDescriptionContainer>
 
-        <S.ExperienceStackContainer item xs={12}>
-          <Typography variant="h3"><FormattedMessage id="home.experience.stack" /></Typography>
-
-          <S.StackTechnologyListContainer component="ul">
-            {intl.formatMessage({ id: experience.stack }).split(',').map((name: string) => (
-              <S.StackTechnologyListItem
-                key={name}
-                component="ul"
-              >
-                <Typography>{name}</Typography>
-              </S.StackTechnologyListItem>
-            ))}
-          </S.StackTechnologyListContainer>
-        </S.ExperienceStackContainer>
       </Grid>
     </S.ExperienceCard>
   );

@@ -89,14 +89,10 @@ export const mixins = {
       ${theme.breakpoints.up('md')} {
         background-image: url(${backgroundImage});
         position: relative;
-        z-index: 1;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-
-        > * {
-          z-index: 3;
-        }
+        z-index: 0;
 
         &::before {
           content: '';
@@ -105,7 +101,7 @@ export const mixins = {
           position: absolute;
           top: 0;
           left: 0;
-          z-index: 2;
+          z-index: -1;
           background-image: ${gradientColor};
         }
       }

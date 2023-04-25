@@ -45,7 +45,7 @@ const Global = () => {
         height: '100%',
         left: 0,
         top: 0,
-        zIndex: -1,
+        zIndex: 1,
       },
       body: {
         backgroundColor: theme.palette.background.default,

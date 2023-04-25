@@ -1,19 +1,6 @@
 import {
-  Box, Card, Grid, styled,
+  Card, Grid, styled,
 } from '@mui/material';
-
-export const ExperienceStackContainer = styled(Grid)`
-  margin-top: 20px;
-`;
-
-export const StackTechnologyListContainer = styled(Box)``;
-
-export const StackTechnologyListItem = styled(Box)(({ theme }) => `
-  padding: 5px 10px;
-  border: 1px solid ${theme.palette.primary.main};
-  display: inline-block;
-  margin: 5px;
-`);
 
 export const ExperienceDescriptionContainer = styled(Grid)`
   p {
@@ -34,7 +21,9 @@ export const ExperienceCard = styled(Card)<{
   left: 50%;
   transform: translate(-50%, -50%);
   transition: background-color 500ms ease-in-out;
-  border-radius: 10px;
+  border-radius: 0;
+  background-color: ${theme.palette.background.paper};
+  border: 1px solid ${theme.palette.secondary.main};
 
   &::after {
     content: "";
@@ -49,5 +38,6 @@ export const ExperienceCard = styled(Card)<{
     top: 50%;
     ${$direction}: -7px;
     transform: translateY(-50%);
+    z-index: 1;
   }
 `);
