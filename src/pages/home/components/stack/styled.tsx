@@ -4,6 +4,7 @@ import {
 import { getBucketResource } from 'src/core/functions';
 import { mixins } from 'src/styles/utils';
 import styled from 'styled-components';
+import teste from 'src/assets/animations/teste.jpg';
 
 const changeTechnologyTab = keyframes`
   from {
@@ -75,10 +76,7 @@ export const TabContainer = styled(Grid)(({ theme }) => `
 export const TechnologyWrapper = styled(Box)``;
 
 export const SectionWrapper = styled(Grid)`
-  ${mixins.linearGradientBackground({
-    backgroundImage: getBucketResource('/wallpapers/developer.png'),
-    gradientColor: 'linear-gradient(rgba(28, 22, 48, 0.95), rgba(28, 22, 48, 1))',
-  })}
+  background-color: rgba(28, 22, 48, 0.55);
 `;
 
 export const TechnologyTabContainer = styled(Grid)`
@@ -91,8 +89,6 @@ export const TechnologyTabContainer = styled(Grid)`
   }
 
   &:not(&.selected) {
-    position: absolute;
-    opacity: 0;
-    transform: scale(0);
+    display: none;
   }
 `;

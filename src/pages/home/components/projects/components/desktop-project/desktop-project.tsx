@@ -1,10 +1,10 @@
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { Grid, IconButton, Typography } from '@mui/material';
 import cx from 'classnames';
-import { useMemo, useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import SeeMore from 'src/core/components/see-more/see-more';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { useLinkTarget } from 'src/core/hooks';
 import { GithubIcon } from 'src/core/layouts/footer/styled';
-import { useResponsive } from 'src/core/hooks';
 import { IDesktopProjectProps } from './props.interface';
 import * as S from './styled';
 
@@ -12,9 +12,9 @@ const DesktopProject = ({
   project,
 }: IDesktopProjectProps) => {
   const [previewing, setPreviewing] = useState<boolean>(false);
-  const isDesktop = useResponsive({});
   const renderProjectParagraph = useCallback((paragraph: string) => <Typography key={paragraph}>{paragraph}</Typography>, []);
   const isVideoBackground = useMemo(() => /\.mp4$/.test(project.image), []);
+  const linkTarget = useLinkTarget();
 
   return (
     <>
@@ -30,7 +30,7 @@ const DesktopProject = ({
           alignItems="flex-end"
         >
           <S.Actions>
-            <a target={isDesktop ? '_blank' : '_self'} href={project.link} rel="noreferrer">
+            <a target={linkTarget} href={project.link} rel="noreferrer">
               <GithubIcon fontSize="small" htmlColor="#fff" />
             </a>
             <IconButton onClick={() => setPreviewing((prevState) => !prevState)}>

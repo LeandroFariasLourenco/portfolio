@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { SwiperProps } from 'swiper/react';
-import useResponsive from '../useResponsive/useResponsive';
+import useResponsive from '../use-responsive/use-responsive';
 import { IUseSwiperProps } from './props.interface';
 
 const useSwiperProps = ({

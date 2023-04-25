@@ -10,6 +10,7 @@ import {
 } from 'react';
 import { Subscription } from 'rxjs';
 import { useIsWindowTop } from 'src/core/hooks';
+import { useIntl } from 'react-intl';
 import { IGameState } from './models';
 import { GameModel } from './models/game-model';
 import { SnakeModel } from './models/snake-model';
@@ -25,6 +26,7 @@ const SnakeGame = ({
   const closeAnimationTimer = useMemo<number>(() => 650, []);
   const subscriptions$ = useRef<Subscription>(new Subscription());
   const game = useRef<GameModel>();
+  const intl = useIntl();
   const { isWindowOnTop } = useIsWindowTop();
 
   const handleKeyPress = (event: KeyboardEvent) => {
@@ -87,17 +89,18 @@ const SnakeGame = ({
         awaitCloseAnimation();
       }}
     >
-      Voltar
+      {intl.formatMessage({ id: 'general.button.go-back' })}
     </S.GobackButton>
-  ), []);
+  ), [intl]);
 
   const renderScoreText = useCallback(() => (
     <S.ScoreText variant="h5">
-      Pontuação:
+      {intl.formatMessage({ id: 'home.welcome.snake-game.score' })}
+      :
       {' '}
       {gameState!.score}
     </S.ScoreText>
-  ), [gameState]);
+  ), [gameState, intl]);
 
   return (
     <S.Wrapper $closeTimer={closeAnimationTimer} className={cx({ closed: unmounting })}>
@@ -119,7 +122,7 @@ const SnakeGame = ({
               <>
                 <Grid container alignItems="center" justifyContent="center" flexDirection="column">
                   <S.GameoverText variant="h1">
-                    Game over
+                    {intl.formatMessage({ id: 'home.welcome.snake-game.game-over' })}
                   </S.GameoverText>
                   {renderScoreText()}
                   <Button
@@ -129,7 +132,7 @@ const SnakeGame = ({
                       game.current!.resetGame();
                     }}
                   >
-                    Recomeçar
+                    {intl.formatMessage({ id: 'home.welcome.snake-game.restart' })}
                   </Button>
                 </Grid>
                 {renderBackButton()}
@@ -138,7 +141,7 @@ const SnakeGame = ({
 
             {gameState.paused && (
               <S.PauseText variant="h2">
-                Paused
+                {intl.formatMessage({ id: 'home.welcome.snake-game.paused' })}
               </S.PauseText>
             )}
 
@@ -156,13 +159,13 @@ const SnakeGame = ({
           <S.FooterSection container>
             <S.Command>
               <S.CommandKey style={{ width: 65 }} variant="h5">-</S.CommandKey>
-              <Typography>Pausar</Typography>
+              <Typography>{intl.formatMessage({ id: 'home.welcome.snake-game.pause' })}</Typography>
             </S.Command>
           </S.FooterSection>
 
           <S.FooterSection>
             <S.CommandWrapper>
-              <Typography variant="h3">Teclas de movimento</Typography>
+              <Typography variant="h3">{intl.formatMessage({ id: 'home.welcome.snake-game.movement-keys' })}</Typography>
               <S.Command>
                 <S.CommandKey variant="h5">W/↑</S.CommandKey>
               </S.Command>

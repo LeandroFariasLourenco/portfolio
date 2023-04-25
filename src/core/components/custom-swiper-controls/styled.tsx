@@ -61,11 +61,12 @@ export const SwiperControls = styled(Box)(({ theme }) => `
         left: 50%;
         bottom: -6px;
         transform: translateX(-50%);
+        overflow: hidden;
 
         &-bullet {
-          margin-right: 10px;
-          
           &:not(&:last-of-type) {
+            margin-right: 10px;
+
             &::before {
               width: 30px;
               left: 100%;

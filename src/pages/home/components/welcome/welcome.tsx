@@ -1,11 +1,12 @@
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import cx from 'classnames';
 import { useCallback, useMemo, useState } from 'react';
 import { Responsive } from 'src/core/components';
 import LoadParticles from 'src/core/components/load-particles/load-particles';
 import { APP } from 'src/core/constants';
-import { useIsWindowTop, useResponsive } from 'src/core/hooks';
+import { useIsWindowTop, useLinkTarget, useResponsive } from 'src/core/hooks';
 import { EAppSections, EResponsiveType } from 'src/core/models';
+import { ParticlesProps } from 'react-tsparticles';
 import DesktopTerminal from './components/desktop-terminal/desktop-terminal';
 import MobileTerminal from './components/mobile-terminal/mobile-terminal';
 import SnakeGame from './components/snake-game/snake-game';
@@ -19,6 +20,9 @@ const Welcome = () => {
   const fadeAnimationTimer = useMemo(() => 1000, []);
   const [showGame, setShowGame] = useState<boolean>(false);
   const [fadingOutContainer, setFadingOutContainer] = useState<boolean>(false);
+  const [particlesConfig, setParticlesConfig] = useState<ParticlesProps['options']>(isDesktop ? desktopParticlesConfig : mobileParticlesConfig);
+  const fpsOptions = useMemo(() => [30, 60, 120], []);
+  const linkTarget = useLinkTarget();
 
   const handleArrowDownClick = useCallback(() => {
     window.scrollTo({
@@ -36,7 +40,7 @@ const Welcome = () => {
   const renderProfileImage = useCallback(() => {
     const imageWidth = isDesktop ? 280 : 225;
     return (
-      <a href="https://github.com/LeandroFariasLourenco" target={isDesktop ? '_blank' : '_self'} rel="noreferrer">
+      <a href={APP.socials.github} target={linkTarget} rel="noreferrer">
         <S.ProfileImage
           $width={imageWidth}
           src={`https://www.github.com/LeandroFariasLourenco.png?size=${imageWidth}`}
@@ -46,11 +50,24 @@ const Welcome = () => {
         />
       </a>
     );
-  }, [isWindowOnTop, isDesktop]);
+  }, [isWindowOnTop, isDesktop, linkTarget]);
+
+  const changeFps = useCallback((fps: number) => {
+    setParticlesConfig((prevState) => ({
+      ...prevState,
+      fpsLimit: fps,
+    }));
+  }, []);
+
+  const renderFpsOption = useCallback((fps: number) => (
+    <S.FpsOption className={cx({ current: fps === particlesConfig?.fpsLimit })} onClick={() => changeFps(fps)} key={fps}>
+      <Typography variant="h5">{fps}</Typography>
+    </S.FpsOption>
+  ), [particlesConfig]);
 
   return (
     <S.Wrapper container alignItems="center" item justifyContent="center" md={12} id={EAppSections.WELCOME}>
-      <LoadParticles id="welcome-section" options={isDesktop ? desktopParticlesConfig : mobileParticlesConfig} />
+      <LoadParticles id="welcome-section" options={particlesConfig} />
       <Responsive
         breakpoint="md"
       >
@@ -106,6 +123,20 @@ const Welcome = () => {
           }}
         />
       ) : null}
+      <Responsive
+        breakpoint="md"
+      >
+        <S.FpsContainer
+          className={cx({
+            'is--visible': isWindowOnTop,
+          })}
+        >
+          <Typography textAlign="center" variant="h6">FPS</Typography>
+          <Grid container>
+            {fpsOptions.map(renderFpsOption)}
+          </Grid>
+        </S.FpsContainer>
+      </Responsive>
     </S.Wrapper>
   );
 };

@@ -1,5 +1,6 @@
 import { ArrowDownward } from '@mui/icons-material';
 import {
+  Button,
   Card, css, Grid, keyframes,
 } from '@mui/material';
 import { mixins } from 'src/styles/utils';
@@ -9,6 +10,7 @@ export const Wrapper = styled(Grid)`
   position: relative;
   min-height: 100vh;
   position: relative;
+  background-color: rgb(28, 22, 48);
 
   ${({ theme }) => theme.breakpoints.down('md')} {
     padding-bottom: 40px;
@@ -109,3 +111,23 @@ export const ArrowDownContainer = styled(Grid)`
     }
   }
 `;
+
+export const FpsContainer = styled(Grid)`
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  ${mixins.visibilityTransition};
+`;
+
+export const FpsOption = styled(Button)(({ theme }) => `
+  border: 1px solid ${theme.palette.primary.main};
+  padding: 5px 7.5px;
+  border-radius: 0;
+  background-color: ${theme.palette.background.default};
+  cursor: pointer;
+  transition: background-color 200ms ease-in-out;
+
+  &.current {
+    background-color: ${theme.palette.background.paper};
+  }
+`);

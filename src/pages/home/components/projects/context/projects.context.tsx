@@ -1,11 +1,14 @@
 import {
   createContext,
+  useContext,
   useState,
 } from 'react';
 import { IProjectsContext } from './context.interface';
 import { IProjectsContextProps } from './props.interface';
 
-export const ProjectsContext = createContext<IProjectsContext>({} as IProjectsContext);
+const ProjectsContext = createContext<IProjectsContext>({} as IProjectsContext);
+
+export const useProjectsContext = () => useContext(ProjectsContext)!;
 
 const ProjectsProvider = ({ children }: IProjectsContextProps) => {
   const [lightboxOpen, setLightboxOpen] = useState<boolean>(false);

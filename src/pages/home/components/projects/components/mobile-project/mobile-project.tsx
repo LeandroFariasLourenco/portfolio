@@ -1,16 +1,16 @@
 import { GitHub, OpenInNew, RemoveRedEye } from '@mui/icons-material';
 import { Grid, Typography } from '@mui/material';
-import { useCallback, useContext } from 'react';
+import { useCallback } from 'react';
 import SeeMore from 'src/core/components/see-more/see-more';
 import { IMobileProjectProps } from './props.interface';
 
-import { ProjectsContext } from '../../context/projects.context';
 import * as S from './styled';
+import { useProjectsContext } from '../../context/projects.context';
 
 const MobileProject = ({
   project,
 }: IMobileProjectProps) => {
-  const { mobile: { lightbox: { setOpen } } } = useContext(ProjectsContext);
+  const { mobile: { lightbox: { setOpen } } } = useProjectsContext();
 
   const renderProjectParagraph = useCallback((paragraph: string) => <Typography key={paragraph}>{paragraph}</Typography>, []);
 

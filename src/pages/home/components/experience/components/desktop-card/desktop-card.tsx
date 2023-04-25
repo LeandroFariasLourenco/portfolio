@@ -12,8 +12,8 @@ const DesktopCard = ({
   index,
   experience,
 }: IDesktopCardProps) => (
-  <Grid container flexDirection="row" flexWrap="nowrap" gap={10}>
-    <S.ExperienceContainer item xs={6}>
+  <Grid container flexDirection="row" justifyContent="space-between" flexWrap="nowrap" gap={10}>
+    <S.ExperienceContainer item xs={5}>
       {index === 0 && (
         <S.CurrentExperience>
           <FormattedMessage id="home.experience.current" />
@@ -25,7 +25,7 @@ const DesktopCard = ({
       />
     </S.ExperienceContainer>
 
-    <S.ExperienceContainer item xs={6}>
+    <S.ExperienceContainer item xs={5}>
       {RightBorderComponent}
       <ExperienceDetails
         experience={experience}

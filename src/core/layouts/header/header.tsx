@@ -4,12 +4,11 @@ import {
 } from '@mui/icons-material';
 import {
   Chip,
-  Grid, IconProps, MenuItem, SelectChangeEvent, Slide, Typography, useScrollTrigger,
+  Grid, IconProps,
+  Slide, Typography, useScrollTrigger,
 } from '@mui/material';
 import cx from 'classnames';
-import { observer } from 'mobx-react-lite';
 import {
-  ReactNode,
   cloneElement,
   useCallback,
   useMemo, useState,
@@ -17,25 +16,19 @@ import {
 import { FormattedMessage, useIntl } from 'react-intl';
 import { HashLink } from 'react-router-hash-link';
 import Responsive from 'src/core/components/responsive/responsive';
-import { getBucketResource, smoothScroll } from 'src/core/functions';
-import { useResponsive, useIsWindowTop, usePreloadImages } from 'src/core/hooks';
-import { EAppSections, EResponsiveType, Languages } from 'src/core/models';
-import { useGlobalContext } from 'src/core/store/global/context';
 import { APP } from 'src/core/constants';
+import { getBucketResource, smoothScroll } from 'src/core/functions';
+import { useIsWindowTop, useResponsive } from 'src/core/hooks';
+import { EAppSections, EResponsiveType } from 'src/core/models';
+import { LanguageSelect } from 'src/core/components';
 import { IMenuOption } from './models/menu-option.interface';
 
 import * as S from './styled';
 
 const Header = () => {
-  const globalContext = useGlobalContext();
   const { isWindowOnTop } = useIsWindowTop();
   const intl = useIntl();
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
-  const imagesToPreload = useMemo(() => [
-    getBucketResource('/languages/brazil.png'),
-    getBucketResource('/languages/united-states.png'),
-  ], []);
-  const { imagesLoaded } = usePreloadImages(imagesToPreload);
   const isMobile = useResponsive({ breakpoint: 'md', type: EResponsiveType.smaller });
   const triggerScroll = useScrollTrigger({
     threshold: 0,
@@ -64,10 +57,6 @@ const Header = () => {
 
   const menuOptions: IMenuOption[] = useMemo<IMenuOption[]>(() => (isMobile ? mobileMenuOptions : desktopMenuOptions), [isMobile]);
 
-  const handleLanguageSelect = useCallback((event: SelectChangeEvent<unknown>) => {
-    globalContext.setLanguage(event.target.value as Languages);
-  }, [globalContext]);
-
   const renderMenuOptions = useCallback((link: IMenuOption) => (
     <S.HeaderLink
       key={link.label}
@@ -89,27 +78,6 @@ const Header = () => {
       <GitHub fontSize="large" htmlColor="#fff" />
     </HashLink>
   ), []);
-
-  const renderCountryIcon = useCallback((value: Languages): ReactNode => {
-    let source: string;
-    let alt: string;
-    switch (value) {
-      case Languages.Portuguese:
-        source = getBucketResource('/languages/brazil.png');
-        alt = 'Brazil flag';
-        break;
-      case Languages.English:
-        source = getBucketResource('/languages/united-states.png');
-        alt = 'United States Flag';
-        break;
-      default:
-        break;
-    }
-
-    return (
-      <S.CountryIcon src={source!} alt={alt!} />
-    );
-  }, []);
 
   return (
     <>
@@ -189,31 +157,7 @@ const Header = () => {
                 )}
               />
               <Grid item md={1}>
-                {imagesLoaded && (
-                  <S.LanguageSelect
-                    value={globalContext.language}
-                    onChange={handleLanguageSelect}
-                    variant="standard"
-                    MenuProps={{
-                      keepMounted: true,
-                    }}
-                    native={false}
-                    renderValue={renderCountryIcon as (value: any) => ReactNode}
-                  >
-                    <MenuItem value={Languages.Portuguese}>
-                      <S.CountryIcon src={getBucketResource('/languages/brazil.png')} alt="Brazil flag" />
-                      <S.CountryText component="span">
-                        {!isMobile && 'PT'}
-                      </S.CountryText>
-                    </MenuItem>
-                    <MenuItem value={Languages.English}>
-                      <S.CountryIcon src={getBucketResource('/languages/united-states.png')} alt="United States flag" />
-                      <S.CountryText component="span">
-                        {!isMobile && 'EN'}
-                      </S.CountryText>
-                    </MenuItem>
-                  </S.LanguageSelect>
-                )}
+                <LanguageSelect />
               </Grid>
             </Grid>
           </S.HeaderWrapper>
@@ -232,4 +176,4 @@ const Header = () => {
   );
 };
 
-export default observer(Header);
+export default Header;

@@ -3,11 +3,12 @@ import { Grid, Typography } from '@mui/material';
 import { memo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { LinkedinIcon } from 'react-share';
-import { useResponsive } from 'src/core/hooks';
+import { useLinkTarget } from 'src/core/hooks';
+import { APP } from 'src/core/constants';
 import * as S from './styled';
 
 const Footer = () => {
-  const isDesktop = useResponsive({});
+  const linkTarget = useLinkTarget();
 
   return (
     <S.FooterWrapper
@@ -46,8 +47,8 @@ const Footer = () => {
         <S.FooterColumn item xs={12} md={4}>
           <S.Title variant="h5"><FormattedMessage id="home.footer.socialmedia.title" /></S.Title>
           <S.FooterRow>
-            <S.IconContainer href="" target={isDesktop ? '_blank' : '_self'}><LinkedinIcon /></S.IconContainer>
-            <S.IconContainer href="" target={isDesktop ? '_blank' : '_self'}><S.GithubIcon /></S.IconContainer>
+            <S.IconContainer href={APP.socials.linkedIn} target={linkTarget}><LinkedinIcon /></S.IconContainer>
+            <S.IconContainer href={APP.socials.github} target={linkTarget}><S.GithubIcon /></S.IconContainer>
           </S.FooterRow>
         </S.FooterColumn>
         <S.FooterColumn item xs={12} md={4}>

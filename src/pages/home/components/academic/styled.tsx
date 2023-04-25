@@ -1,6 +1,11 @@
 import { Grid, Typography, styled } from '@mui/material';
 import { mixins } from 'src/styles/utils';
 
+import teste from 'src/assets/animations/teste.jpg';
+import teste1 from 'src/assets/animations/teste1.jpg';
+import teste3 from 'src/assets/animations/teste3.jpg';
+import { getBucketResource } from 'src/core/functions';
+
 export const FormationTabs = styled(Grid)(({ theme }) => `
   border: 2px solid ${theme.palette.action.active};
   border-bottom: 0;
@@ -60,6 +65,7 @@ export const CardContainer = styled(Grid)(({ theme }) => `
 
 export const FormationWrapper = styled(Grid)`
   position: relative;
+  background-color: rgba(28, 22, 48, 0.40);
 `;
 
 export const FormationDescriptionContainer = styled(Typography)`

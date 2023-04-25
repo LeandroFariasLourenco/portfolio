@@ -1,13 +1,14 @@
 import { Close } from '@mui/icons-material';
 import {
-  Grid, Typography, useTheme,
+  Grid,
+  useTheme,
 } from '@mui/material';
 import cx from 'classnames';
-import useResponsive from 'src/core/hooks/useResponsive/useResponsive';
-import { EResponsiveType } from 'src/core/models';
 import { FormattedMessage } from 'react-intl';
-import * as S from './styled';
+import { useResponsive } from 'src/core/hooks';
+import { EResponsiveType } from 'src/core/models';
 import { IStoryProps } from './props.interface';
+import * as S from './styled';
 
 const Story = ({
   hobby,
