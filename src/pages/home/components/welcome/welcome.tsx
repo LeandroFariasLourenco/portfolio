@@ -1,19 +1,19 @@
 import { Grid, Typography } from '@mui/material';
 import cx from 'classnames';
 import { useCallback, useMemo, useState } from 'react';
+import { ParticlesProps } from 'react-tsparticles';
 import { Responsive } from 'src/core/components';
 import LoadParticles from 'src/core/components/load-particles/load-particles';
 import { APP } from 'src/core/constants';
 import { useIsWindowTop, useLinkTarget, useResponsive } from 'src/core/hooks';
 import { EAppSections, EResponsiveType } from 'src/core/models';
-import { ParticlesProps } from 'react-tsparticles';
 import DesktopTerminal from './components/desktop-terminal/desktop-terminal';
 import MobileTerminal from './components/mobile-terminal/mobile-terminal';
 import SnakeGame from './components/snake-game/snake-game';
+import { useWelcomeContext } from './context/welcome-context';
 import { desktopParticlesConfig } from './particles/desktop-config';
 import { mobileParticlesConfig } from './particles/mobile-config';
 import * as S from './styled';
-import WelcomeProvider, { useWelcomeContext } from './context/welcome-context';
 
 const Welcome = () => {
   const isDesktop = useResponsive({});

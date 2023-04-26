@@ -2,6 +2,7 @@ import { GitHub, OpenInNew, RemoveRedEye } from '@mui/icons-material';
 import { Grid, Typography } from '@mui/material';
 import { useCallback } from 'react';
 import SeeMore from 'src/core/components/see-more/see-more';
+import { useIntl } from 'react-intl';
 import { IMobileProjectProps } from './props.interface';
 
 import * as S from './styled';
@@ -10,6 +11,7 @@ import { useProjectsContext } from '../../context/projects.context';
 const MobileProject = ({
   project,
 }: IMobileProjectProps) => {
+  const intl = useIntl();
   const { mobile: { lightbox: { setOpen } } } = useProjectsContext();
 
   const renderProjectParagraph = useCallback((paragraph: string) => <Typography key={paragraph}>{paragraph}</Typography>, []);
@@ -43,7 +45,7 @@ const MobileProject = ({
             endIcon={<RemoveRedEye color="primary" />}
             variant="outlined"
           >
-            <Typography variant="h6" color="primary">Visualizar</Typography>
+            <Typography variant="h6" color="primary">{intl.formatMessage({ id: 'general.button.see' })}</Typography>
           </S.ActionButton>
           <S.ActionLink href={project.link}>
             <S.ActionButton
