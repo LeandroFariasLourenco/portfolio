@@ -6,16 +6,20 @@ import {
 import { mixins } from 'src/styles/utils';
 import styled from 'styled-components';
 
-export const Wrapper = styled(Grid)`
+export const Wrapper = styled(Grid)(({ theme }) => `
   position: relative;
   min-height: 100vh;
   position: relative;
-  background-color: rgb(28, 22, 48);
+  background-color: ${theme.palette.background.default};
 
-  ${({ theme }) => theme.breakpoints.down('md')} {
+  ${theme.breakpoints.up('md')} {
+    flex-flow: unset;
+  }
+
+  ${theme.breakpoints.down('md')} {
     padding-bottom: 40px;
   }
-`;
+`);
 
 export const ProfileImage = styled.img<{ $width: number; }>(({ theme, $width }) => `
   --frame-size: 15px;

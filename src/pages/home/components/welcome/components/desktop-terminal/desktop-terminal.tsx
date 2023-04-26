@@ -9,7 +9,7 @@ import {
   useEffect,
   useRef, useState,
 } from 'react';
-import { useIntl } from 'react-intl';
+import { IntlShape, useIntl } from 'react-intl';
 import { Typewriter } from 'src/core/components';
 import { APP } from 'src/core/constants';
 import { deleteLastCharacter } from 'src/core/functions';
@@ -34,19 +34,27 @@ const DesktopTerminal = ({
   const terminalContainerRef = useRef<HTMLDivElement>();
   const animationQueue = useRef<number[]>([]);
   const { loginTime } = useLoginTime();
+  const intlRef = useRef<IntlShape>();
   const introTerminalTexts = useIntroTerminalTexts([
     {
       key: 'fifth',
-      timer: 3425,
+      timer: 2900,
       typeText: (typewriter: TypewriterClass) => {
         typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.helper-command' })).start();
       },
     },
   ]);
 
+  const clearAnimationQueue = () => {
+    animationQueue.current.forEach((timeout) => { clearTimeout(timeout); });
+    animationQueue.current = [];
+  };
+
   const scrollToTerminalBottom = useCallback(() => {
     requestAnimationFrame(() => {
-      terminalContainerRef.current!.scrollTo({
+      if (!terminalContainerRef.current) return;
+
+      terminalContainerRef.current.scrollTo({
         top: terminalContainerRef.current!.scrollHeight,
       });
     });
@@ -69,7 +77,7 @@ const DesktopTerminal = ({
       newState[currentIndex] = deleteLastCharacter(newState[currentIndex]);
       return newState;
     });
-  }, [intl]);
+  }, []);
 
   const handleEnterPress = useCallback(() => {
     setTerminalRowsCount((prevState) => {
@@ -107,13 +115,13 @@ const DesktopTerminal = ({
       }
 
       if (userInput === '/game') {
-        newState.push(intl.formatMessage({ id: 'home.welcome.terminal.game.question' }));
+        newState.push(intlRef.current!.formatMessage({ id: 'home.welcome.terminal.game.question' }));
         scrollToTerminalBottom();
         return [...newState, ''];
       }
 
       if (userInput === '/help') {
-        newState.push(intl.formatMessage({ id: 'home.welcome.terminal.possible-commands' }));
+        newState.push(intlRef.current!.formatMessage({ id: 'home.welcome.terminal.possible-commands' }));
         appSections.forEach((section) => {
           newState.push(`/${section}`);
         });
@@ -124,9 +132,9 @@ const DesktopTerminal = ({
       }
 
       scrollToTerminalBottom();
-      return [...newState, `${intl.formatMessage({ id: 'home.welcome.terminal.not-found' })} ${userInput}`, ''];
+      return [...newState, `${intlRef.current!.formatMessage({ id: 'home.welcome.terminal.not-found' })} ${userInput}`, ''];
     });
-  }, [intl]);
+  }, []);
 
   const handleKeyPress = useCallback((key: string) => {
     setTerminalRowsCount((prevState) => {
@@ -136,7 +144,7 @@ const DesktopTerminal = ({
       scrollToTerminalBottom();
       return newState;
     });
-  }, [intl]);
+  }, []);
 
   const setupTerminalActions = useCallback((event: KeyboardEvent) => {
     if (!isWindowOnTopRef.current) {
@@ -160,6 +168,8 @@ const DesktopTerminal = ({
       return;
     }
 
+    clearAnimationQueue();
+    setWelcomeMessages([...introTerminalTexts]);
     switch (event.code) {
       case 'Space': handleSpacePress(event);
         break;
@@ -184,9 +194,12 @@ const DesktopTerminal = ({
     isWindowOnTopRef.current = isWindowOnTop;
   }, [isWindowOnTop]);
 
+  useEffect(() => {
+    intlRef.current = intl;
+  }, [intl]);
+
   const initTerminal = useCallback(() => {
-    animationQueue.current.forEach((timeout) => { clearTimeout(timeout); });
-    animationQueue.current = [];
+    clearAnimationQueue();
     setTerminalRowsCount(['']);
     setWelcomeMessages([]);
 
@@ -215,7 +228,7 @@ const DesktopTerminal = ({
         dangerouslySetInnerHTML={{ __html: text }}
       />
     </S.TerminalRow>
-  ), [intl]);
+  ), [intl, terminalRows.length]);
 
   const renderWelcomeMessage = useCallback((text: ITerminalLine, index: number) => (
     <S.TerminalRow
@@ -226,9 +239,7 @@ const DesktopTerminal = ({
         ~
       </S.TerminalPrefixText>
       <Typewriter
-        options={{
-          delay: 10,
-        }}
+        options={{ delay: 0 }}
         typographyProps={{
           variant: 'h6',
         }}

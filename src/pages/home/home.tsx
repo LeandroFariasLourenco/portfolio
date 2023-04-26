@@ -7,28 +7,37 @@ import {
 import { LazyLoad } from 'src/core/components';
 import { CommonLayout } from 'src/core/layouts';
 
-import { useLayoutEffect } from 'yet-another-react-lightbox/core';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from 'src/core/constants';
 import { useTheme } from '@mui/material';
 import * as S from './styled';
+import WelcomeProvider from './components/welcome/context/welcome-context';
+import ProjectsProvider from './components/projects/context/projects.context';
+
+const Welcome = lazy(() => import('./components/welcome/welcome'));
+const About = lazy(() => import('./components/about/about'));
+const Experience = lazy(() => import('./components/experience/experience'));
+const Stack = lazy(() => import('./components/stack/stack'));
+const Academic = lazy(() => import('./components/academic/academic'));
+const Projects = lazy(() => import('./components/projects/projects'));
+const MyTimeline = lazy(() => import('./components/my-timeline/my-timeline'));
 
 const Home = () => {
   const navigate = useNavigate();
   const { breakpoints } = useTheme();
   const components = useMemo(() => ([
-    lazy(() => import('./components/welcome/welcome')),
-    lazy(() => import('./components/about/about')),
-    lazy(() => import('./components/experience/experience')),
-    lazy(() => import('./components/stack/stack')),
-    lazy(() => import('./components/academic/academic')),
-    lazy(() => import('./components/projects/projects')),
-    lazy(() => import('./components/my-timeline/my-timeline')),
+    <WelcomeProvider><Welcome /></WelcomeProvider>,
+    <><About /></>,
+    <><Experience /></>,
+    <><Stack /></>,
+    <><Academic /></>,
+    <ProjectsProvider><Projects /></ProjectsProvider>,
+    <><MyTimeline /></>,
   ]), []);
 
-  const renderComponent = useCallback((Component: LazyExoticComponent<() => JSX.Element>, index: number) => (
+  const renderComponent = useCallback((Component: any, index: number) => (
     <LazyLoad key={index}>
-      <Component />
+      {Component}
     </LazyLoad>
   ), []);
 

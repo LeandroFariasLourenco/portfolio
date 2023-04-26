@@ -7,6 +7,8 @@ const manifestProps = {
   name: '',
   short_name: '',
   start_url: '.',
+  theme_color: '#06d674',
+  background_color: '#1C1630',
   icons: [
     {
       src: 'favicon.ico',
@@ -17,6 +19,7 @@ const manifestProps = {
       src: 'logo192.png',
       type: 'image/png',
       sizes: '192x192',
+      purpose: 'any maskable',
     },
     {
       src: 'logo512.png',

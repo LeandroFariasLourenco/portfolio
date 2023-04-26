@@ -8,7 +8,7 @@ import {
   ESnakeDirection,
 } from './interfaces';
 
-export class SnakeModel extends BaseCanvas {
+export class SnakeModel {
   private snakeHeadTexture = new Image(
     TEXTURES.snakeHeadTexture.width,
     TEXTURES.snakeHeadTexture.height,
@@ -31,7 +31,7 @@ export class SnakeModel extends BaseCanvas {
 
   private readonly SPEED_DECREMENT = 5;
 
-  private readonly MINIMUM_SPEED = 20;
+  private readonly MINIMUM_SPEED = 45;
 
   private game: GameModel;
 
@@ -57,25 +57,14 @@ export class SnakeModel extends BaseCanvas {
   }
 
   constructor(
-    canvas: HTMLCanvasElement,
+    game: GameModel,
   ) {
-    super();
-    this.canvas = canvas;
-    this.canvasContext = canvas.getContext('2d')!;
-    this.food = new FoodModel(
-      canvas,
-      this.generateFoodPosition(this.canvas.width - 20),
-      this.generateFoodPosition(this.canvas.height - 20),
-    );
+    this.game = game;
+    this.food = new FoodModel(game);
 
     this.snakeBodyTexture.src = TEXTURES.snakeBodyTexture.source;
     this.snakeHeadTexture.src = TEXTURES.snakeHeadTexture.source;
     this.setupInitialState();
-  }
-
-  private generateFoodPosition(max: number, min: number = 0) {
-    const range = max - min;
-    return Math.round((Math.random() * range + min) / 10) * 10;
   }
 
   private setGameDirection(x: number, y: number, direction: ESnakeDirection) {
@@ -86,7 +75,7 @@ export class SnakeModel extends BaseCanvas {
 
   public drawSnake() {
     this.bodyPosition.forEach(({ x, y }) => {
-      this.canvasContext.drawImage(
+      this.game.canvasContext.drawImage(
         this.snakeBodyTexture,
         x,
         y,
@@ -95,7 +84,7 @@ export class SnakeModel extends BaseCanvas {
       );
     });
 
-    this.canvasContext.save();
+    this.game.canvasContext.save();
 
     let angle!: ESnakeDirectionAngle;
     if (this.direction) {
@@ -119,15 +108,15 @@ export class SnakeModel extends BaseCanvas {
     }
 
     const radianDegree = Math.PI / 180;
-    this.canvasContext.translate(this.bodyPosition[0].x, this.bodyPosition[0].y);
-    this.canvasContext.translate(
+    this.game.canvasContext.translate(this.bodyPosition[0].x, this.bodyPosition[0].y);
+    this.game.canvasContext.translate(
       this.snakeHeadTexture.width / 2,
       this.snakeHeadTexture.height / 2,
     );
 
-    this.canvasContext.rotate(angle * radianDegree);
+    this.game.canvasContext.rotate(angle * radianDegree);
 
-    this.canvasContext.drawImage(
+    this.game.canvasContext.drawImage(
       this.snakeHeadTexture,
       -(this.snakeHeadTexture.width / 2),
       -(this.snakeHeadTexture.height / 2),
@@ -135,8 +124,8 @@ export class SnakeModel extends BaseCanvas {
       this.snakeHeadTexture.height,
     );
 
-    this.canvasContext.rotate(0.5);
-    this.canvasContext.restore();
+    this.game.canvasContext.rotate(0.5);
+    this.game.canvasContext.restore();
   }
 
   public moveSnake() {
@@ -153,19 +142,15 @@ export class SnakeModel extends BaseCanvas {
     }
 
     if (hasEatenFood
-      && (this.game.canvasDimensions.height - this.SPEED_DECREMENT > 260 || this.game.canvasDimensions.width - 20 > 360)) {
-      this.game.canvasDimensions.width -= this.game.frameDecrement;
-      this.game.canvasDimensions.height -= this.game.frameDecrement;
+      && (this.game.arenaDimensions.height - this.SPEED_DECREMENT > 260 || this.game.arenaDimensions.width - 20 > 360)) {
+      this.game.arenaDimensions.width -= this.game.arenaDecrement;
+      this.game.arenaDimensions.height -= this.game.arenaDecrement;
       this.game.sizeMultiplier += 1;
     }
 
     if (!hasEatenFood) {
       this.bodyPosition.pop();
     } else {
-      const minPosition = this.game.sizeMultiplier * this.SPEED_DECREMENT + 20;
-
-      this.food.positionX = this.generateFoodPosition(this.game.canvasDimensions.width - 20, minPosition);
-      this.food.positionY = this.generateFoodPosition(this.game.canvasDimensions.height - 20, minPosition);
       this.food.drawFood(true);
 
       if (this.game.sizeMultiplier > 8) {
@@ -210,9 +195,5 @@ export class SnakeModel extends BaseCanvas {
     if (down.includes(keyPressed) && !goingUp) {
       this.setGameDirection(0, 10, ESnakeDirection.DOWN);
     }
-  }
-
-  set snakeFrame(Game: GameModel) {
-    this.game = Game;
   }
 }

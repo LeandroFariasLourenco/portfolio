@@ -92,6 +92,7 @@ export const mixins = {
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        background-attachment: fixed;
         z-index: 0;
 
         &::before {

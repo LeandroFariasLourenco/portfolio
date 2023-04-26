@@ -7,16 +7,16 @@ import { materialTheme } from 'src/styles/utils';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'yet-another-react-lightbox/styles.css';
 import 'yet-another-react-lightbox/plugins/thumbnails.css';
+import 'yet-another-react-lightbox/styles.css';
 
 import 'react-vertical-timeline-component/style.min.css';
 
-import GlobalProvider, { useGlobalContext } from './core/context/global/context';
+import GlobalProvider, { useGlobalContext } from './core/context/global/global-context';
 import reportWebVitals from './reportWebVitals';
 import Global from './styles/global';
 
-const IntlComponent = () => {
+const Root = () => {
   const globalContext = useGlobalContext();
 
   return (
@@ -34,7 +34,7 @@ const Providers = () => (
   <StyledEngineProvider injectFirst>
     <MaterialThemeProvider theme={materialTheme}>
       <GlobalProvider>
-        <IntlComponent />
+        <Root />
       </GlobalProvider>
     </MaterialThemeProvider>
   </StyledEngineProvider>

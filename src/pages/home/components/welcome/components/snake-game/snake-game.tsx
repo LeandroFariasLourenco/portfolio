@@ -36,15 +36,12 @@ const SnakeGame = ({
   const setupGame = () => {
     const canvas = canvasRef.current!;
 
-    const Snake = new SnakeModel(canvas);
-    const Game = new GameModel(
-      canvas,
-      Snake,
-    );
+    const Game = new GameModel(canvas);
 
-    Snake.snakeFrame = Game;
+    const Snake = new SnakeModel(Game);
 
-    Game.renderGame();
+    Game.snake = Snake;
+    Game.setupGame();
 
     game.current = Game;
 
@@ -72,14 +69,6 @@ const SnakeGame = ({
     };
   }, []);
 
-  useEffect(() => {
-    if (isWindowOnTop) {
-      return;
-    }
-    setUnmounting(true);
-    awaitCloseAnimation();
-  }, [isWindowOnTop]);
-
   const renderBackButton = useCallback(() => (
     <S.GobackButton
       startIcon={<ArrowBack />}
@@ -94,23 +83,32 @@ const SnakeGame = ({
   ), [intl]);
 
   const renderScoreText = useCallback(() => (
-    <S.ScoreText variant="h5">
+    <S.ScoreText variant="h3">
       {intl.formatMessage({ id: 'home.welcome.snake-game.score' })}
       :
       {' '}
-      {gameState!.score}
+      565
     </S.ScoreText>
   ), [gameState, intl]);
 
   return (
-    <S.Wrapper $closeTimer={closeAnimationTimer} className={cx({ closed: unmounting })}>
-      <S.CanvasContainer>
-        <S.Canvas
-          width={700}
-          height={500}
-          ref={canvasRef}
-        />
-        {gameState && (
+    <S.Wrapper
+      container
+      flexDirection="row"
+      flexWrap="nowrap"
+      justifyContent="space-between"
+      $closeTimer={closeAnimationTimer}
+      className={cx({ closed: unmounting })}
+      gap={5}
+    >
+      <Grid item>
+        <S.CanvasContainer>
+          <S.Canvas
+            width={700}
+            height={500}
+            ref={canvasRef}
+          />
+          {gameState && (
           <S.OverlayContainer
             className={cx({ show: gameState.paused || gameState.ended })}
             container
@@ -129,7 +127,7 @@ const SnakeGame = ({
                     startIcon={<Replay />}
                     color="primary"
                     onClick={() => {
-                      game.current!.resetGame();
+                      game.current!.setupGame();
                     }}
                   >
                     {intl.formatMessage({ id: 'home.welcome.snake-game.restart' })}
@@ -146,26 +144,25 @@ const SnakeGame = ({
             )}
 
           </S.OverlayContainer>
-        )}
-      </S.CanvasContainer>
-
-      {gameState && !gameState.ended && (
-        <S.FooterContainer>
-          <S.FooterSection>
+          )}
+        </S.CanvasContainer>
+      </Grid>
+      <Grid>
+        <S.GameinfoContainer>
+          <S.GameinfoSection>
             {renderScoreText()}
-            {renderBackButton()}
-          </S.FooterSection>
+          </S.GameinfoSection>
 
-          <S.FooterSection container>
-            <S.Command>
-              <S.CommandKey style={{ width: 65 }} variant="h5">-</S.CommandKey>
+          <S.GameinfoSection container>
+            <S.Command style={{ marginBottom: 20 }}>
+              <S.CommandKey style={{ flex: 1 }} variant="h5">-</S.CommandKey>
               <Typography>{intl.formatMessage({ id: 'home.welcome.snake-game.pause' })}</Typography>
             </S.Command>
-          </S.FooterSection>
+          </S.GameinfoSection>
 
-          <S.FooterSection>
+          <S.GameinfoSection>
             <S.CommandWrapper>
-              <Typography variant="h3">{intl.formatMessage({ id: 'home.welcome.snake-game.movement-keys' })}</Typography>
+              <Typography variant="h5">{intl.formatMessage({ id: 'home.welcome.snake-game.movement-keys' })}</Typography>
               <S.Command>
                 <S.CommandKey variant="h5">W/↑</S.CommandKey>
               </S.Command>
@@ -181,9 +178,12 @@ const SnakeGame = ({
                 </S.Command>
               </S.CommandLine>
             </S.CommandWrapper>
-          </S.FooterSection>
-        </S.FooterContainer>
-      )}
+          </S.GameinfoSection>
+        </S.GameinfoContainer>
+        <S.FooterWrapper>
+          {renderBackButton()}
+        </S.FooterWrapper>
+      </Grid>
     </S.Wrapper>
   );
 };

@@ -2,7 +2,7 @@ import { useMemo, useCallback, ReactNode } from 'react';
 
 import { getBucketResource } from 'src/core/functions';
 import { usePreloadImages, useResponsive } from 'src/core/hooks';
-import { useGlobalContext } from 'src/core/context/global/context';
+import { useGlobalContext } from 'src/core/context/global/global-context';
 import { MenuItem, SelectChangeEvent } from '@mui/material';
 import { ELanguages, EResponsiveType } from 'src/core/models';
 
@@ -38,7 +38,7 @@ const LanguageSelect = () => {
     }
 
     return (
-      <S.CountryIcon src={source!} alt={alt!} />
+      <S.CountryIcon width={25} height={18} src={source!} alt={alt!} />
     );
   }, []);
 
@@ -51,20 +51,24 @@ const LanguageSelect = () => {
       value={globalContext.language}
       onChange={handleLanguageSelect}
       variant="standard"
+      onClose={() => {
+        requestAnimationFrame(() => {
+          (document.activeElement! as HTMLInputElement).blur();
+        });
+      }}
       MenuProps={{
         keepMounted: true,
       }}
-      native={false}
       renderValue={renderCountryIcon as (value: any) => ReactNode}
     >
       <MenuItem value={ELanguages.Portuguese}>
-        <S.CountryIcon src={getBucketResource('/languages/brazil.png')} alt="Brazil flag" />
+        <S.CountryIcon width={25} height={18} src={getBucketResource('/languages/brazil.png')} alt="Brazil flag" />
         <S.CountryText component="span">
           {!isMobile && 'PT'}
         </S.CountryText>
       </MenuItem>
       <MenuItem value={ELanguages.English}>
-        <S.CountryIcon src={getBucketResource('/languages/united-states.png')} alt="United States flag" />
+        <S.CountryIcon width={25} height={18} src={getBucketResource('/languages/united-states.png')} alt="United States flag" />
         <S.CountryText component="span">
           {!isMobile && 'EN'}
         </S.CountryText>

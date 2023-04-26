@@ -20,7 +20,7 @@ const useIntroTerminalTexts = (additionalTexts: ITerminalLine[] = []) => {
     },
     {
       key: 'second',
-      timer: 1200,
+      timer: 1250,
       typeText: (typewriter: TypewriterClass) => {
         typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.text2.string1' }))
           .start();
@@ -28,7 +28,7 @@ const useIntroTerminalTexts = (additionalTexts: ITerminalLine[] = []) => {
     },
     {
       key: 'third',
-      timer: 2375,
+      timer: 2000,
       typeText: (typewriter: TypewriterClass) => {
         typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.text3.string1' }))
           .start();
@@ -36,7 +36,7 @@ const useIntroTerminalTexts = (additionalTexts: ITerminalLine[] = []) => {
     },
     {
       key: 'fourth',
-      timer: 2975,
+      timer: 2500,
       typeText: (typewriter: TypewriterClass) => {
         typewriter.typeString(intl.formatMessage({ id: 'home.welcome.terminal.text4.string1' }))
           .start();

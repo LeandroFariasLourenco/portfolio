@@ -1,5 +1,5 @@
-import { useTheme } from '@mui/material';
-import { useState, useEffect, useCallback } from 'react';
+import { EDeviceType } from 'src/core/components/responsive/models/device-type.enum';
+import { useGlobalContext } from 'src/core/context/global/global-context';
 import { EResponsiveType } from '../../models';
 import { IUseResponsiveProps } from './props.interface';
 
@@ -7,27 +7,13 @@ const useResponsive = ({
   breakpoint = 'md',
   type = EResponsiveType.bigger,
 }: IUseResponsiveProps) => {
-  const { breakpoints } = useTheme();
+  const { userDeviceType } = useGlobalContext();
 
   const getBreakpointState = () => (type === EResponsiveType.bigger
-    ? window.innerWidth > breakpoints.values[breakpoint]
-    : window.innerWidth < breakpoints.values[breakpoint]);
-  const [shouldShow, setShouldShow] = useState<boolean>(getBreakpointState());
+    ? userDeviceType === EDeviceType.DESKTOP
+    : userDeviceType === EDeviceType.MOBILE);
 
-  const handleShouldShow = useCallback(() => {
-    setShouldShow(getBreakpointState());
-  }, []);
-
-  useEffect(() => {
-    handleShouldShow();
-    window.addEventListener('resize', handleShouldShow);
-
-    return () => {
-      window.removeEventListener('resize', handleShouldShow);
-    };
-  }, []);
-
-  return shouldShow;
+  return getBreakpointState();
 };
 
 export default useResponsive;

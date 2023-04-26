@@ -30,37 +30,27 @@ import * as S from './styled';
 
 const Experience = () => {
   const theme = useTheme();
-  const swiperRef = useRef<SwiperClass>();
+  const [swiperRef, setSwiperRef] = useState<SwiperClass>();
   const [swiperIndex, setSwiperIndex] = useState<number>(0);
   const isMobile = useResponsive({ type: EResponsiveType.smaller });
   const intl = useIntl();
 
-  const updateSwiperHeight = (transitionDuration?: number) => {
-    const paddingBottom = 50;
-    const swiperContainer = (swiperRef.current!.$el[0] as HTMLDivElement);
-    const activeSlide = swiperRef.current!.slides.filter(({ classList }) => classList.contains('swiper-slide-active'))[0];
-    const interval = setInterval(() => {
-      swiperContainer.style.height = `${activeSlide.children[0].scrollHeight + paddingBottom}px`;
-    });
-
-    if (!transitionDuration) {
-      clearInterval(interval);
-    }
-    setTimeout(() => {
-      clearInterval(interval);
-    }, transitionDuration);
-  };
-
   const renderSeeMore = useCallback((children: JSX.Element) => (
     <SeeMore
       isInitialHidden
-      onToggle={(transitionDuration) => {
-        updateSwiperHeight(transitionDuration);
+      onToggle={(transitionNumber) => {
+        const interval = setInterval(() => {
+          swiperRef!.updateAutoHeight();
+        });
+
+        setTimeout(() => {
+          clearInterval(interval);
+        }, transitionNumber);
       }}
     >
       {children}
     </SeeMore>
-  ), [swiperRef.current]);
+  ), [swiperRef]);
 
   const experiences: IExperience[] = useMemo<IExperience[]>(() => [
     {
@@ -193,7 +183,7 @@ const Experience = () => {
         query: 'Enext',
       },
     },
-  ], [intl, isMobile]);
+  ], [intl, isMobile, swiperRef]);
 
   const { swiperProps } = useSwiperProps({
     desktop: {
@@ -259,10 +249,6 @@ const Experience = () => {
     );
   }, []);
 
-  useEffect(() => {
-    updateSwiperHeight();
-  }, []);
-
   return (
     <S.ExperienceContainer>
       <Section
@@ -284,7 +270,7 @@ const Experience = () => {
         <S.SwiperContainer>
           <Swiper
             onInit={(swiper) => {
-              swiperRef.current = swiper;
+              setSwiperRef(swiper);
             }}
             onRealIndexChange={({ realIndex }) => {
               setSwiperIndex(realIndex);
@@ -299,7 +285,7 @@ const Experience = () => {
             {experiences.map(renderExperience)}
           </Swiper>
           <CustomSwiperControls
-            swiper={swiperRef.current!}
+            swiper={swiperRef!}
             swiperIndex={swiperIndex}
             paginationLayout={isMobile ? 'vertical' : 'horizontal'}
             totalSlides={experiences.length}

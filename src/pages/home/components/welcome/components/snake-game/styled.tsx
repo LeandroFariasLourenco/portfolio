@@ -26,14 +26,10 @@ const showGameAnimation = keyframes`
   }
 `;
 
-export const Wrapper = styled(Box)<{ $closeTimer: number }>(({ theme, $closeTimer }) => css`
+export const Wrapper = styled(Grid)<{ $closeTimer: number }>(({ theme, $closeTimer }) => css`
   ${mixins.flexCentered};
-  width: 700px;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
   animation: ${showGameAnimation} 2s forwards;
+  z-index: 1;
 
   &.closed {
     animation-delay: 500ms;
@@ -41,12 +37,48 @@ export const Wrapper = styled(Box)<{ $closeTimer: number }>(({ theme, $closeTime
   }
 `);
 
+export const FooterWrapper = styled(Grid)`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
 export const GobackButton = styled(Button)`
   margin-top: 30px;
 `;
 
+const rotateAnimation = keyframes`
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg)
+  }
+`;
+
 export const CanvasContainer = styled(Box)`
   position: relative;
+  overflow: hidden;
+  padding: 5px;
+  box-shadow: 0 0 5px orange;
+
+  &::after {
+    position: absolute;
+    content: '';
+    display: block;
+    background-image: linear-gradient(45deg, #ff0000, #ffa500, #ef3a22);
+    filter: blur(30px);
+    left: -10px;
+    top: -10px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    animation-name: ${rotateAnimation};
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+  }
 `;
 
 export const Canvas = styled.canvas`
@@ -85,17 +117,18 @@ export const CommandLine = styled(Grid)`
   display: flex;
 `;
 
-export const FooterContainer = styled(Card)`
+export const GameinfoContainer = styled(Card)`
   display: flex;
-  margin: 60px 0;
+  flex-flow: column;
   border: 1px solid ${({ theme }) => theme.palette.primary.main};
-  padding: 20px 40px;
+  padding: 30px;
 `;
 
-export const FooterSection = styled(Grid)``;
+export const GameinfoSection = styled(Grid)``;
 
 export const Command = styled(Grid)`
   ${mixins.flexCentered};
+  flex: 1;
 `;
 
 export const CommandKey = styled(Typography)`
@@ -107,7 +140,8 @@ export const CommandKey = styled(Typography)`
 `;
 
 export const ScoreText = styled(Typography)`
-  margin: 10px 0 15px;
+  margin-bottom: 20px;
+  text-align: center;
   white-space: nowrap;
 `;
 

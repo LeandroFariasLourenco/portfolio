@@ -13,16 +13,17 @@ import SnakeGame from './components/snake-game/snake-game';
 import { desktopParticlesConfig } from './particles/desktop-config';
 import { mobileParticlesConfig } from './particles/mobile-config';
 import * as S from './styled';
+import WelcomeProvider, { useWelcomeContext } from './context/welcome-context';
 
 const Welcome = () => {
   const isDesktop = useResponsive({});
   const { isWindowOnTop } = useIsWindowTop();
   const fadeAnimationTimer = useMemo(() => 1000, []);
-  const [showGame, setShowGame] = useState<boolean>(false);
   const [fadingOutContainer, setFadingOutContainer] = useState<boolean>(false);
   const [particlesConfig, setParticlesConfig] = useState<ParticlesProps['options']>(isDesktop ? desktopParticlesConfig : mobileParticlesConfig);
   const fpsOptions = useMemo(() => [30, 60, 120], []);
   const linkTarget = useLinkTarget();
+  const { playingGame, setPlayingGame } = useWelcomeContext();
 
   const handleArrowDownClick = useCallback(() => {
     window.scrollTo({
@@ -33,7 +34,7 @@ const Welcome = () => {
 
   const awaitFadeAnimation = useCallback(() => {
     setTimeout(() => {
-      setShowGame(true);
+      setPlayingGame(true);
     }, fadeAnimationTimer);
   }, []);
 
@@ -43,10 +44,13 @@ const Welcome = () => {
       <a href={APP.socials.github} target={linkTarget} rel="noreferrer">
         <S.ProfileImage
           $width={imageWidth}
+          width={imageWidth}
+          height={imageWidth}
           src={`https://www.github.com/LeandroFariasLourenco.png?size=${imageWidth}`}
           className={cx({
             focused: isWindowOnTop,
           })}
+          alt="My profile photo"
         />
       </a>
     );
@@ -66,14 +70,21 @@ const Welcome = () => {
   ), [particlesConfig]);
 
   return (
-    <S.Wrapper container alignItems="center" item justifyContent="center" md={12} id={EAppSections.WELCOME}>
-      <LoadParticles id="welcome-section" options={particlesConfig} />
+    <S.Wrapper
+      container
+      alignItems="center"
+      item
+      justifyContent="center"
+      md={12}
+      id={EAppSections.WELCOME}
+    >
+      {!playingGame ? <LoadParticles id="welcome-section" options={particlesConfig} /> : null}
       <Responsive
         breakpoint="md"
       >
         <S.ArrowDownContainer
           className={cx({
-            'is--visible': isWindowOnTop,
+            'is--visible': isWindowOnTop && !playingGame,
           })}
           onClick={handleArrowDownClick}
         >
@@ -115,28 +126,29 @@ const Welcome = () => {
           </Grid>
         </Responsive>
       </S.WelcomeContainer>
-      {showGame && isDesktop ? (
+      {playingGame ? (
         <SnakeGame
           onClose={() => {
             setFadingOutContainer(false);
-            setShowGame(false);
+            setPlayingGame(false);
           }}
         />
-      ) : null}
-      <Responsive
-        breakpoint="md"
-      >
-        <S.FpsContainer
-          className={cx({
-            'is--visible': isWindowOnTop,
-          })}
+      ) : (
+        <Responsive
+          breakpoint="md"
         >
-          <Typography textAlign="center" variant="h6">FPS</Typography>
-          <Grid container>
-            {fpsOptions.map(renderFpsOption)}
-          </Grid>
-        </S.FpsContainer>
-      </Responsive>
+          <S.FpsContainer
+            className={cx({
+              'is--visible': isWindowOnTop,
+            })}
+          >
+            <Typography textAlign="center" variant="h6">FPS</Typography>
+            <Grid container>
+              {fpsOptions.map(renderFpsOption)}
+            </Grid>
+          </S.FpsContainer>
+        </Responsive>
+      )}
     </S.Wrapper>
   );
 };

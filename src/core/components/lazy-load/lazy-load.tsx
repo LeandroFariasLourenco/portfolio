@@ -4,6 +4,7 @@ import {
 } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { v4 as uuid } from 'uuid';
+import { useIntl } from 'react-intl';
 import { ILazyLoadProps } from './props.interface';
 
 import * as S from './styled';
@@ -14,11 +15,12 @@ const LazyLoad = ({
   children,
 }: ILazyLoadProps) => {
   const { inView, ref } = useInView({
-    threshold: 0.25,
+    threshold: 0.20,
     triggerOnce: false,
     initialInView: false,
     // root: document.body,
   });
+  const intl = useIntl();
   const minimumTimeToShow = useMemo(() => 750, []);
   const [inViewDebounce, setInViewDebounce] = useState<boolean>(false);
   const loaderBlocksCount = useMemo(() => 25, []);
@@ -51,6 +53,12 @@ const LazyLoad = ({
             <ul className="loader-wrapper">
               {[...Array(loaderBlocksCount)].map(renderLoaderBlock)}
             </ul>
+            <S.LoaderHint>
+              {intl.formatMessage({ id: 'general.loading.hint' })}
+              <S.LoaderDot component="span" />
+              <S.LoaderDot component="span" />
+              <S.LoaderDot component="span" />
+            </S.LoaderHint>
           </div>
         </S.LoaderContainer>
       )}
