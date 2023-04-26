@@ -7,5 +7,3 @@ Funcionalidade de múltiplas frutas no snake game
 Ajustar intersection observer com document.root
 
 Revisar textos em inglês
-
-Revisar títulos de seções ao mudar a linguagem
