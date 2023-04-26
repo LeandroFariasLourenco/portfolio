@@ -46,7 +46,9 @@ const DesktopTerminal = ({
 
   const scrollToTerminalBottom = useCallback(() => {
     requestAnimationFrame(() => {
-      terminalContainerRef.current!.scrollTo({
+      if (!terminalContainerRef.current) return;
+
+      terminalContainerRef.current.scrollTo({
         top: terminalContainerRef.current!.scrollHeight,
       });
     });

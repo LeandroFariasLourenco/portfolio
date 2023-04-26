@@ -2,7 +2,7 @@ import { useMemo, useCallback, ReactNode } from 'react';
 
 import { getBucketResource } from 'src/core/functions';
 import { usePreloadImages, useResponsive } from 'src/core/hooks';
-import { useGlobalContext } from 'src/core/context/global/context';
+import { useGlobalContext } from 'src/core/context/global/global-context';
 import { MenuItem, SelectChangeEvent } from '@mui/material';
 import { ELanguages, EResponsiveType } from 'src/core/models';
 

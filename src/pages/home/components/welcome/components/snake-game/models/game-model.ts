@@ -5,32 +5,27 @@ import { BaseCanvas } from './base-canvas';
 import { IGameState } from './interfaces/game-state.interface';
 
 export class GameModel extends BaseCanvas {
-  private snake: SnakeModel;
+  public snake: SnakeModel;
 
   private gameStateSubject$: BehaviorSubject<IGameState> = new BehaviorSubject<IGameState>({ paused: false, score: 0, ended: false });
 
   public gameState$ = this.gameStateSubject$.asObservable();
 
-  public frameDecrement: number = 20;
+  public arenaDecrement: number = 20;
 
   public sizeMultiplier: number = 0;
 
-  public canvasDimensions = {
+  public arenaDimensions = {
     width: 0,
     height: 0,
   };
 
   constructor(
     canvas: HTMLCanvasElement,
-    snake: SnakeModel,
   ) {
     super();
     this.canvas = canvas;
     this.canvasContext = canvas.getContext('2d')!;
-    this.snake = snake;
-
-    this.canvasDimensions.width = this.canvas.width - this.frameDecrement;
-    this.canvasDimensions.height = this.canvas.height - this.frameDecrement;
   }
 
   private drawCanvas() {
@@ -60,10 +55,10 @@ export class GameModel extends BaseCanvas {
     );
     this.canvasContext.drawImage(
       gameFrameTexture,
-      -(this.canvasDimensions.width / 2),
-      -(this.canvasDimensions.height / 2),
-      this.canvasDimensions.width,
-      this.canvasDimensions.height,
+      -(this.arenaDimensions.width / 2),
+      -(this.arenaDimensions.height / 2),
+      this.arenaDimensions.width,
+      this.arenaDimensions.height,
     );
     this.canvasContext.restore();
   }
@@ -83,14 +78,14 @@ export class GameModel extends BaseCanvas {
     });
     if (this.gameState.ended) return;
 
-    const frameBoundary = this.frameDecrement / 2;
+    const frameBoundary = this.arenaDecrement / 2;
     const frameMinPosition = this.sizeMultiplier * frameBoundary;
 
     const hasHitLeftBorder = snakeHead.x <= this.sizeMultiplier * frameBoundary;
     const hasHitTopBorder = snakeHead.y <= this.sizeMultiplier * frameBoundary;
 
-    const hasHitRightBorder = snakeHead.x > this.canvasDimensions.width + frameMinPosition;
-    const hasHitBottomBorder = snakeHead.y > this.canvasDimensions.height + frameMinPosition;
+    const hasHitRightBorder = snakeHead.x > this.arenaDimensions.width + frameMinPosition;
+    const hasHitBottomBorder = snakeHead.y > this.arenaDimensions.height + frameMinPosition;
 
     const isGameFinished = hasHitBottomBorder || hasHitTopBorder || hasHitRightBorder || hasHitLeftBorder;
     this.setGameFinished(isGameFinished);
@@ -133,11 +128,13 @@ export class GameModel extends BaseCanvas {
     return this.gameStateSubject$.value;
   }
 
-  public resetGame() {
+  public setupGame() {
     this.setGameFinished(false);
     this.setScore(0);
     this.sizeMultiplier = 0;
     this.snake.setupInitialState();
+    this.arenaDimensions.width = this.canvas.width - this.arenaDecrement;
+    this.arenaDimensions.height = this.canvas.height - this.arenaDecrement;
     this.renderGame();
   }
 

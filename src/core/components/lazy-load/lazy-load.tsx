@@ -14,7 +14,7 @@ const LazyLoad = ({
   children,
 }: ILazyLoadProps) => {
   const { inView, ref } = useInView({
-    threshold: 0.25,
+    threshold: 0.20,
     triggerOnce: false,
     initialInView: false,
     // root: document.body,

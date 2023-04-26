@@ -185,92 +185,90 @@ const Projects = () => {
   ), []);
 
   return (
-    <ProjectsProvider>
-      <S.ProjectsWrapper id={EAppSections.PROJECTS}>
-        <Section
-          onTitleShow={(typewriter) => {
-            typewriter.typeString(intl.formatMessage({ id: 'home.projects.my-projects.title' }))
-              .start();
-          }}
-          icon={<DeveloperBoard htmlColor="white" fontSize="large" />}
-          gridStyle={{
-            paddingTop: 50,
-            paddingBottom: 50,
-          }}
-        >
-          <S.ProjectDescriptionText>
-            <FormattedMessage id="home.projects.description" />
-          </S.ProjectDescriptionText>
-          <S.ProjectsContainer container>
-            <S.RepositoriesWrapper item xs={12} md={3}>
-              <S.RepositoryTitle container flexDirection="row" alignItems="center">
-                <Code htmlColor="white" />
-                <Typography variant="h4"><FormattedMessage id="home.projects.title" /></Typography>
-              </S.RepositoryTitle>
-              <Responsive
-                breakpoint="md"
-                aboveComponent={<S.RepositoriesList container flexWrap="wrap">{repositories.map(renderRepository)}</S.RepositoriesList>}
-                belowComponent={(
-                  <S.RepositoriesList container flexWrap="nowrap" flexDirection="row">
-                    <SwipeAnimation lottieProps={{
-                      height: '80px',
-                      width: 'unset',
-                      speed: 1.25,
-                      config: {
-                        animationData: SwipeRightAnimation,
-                      },
-                    }}
-                    />
-                    {repositories.map(renderRepository)}
-                  </S.RepositoriesList>
-              )}
-              />
-            </S.RepositoriesWrapper>
-            <S.ProjectsTabs
-              item
-              xs={12}
-              md={9}
-              container
-              flexDirection="column"
-              flexWrap="nowrap"
-            >
-              <SlideTitle
-                icon={<Star htmlColor="#fff" />}
-                onTitleShow={(typewriter) => {
-                  typewriter.typeString(intl.formatMessage({ id: 'home.projects.highlights.title' })).start();
-                }}
-              />
-              <Swiper onInit={(swiper) => { swiperRef.current = swiper; }} {...swiperProps}>
-                {projects.map(renderProject)}
-              </Swiper>
-              <Responsive
-                breakpoint="md"
-              >
-                <CustomSwiperControls
-                  paginationLayout="vertical"
-                  swiper={swiperRef.current!}
-                  swiperIndex={swiperIndex}
-                  totalSlides={projects.length}
-                />
-              </Responsive>
-            </S.ProjectsTabs>
+    <S.ProjectsWrapper id={EAppSections.PROJECTS}>
+      <Section
+        onTitleShow={(typewriter) => {
+          typewriter.typeString(intl.formatMessage({ id: 'home.projects.my-projects.title' }))
+            .start();
+        }}
+        icon={<DeveloperBoard htmlColor="white" fontSize="large" />}
+        gridStyle={{
+          paddingTop: 50,
+          paddingBottom: 50,
+        }}
+      >
+        <S.ProjectDescriptionText>
+          <FormattedMessage id="home.projects.description" />
+        </S.ProjectDescriptionText>
+        <S.ProjectsContainer container>
+          <S.RepositoriesWrapper item xs={12} md={3}>
+            <S.RepositoryTitle container flexDirection="row" alignItems="center">
+              <Code htmlColor="white" />
+              <Typography variant="h4"><FormattedMessage id="home.projects.title" /></Typography>
+            </S.RepositoryTitle>
             <Responsive
               breakpoint="md"
-              type={EResponsiveType.smaller}
+              aboveComponent={<S.RepositoriesList container flexWrap="wrap">{repositories.map(renderRepository)}</S.RepositoriesList>}
+              belowComponent={(
+                <S.RepositoriesList container flexWrap="nowrap" flexDirection="row">
+                  <SwipeAnimation lottieProps={{
+                    height: '80px',
+                    width: 'unset',
+                    speed: 1.25,
+                    config: {
+                      animationData: SwipeRightAnimation,
+                    },
+                  }}
+                  />
+                  {repositories.map(renderRepository)}
+                </S.RepositoriesList>
+              )}
+            />
+          </S.RepositoriesWrapper>
+          <S.ProjectsTabs
+            item
+            xs={12}
+            md={9}
+            container
+            flexDirection="column"
+            flexWrap="nowrap"
+          >
+            <SlideTitle
+              icon={<Star htmlColor="#fff" />}
+              onTitleShow={(typewriter) => {
+                typewriter.typeString(intl.formatMessage({ id: 'home.projects.highlights.title' })).start();
+              }}
+            />
+            <Swiper onInit={(swiper) => { swiperRef.current = swiper; }} {...swiperProps}>
+              {projects.map(renderProject)}
+            </Swiper>
+            <Responsive
+              breakpoint="md"
             >
-              <>
-                <MobileLightbox swiperIndex={swiperIndex} projects={projects} />
-                <CustomSwiperControls
-                  swiper={swiperRef.current!}
-                  swiperIndex={swiperIndex}
-                  totalSlides={projects.length}
-                />
-              </>
+              <CustomSwiperControls
+                paginationLayout="vertical"
+                swiper={swiperRef.current!}
+                swiperIndex={swiperIndex}
+                totalSlides={projects.length}
+              />
             </Responsive>
-          </S.ProjectsContainer>
-        </Section>
-      </S.ProjectsWrapper>
-    </ProjectsProvider>
+          </S.ProjectsTabs>
+          <Responsive
+            breakpoint="md"
+            type={EResponsiveType.smaller}
+          >
+            <>
+              <MobileLightbox swiperIndex={swiperIndex} projects={projects} />
+              <CustomSwiperControls
+                swiper={swiperRef.current!}
+                swiperIndex={swiperIndex}
+                totalSlides={projects.length}
+              />
+            </>
+          </Responsive>
+        </S.ProjectsContainer>
+      </Section>
+    </S.ProjectsWrapper>
   );
 };
 

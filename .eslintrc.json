@@ -29,6 +29,7 @@
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": "off",
     "react/jsx-no-constructed-context-values": "off",
+    "react/jsx-no-useless-fragment": "off",
     "no-unused-vars": "off",
     "no-shadow": "off",
     "no-await-in-loop": "off",
