@@ -124,7 +124,7 @@ const Header = () => {
                           </Grid>
                           <Grid item xs flex={0}>
                             <S.MobileDrawerDivider textAlign="center"><Chip label={<Typography variant="h3">Feito por</Typography>} /></S.MobileDrawerDivider>
-                            <S.Signature src={getBucketResource('/signature.png')} alt="signature" />
+                            <S.Signature width={85} height={58} src={getBucketResource('/signature.png')} alt="signature" />
                           </Grid>
                         </S.MobileDrawerContainer>
                       ) : null}

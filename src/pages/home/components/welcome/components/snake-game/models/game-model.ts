@@ -25,7 +25,7 @@ export class GameModel extends BaseCanvas {
   ) {
     super();
     this.canvas = canvas;
-    this.canvasContext = canvas.getContext('2d')!;
+    this.canvasContext = canvas.getContext('2d', { willReadFrequently: true })!;
   }
 
   private drawCanvas() {

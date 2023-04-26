@@ -7,12 +7,10 @@ import {
   useCallback,
   useMemo, useRef, useState,
 } from 'react';
-import AnimateHeight from 'react-animate-height';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import SwipeRightAnimation from 'src/assets/animations/swipe-right.json';
 import { Responsive } from 'src/core/components';
-import LoadParticles from 'src/core/components/load-particles/load-particles';
 import SwipeAnimation from 'src/core/components/swipe-animation/swipe-animation';
 import { getBucketResource } from 'src/core/functions';
 import { useHidden, useResponsive } from 'src/core/hooks';
@@ -27,7 +25,6 @@ import Extracurricular from './components/extracurricular/extracurricular';
 import { ICertificate } from './models/certificate.interface';
 import { ICourse } from './models/course.interface';
 import { IExtracurricular } from './models/extracurricular.interface';
-import { desktopParticlesConfig } from './particles/desktop-config';
 import * as S from './styled';
 
 const Academic = () => {
@@ -223,49 +220,44 @@ const Academic = () => {
           {formationTabs.map(renderFormationTab)}
         </S.FormationTabs>
 
-        <AnimateHeight
-          duration={300}
-          height="auto"
+        <S.CardContainer
+          container
+          item
+          ref={(ref) => {
+            cardContainerRef.current = ref!;
+          }}
+          alignItems="center"
+          xs={12}
+          gap={5}
         >
-          <S.CardContainer
+          <Grid
             container
-            item
-            ref={(ref) => {
-              cardContainerRef.current = ref!;
+            spacing={2}
+            style={{
+              display: useHidden(activeTab !== 0),
             }}
-            alignItems="center"
-            xs={12}
-            gap={5}
           >
-            <Grid
-              container
-              spacing={2}
-              style={{
-                display: useHidden(activeTab !== 0),
-              }}
-            >
-              {formations.courses.map(renderCourse)}
-            </Grid>
-            <Grid
-              container
-              style={{
-                display: useHidden(activeTab !== 1),
-              }}
-              spacing={2}
-            >
-              {formations.extracurriculars.map(renderExtracurricular)}
-            </Grid>
-            <Grid
-              container
-              spacing={isMobile ? 1 : 2}
-              style={{
-                display: useHidden(activeTab !== 2),
-              }}
-            >
-              {formations.certificates.map(renderCertificate)}
-            </Grid>
-          </S.CardContainer>
-        </AnimateHeight>
+            {formations.courses.map(renderCourse)}
+          </Grid>
+          <Grid
+            container
+            style={{
+              display: useHidden(activeTab !== 1),
+            }}
+            spacing={2}
+          >
+            {formations.extracurriculars.map(renderExtracurricular)}
+          </Grid>
+          <Grid
+            container
+            spacing={isMobile ? 1 : 2}
+            style={{
+              display: useHidden(activeTab !== 2),
+            }}
+          >
+            {formations.certificates.map(renderCertificate)}
+          </Grid>
+        </S.CardContainer>
       </Section>
     </S.FormationWrapper>
   );

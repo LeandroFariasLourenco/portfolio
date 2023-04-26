@@ -56,7 +56,7 @@ const MobileTerminal = () => {
               flexDirection="row"
               flexWrap="nowrap"
             >
-              <S.TerminalTabIcon width={20} src={getBucketResource('/git-for-windows.ico')} />
+              <S.TerminalTabIcon alt="Terminal icon" width={20} height={20} src={getBucketResource('/git-for-windows.ico')} />
 
               <S.TerminalTabText>Bash</S.TerminalTabText>
 

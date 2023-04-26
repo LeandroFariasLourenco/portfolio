@@ -42,6 +42,16 @@ const Languages = () => {
     </S.TechnologyTabContainer>
   ), [selectedTab]);
 
+  const renderLanguageTab = useCallback((language: ILanguage, index: number) => (
+    <LanguageTab
+      language={language}
+      key={language.name}
+      onToggle={onLanguageTabToggle}
+      selectedTab={selectedTab}
+      index={index}
+    />
+  ), []);
+
   return (
     <S.SectionWrapper id={EAppSections.STACK}>
       <Section
@@ -65,15 +75,7 @@ const Languages = () => {
             },
           }}
           />
-          {languages.map((language, index) => (
-            <LanguageTab
-              language={language}
-              key={language.name}
-              onToggle={onLanguageTabToggle}
-              selectedTab={selectedTab}
-              index={index}
-            />
-          ))}
+          {languages.map(renderLanguageTab)}
         </S.StackWrapper>
         <S.TechnologyWrapper
           ref={(ref: HTMLDivElement) => {

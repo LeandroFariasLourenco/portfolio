@@ -1,6 +1,7 @@
 import { Box, Grid } from '@mui/material';
 import {
-  memo, useEffect, useMemo, useState,
+  memo, useEffect, useMemo,
+  useState,
 } from 'react';
 import { Slide } from 'react-awesome-reveal';
 import { useInView } from 'react-intersection-observer';
@@ -16,12 +17,12 @@ const SlideTitle = ({
   icon,
   ignoreObserver = false,
 }: ISlideTitleProps) => {
-  const intl = useIntl();
   const { inView, ref } = useInView({
     threshold: 0.8, initialInView: false, triggerOnce: true,
   });
   const isMobile = useResponsive({ type: EResponsiveType.smaller });
   const [typewriterRef, setTypewriterRef] = useState<TypewriterClass | null>(null);
+  const { messages } = useIntl();
   const shouldShowTitle: boolean = useMemo<boolean>(() => {
     if (ignoreObserver) {
       return true;
@@ -35,7 +36,7 @@ const SlideTitle = ({
 
     typewriterRef.deleteAll(5);
     onTitleShow(typewriterRef);
-  }, [intl, typewriterRef]);
+  }, [messages]);
 
   return (
     <Grid container flexWrap="nowrap" justifyContent="space-between" alignItems="center" ref={ref}>
@@ -43,6 +44,7 @@ const SlideTitle = ({
         {shouldShowTitle ? (
           <Typewriter
             onInit={(typewriter) => {
+              setTypewriterRef(typewriter);
               typewriter.deleteAll(5);
               onTitleShow(typewriter);
             }}

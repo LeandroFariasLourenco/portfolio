@@ -1,9 +1,10 @@
 import { Box, Grid } from '@mui/material';
 import {
-  memo,
+  memo, useCallback,
 } from 'react';
 import { SlideTitle } from 'src/core/components';
 
+import { TypewriterClass } from 'typewriter-effect';
 import { ISectionProps } from './props.interface';
 import * as S from './styled';
 
@@ -27,7 +28,7 @@ const Section = ({
     <Grid item xs={12} width="100%" style={{ maxWidth: 1000 }}>
       <SlideTitle
         icon={icon}
-        onTitleShow={(typewriter) => {
+        onTitleShow={(typewriter: TypewriterClass) => {
           onTitleShow(typewriter);
         }}
       />

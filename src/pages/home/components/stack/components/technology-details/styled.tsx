@@ -22,10 +22,9 @@ export const LanguageDescriptionCard = styled(Card)(({ theme }) => `
   
   ${theme.breakpoints.down('md')} {
     transition: max-height 200ms ease-in;
-    max-height: 0;
     
-    &.is--selected {
-      max-height: 2000px;
+    &:not(.is--selected) {
+      display: none;
     }
   }
   

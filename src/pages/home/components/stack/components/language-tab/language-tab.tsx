@@ -1,8 +1,6 @@
 import cx from 'classnames';
 import { useEffect, useState } from 'react';
 import { getBucketResource } from 'src/core/functions';
-import { useResponsive } from 'src/core/hooks';
-import { EResponsiveType } from 'src/core/models';
 import { ILanguageProps } from './props.interface';
 import * as S from './styled';
 
@@ -13,7 +11,6 @@ const LanguageTab = ({
   selectedTab,
 }: ILanguageProps) => {
   const [open, setOpen] = useState<boolean>(false);
-  const isMobile = useResponsive({ type: EResponsiveType.smaller });
 
   useEffect(() => {
     setOpen(selectedTab === index);

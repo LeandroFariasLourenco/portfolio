@@ -5,6 +5,7 @@ import { Grid, Typography } from '@mui/material';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { getBucketResource } from 'src/core/functions';
 
+import { useCallback } from 'react';
 import { IMobileCardProps } from './props.interface';
 import * as S from './styled';
 
@@ -14,6 +15,15 @@ const MobileCard = ({
   BorderComponent,
 }: IMobileCardProps) => {
   const intl = useIntl();
+
+  const renderStackTechnology = useCallback((name: string) => (
+    <S.StackTechnologyListItem
+      key={name}
+      component="ul"
+    >
+      <Typography variant="subtitle2">{name}</Typography>
+    </S.StackTechnologyListItem>
+  ), []);
 
   return (
     <Grid container flexDirection="row" flexWrap="nowrap">
@@ -66,14 +76,7 @@ const MobileCard = ({
             <Grid container marginTop="10px">
               <Grid item container xs={8}>
                 <S.StackTechnologyListContainer component="ul">
-                  {(intl.formatMessage({ id: experience.stack })).split(',').map((name: string) => (
-                    <S.StackTechnologyListItem
-                      key={name}
-                      component="ul"
-                    >
-                      <Typography variant="subtitle2">{name}</Typography>
-                    </S.StackTechnologyListItem>
-                  ))}
+                  {(intl.formatMessage({ id: experience.stack })).split(',').map(renderStackTechnology)}
                 </S.StackTechnologyListContainer>
               </Grid>
               <Grid item xs={4} container alignItems="flex-end" justifyContent="flex-end">

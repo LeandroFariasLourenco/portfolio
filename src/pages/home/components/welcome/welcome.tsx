@@ -44,10 +44,13 @@ const Welcome = () => {
       <a href={APP.socials.github} target={linkTarget} rel="noreferrer">
         <S.ProfileImage
           $width={imageWidth}
+          width={imageWidth}
+          height={imageWidth}
           src={`https://www.github.com/LeandroFariasLourenco.png?size=${imageWidth}`}
           className={cx({
             focused: isWindowOnTop,
           })}
+          alt="My profile photo"
         />
       </a>
     );

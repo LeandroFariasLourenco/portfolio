@@ -7,5 +7,4 @@ export const HomeContainer = styled(Box)`
     backgroundImage: getBucketResource('/wallpapers/terminal.png'),
     gradientColor: 'linear-gradient(rgba(28, 22, 48, 0.85), rgba(28, 22, 48,0.97))',
   })};
-  background-attachment: fixed;
 `;
