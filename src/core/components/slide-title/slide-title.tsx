@@ -54,6 +54,7 @@ const SlideTitle = ({
       </Box>
       <Slide
         direction="right"
+        triggerOnce={isMobile}
       >
         {icon}
       </Slide>

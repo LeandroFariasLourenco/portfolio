@@ -45,7 +45,9 @@ const Projects = () => {
       grabCursor: true,
       pagination: true,
     },
-    mobile: {},
+    mobile: {
+      spaceBetween: 10,
+    },
     commonProps: {
       style: { width: '100%', height: '100%' },
       onRealIndexChange: (swiper: SwiperClass) => {
