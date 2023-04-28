@@ -87,7 +87,7 @@ const SnakeGame = ({
       {intl.formatMessage({ id: 'home.welcome.snake-game.score' })}
       :
       {' '}
-      565
+      {gameState?.score}
     </S.ScoreText>
   ), [gameState, intl]);
 

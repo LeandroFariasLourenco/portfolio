@@ -14,8 +14,9 @@ import { Typewriter } from 'src/core/components';
 import { APP } from 'src/core/constants';
 import { deleteLastCharacter } from 'src/core/functions';
 import { useIsWindowTop, useLoginTime } from 'src/core/hooks';
-import { EAppSections } from 'src/core/models';
+import { EAppSections, ELanguages } from 'src/core/models';
 import { TypewriterClass } from 'typewriter-effect';
+import { useGlobalContext } from 'src/core/context/global/global-context';
 import useIntroTerminalTexts from '../../hooks/use-intro-terminal-texts';
 import { ITerminalLine } from '../mobile-terminal/models/terminal-line.interface';
 import { IDesktopTerminalProps } from './props.interface';
@@ -27,6 +28,8 @@ const DesktopTerminal = ({
 }: IDesktopTerminalProps) => {
   const theme = useTheme();
   const intl = useIntl();
+  const { language } = useGlobalContext();
+  const languageRef = useRef<ELanguages>(language);
   const [welcomeMessages, setWelcomeMessages] = useState<ITerminalLine[]>([]);
   const [terminalRows, setTerminalRowsCount] = useState<string[]>(['']);
   const { isWindowOnTop } = useIsWindowTop();
@@ -88,7 +91,7 @@ const DesktopTerminal = ({
       const appSections = Object.values(EAppSections).filter((section) => section !== EAppSections.WELCOME) as string[];
 
       if (userInput === '/curriculum') {
-        window.location.href = APP.aws.curriculum;
+        window.location.href = APP.aws.curriculum[languageRef.current];
         scrollToTerminalBottom();
         return [...newState, ''];
       }
@@ -197,6 +200,10 @@ const DesktopTerminal = ({
   useEffect(() => {
     intlRef.current = intl;
   }, [intl]);
+
+  useEffect(() => {
+    languageRef.current = language;
+  }, [language]);
 
   const initTerminal = useCallback(() => {
     clearAnimationQueue();

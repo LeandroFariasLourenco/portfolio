@@ -43,6 +43,8 @@ const SeeMore = ({
   }, [isExpanded, heightMin, heightMax]);
 
   useEffect(() => {
+    if (isExpanded) return;
+
     const clientHeight = defaultHeight;
     const scrollHeight = textElementRef.current!.scrollHeight || defaultHeight;
     if (scrollHeight > clientHeight) {

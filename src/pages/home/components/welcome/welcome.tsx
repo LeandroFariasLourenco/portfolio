@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import cx from 'classnames';
 import { useCallback, useMemo, useState } from 'react';
 import { ParticlesProps } from 'react-tsparticles';
@@ -7,20 +7,23 @@ import LoadParticles from 'src/core/components/load-particles/load-particles';
 import { APP } from 'src/core/constants';
 import { useIsWindowTop, useLinkTarget, useResponsive } from 'src/core/hooks';
 import { EAppSections, EResponsiveType } from 'src/core/models';
+import { useInView } from 'react-intersection-observer';
 import DesktopTerminal from './components/desktop-terminal/desktop-terminal';
 import MobileTerminal from './components/mobile-terminal/mobile-terminal';
 import SnakeGame from './components/snake-game/snake-game';
 import { useWelcomeContext } from './context/welcome-context';
 import { desktopParticlesConfig } from './particles/desktop-config';
-import { mobileParticlesConfig } from './particles/mobile-config';
 import * as S from './styled';
 
 const Welcome = () => {
   const isDesktop = useResponsive({});
   const { isWindowOnTop } = useIsWindowTop();
+  const { ref: animationContainerRef, inView } = useInView({
+    triggerOnce: false, threshold: 0.1, initialInView: true, trackVisibility: true, delay: 100,
+  });
   const fadeAnimationTimer = useMemo(() => 1000, []);
   const [fadingOutContainer, setFadingOutContainer] = useState<boolean>(false);
-  const [particlesConfig, setParticlesConfig] = useState<ParticlesProps['options']>(isDesktop ? desktopParticlesConfig : mobileParticlesConfig);
+  const [particlesConfig, setParticlesConfig] = useState<ParticlesProps['options']>(desktopParticlesConfig);
   const fpsOptions = useMemo(() => [30, 60, 120], []);
   const linkTarget = useLinkTarget();
   const { playingGame, setPlayingGame } = useWelcomeContext();
@@ -78,18 +81,22 @@ const Welcome = () => {
       md={12}
       id={EAppSections.WELCOME}
     >
-      {!playingGame ? <LoadParticles id="welcome-section" options={particlesConfig} /> : null}
       <Responsive
         breakpoint="md"
       >
-        <S.ArrowDownContainer
-          className={cx({
-            'is--visible': isWindowOnTop && !playingGame,
-          })}
-          onClick={handleArrowDownClick}
-        >
-          <S.ArrowDown />
-        </S.ArrowDownContainer>
+        <>
+          <Box ref={animationContainerRef} className="background-canvas">
+            {!playingGame && inView ? <LoadParticles id="welcome-section" options={particlesConfig} /> : null}
+          </Box>
+          <S.ArrowDownContainer
+            className={cx({
+              'is--visible': isWindowOnTop && !playingGame,
+            })}
+            onClick={handleArrowDownClick}
+          >
+            <S.ArrowDown />
+          </S.ArrowDownContainer>
+        </>
       </Responsive>
       <S.WelcomeContainer
         $animationTimer={fadeAnimationTimer}

@@ -21,6 +21,7 @@ import { getBucketResource, smoothScroll } from 'src/core/functions';
 import { useIsWindowTop, useResponsive } from 'src/core/hooks';
 import { EAppSections, EResponsiveType } from 'src/core/models';
 import { LanguageSelect } from 'src/core/components';
+import { useGlobalContext } from 'src/core/context/global/global-context';
 import { IMenuOption } from './models/menu-option.interface';
 
 import * as S from './styled';
@@ -28,6 +29,7 @@ import * as S from './styled';
 const Header = () => {
   const { isWindowOnTop } = useIsWindowTop();
   const intl = useIntl();
+  const { language } = useGlobalContext();
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const isMobile = useResponsive({ breakpoint: 'md', type: EResponsiveType.smaller });
   const triggerScroll = useScrollTrigger({
@@ -52,10 +54,10 @@ const Header = () => {
 
   const mobileMenuOptions: IMenuOption[] = useMemo<IMenuOption[]>(() => [
     ...desktopMenuOptions,
-    { label: 'header.links.section.curriculum', href: APP.aws.curriculum, icon: <Article /> },
-  ], []);
+    { label: 'header.links.section.curriculum', href: APP.aws.curriculum[language], icon: <Article /> },
+  ], [language]);
 
-  const menuOptions: IMenuOption[] = useMemo<IMenuOption[]>(() => (isMobile ? mobileMenuOptions : desktopMenuOptions), [isMobile]);
+  const menuOptions: IMenuOption[] = useMemo<IMenuOption[]>(() => (isMobile ? mobileMenuOptions : desktopMenuOptions), [isMobile, language]);
 
   const renderMenuOptions = useCallback((link: IMenuOption) => (
     <S.HeaderLink
