@@ -10,6 +10,7 @@ import { useProjectsContext } from '../../context/projects.context';
 
 const MobileProject = ({
   project,
+  swiperRef,
 }: IMobileProjectProps) => {
   const intl = useIntl();
   const { mobile: { lightbox: { setOpen } } } = useProjectsContext();
@@ -29,7 +30,16 @@ const MobileProject = ({
         <Grid container item xs={12}>
           <Typography variant="h2">{project.title}</Typography>
 
-          <SeeMore>
+          <SeeMore onToggle={(transitionNumber) => {
+            const interval = setInterval(() => {
+              swiperRef!.updateAutoHeight();
+            });
+
+            setTimeout(() => {
+              clearInterval(interval);
+            }, transitionNumber);
+          }}
+          >
             {project.paragraphs.map(renderProjectParagraph)}
           </SeeMore>
         </Grid>

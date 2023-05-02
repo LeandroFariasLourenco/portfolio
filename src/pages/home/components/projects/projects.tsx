@@ -31,12 +31,11 @@ import DesktopProject from './components/desktop-project/desktop-project';
 import MobileLightbox from './components/mobile-lightbox/mobile-lightbox';
 import MobileProject from './components/mobile-project/mobile-project';
 import Repository from './components/repository/repository';
-import ProjectsProvider from './context/projects.context';
 import * as S from './styled';
 
 const Projects = () => {
   const [repositories, setRepositories] = useState<IGithubRepository[]>([]);
-  const swiperRef = useRef<SwiperClass>();
+  const [swiperRef, setSwiperRef] = useState<SwiperClass>();
   const intl = useIntl();
   const [swiperIndex, setSwiperIndex] = useState<number>(0);
   const { swiperProps } = useSwiperProps({
@@ -47,6 +46,7 @@ const Projects = () => {
     },
     mobile: {
       spaceBetween: 10,
+      autoHeight: true,
     },
     commonProps: {
       style: { width: '100%', height: '100%' },
@@ -181,10 +181,10 @@ const Projects = () => {
       <Responsive
         breakpoint="md"
         aboveComponent={<DesktopProject project={project} />}
-        belowComponent={<MobileProject project={project} />}
+        belowComponent={<MobileProject swiperRef={swiperRef!} project={project} />}
       />
     </SwiperSlide>
-  ), []);
+  ), [swiperRef]);
 
   return (
     <S.ProjectsWrapper id={EAppSections.PROJECTS}>
@@ -241,7 +241,7 @@ const Projects = () => {
                 typewriter.typeString(intl.formatMessage({ id: 'home.projects.highlights.title' })).start();
               }}
             />
-            <Swiper onInit={(swiper) => { swiperRef.current = swiper; }} {...swiperProps}>
+            <Swiper onInit={(swiper) => { setSwiperRef(swiper); }} {...swiperProps}>
               {projects.map(renderProject)}
             </Swiper>
             <Responsive
@@ -249,7 +249,7 @@ const Projects = () => {
             >
               <CustomSwiperControls
                 paginationLayout="vertical"
-                swiper={swiperRef.current!}
+                swiper={swiperRef!}
                 swiperIndex={swiperIndex}
                 totalSlides={projects.length}
               />
@@ -262,7 +262,7 @@ const Projects = () => {
             <>
               <MobileLightbox swiperIndex={swiperIndex} projects={projects} />
               <CustomSwiperControls
-                swiper={swiperRef.current!}
+                swiper={swiperRef!}
                 swiperIndex={swiperIndex}
                 totalSlides={projects.length}
               />

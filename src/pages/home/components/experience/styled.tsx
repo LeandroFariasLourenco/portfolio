@@ -20,6 +20,40 @@ export const ExperienceContainer = styled(Grid)`
   }
 `;
 
+export const ExperienceAnimatedBorder = styled(Box)<{
+  color: string;
+}>(({ color }) => `
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: ${color};
+`);
+
+export const ExperienceAnimatedContainer = styled(Box) <{
+  $index: number;
+  $direction: 'left' | 'right';
+}>`
+  width: 150%;
+  height: 150%;
+  position: absolute;
+  z-index: -1;
+  animation-name: ${rotationKeyframe};
+  animation-duration: 40s;
+  animation-direction: ${({ $direction }) => ($direction === 'left' ? 'normal' : 'reverse')};
+  animation-iteration-count: infinite;
+
+  ${ExperienceAnimatedBorder} {
+    &:first-child {
+      transform: translate(-50%, -50%);
+    }
+
+    &:last-child {
+      transform: translate(50%, -50%);
+    }
+  }
+`;
+
 export const SwiperContainer = styled(Grid)(({ theme }) => `
   position: relative;
   margin-top: 40px;
@@ -28,6 +62,12 @@ export const SwiperContainer = styled(Grid)(({ theme }) => `
     &-slide {
       position: relative;
       overflow: hidden;
+
+      &:not(.swiper-slide-active) {
+        ${ExperienceAnimatedContainer} {
+          display: none;
+        }
+      }
 
       ${theme.breakpoints.up('md')} {
         &::before {
@@ -50,39 +90,4 @@ export const SwiperContainer = styled(Grid)(({ theme }) => `
   }
 `);
 
-export const ExperienceAnimatedBorder = styled(Box)<{
-  color: string;
-}>(({ color }) => `
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  background-color: ${color};
-`);
-
 export const SeemoreButton = styled(Button)``;
-
-export const ExperienceAnimatedContainer = styled(Box) <{
-  $index: number;
-  $direction: 'left' | 'right';
-}>`
-  width: 150%;
-  height: 150%;
-  position: absolute;
-  z-index: -1;
-  animation-delay: ${({ $index }) => $index * 2}s;
-  animation-name: ${rotationKeyframe};
-  animation-duration: 40s;
-  animation-direction: ${({ $direction }) => ($direction === 'left' ? 'normal' : 'reverse')};
-  animation-iteration-count: infinite;
-
-  ${ExperienceAnimatedBorder} {
-    &:first-child {
-      transform: translate(-50%, -50%);
-    }
-
-    &:last-child {
-      transform: translate(50%, -50%);
-    }
-  }
-`;
