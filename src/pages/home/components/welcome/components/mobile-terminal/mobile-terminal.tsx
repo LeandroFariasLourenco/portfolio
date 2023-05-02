@@ -5,11 +5,13 @@ import { Grid } from '@mui/material';
 import cx from 'classnames';
 import {
   useCallback, useEffect,
+  useRef,
   useState,
 } from 'react';
 import { Typewriter } from 'src/core/components';
 import { getBucketResource } from 'src/core/functions';
 import { useIsWindowTop } from 'src/core/hooks';
+import { useIntl } from 'react-intl';
 import useIntroTerminalTexts from '../../hooks/use-intro-terminal-texts';
 import { ITerminalLine } from './models/terminal-line.interface';
 import * as S from './styled';
@@ -18,8 +20,52 @@ const MobileTerminal = () => {
   const [terminalRows, setTerminalRows] = useState<ITerminalLine[]>([]);
   const { isWindowOnTop } = useIsWindowTop();
   const terminalTexts = useIntroTerminalTexts();
+  const animationQueue = useRef<number[]>([]);
+  const intl = useIntl();
 
-  const setupTerminalTimer = useCallback(() => {
+  const clearAnimationQueue = () => {
+    animationQueue.current.forEach((timeout) => { clearTimeout(timeout); });
+    animationQueue.current = [];
+  };
+
+  const renderTerminalRow = useCallback((text: ITerminalLine, index: number) => (
+    <S.TerminalRow
+      container
+      flexDirection="column"
+      key={text.key}
+    >
+      <S.TerminalText
+        container
+        flexDirection="row"
+        flexWrap="nowrap"
+      >
+        <S.TerminalTextUser>Leand@DESKTOP</S.TerminalTextUser>
+        <S.TerminalTextCPU>MINGW64</S.TerminalTextCPU>
+        <S.TerminalTextPath>/c/WINDOWS/system32</S.TerminalTextPath>
+      </S.TerminalText>
+      <Grid
+        container
+        flexWrap="nowrap"
+        alignItems="flex-start"
+      >
+        <S.TerminalTabCommandPrefix variant="h6">$</S.TerminalTabCommandPrefix>
+        <Typewriter
+          options={{
+            delay: 10,
+          }}
+          typographyProps={{
+            variant: 'h6',
+            fontSize: 14.5,
+          }}
+          onInit={terminalTexts[index].typeText}
+        />
+      </Grid>
+    </S.TerminalRow>
+  ), [intl]);
+
+  const initTerminal = useCallback(() => {
+    clearAnimationQueue();
+    setTerminalRows([]);
     terminalTexts.forEach((terminalText) => {
       const timeout = setTimeout(() => {
         if (terminalRows.length !== terminalTexts.length) {
@@ -27,12 +73,13 @@ const MobileTerminal = () => {
         }
         clearTimeout(timeout);
       }, terminalText.timer);
+      animationQueue.current.push(timeout);
     });
   }, []);
 
   useEffect(() => {
-    setupTerminalTimer();
-  }, []);
+    initTerminal();
+  }, [intl]);
 
   return (
     <S.TerminalComponentWrapper
@@ -83,40 +130,7 @@ const MobileTerminal = () => {
             </S.TerminalWindowOptions>
           </S.TerminalHeading>
           <S.TerminalContent>
-            {terminalRows.map((text) => (
-              <S.TerminalRow
-                container
-                flexDirection="column"
-                key={text.key}
-              >
-                <S.TerminalText
-                  container
-                  flexDirection="row"
-                  flexWrap="nowrap"
-                >
-                  <S.TerminalTextUser>Leand@DESKTOP</S.TerminalTextUser>
-                  <S.TerminalTextCPU>MINGW64</S.TerminalTextCPU>
-                  <S.TerminalTextPath>/c/WINDOWS/system32</S.TerminalTextPath>
-                </S.TerminalText>
-                <Grid
-                  container
-                  flexWrap="nowrap"
-                  alignItems="flex-start"
-                >
-                  <S.TerminalTabCommandPrefix variant="h6">$</S.TerminalTabCommandPrefix>
-                  <Typewriter
-                    options={{
-                      delay: 10,
-                    }}
-                    typographyProps={{
-                      variant: 'h6',
-                      fontSize: 14.5,
-                    }}
-                    onInit={text.typeText}
-                  />
-                </Grid>
-              </S.TerminalRow>
-            ))}
+            {terminalRows.map(renderTerminalRow)}
           </S.TerminalContent>
         </S.TerminalWrapper>
       </S.TypeWriterBackground>
