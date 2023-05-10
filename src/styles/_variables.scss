@@ -1,0 +1,23 @@
+$bucket-assets-url: '' !default;
+
+$device-xs: 0px !default;
+$device-sm: 600px !default;
+$device-md: 900px !default;
+$device-lg: 1200px !default;
+$device-xl: 1536px !default;
+
+$theme-color-font: #9AA5C6 !default;
+
+$theme-font-title: var(--font-title);
+$theme-font-subtitle: var(--font-subtitle);
+$theme-font-general: var(--font-general);
+
+$theme-color-action-active: #0aa1cf !default;
+$theme-color-action-focus: #0E1122 !default;
+$theme-color-action-hover: rgba(10, 161, 207, 0.2) !default;
+
+$theme-color-primary: #06d674 !default;
+$theme-color-secondary: #1486a8 !default;
+
+$theme-color-body: #1C1630 !default;
+$theme-color-card: #1E1F25 !default;

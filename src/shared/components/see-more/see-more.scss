@@ -1,0 +1,10 @@
+.see-more {
+  &-text {
+    overflow: hidden;
+    transition: height ease-in-out;
+  }
+
+  &-toggle {
+    padding: 0;
+  }
+}

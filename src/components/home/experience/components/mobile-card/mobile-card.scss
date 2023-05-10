@@ -1,0 +1,114 @@
+@import "@/styles/index";
+
+.mobile-card {
+  &-current {
+    &-experience {
+      position: absolute;
+      top: 2%;  
+      left: -10%;
+      background-color: $theme-color-primary;
+      display: block;
+      z-index: 1;
+      transform: rotate(-45deg);
+      font-size: 20px;
+      color: white;
+      width: 132px;
+      height: 40px;
+      @include flex-centered();
+      text-shadow: 0 0 2px black;
+    }
+  }
+
+  &-experience {
+    &-container {
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 8px;
+      isolation: isolate;
+    }
+
+    &-card {
+      padding: 16px;
+      height: 100%;
+      width: 100%;
+      margin: 4px;
+      transition: background-color 500ms ease-in-out;
+      border-radius: 0;
+      background-color: $theme-color-card;
+      border: 1px solid $theme-color-secondary;
+
+      &::after,
+      &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 10px;
+        height: 50%;
+        border: 2px dashed $theme-color-secondary;
+        padding: 5px;
+        background-color: $theme-color-secondary;
+        background-clip: content-box;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+      }
+      
+      &::after {
+        left: -11px;
+      }
+      
+      &::before {
+        right: -11px;
+      }
+
+      &-container {
+        margin: 0 0 10px;
+      }
+    }
+
+    &-icon {
+      width: 50px;
+    }
+
+    &-header {
+      height: 50px;
+      padding: 0 10px;
+    }
+
+    &-title {
+      text-align: center;
+      margin-left: 10px;
+    }
+    
+    &-topic {
+      margin-top: 10px;
+
+      svg {
+        margin-right: 5px;
+      }
+    }
+
+    &-text {    
+      p {
+        &::first-letter {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+
+  &-company-logo {
+    width: 80px;
+  }
+
+  &-stack-technology {
+    &-list {
+      &-item {
+        padding: 5px;
+        border: 1px solid $theme-color-primary;
+        display: inline-block;
+        margin: 2px;
+      }
+    }
+  }
+}

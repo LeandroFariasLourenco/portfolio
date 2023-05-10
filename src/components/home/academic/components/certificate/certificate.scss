@@ -1,0 +1,68 @@
+@import "@/styles/index";
+
+@keyframes fade-in {
+  from {
+    transform: scale(0);
+    border-radius: 100%;
+  }
+
+  to {
+    transform: scale(1);
+    border-radius: 0;
+  }
+};
+
+.certificate {
+  &-wrapper {
+    position: relative;
+    animation-name: fade-in;
+    animation-fill-mode: forwards;
+    animation-duration: 200ms;
+    border-style: dashed;
+    border-color:  $theme-color-secondary;
+    
+    @include desktop() {
+      border-width: 2px;
+      padding: 10px;
+      height: 100%;
+      width: 100%;
+    };
+    
+    @include mobile() {
+      border-width: 1px;
+      margin-left: 8px;
+      width: 100%;
+      padding: 5px;
+      margin-top: 10px;
+    };
+  }
+
+  &-logo {
+    @include desktop() {
+      object-fit: contain;
+      margin: 0 auto;
+    }
+
+    &-container {
+      @include mobile() {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &-container {
+    height: 100%;
+  }
+
+  &-link {
+    @include desktop() {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 10px;
+      border: 1px dashed $theme-color-primary;
+      width: 175px;
+      margin-top: 5px;
+    }
+  }
+}

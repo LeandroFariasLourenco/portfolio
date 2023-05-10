@@ -1,0 +1,39 @@
+@import "@/styles/index";
+
+.experience-details {
+  p {
+    &::first-letter {
+      margin-left: 20px;
+    }
+  }
+
+  &-card {
+    padding: 16px;
+    height: 98%;
+    width: 98%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: background-color 500ms ease-in-out;
+    border-radius: 0;
+    background-color: $theme-color-card;
+    border: 1px solid $theme-color-secondary;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 1%;
+      height: 175px;
+      border: 2px dashed $theme-color-secondary;
+      padding: 5px;
+      background-color: $theme-color-secondary;
+      background-clip: content-box;
+      top: 50%;
+      right: -7px;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+  }
+}

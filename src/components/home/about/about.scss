@@ -1,0 +1,51 @@
+@import '@/styles/index';
+
+.about {
+  &-wrapper {
+    background-color: rgba(28, 22, 48, 0.85);
+  }
+
+  &-text {
+    position: relative;
+    padding-left: 16px;
+    font-size: 16px;
+
+    @include mobile() {
+      font-size: 13.5px;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 2px;
+      top: -3px;
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: $theme-color-primary;
+      border-radius: 100%;
+      margin: 10px 5px 0 0;
+    }
+  }
+
+  &-summary {
+    font-size: 15px;
+
+    &::first-letter {
+      margin-left: 20px;
+    }
+
+    & + & {
+      margin-top: 5px;
+    }
+
+    &:last-of-type {
+      margin-bottom: 30px;
+
+      @include mobile() {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+

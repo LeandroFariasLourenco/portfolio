@@ -1,0 +1,12 @@
+@import "@/styles/index";
+
+.section-container {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding: 20px 0 60px 0;
+  
+  @include mobile() {
+    padding: 15px 10px;
+  }
+}

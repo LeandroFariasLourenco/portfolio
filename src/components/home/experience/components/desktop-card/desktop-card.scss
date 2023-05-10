@@ -1,0 +1,27 @@
+@import "@/styles/index";
+
+.desktop-card {
+  &-experience {
+    position: absolute;
+    top: 2%;  
+    left: -8%;
+    background-color: $theme-color-primary;
+    display: block;
+    z-index: 1;
+    transform: rotate(-45deg);
+    font-size: 20px;
+    color: white;
+    padding: 5px 30px;
+    text-shadow: 0 0 2px black;
+    width: 132px;
+    height: 40px;
+    @include flex-centered();
+    text-shadow: 0 0 2px black;
+  }
+
+  &-container {
+    position: relative;
+    height: 550px;
+    overflow: hidden;
+  }
+}

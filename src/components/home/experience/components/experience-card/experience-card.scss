@@ -1,0 +1,73 @@
+@import "@/styles/index";
+
+.experience-card {
+  padding: 16px;
+  height: 98%;
+  width: 98%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: background-color 500ms ease-in-out;
+  border-radius: 0;
+  background-color: $theme-color-card;
+  border: 1px solid $theme-color-secondary;
+
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 1%;
+    height: 175px;
+    border: 2px dashed $theme-color-secondary;
+    padding: 5px;
+    background-color: $theme-color-secondary;
+    background-clip: content-box;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+
+  &-header {
+    height: 60px;
+    padding: 0 15px;
+  }
+
+  &-container {
+    margin: 10px 0;
+  }
+
+  &-icon {
+    width: 50px;
+  }
+
+  &-title {
+    text-align: center;
+    margin-left: 10px;
+  }
+
+  &-topic {
+    margin-top: 16px;
+
+    svg {
+      margin-right: 10px;
+    }
+  }
+
+  &-list {
+    &-item {
+      padding: 5px 10px;
+      border: 1px solid $theme-color-primary;
+      display: inline-block;
+      margin: 5px;
+    }
+  }
+
+  &-stack {
+    margin-top: 20px;
+  }
+
+  &-company-logo {
+    width: 100px;
+  }
+}

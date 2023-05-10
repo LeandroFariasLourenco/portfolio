@@ -1,0 +1,22 @@
+@import "@/styles/index";
+
+.language-select {
+  padding-left: 10px;
+  color: white;
+  
+  &::before {
+    display: none;
+  }
+  
+  &-country {
+    &-icon {
+      width: 25px;
+    }
+    
+    &-text {
+      @include desktop() {
+        margin-left: 10px;
+      }
+    }
+  }
+}

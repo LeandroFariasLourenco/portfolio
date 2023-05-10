@@ -1,0 +1,18 @@
+@keyframes pulse-animation {
+  from {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes arrow-down-animation {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(90%);
+    opacity: 0;
+  }
+}

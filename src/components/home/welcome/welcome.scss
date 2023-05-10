@@ -1,0 +1,122 @@
+@import "@/styles/index";
+
+.welcome {
+  position: relative;
+  min-height: 100vh;
+  position: relative;
+  background-color: $theme-color-body;
+
+  @include desktop() {
+    flex-flow: unset;
+  }
+
+  @include mobile() {
+    padding-bottom: 40px;
+  }
+
+  &-profile-image {
+    $frame-size: 15px !default;
+    $border-thicknes: 2px !default;
+    $width: 280px !default;
+    $color: $theme-color-primary !default;
+    $gradient-color: $color $border-thicknes,#0000 0 calc(100% - $border-thicknes), $color 0;
+    
+    min-height: 165px;
+    width: --width;
+    padding: calc(2*$frame-size);
+    filter: brightness(0.75) drop-shadow(2px 4px 6px $theme-color-secondary) grayscale(0.88);
+    background:
+      linear-gradient(      $gradient-color) 50%/100% --_i,100% no-repeat,
+      linear-gradient(90deg,$gradient-color) 50%/--_i,100% 100% no-repeat;
+    outline: calc(--width)/2 solid #0005;
+    outline-offset: -($width);
+    transition: 400ms;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+    
+    &.focused {
+      filter: brightness(0.85) drop-shadow(2px 4px 6px $theme-color-secondary) grayscale(0.25);
+      outline: $border-thicknes solid $color;
+      outline-offset: calc($frame-size / -2);
+      --_i: calc(100% - 2 * $frame-size);
+    }
+  }
+
+  &-arrow-down {
+    @include visibility-transition();
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $theme-color-primary;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7.5px;
+    @include pulse-style();
+
+    &:not(:hover) {
+      &::after {
+        animation-name: pulse-animation;
+      }
+    }
+
+    &::after {
+      border-radius: 100%;
+    }
+    
+    &:hover {
+      background-color: $theme-color-secondary;
+      svg {
+        animation-name: inherit;
+      }
+    }
+
+    svg {
+      animation: arrow-down-animation 1.5s ease-in-out alternate-reverse infinite;
+      transition: transform 200ms ease-in-out;
+    }
+  }
+
+  &-container {
+    $animationTimer: 1000 !default;
+    z-index: 1;
+    transition: opacity $animationTimer ease-in-out;
+    max-width: 1200px;
+
+    @include desktop() {
+      padding: 0 20px;
+    }
+
+    &.playing {
+      opacity: 0;
+      animation: hide forwards;
+      animation-delay: 1s;
+    }
+  }
+
+  &-fps {
+    &-option {
+      border: 1px solid $theme-color-primary;
+      padding: 5px 7.5px;
+      border-radius: 0;
+      background-color: $theme-color-body;
+      cursor: pointer;
+      transition: background-color 200ms ease-in-out;
+      z-index: 1;
+      
+      &.current {
+        background-color: $theme-color-card;
+      }
+    }
+
+    &-container {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      @include visibility-transition();
+    }
+  }
+}

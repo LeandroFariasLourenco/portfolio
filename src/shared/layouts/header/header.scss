@@ -1,0 +1,117 @@
+@import "@/styles/index";
+
+.header {
+  background-color: rgba(20, 134, 168, 0.75);
+  transition: background-color 200ms ease-in-out;
+  padding: 5px 0;
+
+  .MuiSelect {
+    &-select {
+      padding-bottom: 0;
+    }
+
+    &-iconStandard {
+      color: #fff;
+    }
+  }
+
+  @include mobile() {
+    padding: 10px;
+  }
+
+  &.transparent {
+    background-color: transparent;
+  }
+
+  &-link {
+    font-size: 12px;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    transition: background-color 200ms ease-in-out;
+    
+    svg {
+      margin-right: 5px;
+
+      @include mobile() {
+        margin-right: 15px;
+      }
+    }
+    
+    @include mobile() {
+      padding: 10px 25px;
+    }
+
+    @include desktop() {
+      justify-content: center;
+  
+      &:hover {
+        background-color: $theme-color-primary;
+  
+        > p {
+          color: $theme-color-secondary;
+        }
+      }
+    }
+  }
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: $theme-color-primary;
+  padding: 1px;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+
+  svg {
+    width: unset;
+    height: unset;
+  }
+
+  &.show {
+    opacity: 1;
+    visibility: inherit;
+  }
+
+  @include desktop() {
+    &:hover {
+      background-color: $theme-color-secondary;
+    }
+  }
+}
+
+.mobile {
+  &-drawer {
+    divider {
+      &::before,
+      &::after {
+        border-color: $theme-color-primary;
+      }
+    }
+
+    .MuiPaper-root {
+      width: 100%;
+      max-width: 330px;
+    }
+
+    &-container {
+      height: 100%;
+      padding: 15px 10px;
+    }
+  }
+}
+
+.signature {
+  width: 85px;
+  margin: 0 auto;
+  display: block;
+  transform: rotate(-13deg);
+}

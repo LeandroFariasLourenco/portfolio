@@ -1,0 +1,209 @@
+@import "@/styles/index";
+
+@mixin icon-style {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  left: 50%;
+  transform: translate(-50%);
+  top: 15px;
+  z-index: 1;
+}
+
+.my-timeline {
+  &-container {
+    background-color: rgba(28, 22, 48, 0.1);
+  }
+
+  &-center-line {
+    position: absolute;
+    height: 100%;
+    width: 4px;
+    background: $theme-color-primary;
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%);
+
+    @include mobile() {
+      display: none;
+    }
+
+    &-icon {
+      bottom: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      @include icon-style();
+    }
+  }
+
+  &-row {
+    &-left,
+    &-right {
+      display: flex;
+      margin-top: 80px;
+      position: relative;
+    }
+
+    @include mobile() {
+      margin: 10px 0;
+    }
+
+    &-left {
+      justify-content: flex-start;
+
+      &-card {
+        @include mobile() {
+          display: none;
+        }
+      }
+    }
+    &-right {
+      justify-content: flex-end;
+    }
+
+    &-card {
+      position: relative;
+
+      &-date {
+        position: absolute;
+        top: 30px;
+        font-size: 28px;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0);
+        }
+
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      background: $theme-color-card;
+      width: calc(50% - 40px);
+      padding: 20px;
+      position: relative;
+      animation: fadeIn;
+      animation-fill-mode: forwards;
+      animation-duration: 350ms;
+
+      @include mobile() {
+        width: 100%;
+      }
+
+      &-icon {
+        @include icon-style();
+
+        @include mobile() {
+          display: none;
+        }
+      }
+
+      &::before {
+        position: absolute;
+        content: "";
+        height: 15px;
+        width: 15px;
+        background: $theme-color-card;
+        top: 28px;
+        z-index: -1;
+        transform: rotate(45deg);
+      }
+
+      &-bottom,
+      &-details {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      &-bottom {
+        &-link {
+          text-decoration: none;
+          background: #3ea0e2;
+          color: #fff;
+          padding: 7px 15px;
+          font-weight: 400;
+          transition: all 0.3s ease;
+
+          &:hover {
+            transform: scale(0.97);
+          }
+        }
+      }
+
+      &-text {
+        margin: 10px 0 17px 0;
+      }
+
+      &-details {
+        &-title {
+          font-size: 22px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  &-arrow-down {
+    animation: arrow-down-animation 1.5s ease-in-out alternate-reverse infinite;
+  }
+
+  &-show-more {
+    position: absolute;
+    background-color: $theme-color-primary;
+    z-index: 1;
+    cursor: pointer;
+    @include pulse-style();
+    @include flex-centered();
+    left: 50%;
+    bottom: -30px;
+
+    @include mobile() {
+      width: 40px;
+      height: 40px;
+    }
+
+    @include desktop() {
+      margin-left: calc(55px / -2);
+      margin-top: -15px;
+      height: 55px;
+      width: 55px;
+    }
+
+    svg {
+      margin: 0 !important;
+      position: unset !important;
+      top: unset !important;
+      left: unset !important;
+    }
+
+    &:not(:hover) {
+      &::after {
+        animation-name: pulse-animation;
+      }
+    }
+
+    &:hover {
+      background-color: $theme-color-secondary;
+
+      .my-timeline-arrow-down {
+        animation-name: unset;
+      }
+    }
+  }
+
+  &-timeline-wrapper {
+    position: relative;
+    padding-bottom: 80px;
+
+    @include mobile() {
+      overflow-x: hidden;
+    }
+  }
+}

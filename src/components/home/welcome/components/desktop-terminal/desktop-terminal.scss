@@ -1,0 +1,164 @@
+@import '@/styles/index';
+
+@keyframes shutdown-animation {
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
+  }
+};
+
+.desktop-terminal {
+  @include mobile() {
+    width: 100%;
+  }
+  
+  &.closed {
+    animation: shutdown-animation 1.2s forwards;
+  }
+
+  &-typewriter-background {
+    background-color: #1E1E1E;
+    border-radius: 5px;
+    width: 550px;
+    
+    @include mobile() {
+      width: 95%;
+      margin: 0 auto;
+    }
+  }
+
+  &-heading {
+    background-color: #4A4A4A;
+    padding: 5px 10px;
+    position: relative;
+    
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: black;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &-wrapper {
+    border: 1px solid black;
+    border-radius: 5px;
+    overflow: hidden;
+    opacity: 0.35;
+    transition: opacity 200ms ease-in-out;
+    
+    &:not(.is--focused) {
+      pointer-events: none;
+    }
+
+    &.is--focused {
+      opacity: 1;
+      pointer-events: unset;
+    }
+  }
+
+  &-content {
+    padding: 5px 10px;
+    height: 300px;
+    overflow-y: auto;
+    
+    .Typewriter__cursor {
+      font-weight: bold;
+    }
+  }
+
+  &-subtitle {
+    // color: ${theme.palette.grey[300]};
+    color: gray;
+    margin-right: 5px;
+    display: flex;
+    
+    > svg {
+      margin-left: -8px;
+      margin-right: 8px;
+      width: 15px;
+      margin-top: 5px;
+    }
+  }
+
+  &-text {
+    display: flex;
+
+    &.is--current--line {
+      &::after {
+        content: "|";
+        animation: blinking-animation alternate infinite 550ms;
+      }
+    }
+  }
+
+  &-title {
+    // color: ${theme.palette.grey[400]};
+    color: gray;
+    margin-left: 5px;
+  }
+
+  &-row {
+    display: flex;
+  }
+
+  &-window {
+    &-wrapper {
+      position: relative;
+      width: 17px;
+      height: 17px;
+      overflow: hidden;
+      isolation: isolate;
+      border-radius: 100%;
+      margin-right: 10px;
+
+      .hover-icon {
+        opacity: 0;
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        bottom: 3px;
+        left: 3px;
+        width: unset;
+        height: unset;
+
+        &.rotate {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    &-circle {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+    }
+
+    &-circles {
+      &:hover {
+        .hover-icon {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+@keyframes blinking-animation {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+};
