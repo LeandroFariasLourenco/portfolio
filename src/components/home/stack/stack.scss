@@ -1,0 +1,53 @@
+@keyframes changeTechnologyTab {
+  from {
+    transform: translateX(70%);
+  }
+  
+  60% {
+    transform: translateX(-2%);
+  }
+  
+  to {
+    transform: translateX(0);
+  }
+}
+
+.stack {
+  &-tab {
+    transition: transform 500ms ease-in-out;
+    &.selected {
+      animation: changeTechnologyTab;
+      animation-fill-mode: forwards;
+      animation-duration: 400ms;
+    }
+
+    &:not(&.selected) {
+      display: none;
+    }
+  }
+
+  &-main-section {
+    background-color: rgba(28, 22, 48, 0.55);
+  }
+
+  &-wrapper {
+    border: 2px solid $theme-color-secondary;
+    border-bottom: 0;
+    margin-top: 30px;
+  
+    @include mobile() {
+      position: relative;
+      flex-flow: row nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 5px;
+      @include scrollbar-style(
+        2px,
+        $theme-color-action-active,
+        $theme-color-card,
+        $theme-color-card,
+      );
+    }
+  }
+}

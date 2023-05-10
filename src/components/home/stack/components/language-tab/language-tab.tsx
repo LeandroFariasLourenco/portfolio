@@ -2,7 +2,9 @@ import cx from 'classnames';
 import { useEffect, useState } from 'react';
 import { getBucketResource } from '@/shared/functions';
 import { ILanguageProps } from './props.interface';
-import * as S from './styled';
+
+import './language-tab.scss';
+import { Grid } from '@mui/material';
 
 const LanguageTab = ({
   language,
@@ -17,7 +19,7 @@ const LanguageTab = ({
   }, [selectedTab]);
 
   return (
-    <S.TabContainer
+    <Grid
       key={language.name}
       container
       alignItems="center"
@@ -26,13 +28,14 @@ const LanguageTab = ({
       onClick={() => {
         onToggle(index);
       }}
-      className={cx({ open })}
+      className={`language-tab-container ${cx({ open })}`}
     >
-      <S.StackLogo
+      <img
+        className="language-tab-logo"
         src={getBucketResource(language.icon)}
         alt={language.name}
       />
-    </S.TabContainer>
+    </Grid>
   );
 };
 

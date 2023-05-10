@@ -8,10 +8,12 @@ import { useResponsive } from '@/shared/hooks';
 import languages from './resources/languages.json';
 import { SwipeAnimation } from '@/shared/components';
 import { useIntl } from 'react-intl';
-import * as S from './styled';
 import Technologies from './components/technologies/technologies';
 import LanguageTab from './components/language-tab/language-tab';
 import { ILanguage } from './components/language-tab/models/language.interface';
+
+import './stack.scss';
+import { Grid } from '@mui/material';
 
 const Languages = () => {
   const [selectedTab, setSelectedTab] = useState<number>(0);
@@ -29,16 +31,16 @@ const Languages = () => {
   }, [isMobile]);
 
   const renderLanguages = useCallback(({ name, technologies }: ILanguage, index: number) => (
-    <S.TechnologyTabContainer
+    <div
       key={`${name}-tecnologies`}
-      className={cx({
+      className={`stack-tab ${cx({
         selected: selectedTab === index,
-      })}
+      })}`}
     >
       <Technologies
         technologies={technologies}
       />
-    </S.TechnologyTabContainer>
+    </div>
   ), [selectedTab]);
 
   const renderLanguageTab = useCallback((language: ILanguage, index: number) => (
@@ -52,7 +54,7 @@ const Languages = () => {
   ), []);
 
   return (
-    <S.SectionWrapper id={EAppSections.STACK}>
+    <div className="stack-main-section" id={EAppSections.STACK}>
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString(intl.formatMessage({ id: 'home.languages.title' }))
@@ -64,7 +66,7 @@ const Languages = () => {
           paddingBottom: 50,
         }}
       >
-        <S.StackWrapper container>
+        <Grid className="stack-wrapper" container>
           <SwipeAnimation lottieProps={{
             height: '75px',
             speed: 1.25,
@@ -75,16 +77,16 @@ const Languages = () => {
           }}
           />
           {languages.map(renderLanguageTab)}
-        </S.StackWrapper>
-        <S.TechnologyWrapper
+        </Grid>
+        <div
           ref={(ref: HTMLDivElement) => {
             tabContainerRef.current = ref;
           }}
         >
           {languages.map(renderLanguages)}
-        </S.TechnologyWrapper>
+        </div>
       </Section>
-    </S.SectionWrapper>
+    </div>
   );
 };
 

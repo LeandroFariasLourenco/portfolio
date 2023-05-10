@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import {
   createContext, useCallback, useContext, useEffect, useState,
@@ -9,6 +9,7 @@ import english from '@/../public/intl/english.json';
 import { IHomeContextProps } from './props.interface';
 import { IGlobalContext } from './context.interface';
 import { APP } from '@/shared/constants/app';
+import { useLocalStorage } from '@/shared/hooks';
 
 const GlobalContext = createContext<IGlobalContext>({} as IGlobalContext);
 
@@ -17,15 +18,9 @@ export const useGlobalContext = () => useContext(GlobalContext);
 export const GlobalProvider = ({
   children,
 }: IHomeContextProps) => {
-  const getStoredLanguage = (): ELanguages => {
-    const storedLanguage = localStorage.getItem('language');
-    if (storedLanguage) {
-      return storedLanguage as ELanguages;
-    }
-    return navigator.language as ELanguages;
-  };
+  const [storedLanguage, setStoredLanguage] = useLocalStorage<ELanguages>('language', window?.navigator?.language as ELanguages);
 
-  const [language, setLanguage] = useState<ELanguages>(getStoredLanguage);
+  const [contextLanguage, setContextLanguage] = useState<ELanguages>(storedLanguage);
 
   const getScreenState = () => {
     if (window.innerWidth >= APP.breakpoints.md) {
@@ -42,7 +37,7 @@ export const GlobalProvider = ({
   const [deviceType, setDeviceType] = useState<EDeviceType>(getScreenState());
 
   const getMessages = () => {
-    switch (language) {
+    switch (contextLanguage) {
       case ELanguages.Portuguese:
         return portuguese;
       default:
@@ -64,19 +59,18 @@ export const GlobalProvider = ({
     // return () => {
     //   window.removeEventListener('resize', handleWindowResize);
     // };
-  }, [language]);
+  }, [contextLanguage]);
 
   return (
     <GlobalContext.Provider value={{
-      language,
+      language: contextLanguage,
       messages,
       setLanguage: (language) => {
-        // localStorage.setItem('language', language);
-        // setLanguage(language);
+        setContextLanguage(language);
+        setStoredLanguage(language);
       },
       userDeviceType: deviceType,
-    }
-    }
+    }}
     >
       {children}
     </GlobalContext.Provider>

@@ -1,0 +1,13 @@
+.typewriter {
+  .Typewriter {
+    &__cursor {
+      transition: font-size 200ms ease-in-out;
+    }
+  }
+
+  &.is--finished {
+    .Typewriter__cursor {
+      font-size: 0;
+    }
+  }
+}

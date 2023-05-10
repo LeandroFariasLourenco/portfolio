@@ -1,9 +1,8 @@
-@import "@/styles/index";
-
 .header {
-  background-color: rgba(20, 134, 168, 0.75);
+  background-color: rgba(6, 214, 116, 0.75);
   transition: background-color 200ms ease-in-out;
   padding: 5px 0;
+  box-shadow: 0 0 2px #06d674;
 
   .MuiSelect {
     &-select {
@@ -20,11 +19,15 @@
   }
 
   &.transparent {
-    background-color: transparent;
+    background-color: $theme-color-body;
   }
 
   &-link {
-    font-size: 12px;
+    &-text {
+      color: white;
+      font-size: 14px;
+    }
+
     cursor: pointer;
     padding: 10px;
     display: flex;

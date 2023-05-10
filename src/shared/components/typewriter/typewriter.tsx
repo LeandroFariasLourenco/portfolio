@@ -1,10 +1,9 @@
-import { Typography } from '@mui/material';
-import { useState, memo } from 'react';
+import { useState, memo, useMemo } from 'react';
 import cx from 'classnames';
 import TypewriterEffect from 'typewriter-effect';
 import { ITypewriterProps } from './props.interface';
 
-import * as S from './styled';
+import './typewriter.scss';
 
 const Typewriter = ({
   onInit,
@@ -13,13 +12,13 @@ const Typewriter = ({
   options = {},
 }: ITypewriterProps) => {
   const [hasFinished, setHasFinished] = useState<boolean>(false);
-  const Variant = `${variant}` as any;
+  const Variant = useMemo(() => `${variant}` as any, []);
 
   return (
-    <S.TypewriterWrapper
-      className={cx({
+    <div
+      className={`typewriter ${cx({
         'is--finished': hasFinished,
-      })}
+      })}`}
     >
       <Variant {...variantProps}>
         <TypewriterEffect
@@ -33,7 +32,7 @@ const Typewriter = ({
           }}
         />
       </Variant>
-    </S.TypewriterWrapper>
+    </div>
   );
 };
 export default memo(Typewriter);

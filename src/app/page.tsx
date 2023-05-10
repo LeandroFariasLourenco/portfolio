@@ -32,13 +32,13 @@ import ProjectsProvider from '@/components/home/projects/context/projects.contex
 import { Roboto, Share_Tech_Mono, Ubuntu_Mono } from 'next/font/google';
 import dynamic from 'next/dynamic';
 
-const Welcome = dynamic(() => import('@/components/home/welcome/welcome'));
-const About = dynamic(() => import('@/components/home/about/about'));
-const Experience = dynamic(() => import('@/components/home/experience/experience'));
-const Stack = dynamic(() => import('@/components/home/stack/stack'));
-const Academic = dynamic(() => import('@/components/home/academic/academic'));
-const Projects = dynamic(() => import('@/components/home/projects/projects'));
-const MyTimeline = dynamic(() => import('@/components/home/my-timeline/my-timeline'));
+const Welcome = dynamic(() => import('@/components/home/welcome/welcome'), { ssr: false });
+const About = dynamic(() => import('@/components/home/about/about'), { ssr: false });
+const Experience = dynamic(() => import('@/components/home/experience/experience'), { ssr: false });
+const Stack = dynamic(() => import('@/components/home/stack/stack'), { ssr: false });
+const Academic = dynamic(() => import('@/components/home/academic/academic'), { ssr: false });
+const Projects = dynamic(() => import('@/components/home/projects/projects'), { ssr: false });
+const MyTimeline = dynamic(() => import('@/components/home/my-timeline/my-timeline'), { ssr: false });
 
 const Root = () => {
   // const navigate = useNavigate();

@@ -75,7 +75,7 @@ const Header = () => {
     // }}
     >
       {cloneElement(link.icon as any, { htmlColor: '#fff', fontSize: 'small' } as IconProps)}
-      <Typography><FormattedMessage id={link.label} /></Typography>
+      <p className="header-link-text"><FormattedMessage id={link.label} /></p>
     </div>
   ), [isMobile, intl]);
 
@@ -92,6 +92,7 @@ const Header = () => {
       <Slide in={!triggerScroll} mountOnEnter unmountOnExit={false}>
         <AppBar
           color="transparent"
+          style={{ boxShadow: 'unset' }}
         >
           <Grid
             className={`header ${cx({

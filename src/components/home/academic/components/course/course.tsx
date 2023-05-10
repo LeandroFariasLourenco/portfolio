@@ -37,7 +37,7 @@ const Course = ({
         justifyContent="center"
       >
         <img className="course-logo" src={card.logo} />
-        <Typography variant="h5" fontSize="20px" textAlign="center"><FormattedMessage id={card.title} /></Typography>
+        <h5 className="course-title"><FormattedMessage id={card.title} /></h5>
       </Grid>
 
       <div className="course-container">

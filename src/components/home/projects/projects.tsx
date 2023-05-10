@@ -2,7 +2,7 @@ import {
   Code, DeveloperBoard, Star,
 } from '@mui/icons-material';
 import {
-  Typography,
+  Grid,
 } from '@mui/material';
 import {
   useCallback, useEffect, useMemo, useRef, useState,
@@ -28,11 +28,12 @@ import MobileLightbox from './components/mobile-lightbox/mobile-lightbox';
 import MobileProject from './components/mobile-project/mobile-project';
 import Repository from './components/repository/repository';
 import ProjectsProvider from './context/projects.context';
-import * as S from './styled';
-import { APP } from '@/shared/constants/app';
 import { TECHNOLOGY_ICONS } from '@/shared/constants/technology-icons';
 import { IGithubRepository } from './services/github-service/models/github-repository.interface';
 import githubService from './services/github-service/github-service';
+
+import './projects.scss';
+import { APP } from '@/shared/constants/app';
 
 const Projects = () => {
   const [repositories, setRepositories] = useState<IGithubRepository[]>([]);
@@ -187,7 +188,7 @@ const Projects = () => {
   ), []);
 
   return (
-    <S.ProjectsWrapper id={EAppSections.PROJECTS}>
+    <div className="projects-wrapper" id={EAppSections.PROJECTS}>
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString(intl.formatMessage({ id: 'home.projects.my-projects.title' }))
@@ -199,20 +200,18 @@ const Projects = () => {
           paddingBottom: 50,
         }}
       >
-        <S.ProjectDescriptionText>
-          <FormattedMessage id="home.projects.description" />
-        </S.ProjectDescriptionText>
-        <S.ProjectsContainer container>
-          <S.RepositoriesWrapper item xs={12} md={3}>
-            <S.RepositoryTitle container flexDirection="row" alignItems="center">
+        <p className="projects-description-text"><FormattedMessage id="home.projects.description" /></p>
+        <Grid className="projects-container" container>
+          <Grid className="projects-repository-wrapper" item xs={12} md={3}>
+            <Grid className="projects-repository-title" container flexDirection="row" alignItems="center">
               <Code htmlColor="white" />
               <h4><FormattedMessage id="home.projects.title" /></h4>
-            </S.RepositoryTitle>
+            </Grid>
             <Responsive
               breakpoint="md"
-              aboveComponent={<S.RepositoriesList container flexWrap="wrap">{repositories.map(renderRepository)}</S.RepositoriesList>}
+              aboveComponent={<Grid className="projects-repository-list" container flexWrap="wrap">{repositories.map(renderRepository)}</Grid>}
               belowComponent={(
-                <S.RepositoriesList container flexWrap="nowrap" flexDirection="row">
+                <Grid className="projects-repository-list" container flexWrap="nowrap" flexDirection="row">
                   <SwipeAnimation lottieProps={{
                     height: '80px',
                     width: 'unset',
@@ -223,17 +222,18 @@ const Projects = () => {
                   }}
                   />
                   {repositories.map(renderRepository)}
-                </S.RepositoriesList>
+                </Grid>
               )}
             />
-          </S.RepositoriesWrapper>
-          <S.ProjectsTabs
+          </Grid>
+          <Grid
             item
             xs={12}
             md={9}
             container
             flexDirection="column"
             flexWrap="nowrap"
+            className="projects-tabs"
           >
             <SlideTitle
               icon={<Star htmlColor="#fff" />}
@@ -254,7 +254,7 @@ const Projects = () => {
                 totalSlides={projects.length}
               />
             </Responsive>
-          </S.ProjectsTabs>
+          </Grid>
           <Responsive
             breakpoint="md"
             type={EResponsiveType.smaller}
@@ -268,9 +268,9 @@ const Projects = () => {
               />
             </>
           </Responsive>
-        </S.ProjectsContainer>
+        </Grid>
       </Section>
-    </S.ProjectsWrapper>
+    </div>
   );
 };
 

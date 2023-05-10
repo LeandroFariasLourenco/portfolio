@@ -24,9 +24,9 @@ const fadeIn = keyframes`
 `;
 
 export const ChildrenWrapper = styled(Box)`
-  animation-name: ${fadeIn};
+  /* animation-name: ${fadeIn};
   animation-duration: 1.5s;
-  animation-fill-mode: forwards;
+  animation-fill-mode: forwards; */
 `;
 
 export const LoaderHint = styled(Typography)(({ theme }) => `

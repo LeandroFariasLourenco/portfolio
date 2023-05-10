@@ -36,10 +36,10 @@ const About = () => {
       icon: <EmojiEvents htmlColor="#fff" fontSize="large" />,
       content: (
         <Grid>
-          <div className="about-text"><FormattedMessage id="home.about-me.objectives.first" /></div>
-          <div className="about-text"><FormattedMessage id="home.about-me.objectives.second" /></div>
-          <div className="about-text"><FormattedMessage id="home.about-me.objectives.third" /></div>
-          <div className="about-text"><FormattedMessage id="home.about-me.objectives.fourth" /></div>
+          <p className="about-text"><FormattedMessage id="home.about-me.objectives.first" /></p>
+          <p className="about-text"><FormattedMessage id="home.about-me.objectives.second" /></p>
+          <p className="about-text"><FormattedMessage id="home.about-me.objectives.third" /></p>
+          <p className="about-text"><FormattedMessage id="home.about-me.objectives.fourth" /></p>
         </Grid>
       ),
     },
@@ -49,10 +49,10 @@ const About = () => {
       icon: <Terminal htmlColor={theme.palette.action.active} fontSize="large" />,
       content: (
         <Grid>
-          <div className="about-text"><FormattedMessage id="home.about-me.stack.first" /></div>
-          <div className="about-text"><FormattedMessage id="home.about-me.stack.second" /></div>
-          <div className="about-text"><FormattedMessage id="home.about-me.stack.third" /></div>
-          <div className="about-text"><FormattedMessage id="home.about-me.stack.fourth" /></div>
+          <p className="about-text"><FormattedMessage id="home.about-me.stack.first" /></p>
+          <p className="about-text"><FormattedMessage id="home.about-me.stack.second" /></p>
+          <p className="about-text"><FormattedMessage id="home.about-me.stack.third" /></p>
+          <p className="about-text"><FormattedMessage id="home.about-me.stack.fourth" /></p>
         </Grid>
       ),
     },
@@ -62,8 +62,8 @@ const About = () => {
       icon: <School htmlColor={theme.palette.secondary.main} fontSize="large" />,
       content: (
         <Grid>
-          <div className="about-text"><FormattedMessage id="home.about-me.formation.first" /></div>
-          <div className="about-text"><FormattedMessage id="home.about-me.formation.second" /></div>
+          <p className="about-text"><FormattedMessage id="home.about-me.formation.first" /></p>
+          <p className="about-text"><FormattedMessage id="home.about-me.formation.second" /></p>
         </Grid>
       ),
     },
@@ -73,9 +73,9 @@ const About = () => {
       icon: <Theaters htmlColor={theme.palette.primary.main} fontSize="large" />,
       content: (
         <Grid>
-          <div className="about-text"><FormattedMessage id="home.about-me.hobbies.first" /></div>
-          <div className="about-text"><FormattedMessage id="home.about-me.hobbies.second" /></div>
-          <div className="about-text"><FormattedMessage id="home.about-me.hobbies.third" /></div>
+          <p className="about-text"><FormattedMessage id="home.about-me.hobbies.first" /></p>
+          <p className="about-text"><FormattedMessage id="home.about-me.hobbies.second" /></p>
+          <p className="about-text"><FormattedMessage id="home.about-me.hobbies.third" /></p>
         </Grid>
       ),
     },

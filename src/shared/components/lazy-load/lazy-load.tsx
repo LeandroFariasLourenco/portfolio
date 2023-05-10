@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import {
   memo,
@@ -11,6 +11,7 @@ import { ILazyLoadProps } from './props.interface';
 import * as S from './styled';
 
 import './styles.scss';
+import dynamic from 'next/dynamic';
 
 const LazyLoad = ({
   children,
@@ -19,13 +20,13 @@ const LazyLoad = ({
     threshold: 0.20,
     triggerOnce: true,
     initialInView: false,
-    // root: document.body,
   });
   const intl = useIntl();
   const minimumTimeToShow = useMemo(() => 750, []);
   const [inViewDebounce, setInViewDebounce] = useState<boolean>(false);
   const loaderBlocksCount = useMemo(() => 25, []);
   const renderLoaderBlock = useCallback((_: any, index: number) => <li className="loader-block" key={index} />, []);
+  const [loadingComponent, setLoadingComponent] = useState<boolean>(true);
 
   useEffect(() => {
     if (inView) {
@@ -37,6 +38,11 @@ const LazyLoad = ({
     }
   }, [inView]);
 
+  const Component = dynamic(() => import('@/components/home/my-timeline/my-timeline').then((component) => {
+    setLoadingComponent(false);
+    return component;
+  }));
+
   return (
     <S.LazyloadWrapper
       ref={ref}
@@ -44,7 +50,7 @@ const LazyLoad = ({
     >
       {inViewDebounce ? (
         <S.ChildrenWrapper>
-          {children}
+          <Component />
         </S.ChildrenWrapper>
       ) : (
         <S.LoaderContainer>

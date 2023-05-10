@@ -1,13 +1,12 @@
-import cx from 'classnames';
 import {
   useEffect, useRef, useState, memo,
 } from 'react';
+import cx from 'classnames';
 import { Lottie } from '@alfonmga/react-lottie-light-ts';
 import { EResponsiveType } from '@/shared/models';
 import Responsive from '../responsive/responsive';
 
 import { ISwipeAnimationProps } from './props.interface';
-import * as S from './styled';
 
 const SwipeAnimation = ({
   lottieProps,
@@ -66,11 +65,11 @@ const SwipeAnimation = ({
       breakpoint="md"
       type={EResponsiveType.smaller}
     >
-      <S.SwipeAnimationOverlay
+      <div
         ref={(ref: HTMLDivElement) => { setSwipeOverlayRef(ref); }}
-        className={cx({
+        className={`swipe-animation-overlay ${cx({
           'is--open': show,
-        })}
+        })}`}
         onTouchEnd={() => {
           if (!continuous) { return; }
           handleOnTouchEnd();
@@ -84,7 +83,7 @@ const SwipeAnimation = ({
             position: 'absolute',
           }}
         />
-      </S.SwipeAnimationOverlay>
+      </div>
     </Responsive>
   );
 };
