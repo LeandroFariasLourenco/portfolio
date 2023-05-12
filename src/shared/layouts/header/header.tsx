@@ -25,9 +25,10 @@ import { LanguageSelect } from '@/shared/components';
 import { useGlobalContext } from '@/shared/contexts/global/global';
 import { IMenuOption } from './models/menu-option.interface';
 
-import './header.scss';
+import styles from './header.module.scss';
 
 import { APP } from '@/shared/constants/app';
+import Image from 'next/image';
 
 const Header = () => {
   const { isWindowOnTop } = useIsWindowTop();
@@ -66,7 +67,7 @@ const Header = () => {
     <div
       key={link.label}
       // to={link.href}
-      className="header-link"
+      className={styles["header-link"]}
     // scroll={(element) => {
     //   if (isMobile) {
     //     setMobileMenuOpen(false);
@@ -75,7 +76,7 @@ const Header = () => {
     // }}
     >
       {cloneElement(link.icon as any, { htmlColor: '#fff', fontSize: 'small' } as IconProps)}
-      <p className="header-link-text"><FormattedMessage id={link.label} /></p>
+      <p className={styles["header-link-text"]}><FormattedMessage id={link.label} /></p>
     </div>
   ), [isMobile, intl]);
 
@@ -95,9 +96,7 @@ const Header = () => {
           style={{ boxShadow: 'unset' }}
         >
           <Grid
-            className={`header ${cx({
-              transparent: isWindowOnTop,
-            })}`}
+            className={`${styles.header} ${cx({ transparent: isWindowOnTop })}`}
             container
             item
             xs={12}
@@ -109,7 +108,7 @@ const Header = () => {
                 belowComponent={(
                   <>
                     <SwipeableDrawer
-                      className="mobile-drawer"
+                      className={styles["mobile-drawer"]}
                       anchor="left"
                       open={mobileMenuOpen}
                       onClose={() => {
@@ -120,7 +119,7 @@ const Header = () => {
                       }}
                     >
                       {mobileMenuOpen ? (
-                        <Grid className="mobile-drawer-container" container flexDirection="column">
+                        <Grid className={styles["mobile-drawer-container"]} container flexDirection="column">
                           <Grid item xs flex={0}>
                             <Divider textAlign="center">
                               <Grid container flexWrap="nowrap" alignItems="center">
@@ -134,7 +133,14 @@ const Header = () => {
                           </Grid>
                           <Grid item xs flex={0}>
                             <Divider textAlign="center"><Chip label={<Typography variant="h3">Feito por</Typography>} /></Divider>
-                            <img className="signature" width={85} height={58} src={getBucketResource('/signature.png')} alt="signature" />
+                            <Image
+                              className={styles.signature}
+                              width={85}
+                              height={58}
+                              src={getBucketResource('/signature.png')}
+                              alt="signature"
+                              quality={60}
+                            />
                           </Grid>
                         </Grid>
                       ) : null}
@@ -178,7 +184,7 @@ const Header = () => {
 
       <div
         onClick={scrollToTop}
-        className={`scroll-to-top ${cx({
+        className={`${styles['scroll-to-top']} ${cx({
           show: !isWindowOnTop,
         })}`}
       >

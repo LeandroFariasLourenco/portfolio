@@ -27,7 +27,8 @@ import MobileCard from './components/mobile-card/mobile-card';
 import { IExperience } from './models/experience.interface';
 import { desktopParticlesConfig } from './particles/desktop-config';
 
-import './experience.scss';
+import styles from './experience.module.scss';
+import './shared.scss';
 
 const Experience = () => {
   const theme = useTheme();
@@ -203,67 +204,30 @@ const Experience = () => {
     },
   });
 
-  const renderAnimatedBorder = (index: number) => ({
-    LeftBorderComponent: (
-      <div
-        className="experience-animated-container"
-        style={{
-          animationDirection: 'normal',
-          animationDelay: `${index * 2}s`
-        }}>
-        <div className="experience-animated-border" style={{
-          backgroundColor: index === 0
-            ? theme.palette.primary.main : theme.palette.action.active
-        }}
-        />
-      </div>
-    ),
-    RightBorderComponent: (
-      <div
-        className="experience-animated-container"
-        style={{
-          animationDirection: 'reverse',
-          animationDelay: `${index * 2}s`
-        }}>
-        <div className="experience-animated-border" style={{ backgroundColor: theme.palette.secondary.main }} />
-      </div >
-    ),
-  });
-
-  const renderExperience = useCallback((experience: IExperience, index: number) => {
-    const {
-      LeftBorderComponent,
-      RightBorderComponent,
-    } = renderAnimatedBorder(index);
-
-    return (
-      <SwiperSlide
-        key={experience.date}
-      >
-        <Responsive
-          breakpoint="md"
-          aboveComponent={(
-            <DesktopCard
-              LeftBorderComponent={LeftBorderComponent}
-              RightBorderComponent={RightBorderComponent}
-              experience={experience}
-              index={index}
-            />
-          )}
-          belowComponent={(
-            <MobileCard
-              BorderComponent={LeftBorderComponent}
-              index={index}
-              experience={experience}
-            />
-          )}
-        />
-      </SwiperSlide>
-    );
-  }, []);
+  const renderExperience = useCallback((experience: IExperience, index: number) => (
+    <SwiperSlide
+      key={experience.date}
+    >
+      <Responsive
+        breakpoint="md"
+        aboveComponent={(
+          <DesktopCard
+            experience={experience}
+            index={index}
+          />
+        )}
+        belowComponent={(
+          <MobileCard
+            index={index}
+            experience={experience}
+          />
+        )}
+      />
+    </SwiperSlide>
+  ), []);
 
   return (
-    <div className="experience-container">
+    <div className={styles["experience-container"]}>
       <Section
         id={EAppSections.EXPERIENCES}
         onTitleShow={(typewriter) => {
@@ -280,7 +244,7 @@ const Experience = () => {
         >
           <LoadParticles id="experience-section" options={desktopParticlesConfig} />
         </Responsive>
-        <div className="experience-swiper-container">
+        <div className={styles["experience-swiper-container"]}>
           <Swiper
             onInit={(swiper) => {
               setSwiperRef(swiper);

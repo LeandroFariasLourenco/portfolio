@@ -13,7 +13,6 @@ import './mobile-card.scss';
 const MobileCard = ({
   index,
   experience,
-  BorderComponent,
 }: IMobileCardProps) => {
   const intl = useIntl();
 
@@ -28,8 +27,7 @@ const MobileCard = ({
 
   return (
     <Grid container flexDirection="row" flexWrap="nowrap">
-      <Grid className="mobile-card-experience-container" container item xs={12}>
-        {BorderComponent}
+      <Grid className="mobile-card-container" container item xs={12}>
         {index === 0 && (
           <p className="mobile-card-current-experience">
             <FormattedMessage id="home.experience.current" />

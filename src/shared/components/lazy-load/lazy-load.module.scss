@@ -1,5 +1,73 @@
 $squareColors: #06d674 !default;
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.lazy-load {
+  &-wrapper {
+    position: relative;
+    height: 100vh;
+
+    &.in--view {
+      height: auto;
+    }
+  }
+
+  &-loader {
+    &-dot {
+      animation-name: fadeIn;
+      animation-iteration-count: infinite;
+      animation-duration: 700ms;
+
+      &:nth-of-type(1) { animation-delay: 300ms; }
+      &:nth-of-type(2) { animation-delay: 400ms; }
+      &:nth-of-type(3) { animation-delay: 500ms; }
+
+      &::after {
+        content: '.';
+        font-size: 15px;
+      }
+    }
+    &-hint {
+      margin-top: 10px;
+      color: $theme-color-primary;
+      text-shadow: 0 0 3px $theme-color-primary;
+      display: flex;
+      justify-content: center;
+      font-size: 15px;
+    }
+
+    &-container {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+  }
+
+  &-children {
+    &-wrapper {
+      > * {
+        animation-name: fadeIn;
+        animation-duration: 500ms;
+        animation-fill-mode: forwards;
+      }
+    }
+  }
+}
+
 @mixin obj($w, $h, $bg) {
   width: $w;
   height: $h;
@@ -94,3 +162,4 @@ $squareColors: #06d674 !default;
     }
   }
 }
+

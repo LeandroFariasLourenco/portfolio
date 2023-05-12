@@ -6,7 +6,9 @@ const useLocalStorage = <T extends {}>(key: string, fallbackValue: T) => {
   useEffect(() => {
     if (window.localStorage) {
       const stored = localStorage.getItem(key);
-      setValue(stored ? JSON.parse(stored) : fallbackValue);
+      setValue(stored ?
+          (typeof stored === 'string' ? stored : JSON.parse(stored))
+          : fallbackValue);
     }
   }, [fallbackValue, key]);
 

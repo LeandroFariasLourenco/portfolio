@@ -23,7 +23,7 @@ import {
 import { EAchievementType } from './models/achievement-type.enum';
 import landmarks from './resources/landmarks.json';
 
-import './my-timeline.scss';
+import styles from './my-timeline.module.scss';
 
 const MyTimeline = () => {
   const intl = useIntl();
@@ -63,48 +63,50 @@ const MyTimeline = () => {
       <Fragment
         key={landmark.name}
       >
-        <div className={`my-timeline-row-${landmark.position}`}>
-          <i className="my-timeline-row-card-icon" style={{ background, boxShadow: `0 0 6px ${background}` }}>{icon}</i>
+        <div className={styles[`my-timeline-row-${landmark.position}`]}>
+          <i className={styles["my-timeline-row-card-icon"]} style={{ background, boxShadow: `0 0 6px ${background}` }}>{icon}</i>
 
-          <div className="my-timeline-row-card" style={{ [`margin-${landmark.position}`]: -20, boxShadow: `0 0 3px ${background}` }}>
-            <div className="my-timeline-row-card-details">
+          <div className={styles['my-timeline-row-card']} style={{ [`margin-${landmark.position}`]: -20, boxShadow: `0 0 3px ${background}` }}>
+            <div className={styles['my-timeline-row-card-details']} >
               <h3><FormattedMessage id={landmark.name} /></h3>
               <h3
-                className="my-timeline-row-card-date"
+                className={styles['my-timeline-row-card-date']}
                 style={{ textShadow: `${background} 0 0 5px`, [landmark.position === 'right' ? 'left' : 'right']: -285 }}>
                   {intl.formatMessage({ id: landmark.date })}
               </h3>
             </div>
-            <p><FormattedMessage id={landmark.description} /></p>
-          </div>
+          <p><FormattedMessage id={landmark.description} /></p>
         </div>
-        {(index + 1 === visibleElements && visibleElements !== landmarks.length) && (
-          <i className="my-timeline-show-more" onClick={handleShowMore}>
-            <ArrowDownward
-              className="my-timeline-arrow-down"
-              fontSize="small"
-            />
-          </i>
-        )}
-      </Fragment>
+      </div>
+        {
+      (index + 1 === visibleElements && visibleElements !== landmarks.length) && (
+        <i className={styles['my-timeline-show-more']} onClick={handleShowMore}>
+          <ArrowDownward
+            className={styles['my-timeline-arrow-down']}
+            fontSize="small"
+          />
+        </i>
+      )
+    }
+      </Fragment >
     );
   }, [visibleElements]);
 
-  return (
-    <div className="my-timeline-container" id={EAppSections.MY_TIMELINE}>
-      <Section
-        onTitleShow={(typewriter) => {
-          typewriter.typeString(intl.formatMessage({ id: 'home.mytimeline.title' })).start();
-        }}
-        icon={<Timeline htmlColor="white" fontSize="large" />}
-      >
-        <div className="my-timeline-timeline-wrapper">
-          <div className="my-timeline-center-line" />
-          {[...Array(visibleElements)].map((_, index) => renderLandmark(landmarks[index], index))}
-        </div>
-      </Section>
-    </div>
-  );
+return (
+  <div className={styles['my-timeline-container']} id={EAppSections.MY_TIMELINE}>
+    <Section
+      onTitleShow={(typewriter) => {
+        typewriter.typeString(intl.formatMessage({ id: 'home.mytimeline.title' })).start();
+      }}
+      icon={<Timeline htmlColor="white" fontSize="large" />}
+    >
+      <div className={styles['my-timeline-timeline-wrapper']}>
+        <div className={styles['my-timeline-center-line']} />
+        {[...Array(visibleElements)].map((_, index) => renderLandmark(landmarks[index], index))}
+      </div>
+    </Section>
+  </div>
+);
 };
 
 export default MyTimeline;

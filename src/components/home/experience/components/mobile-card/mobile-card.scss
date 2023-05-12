@@ -17,14 +17,14 @@
     }
   }
 
-  &-experience {
-    &-container {
-      position: relative;
-      overflow: hidden;
-      padding-bottom: 8px;
-      isolation: isolate;
-    }
+  &-container {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 8px;
+    isolation: isolate;
+  }
 
+  &-experience {
     &-card {
       padding: 16px;
       height: 100%;

@@ -8,8 +8,6 @@ import { IDesktopCardProps } from './props.interface';
 import './desktop-card.scss';
 
 const DesktopCard = ({
-  LeftBorderComponent,
-  RightBorderComponent,
   index,
   experience,
 }: IDesktopCardProps) => (
@@ -18,14 +16,12 @@ const DesktopCard = ({
       {index === 0 && (
         <p className="desktop-card-experience"><FormattedMessage id="home.experience.current" /></p>
       )}
-      {LeftBorderComponent}
       <ExperienceCard
         experience={experience}
       />
     </Grid>
 
     <Grid className="desktop-card-container" item xs={5}>
-      {RightBorderComponent}
       <ExperienceDetails
         experience={experience}
       />
