@@ -15,7 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <head></head>
+      <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.152.2/three.min.js" integrity="sha512-R7eFJsc3NlvsTn5hdD/Xvi6FwpFGAoGOa2nBNU89DXAZzXgQQrfhgHVpm5Kh7H9EuCU3Ymexph9z4IiHrq977g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      </head>
       <body>{children}</body>
     </html>
   )

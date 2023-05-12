@@ -115,3 +115,16 @@ button {
     background-color: rgba($theme-color-primary, 0.1);
   }
 }
+
+.not--visible {
+  @keyframes fadeIn {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+  animation: fadeIn 500ms forwards;
+}

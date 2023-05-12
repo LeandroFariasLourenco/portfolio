@@ -10,13 +10,12 @@ import {
 } from 'react';
 import {
   Mousewheel,
-  Swiper as SwiperClass,
+  Swiper as SwiperClass
 } from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { CustomSwiperControls, Responsive } from '@/shared/components';
-import LoadParticles from '@/shared/components/load-particles/load-particles';
 import SeeMore from '@/shared/components/see-more/see-more';
 import { useResponsive, useSwiperProps } from '@/shared/hooks';
 import { EAppSections, EResponsiveType } from '@/shared/models';
@@ -25,7 +24,6 @@ import DesktopCard from './components/desktop-card/desktop-card';
 import MobileCard from './components/mobile-card/mobile-card';
 
 import { IExperience } from './models/experience.interface';
-import { desktopParticlesConfig } from './particles/desktop-config';
 
 import styles from './experience.module.scss';
 import './shared.scss';
@@ -239,11 +237,6 @@ const Experience = () => {
           position: 'relative',
         }}
       >
-        <Responsive
-          breakpoint="md"
-        >
-          <LoadParticles id="experience-section" options={desktopParticlesConfig} />
-        </Responsive>
         <div className={styles["experience-swiper-container"]}>
           <Swiper
             onInit={(swiper) => {

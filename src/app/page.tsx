@@ -28,7 +28,7 @@ import { EAppSections } from '@/shared/models';
 import Global from '@/shared/styles/global';
 import { materialTheme } from '@/shared/styles/utils';
 import { IntlProvider } from 'react-intl';
-import './page.scss';
+import styles from './page.module.scss';
 import ProjectsProvider from '@/components/home/projects/context/projects.context';
 import { Roboto, Share_Tech_Mono, Ubuntu_Mono } from 'next/font/google';
 import dynamic from 'next/dynamic';
@@ -69,7 +69,6 @@ const Root = () => {
     // navigate(ROUTES.notAvailable);
   }, []);
 
-
   const handleOrientationChange = useCallback((window: Window) => {
     const orientation = window.screen ? window.screen.orientation.type : '';
 
@@ -95,10 +94,10 @@ const Root = () => {
   }, []);
 
   return (
-    <>
+    <div className={styles.page}>
       <Global />
       {components.map(renderComponent)}
-    </>
+    </div>
   )
 };
 
@@ -108,7 +107,7 @@ const roboto = Roboto({ weight: ['300', '400', '500', '700'], subsets: ['latin']
 
 export default function Home() {
   return (
-    <div className="home-container">
+    <div className={styles['home-container']}>
       <style jsx global>{`
         :root {
           --font-title: ${shareTechMono.style.fontFamily};

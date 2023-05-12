@@ -1,0 +1,16 @@
+.home-container {
+  @include linear-gradient-background(
+    '/wallpapers/terminal.png',
+    linear-gradient(rgba(16, 20, 29, 0.75), rgb(16, 20, 29))
+  );
+
+  .page {
+    background-image: url(https://onotherplanets.com/assets/images/body-bg2.svg);
+    
+    > div {
+      &:nth-of-type(2) {
+        margin-top: 100vh;
+      }
+    }
+  }
+}

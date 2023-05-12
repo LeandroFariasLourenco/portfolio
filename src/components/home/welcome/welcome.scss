@@ -1,8 +1,10 @@
 .welcome {
-  position: relative;
-  min-height: 100vh;
-  position: relative;
-  background-color: $theme-color-body;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  
 
   @include desktop() {
     flex-flow: unset;
@@ -22,7 +24,6 @@
     min-height: 165px;
     width: --width;
     padding: calc(2*$frame-size);
-    filter: brightness(0.75) drop-shadow(2px 4px 6px $theme-color-secondary) grayscale(0.88);
     background:
       linear-gradient(      $gradient-color) 50%/100% --_i,100% no-repeat,
       linear-gradient(90deg,$gradient-color) 50%/--_i,100% 100% no-repeat;
@@ -32,13 +33,10 @@
     cursor: pointer;
     margin: 0 auto;
     display: block;
-    
-    &.focused {
-      filter: brightness(0.85) drop-shadow(2px 4px 6px $theme-color-secondary) grayscale(0.25);
-      outline: $border-thicknes solid $color;
-      outline-offset: calc($frame-size / -2);
-      --_i: calc(100% - 2 * $frame-size);
-    }
+    filter: brightness(0.85) drop-shadow(2px 4px 6px $theme-color-secondary) grayscale(0.25);
+    outline: $border-thicknes solid $color;
+    outline-offset: calc($frame-size / -2);
+    --_i: calc(100% - 2 * $frame-size);
   }
 
   &-arrow-down {
