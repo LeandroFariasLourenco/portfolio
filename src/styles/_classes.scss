@@ -6,3 +6,21 @@
   top: 0;
   z-index: 1;
 }
+
+.not--visible {
+  @keyframes fadeIn {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+  animation: fadeIn 500ms forwards;
+}
+
+.is--visible {
+  opacity: 1;
+  visibility: unset;
+}

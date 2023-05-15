@@ -39,22 +39,24 @@ const LazyLoad = ({
       className={`${styles["lazy-load-wrapper"]}${cx({ 'in--view': isInViewDebounced })}`}
       ref={ref}
     >
-      <div
-        className={styles["lazy-load-loader-container"]}
-        style={{ display: isInViewDebounced ? 'none' : 'flex' }}
-      >
-        <div className={styles.wrapper}>
-          <ul className={styles["loader-wrapper"]}>
-            {[...Array(loaderBlocksCount)].map(renderLoaderBlock)}
-          </ul>
-          <p className={styles["lazy-load-loader-hint"]}>
-            {intl.formatMessage({ id: 'general.loading.hint' })}
-            <span className={styles["lazy-load-loader-dot"]} />
-            <span className={styles["lazy-load-loader-dot"]} />
-            <span className={styles["lazy-load-loader-dot"]} />
-          </p>
+
+      {!isInViewDebounced && (
+        <div
+          className={styles["lazy-load-loader-container"]}
+        >
+          <div className={styles.wrapper}>
+            <ul className={styles["loader-wrapper"]}>
+              {[...Array(loaderBlocksCount)].map(renderLoaderBlock)}
+            </ul>
+            <p className={styles["lazy-load-loader-hint"]}>
+              {intl.formatMessage({ id: 'general.loading.hint' })}
+              <span className={styles["lazy-load-loader-dot"]} />
+              <span className={styles["lazy-load-loader-dot"]} />
+              <span className={styles["lazy-load-loader-dot"]} />
+            </p>
+          </div>
         </div>
-      </div>
+      )}
       {isInViewDebounced && (
         <div className={styles["lazy-load-children-wrapper"]}>
           {children}

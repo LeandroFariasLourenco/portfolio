@@ -4,7 +4,7 @@ import { Box, Grid, Typography, styled } from '@mui/material';
 export const TabContainer = styled(Grid)(({ theme }) => `
   cursor: pointer;
   transition: background-color 200ms ease-in-out;
-  background-color: ${theme.palette.background.default} ;
+  background-color: ${theme.palette.background.paper};
   padding: 0 15px;
   border-radius: 0;
   min-height: 58px;

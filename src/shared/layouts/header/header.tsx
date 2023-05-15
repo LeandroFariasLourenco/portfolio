@@ -82,9 +82,9 @@ const Header = () => {
 
   const renderHeaderIcon = useCallback(() => (
     <>
-      {/* <HashLink scroll={smoothScroll} to={`#${EAppSections.WELCOME}`}>
-        <GitHub fontSize="large" htmlColor="#fff" />
-      </HashLink> */}
+      {/* <HashLink scroll={smoothScroll} to={`#${EAppSections.WELCOME}`}> */}
+      <GitHub fontSize="large" htmlColor="#fff" />
+      {/* </HashLink> */}
     </>
   ), []);
 

@@ -1,10 +1,26 @@
 .welcome {
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100%;
+  height: 100vh;
   width: 100%;
-  
+  background-image: url(https://onotherplanets.com/assets/images/body-bg2.svg);
+  position: relative;
+
+  &::after {
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: $theme-color-card;
+    height: 100vh;
+    position: absolute;
+  }
+
+  &-particles {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+  }
 
   @include desktop() {
     flex-flow: unset;
@@ -19,15 +35,14 @@
     $border-thicknes: 2px !default;
     $width: 280px !default;
     $color: $theme-color-primary !default;
-    $gradient-color: $color $border-thicknes,#0000 0 calc(100% - $border-thicknes), $color 0;
-    
+    $gradient-color: $color $border-thicknes, #0000 0 calc(100% - $border-thicknes), $color 0;
+
     min-height: 165px;
     width: --width;
-    padding: calc(2*$frame-size);
-    background:
-      linear-gradient(      $gradient-color) 50%/100% --_i,100% no-repeat,
-      linear-gradient(90deg,$gradient-color) 50%/--_i,100% 100% no-repeat;
-    outline: calc(--width)/2 solid #0005;
+    padding: calc(2 * $frame-size);
+    background: linear-gradient($gradient-color) 50%/100% --_i, 100% no-repeat,
+      linear-gradient(90deg, $gradient-color) 50% / --_i, 100% 100% no-repeat;
+    outline: calc(--width) / 2 solid #0005;
     outline-offset: -($width);
     transition: 400ms;
     cursor: pointer;
@@ -62,7 +77,7 @@
     &::after {
       border-radius: 100%;
     }
-    
+
     &:hover {
       background-color: $theme-color-secondary;
       svg {
@@ -102,7 +117,7 @@
       cursor: pointer;
       transition: background-color 200ms ease-in-out;
       z-index: 1;
-      
+
       &.current {
         background-color: $theme-color-card;
       }
@@ -113,6 +128,10 @@
       right: 10px;
       bottom: 10px;
       @include visibility-transition();
+    }
+
+    &-title {
+      text-align: center;
     }
   }
 }

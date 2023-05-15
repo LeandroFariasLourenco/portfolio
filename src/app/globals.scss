@@ -87,6 +87,10 @@ h6 {
   font-size: 17px;
   font-family: $theme-font-subtitle, monospace;
   color: #9aa5c6;
+
+  span {
+    font-family: $theme-font-subtitle, monospace;
+  }
 }
 
 p {
@@ -114,17 +118,4 @@ button {
   &:hover {
     background-color: rgba($theme-color-primary, 0.1);
   }
-}
-
-.not--visible {
-  @keyframes fadeIn {
-    from {
-      opacity: 1;
-    }
-
-    to {
-      opacity: 0;
-    }
-  }
-  animation: fadeIn 500ms forwards;
 }

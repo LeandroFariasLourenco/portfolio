@@ -56,13 +56,12 @@ export const desktopParticlesConfig: ParticlesProps['options'] = {
     move: {
       enable: true,
       speed: 1,
-      direction: 'none',
-      random: false,
+      random: true,
       straight: false,
-      out_mode: 'out',
-      bounce: false,
+      out_mode: 'bounce',
+      bounce: true,
       attract: {
-        enable: false,
+        enable: true,
         rotateX: 600,
         rotateY: 1200,
       },

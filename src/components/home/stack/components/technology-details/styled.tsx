@@ -17,7 +17,7 @@ export const LanguageDescription = styled(Typography)`
 export const LanguageDescriptionCard = styled(Card)(({ theme }) => `
   border-radius: 0;
   border-top: none;
-  background-color: ${theme.palette.background.default};
+  background-color: ${theme.palette.background.paper};
   
   ${theme.breakpoints.down('md')} {
     transition: max-height 200ms ease-in;

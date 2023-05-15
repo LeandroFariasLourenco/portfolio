@@ -3,7 +3,7 @@
     &-tab {
       transition: background-color 200ms ease-in-out;
       padding: 10px 0;
-      background-color: $theme-color-body;
+      background-color: $theme-color-card;
       cursor: pointer;
 
       @include mobile() {
@@ -54,7 +54,7 @@
 
   &-card {
     &-container {
-      background-color: rgba(28, 22, 48, 0.87);
+      background-color: $theme-color-card;
       border: 2px solid $theme-color-action-active;
       border-top: 0;
       padding: 20px;
