@@ -18,7 +18,7 @@
   }
 
   &-typewriter-background {
-    background-color: #1E1E1E;
+    background-color: rgba($theme-color-card, 0.90);
     border-radius: 5px;
     width: 550px;
     
@@ -29,8 +29,8 @@
   }
 
   &-heading {
-    background-color: #4A4A4A;
-    padding: 5px 10px;
+    background-color: #1b2231;
+    padding: 8px 10px;
     position: relative;
     
     &::after {
@@ -46,7 +46,6 @@
   }
 
   &-wrapper {
-    border: 1px solid black;
     border-radius: 5px;
     overflow: hidden;
     opacity: 0.35;
@@ -73,21 +72,24 @@
   }
 
   &-subtitle {
-    // color: ${theme.palette.grey[300]};
-    color: gray;
-    margin-right: 5px;
+    color: white;
+    margin: 2px 5px;
     display: flex;
+
+    &-login {
+      margin-bottom: 10px;
+    }
     
     > svg {
       margin-left: -8px;
       margin-right: 8px;
       width: 15px;
-      margin-top: 5px;
     }
   }
 
   &-text {
     display: flex;
+    color: rgb(154, 165, 198);
 
     &.is--current--line {
       &::after {
@@ -98,8 +100,7 @@
   }
 
   &-title {
-    // color: ${theme.palette.grey[400]};
-    color: gray;
+    color: #f4f4f4;
     margin-left: 5px;
   }
 

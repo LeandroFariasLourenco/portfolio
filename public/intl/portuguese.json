@@ -146,7 +146,7 @@
   "home.js-ts.technologies.react-native.js-bridge": "JS Bridge",
 
   "home.js-ts.technologies.angular.description": "Trabalho com Angular há quase 2 anos. Desde o meu primeiro contato com o Angular, consegui me adaptar rapidamente aos seus conceitos, como roteamento, rxjs, módulos e testes unitários. Foi com o Angular que eu tive minha primeira experiência profissional com testes unitários, o que me trouxe uma compreensão mais profunda sobre a importância de desenvolver software com qualidade. O Angular se tornou meu framework preferido no ecossistema Typescript, e minha primeira escolha para a construção de projetos com SPA.",
-  "home.js-ts.technologies.angular.rxjs": "RxJ",
+  "home.js-ts.technologies.angular.rxjs": "RxJs",
   "home.js-ts.technologies.angular.providers": "Providers",
   "home.js-ts.technologies.angular.inputs-outputs": "Inputs/Outputs Emitters",
   "home.js-ts.technologies.angular.modules": "Módulos",

@@ -1,0 +1,53 @@
+.technology {
+  &-container {
+    cursor: pointer;
+    transition: background-color 200ms ease-in-out;
+    background-color: $theme-color-card;
+    padding: 0 15px;
+    border-radius: 0;
+    min-height: 58px;
+    max-height: 58px;
+    flex: 1;
+  
+    &.selected {
+      background-color: $theme-color-secondary !important;
+
+      h5 {
+        color: white;
+      }
+    }
+  
+    @include desktop() {
+      &:hover {
+        background-color: $theme-color-action-hover;
+      }
+    }
+  }
+
+  &-wrapper {
+    @include mobile() {
+      justify-content: space-between;
+    }
+  }
+
+  &-image {
+    margin-right: 10px;
+
+    @include desktop() {
+      width: 75px;
+    }
+  }
+
+  &-title {
+    @include mobile() {
+      flex: 1;
+    }
+  }
+
+  &-mobile {
+    &-arrow {
+      // transform: ${$selected ? 'rotate(180deg)' : 'rotate(0)'};
+      transition: transform 200ms ease-in-out;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { ParticlesProps } from 'react-tsparticles';
+import { ParticlesProps } from "react-tsparticles";
 
 export const desktopParticlesConfig: ParticlesProps['options'] = {
   fullScreen: {
@@ -14,13 +14,13 @@ export const desktopParticlesConfig: ParticlesProps['options'] = {
       },
     },
     color: {
-      value: '#06d674',
+      value: '#1486a8',
     },
     shape: {
       type: 'edge',
       stroke: {
         width: 0,
-        color: '#06d674',
+        color: '#1486a8',
       },
       polygon: {
         nb_sides: 5,
@@ -49,7 +49,7 @@ export const desktopParticlesConfig: ParticlesProps['options'] = {
     line_linked: {
       enable: true,
       distance: 150,
-      color: '#06d674',
+      color: '#1486a8',
       opacity: 0.4,
       width: 1,
     },

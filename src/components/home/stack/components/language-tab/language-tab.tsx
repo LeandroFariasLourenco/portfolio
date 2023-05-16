@@ -1,22 +1,17 @@
-import cx from 'classnames';
-import { useEffect, useState } from 'react';
 import { getBucketResource } from '@/shared/functions';
+import cx from 'classnames';
 import { ILanguageProps } from './props.interface';
 
-import './language-tab.scss';
 import { Grid } from '@mui/material';
+import Image from 'next/image';
+import { useStackContext } from '../context/stack.context';
+import styles from './language-tab.module.scss';
 
 const LanguageTab = ({
   language,
   onToggle,
-  index,
-  selectedTab,
 }: ILanguageProps) => {
-  const [open, setOpen] = useState<boolean>(false);
-
-  useEffect(() => {
-    setOpen(selectedTab === index);
-  }, [selectedTab]);
+  const { selected: { setLanguageTab, languageTab } } = useStackContext();
 
   return (
     <Grid
@@ -26,16 +21,20 @@ const LanguageTab = ({
       justifyContent="center"
       flex={1}
       onClick={() => {
-        onToggle(index);
+        onToggle(language.name);
       }}
-      className={`language-tab-container ${cx({ open })}`}
+      className={`${styles["language-tab-container"]}`}
     >
-      <img
-        className="language-tab-logo"
-        src={getBucketResource(language.icon)}
-        alt={language.name}
-      />
-    </Grid>
+      <div className={`tab-button ${cx({ open: language.name === languageTab })}`}>
+        <Image
+          className={styles["language-tab-logo"]}
+          src={getBucketResource(language.icon)}
+          alt={language.name}
+          width={130}
+          height={65}
+        />
+      </div>
+    </Grid >
   );
 };
 

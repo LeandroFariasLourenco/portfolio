@@ -5,11 +5,11 @@
   position: relative;
 
   &::after {
-    content: '';
+    content: "";
     top: 0;
     left: 0;
     width: 100%;
-    background-color: $theme-color-card;
+    background-color: rgba($theme-color-card, 0.7);
     height: 100vh;
     position: absolute;
   }
@@ -32,26 +32,30 @@
 
   &-profile-image {
     $frame-size: 15px !default;
-    $border-thicknes: 2px !default;
+    $border-thickness: 2px !default;
     $width: 280px !default;
-    $color: $theme-color-primary !default;
-    $gradient-color: $color $border-thicknes, #0000 0 calc(100% - $border-thicknes), $color 0;
+    $color: $theme-color-secondary !default;
+    $gradient-color: $color $border-thickness, #0000 0 calc(100% - $border-thickness), $color 0 !default;
 
     min-height: 165px;
-    width: --width;
+    width: $width;
     padding: calc(2 * $frame-size);
-    background: linear-gradient($gradient-color) 50%/100% --_i, 100% no-repeat,
-      linear-gradient(90deg, $gradient-color) 50% / --_i, 100% 100% no-repeat;
-    outline: calc(--width) / 2 solid #0005;
-    outline-offset: -($width);
+    filter: brightness(0.75) drop-shadow(2px 4px 6px $theme-color-secondary) grayscale(0.88);
+    background: linear-gradient($gradient-color) 50%/100% var(--_i, 100%) no-repeat,
+      linear-gradient(90deg, $gradient-color) 50% / var(--_i, 100%) 100% no-repeat;
+    outline: calc($width / 2) solid #0005;
+    outline-offset: -280px;
     transition: 400ms;
     cursor: pointer;
     margin: 0 auto;
     display: block;
-    filter: brightness(0.85) drop-shadow(2px 4px 6px $theme-color-secondary) grayscale(0.25);
-    outline: $border-thicknes solid $color;
-    outline-offset: calc($frame-size / -2);
-    --_i: calc(100% - 2 * $frame-size);
+
+    &.focused {
+      filter: brightness(0.85) drop-shadow(2px 4px 6px $theme-color-secondary) grayscale(0.25);
+      outline: $border-thickness solid $color;
+      outline-offset: calc($frame-size / -2);
+      --_i: calc(100% - 2 * $frame-size);
+    }
   }
 
   &-arrow-down {
@@ -127,11 +131,15 @@
       position: absolute;
       right: 10px;
       bottom: 10px;
+      z-index: 1;
       @include visibility-transition();
     }
 
     &-title {
       text-align: center;
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: $theme-color-font;
     }
   }
 }

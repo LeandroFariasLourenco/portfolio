@@ -15,6 +15,7 @@
 .stack {
   &-tab {
     transition: transform 500ms ease-in-out;
+
     &.selected {
       animation: changeTechnologyTab;
       animation-fill-mode: forwards;
@@ -27,8 +28,6 @@
   }
 
   &-wrapper {
-    border: 2px solid $theme-color-secondary;
-    border-bottom: 0;
     margin-top: 30px;
   
     @include mobile() {

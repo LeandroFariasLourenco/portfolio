@@ -1,8 +1,8 @@
 .header {
   background-color: $theme-color-card;
-  transition: all 200ms ease-in-out;
+  transition: background-color 200ms ease-in-out, box-shadow 200ms ease-in-out;
   padding: 5px 0;
-  box-shadow: 0 0 2px #06d674;
+  box-shadow: 0 0 2px $theme-color-primary;
 
   .MuiSelect {
     &-select {
@@ -20,6 +20,7 @@
 
   &.transparent {
     background-color: $theme-color-body;
+    box-shadow: unset;
   }
 
   &-link {

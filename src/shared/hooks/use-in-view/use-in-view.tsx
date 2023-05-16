@@ -1,21 +1,31 @@
 import { useEffect, useMemo, useState } from "react";
+import { IUseInViewProps } from "./props.interface";
 
-const useInView = (props: IntersectionObserverInit) => {
+const useInView = ({
+  triggerOnce,
+  ...observerProps
+}: IUseInViewProps) => {
   const [elementRef, setElementRef] = useState<HTMLElement>();
   const [inView, setInView] = useState<boolean>(false);
   const ref = (ref: any) => {
     setElementRef(ref);
   };
+
   const observer = useMemo(() => {
     if (!window) return null;
 
     return new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setInView(true);
+
+        if (triggerOnce) {
+          observer!.unobserve(elementRef as Element);
+        }
         return;
       }
+
       setInView(false);
-    }, props)
+    }, observerProps)
   }, [elementRef]);
 
   useEffect(() => {
@@ -27,8 +37,7 @@ const useInView = (props: IntersectionObserverInit) => {
   useEffect(() => {
     return () => {
       if (!elementRef || !observer) return;
-
-      observer.unobserve(elementRef as Element);
+      observer!.unobserve(elementRef as Element);
     };
   }, []);
 

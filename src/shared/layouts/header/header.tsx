@@ -96,7 +96,7 @@ const Header = () => {
           style={{ boxShadow: 'unset' }}
         >
           <Grid
-            className={`${styles.header} ${cx({ transparent: isWindowOnTop })}`}
+            className={`${styles.header} ${cx({ [styles.transparent]: isWindowOnTop })}`}
             container
             item
             xs={12}

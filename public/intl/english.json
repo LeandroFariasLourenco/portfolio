@@ -148,7 +148,7 @@
   "home.js-ts.technologies.angular.modules": "Modules",
   "home.js-ts.technologies.angular.providers": "Providers",
   "home.js-ts.technologies.angular.routing": "Routing",
-  "home.js-ts.technologies.angular.rxjs": "RxJ",
+  "home.js-ts.technologies.angular.rxjs": "RxJs",
   "home.js-ts.technologies.angular.services": "Services",
   "home.js-ts.technologies.angular.unit-testing": "Unit Tests",
   "home.js-ts.technologies.grunt.description": "JavaScript task automation tool, similar with Gulp. Basically from my experience, I have found projects that used Gulp and others, Grunt. Particularly I never made a project from scratch with Grunt as I prefer the general structure of Gulp for task automation purposes.",

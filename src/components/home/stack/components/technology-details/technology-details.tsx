@@ -2,8 +2,9 @@ import cx from 'classnames';
 import { useCallback } from 'react';
 import { Typography } from '@mui/material';
 import { FormattedMessage, useIntl } from 'react-intl';
-import * as S from './styled';
 import { ITechnologyDetailsProps } from './props.interface';
+
+import styles from './technology-details.module.scss';
 
 const TechnologyDetails = ({
   technology,
@@ -12,34 +13,33 @@ const TechnologyDetails = ({
   const intl = useIntl();
 
   const renderTechnologyTopic = useCallback((topic: string) => (
-    <S.LanguageTopic
+    <li
+      className={styles["technology-details-language-topic"]}
       key={topic}
     >
       <Typography>
         {intl.formatMessage({ id: topic })}
       </Typography>
-    </S.LanguageTopic>
+    </li>
   ), [intl]);
 
   return (
-    <S.LanguageDescriptionCard
-      className={cx({
-        'is--selected': isSelected,
-      })}
+    <div
+      className={`${styles["technology-details-description-card"]} ${cx({
+        [styles['is--selected']]: isSelected,
+      })}`}
     >
-      <S.LanguageDescriptionContainer>
-        <S.LanguageDescription>
-          <FormattedMessage id={technology.description} />
-        </S.LanguageDescription>
+      <div className={styles["technology-details-description-container"]}>
+        <p className={styles["technology-details-language-description"]}><FormattedMessage id={technology.description} /></p>
 
         {technology.topics.length ? (
-          <S.LanguageTopics>
-            <S.LanguageDividerTitle variant="h4"><FormattedMessage id="home.languages.knowledge" /></S.LanguageDividerTitle>
+          <ul className={styles["technology-details-language-topics"]}>
+            <h4 className={styles["technology-details-language-divider"]}><FormattedMessage id="home.languages.knowledge" /></h4>
             {technology.topics.map((topic) => renderTechnologyTopic(topic))}
-          </S.LanguageTopics>
+          </ul>
         ) : null}
-      </S.LanguageDescriptionContainer>
-    </S.LanguageDescriptionCard>
+      </div>
+    </div>
   );
 };
 

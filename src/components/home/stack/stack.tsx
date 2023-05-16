@@ -1,6 +1,8 @@
+'use client'
+
 import { DeveloperMode } from '@mui/icons-material';
 import cx from 'classnames';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import SwipeRightAnimation from '@/../public/animations/swipe-right.json';
 import { Section } from '@/shared/layouts';
 import { EAppSections, EResponsiveType } from '@/shared/models';
@@ -12,17 +14,18 @@ import Technologies from './components/technologies/technologies';
 import LanguageTab from './components/language-tab/language-tab';
 import { ILanguage } from './components/language-tab/models/language.interface';
 
-import './stack.scss';
+import styles from './stack.module.scss';
 import { Grid } from '@mui/material';
+import { useStackContext } from './components/context/stack.context';
 
 const Languages = () => {
-  const [selectedTab, setSelectedTab] = useState<number>(0);
   const isMobile = useResponsive({ type: EResponsiveType.smaller });
   const tabContainerRef = useRef<HTMLDivElement>();
   const intl = useIntl();
+  const { selected: { setLanguageTab, languageTab } } = useStackContext();
 
-  const onLanguageTabToggle = useCallback((index: number) => {
-    setSelectedTab(index);
+  const onLanguageTabToggle = useCallback((language: string) => {
+    setLanguageTab(language);
     if (isMobile) return;
     tabContainerRef.current!.scrollIntoView({
       block: 'center',
@@ -30,31 +33,33 @@ const Languages = () => {
     });
   }, [isMobile]);
 
+  useEffect(() => {
+    setLanguageTab(languages[0].name);
+  }, []);
+
   const renderLanguages = useCallback(({ name, technologies }: ILanguage, index: number) => (
     <div
       key={`${name}-tecnologies`}
-      className={`stack-tab ${cx({
-        selected: selectedTab === index,
+      className={`${styles["stack-tab"]} ${cx({
+        [styles.selected]: languageTab === name,
       })}`}
     >
       <Technologies
         technologies={technologies}
       />
     </div>
-  ), [selectedTab]);
+  ), [languageTab]);
 
   const renderLanguageTab = useCallback((language: ILanguage, index: number) => (
     <LanguageTab
       language={language}
       key={language.name}
       onToggle={onLanguageTabToggle}
-      selectedTab={selectedTab}
-      index={index}
     />
   ), []);
 
   return (
-    <div className="stack-main-section" id={EAppSections.STACK}>
+    <div className={styles["stack-main-section"]} id={EAppSections.STACK}>
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString(intl.formatMessage({ id: 'home.languages.title' }))
@@ -66,7 +71,7 @@ const Languages = () => {
           paddingBottom: 50,
         }}
       >
-        <Grid className="stack-wrapper" container>
+        <Grid className={styles["stack-wrapper"]} container>
           <SwipeAnimation lottieProps={{
             height: '75px',
             speed: 1.25,

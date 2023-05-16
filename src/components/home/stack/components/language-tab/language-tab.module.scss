@@ -1,0 +1,20 @@
+.language-tab {
+  &-logo {
+    object-fit: contain;
+    width: 130px;
+    max-height: 65px;
+
+    @include mobile() {
+      max-width: 55px;
+    }
+  }
+
+  &-container {
+    margin-bottom: 15px;
+    cursor: pointer;
+
+    @include mobile() {
+      padding: 10px;
+    }
+  }
+}

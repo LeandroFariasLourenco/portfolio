@@ -9,8 +9,9 @@ import Responsive from '@/shared/components/responsive/responsive';
 import TechnologyDetails from '../technology-details/technology-details';
 import TechnologyTab from '../technology-tab/technology-tab';
 import { ITechnologiesProps } from './props.interface';
-import * as S from './styled';
 import { ITechnology } from './models/technology.interface';
+
+import styles from './technologies.module.scss';
 
 const Technologies = ({
   technologies,
@@ -28,10 +29,10 @@ const Technologies = ({
   ), [selectedTab]);
 
   return (
-    <S.LanguageContainer container flexWrap="nowrap">
-      <S.LanguagesTabWrapper container flexDirection="column" flexWrap="nowrap" item xs={12} md={4}>
+    <Grid className={styles["languages-container"]} container flexWrap="nowrap">
+      <Grid className={styles["languages-tab-wrapper"]} container flexDirection="column" flexWrap="nowrap" item xs={12} md={4}>
         {technologies.map(renderTechnology)}
-      </S.LanguagesTabWrapper>
+      </Grid>
       <Responsive
         breakpoint="md"
       >
@@ -41,7 +42,7 @@ const Technologies = ({
           />
         </Grid>
       </Responsive>
-    </S.LanguageContainer>
+    </Grid>
   );
 };
 

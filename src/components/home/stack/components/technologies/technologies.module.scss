@@ -1,0 +1,28 @@
+.languages {
+  &-tab {
+    &-wrapper {
+      height: 100%;
+      border: 2px solid $theme-color-secondary;
+      background-color: $theme-color-card;
+      border-top: none;
+      overflow-y: auto;
+      
+      @include desktop() {
+        border-right: none;
+      }
+      
+      @include scrollbar-style(
+        5px,
+        $theme-color-secondary,
+        $theme-color-primary,
+        $backgroundTrackColor: $theme-color-body,
+      );
+    }
+  }
+
+  &-container {
+    @include desktop() {
+      height: 475px;
+    }
+  }
+}

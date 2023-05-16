@@ -15,7 +15,13 @@ const nextConfig = {
         hostname: 'www.github.com',
         port: '',
         pathname: '/**'
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: 'd255kommyg5uck.cloudfront.net',
+        port: '',
+        pathname: '/**'
+      },
     ]
   },
 }

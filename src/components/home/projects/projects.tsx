@@ -1,13 +1,3 @@
-import {
-  Code, DeveloperBoard, Star,
-} from '@mui/icons-material';
-import {
-  Grid,
-} from '@mui/material';
-import {
-  useCallback, useEffect, useMemo, useRef, useState,
-} from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
 import SwipeRightAnimation from '@/../public/animations/swipe-right.json';
 import { CustomSwiperControls } from '@/shared/components';
 import Responsive from '@/shared/components/responsive/responsive';
@@ -18,22 +8,31 @@ import { useSwiperProps } from '@/shared/hooks';
 import { Section } from '@/shared/layouts';
 import { EAppSections, EResponsiveType } from '@/shared/models';
 import {
+  Code, DeveloperBoard, Star,
+} from '@mui/icons-material';
+import {
+  Grid,
+} from '@mui/material';
+import {
+  useCallback, useEffect, useMemo, useRef, useState,
+} from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
+import {
   Swiper as SwiperClass,
 } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { IProject } from './models/project.interface';
 
+import { TECHNOLOGY_ICONS } from '@/shared/constants/technology-icons';
 import DesktopProject from './components/desktop-project/desktop-project';
 import MobileLightbox from './components/mobile-lightbox/mobile-lightbox';
 import MobileProject from './components/mobile-project/mobile-project';
 import Repository from './components/repository/repository';
-import ProjectsProvider from './context/projects.context';
-import { TECHNOLOGY_ICONS } from '@/shared/constants/technology-icons';
-import { IGithubRepository } from './services/github-service/models/github-repository.interface';
 import githubService from './services/github-service/github-service';
+import { IGithubRepository } from './services/github-service/models/github-repository.interface';
 
-import './projects.scss';
 import { APP } from '@/shared/constants/app';
+import './projects.scss';
 
 const Projects = () => {
   const [repositories, setRepositories] = useState<IGithubRepository[]>([]);

@@ -15,7 +15,7 @@ import { Section } from '@/shared/layouts';
 
 import PersonComputerAnimation from '@/../public/animations/person-on-computer.json';
 
-import './about.scss';
+import styles from './about.module.scss';
 
 import { SlideTitle } from '@/shared/components';
 import Responsive from '@/shared/components/responsive/responsive';
@@ -36,10 +36,10 @@ const About = () => {
       icon: <EmojiEvents htmlColor="#fff" fontSize="large" />,
       content: (
         <Grid>
-          <p className="about-text"><FormattedMessage id="home.about-me.objectives.first" /></p>
-          <p className="about-text"><FormattedMessage id="home.about-me.objectives.second" /></p>
-          <p className="about-text"><FormattedMessage id="home.about-me.objectives.third" /></p>
-          <p className="about-text"><FormattedMessage id="home.about-me.objectives.fourth" /></p>
+          <p className={styles["about-text"]}><FormattedMessage id="home.about-me.objectives.first" /></p>
+          <p className={styles["about-text"]}><FormattedMessage id="home.about-me.objectives.second" /></p>
+          <p className={styles["about-text"]}><FormattedMessage id="home.about-me.objectives.third" /></p>
+          <p className={styles["about-text"]}><FormattedMessage id="home.about-me.objectives.fourth" /></p>
         </Grid>
       ),
     },
@@ -49,10 +49,10 @@ const About = () => {
       icon: <Terminal htmlColor={theme.palette.action.active} fontSize="large" />,
       content: (
         <Grid>
-          <p className="about-text"><FormattedMessage id="home.about-me.stack.first" /></p>
-          <p className="about-text"><FormattedMessage id="home.about-me.stack.second" /></p>
-          <p className="about-text"><FormattedMessage id="home.about-me.stack.third" /></p>
-          <p className="about-text"><FormattedMessage id="home.about-me.stack.fourth" /></p>
+          <p className={styles["about-text"]}><FormattedMessage id="home.about-me.stack.first" /></p>
+          <p className={styles["about-text"]}><FormattedMessage id="home.about-me.stack.second" /></p>
+          <p className={styles["about-text"]}><FormattedMessage id="home.about-me.stack.third" /></p>
+          <p className={styles["about-text"]}><FormattedMessage id="home.about-me.stack.fourth" /></p>
         </Grid>
       ),
     },
@@ -62,8 +62,8 @@ const About = () => {
       icon: <School htmlColor={theme.palette.secondary.main} fontSize="large" />,
       content: (
         <Grid>
-          <p className="about-text"><FormattedMessage id="home.about-me.formation.first" /></p>
-          <p className="about-text"><FormattedMessage id="home.about-me.formation.second" /></p>
+          <p className={styles["about-text"]}><FormattedMessage id="home.about-me.formation.first" /></p>
+          <p className={styles["about-text"]}><FormattedMessage id="home.about-me.formation.second" /></p>
         </Grid>
       ),
     },
@@ -73,9 +73,9 @@ const About = () => {
       icon: <Theaters htmlColor={theme.palette.primary.main} fontSize="large" />,
       content: (
         <Grid>
-          <p className="about-text"><FormattedMessage id="home.about-me.hobbies.first" /></p>
-          <p className="about-text"><FormattedMessage id="home.about-me.hobbies.second" /></p>
-          <p className="about-text"><FormattedMessage id="home.about-me.hobbies.third" /></p>
+          <p className={styles["about-text"]}><FormattedMessage id="home.about-me.hobbies.first" /></p>
+          <p className={styles["about-text"]}><FormattedMessage id="home.about-me.hobbies.second" /></p>
+          <p className={styles["about-text"]}><FormattedMessage id="home.about-me.hobbies.third" /></p>
         </Grid>
       ),
     },
@@ -95,7 +95,7 @@ const About = () => {
   ), [hobbies, currentOpenedStory]);
 
   return (
-    <div className="about-wrapper" id={EAppSections.ABOUT}>
+    <div className={styles["about-wrapper"]} id={EAppSections.ABOUT}>
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString(intl.formatMessage({ id: 'home.about-me.title' }))
@@ -114,20 +114,20 @@ const About = () => {
               breakpoint="md"
               belowComponent={(
                 <>
-                  <p className="about-summary"><FormattedMessage id="home.about-me.summary1" /></p>
+                  <p className={styles["about-summary"]}><FormattedMessage id="home.about-me.summary1" /></p>
                   <SeeMore
                     startHeight={0}
                   >
-                    <p className="about-summary"><FormattedMessage id="home.about-me.summary2" /></p>
-                    <p className="about-summary"><FormattedMessage id="home.about-me.summary3" /></p>
+                    <p className={styles["about-summary"]}><FormattedMessage id="home.about-me.summary2" /></p>
+                    <p className={styles["about-summary"]}><FormattedMessage id="home.about-me.summary3" /></p>
                   </SeeMore>
                 </>
               )}
               aboveComponent={(
                 <>
-                  <p className="about-summary"><FormattedMessage id="home.about-me.summary1" /></p>
-                  <p className="about-summary"><FormattedMessage id="home.about-me.summary2" /></p>
-                  <p className="about-summary"><FormattedMessage id="home.about-me.summary3" /></p>
+                  <p className={styles["about-summary"]}><FormattedMessage id="home.about-me.summary1" /></p>
+                  <p className={styles["about-summary"]}><FormattedMessage id="home.about-me.summary2" /></p>
+                  <p className={styles["about-summary"]}><FormattedMessage id="home.about-me.summary3" /></p>
                 </>
               )}
             />

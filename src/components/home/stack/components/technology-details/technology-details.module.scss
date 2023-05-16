@@ -1,0 +1,58 @@
+.technology-details {
+  &-description {
+    &-card {
+      border-radius: 0;
+      border-top: none;
+      background-color: $theme-color-card;
+
+      @include mobile() {
+        transition: max-height 200ms ease-in;
+
+        &:not(.is--selected) {
+          display: none;
+        }
+      }
+
+      @include desktop() {
+        padding: 15px;
+        height: 100%;
+        border: 2px solid $theme-color-secondary;
+        border-left-style: dashed;
+        border-top: none;
+      }
+    }
+
+    @include mobile() {
+      padding: 15px 10px;
+    }
+
+    &-container {
+      @include mobile() {
+        padding: 15px 10px;
+      }
+    }
+  }
+
+  &-language {
+    &-divider {
+      margin-bottom: 10px;
+    }
+
+    &-topic {
+      padding: 5px 10px;
+      border: 1px solid $theme-color-primary;
+      display: inline-block;
+      margin: 5px;
+    }
+
+    &-topics {
+      margin-top: 20px;
+    }
+
+    &-description {
+      &::first-letter {
+        margin-left: 10px;
+      }
+    }
+  }
+}

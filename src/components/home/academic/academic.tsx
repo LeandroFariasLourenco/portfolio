@@ -135,11 +135,8 @@ const Academic = () => {
   }), [intl]);
 
   const renderFormationTab = useCallback((tab: string, index: number) => (
-    <Grid
-      container
+    <div
       key={tab}
-      alignItems="center"
-      justifyContent="center"
       onClick={() => {
         setActiveTab(index);
         if (isMobile) return;
@@ -148,13 +145,13 @@ const Academic = () => {
           behavior: 'smooth',
         });
       }}
-      className={`academic-formation-tab ${cx({
-        selected: activeTab === index,
+      className={`academic-formation-tab tab-button ${cx({
+        open: activeTab === index,
       })}`}
     >
-      <Typography variant={isMobile ? 'h5' : 'h4'}><FormattedMessage id={tab} /></Typography>
-    </Grid>
-  ), [intl, isMobile, activeTab]);
+      <h5 className="academic-formation-tab-title"><FormattedMessage id={tab} /></h5>
+    </div>
+  ), [intl, activeTab]);
 
   const renderCourse = useCallback((course: ICourse, index: number) => (
     <Grid key={course.title} item xs={12} md={4}>

@@ -47,7 +47,7 @@ const SnakeGame = ({
 
     game.current = Game;
 
-    // window.addEventListener('keydown', handleKeyPress);
+    window.addEventListener('keydown', handleKeyPress);
 
     subscriptions$.current.add(
       Game.gameState$.subscribe((gameState) => {
@@ -63,11 +63,12 @@ const SnakeGame = ({
   };
 
   useEffect(() => {
+    if (!window) return;
     setupGame();
 
     return () => {
       subscriptions$.current.unsubscribe();
-      // window.removeEventListener('keydown', handleKeyPress);
+      window.removeEventListener('keydown', handleKeyPress);
     };
   }, []);
 

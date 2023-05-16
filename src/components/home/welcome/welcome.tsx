@@ -50,7 +50,7 @@ const Welcome = () => {
           height={280}
           quality={60}
           src={`https://www.github.com/LeandroFariasLourenco.png?size=280`}
-          className={styles["welcome-profile-image"]}
+          className={`${styles["welcome-profile-image"]} ${cx({ [styles.focused]: isWindowOnTop })}`}
           alt="My profile photo"
           priority
         />
@@ -71,6 +71,10 @@ const Welcome = () => {
     </div>
   ), [particlesConfig]);
 
+  const initEngine = useCallback(async (engine: any) => {
+    await loadFull(engine);
+  }, []);
+
   return (
     <Grid
       container
@@ -84,9 +88,7 @@ const Welcome = () => {
       <div className="background-canvas">
         <Particles
           canvasClassName="background-canvas"
-          init={async (engine) => {
-            await loadFull(engine);
-          }}
+          init={initEngine}
           options={particlesConfig}
         />
       </div>
@@ -103,7 +105,7 @@ const Welcome = () => {
         </Grid>
       </Responsive>
       <Grid
-        className={`${styles["welcome-container"]}`}
+        className={`${styles["welcome-container"]} ${cx({ [styles.playing]: fadingOutContainer })}`}
         container
         justifyContent="center"
         alignItems="center"
@@ -152,7 +154,7 @@ const Welcome = () => {
               'is--visible': isWindowOnTop,
             })}`}
           >
-            <h6 className={styles["welcome-fps-title"]}>FPS</h6>
+          <h6 className={styles["welcome-fps-title"]}>FPS</h6>
             <Grid container>
               {fpsOptions.map(renderFpsOption)}
             </Grid>

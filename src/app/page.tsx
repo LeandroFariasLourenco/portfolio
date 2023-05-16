@@ -4,11 +4,11 @@ import portuguese from '@/../public/intl/portuguese.json';
 import { LazyLoad } from '@/shared/components';
 import { ThemeProvider as MaterialThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import {
+  Fragment,
+  lazy,
   useCallback,
   useEffect,
-  useMemo,
-  Fragment,
-  lazy
+  useMemo
 } from 'react';
 
 import WelcomeProvider from '@/components/home/welcome/context/welcome-context';
@@ -21,17 +21,17 @@ import 'yet-another-react-lightbox/styles.css';
 
 import 'react-vertical-timeline-component/style.min.css';
 
+import ProjectsProvider from '@/components/home/projects/context/projects.context';
 import { APP } from '@/shared/constants/app';
 import { GlobalProvider, useGlobalContext } from '@/shared/contexts';
 import { CommonLayout } from '@/shared/layouts';
 import { EAppSections } from '@/shared/models';
 import Global from '@/shared/styles/global';
 import { materialTheme } from '@/shared/styles/utils';
+import { Roboto, Share_Tech_Mono, Ubuntu_Mono } from 'next/font/google';
 import { IntlProvider } from 'react-intl';
 import styles from './page.module.scss';
-import ProjectsProvider from '@/components/home/projects/context/projects.context';
-import { Roboto, Share_Tech_Mono, Ubuntu_Mono } from 'next/font/google';
-import dynamic from 'next/dynamic';
+import StackProvider from '@/components/home/stack/components/context/stack.context';
 
 const Welcome = lazy(() => import('@/components/home/welcome/welcome'));
 const About = lazy(() => import('@/components/home/about/about'));
@@ -48,7 +48,7 @@ const Root = () => {
     <WelcomeProvider key={EAppSections.WELCOME}><Welcome /></WelcomeProvider>,
     <Fragment key={EAppSections.ABOUT}><About /></Fragment>,
     <Fragment key={EAppSections.EXPERIENCES}><Experience /></Fragment>,
-    <Fragment key={EAppSections.STACK}><Stack /></Fragment>,
+    <StackProvider key={EAppSections.STACK}><Stack /></StackProvider>,
     <Fragment key={EAppSections.ACADEMIC}><Academic /></Fragment>,
     <ProjectsProvider key={EAppSections.PROJECTS}><Projects /></ProjectsProvider>,
     <Fragment key={EAppSections.MY_TIMELINE}><MyTimeline /></Fragment>,
@@ -83,14 +83,16 @@ const Root = () => {
   }, []);
 
   useEffect(() => {
-    // window.addEventListener('resize', handleWindowResize as any);
+    if (!window) return;
 
-    // window.addEventListener('orientationchange', handleOrientationChange as any);
+    window.addEventListener('resize', handleWindowResize as any);
 
-    // return () => {
-    //   window.removeEventListener('orientationchange', handleOrientationChange as any);
-    //   window.removeEventListener('resize', handleWindowResize as any);
-    // };
+    window.addEventListener('orientationchange', handleOrientationChange as any);
+
+    return () => {
+      window.removeEventListener('orientationchange', handleOrientationChange as any);
+      window.removeEventListener('resize', handleWindowResize as any);
+    };
   }, []);
 
   return (
@@ -102,7 +104,7 @@ const Root = () => {
 };
 
 const shareTechMono = Share_Tech_Mono({ weight: ['400'], subsets: ['latin'], preload: true, style: ['normal'] });
-const ubuntuMono = Ubuntu_Mono({ weight: ['400'], subsets: ['latin'], preload: true, style: ['normal'] });
+const ubuntuMono = Ubuntu_Mono({ weight: ['400', '700'], subsets: ['latin'], preload: true, style: ['normal'] });
 const roboto = Roboto({ weight: ['300', '400', '500', '700'], subsets: ['latin'], preload: true, style: ['normal'] });
 
 export default function Home() {

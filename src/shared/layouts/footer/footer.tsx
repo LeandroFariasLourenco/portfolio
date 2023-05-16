@@ -1,8 +1,7 @@
-import { Email, GitHub, Phone } from '@mui/icons-material';
+import { Email, GitHub, LinkedIn, Phone } from '@mui/icons-material';
 import { Grid, Typography } from '@mui/material';
 import { memo } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { LinkedinIcon } from 'react-share';
 import { useLinkTarget } from '@/shared/hooks';
 import { APP } from '@/shared/constants/app';
 
@@ -51,8 +50,8 @@ const Footer = () => {
         <Grid item xs={12} md={4}>
           <h5 className="footer-title"><FormattedMessage id="home.footer.socialmedia.title" /></h5>
           <Grid className="footer-row">
-            <a className="footer-icon-container" href={APP.socials.linkedIn} target={linkTarget}><LinkedinIcon /></a>
-            <a className="footer-icon-container github" href={APP.socials.github} target={linkTarget}><GitHub /></a>
+            <a className="footer-icon-container" href={APP.socials.linkedIn} target={linkTarget}><LinkedIn fontSize="large" htmlColor="#fff" /></a>
+            <a className="footer-icon-container github" href={APP.socials.github} target={linkTarget}><GitHub fontSize="large" /></a>
           </Grid>
         </Grid>
         <Grid item xs={12} md={4}>

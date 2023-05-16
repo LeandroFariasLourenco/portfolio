@@ -4,10 +4,12 @@ import Responsive from '@/shared/components/responsive/responsive';
 import { EResponsiveType } from '@/shared/models';
 import { useResponsive } from '@/shared/hooks';
 import { getBucketResource } from '@/shared/functions';
-import { useTheme } from '@mui/material';
-import * as S from './styled';
+import { Grid, useTheme } from '@mui/material';
 import TechnologyDetails from '../technology-details/technology-details';
 import { ITechnologyProps as ITechnologyTabProps } from './props.interface';
+
+import styles from './technology-tab.module.scss';
+import { ArrowUpward } from '@mui/icons-material';
 
 const TechnologyTab = ({
   technology,
@@ -26,10 +28,10 @@ const TechnologyTab = ({
 
   return (
     <>
-      <S.TabContainer
-        className={cx({
-          selected: isOpen,
-        })}
+      <Grid
+        className={`${styles["technology-container"]} ${cx({
+          [styles.selected]: isOpen,
+        })}`}
         onClick={() => {
           if (!isMobile) {
             onDesktopToggle(index);
@@ -40,28 +42,28 @@ const TechnologyTab = ({
         container
         alignItems="center"
       >
-        <S.TechnologyTabWrapper container flexWrap="nowrap" alignItems="center">
-          <S.TechnologyImageContainer>
+        <Grid className={styles["technology-tab-wrapper"]} container flexWrap="nowrap" alignItems="center">
+          <div className={styles["technology-image"]}>
             <img
               src={getBucketResource(technology.icon)}
               width={35}
               alt={technology.name}
             />
-          </S.TechnologyImageContainer>
-          <S.TechnologyTitle variant="h5" sx={{ color: isOpen ? 'white' : '' }}>
-            {technology.name}
-          </S.TechnologyTitle>
+          </div>
+          {/* <h5 sx={{ color: isOpen ? 'white' : '' }}> */}
+          <h5 className={styles["technology-title"]}>{technology.name}</h5>
           <Responsive
             breakpoint="md"
             belowComponent={(
-              <S.TechnologyMobileArrow
-                $selected={isOpen}
+              <ArrowUpward
+                className={styles["technology-mobile-arrow"]}
+                // $selected={isOpen}
                 htmlColor={theme.typography.h5.color}
               />
             )}
           />
-        </S.TechnologyTabWrapper>
-      </S.TabContainer>
+        </Grid>
+      </Grid>
       <Responsive
         breakpoint="md"
         belowComponent={(

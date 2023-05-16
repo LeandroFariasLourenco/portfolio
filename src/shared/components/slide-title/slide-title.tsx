@@ -4,13 +4,13 @@ import {
   useState,
 } from 'react';
 import { Slide } from 'react-awesome-reveal';
-import { useInView } from 'react-intersection-observer';
 import { useIntl } from 'react-intl';
 import { useResponsive } from '@/shared/hooks';
 import { EResponsiveType } from '@/shared/models';
 import { TypewriterClass } from 'typewriter-effect';
 import Typewriter from '../typewriter/typewriter';
 import { ISlideTitleProps } from './props.interface';
+import useInView from '@/shared/hooks/use-in-view/use-in-view';
 
 const SlideTitle = ({
   onTitleShow,
@@ -18,7 +18,7 @@ const SlideTitle = ({
   ignoreObserver = false,
 }: ISlideTitleProps) => {
   const { inView, ref } = useInView({
-    threshold: 0.8, initialInView: false, triggerOnce: true,
+    threshold: 0.8, triggerOnce: true,
   });
   const isMobile = useResponsive({ type: EResponsiveType.smaller });
   const [typewriterRef, setTypewriterRef] = useState<TypewriterClass | null>(null);

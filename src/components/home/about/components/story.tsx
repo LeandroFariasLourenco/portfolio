@@ -24,10 +24,6 @@ const Story = ({
   const theme = useTheme();
   const isMobile = useResponsive({ type: EResponsiveType.smaller });
 
-  const renderDashedBorder = useCallback((_: IHobbie, index: number) => (
-    <div className="story-dashed-border" key={`${hobby.label}-${index}`}><span className="story-block" style={{ borderColor: hobby.color }} /></div>
-  ), [])
-
   return (
     <Grid
       xs={isMobile ? 6 : 4}
@@ -46,18 +42,17 @@ const Story = ({
           justifyContent="center"
           alignItems="center"
         >
-          <Button
+          <button
             className="story-topic"
-            style={{ borderColor: hobby.color }}
             onClick={() => {
               onClick(hobby.label, true);
             }}
           >
-            {Array(8).fill(Math.random()).map(renderDashedBorder)}
-
-            {hobby.icon}
-
-          </Button>
+            <div className="story-topic-border" style={{ borderColor: hobby.color }} />
+            <div className="story-topic-content">
+              {hobby.icon}
+            </div>
+          </button>
           <p className="story-label">{hobby.label}</p>
         </Grid>
 
@@ -79,7 +74,7 @@ const Story = ({
             }}
           >
             <FormattedMessage id="general.button.close" />
-            <Close htmlColor={theme.palette.grey['100']} />
+            <Close htmlColor={theme.palette.primary.main} />
           </Button>
         </Card>
       </Grid>

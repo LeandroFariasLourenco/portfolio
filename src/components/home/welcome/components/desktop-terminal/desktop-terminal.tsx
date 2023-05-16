@@ -1,5 +1,10 @@
 'use client'
 
+import { Typewriter } from '@/shared/components';
+import { useGlobalContext } from '@/shared/contexts/global/global';
+import { deleteLastCharacter } from '@/shared/functions';
+import { useIsWindowTop, useLoginTime } from '@/shared/hooks';
+import { EAppSections, ELanguages } from '@/shared/models';
 import {
   ArrowRightAlt,
   Close, House, OpenInFull, Remove,
@@ -12,18 +17,12 @@ import {
   useRef, useState,
 } from 'react';
 import { IntlShape, useIntl } from 'react-intl';
-import { Typewriter } from '@/shared/components';
-import { deleteLastCharacter } from '@/shared/functions';
-import { useIsWindowTop, useLoginTime } from '@/shared/hooks';
-import { EAppSections, ELanguages } from '@/shared/models';
 import { TypewriterClass } from 'typewriter-effect';
-import { useGlobalContext } from '@/shared/contexts/global/global';
 import useIntroTerminalTexts from '../../hooks/use-intro-terminal-texts';
 import { ITerminalLine } from '../mobile-terminal/models/terminal-line.interface';
 import { IDesktopTerminalProps } from './props.interface';
-import { APP } from '@/shared/constants/app';
 
-import './desktop-terminal.scss';
+import styles from './desktop-terminal.module.scss';
 
 const DesktopTerminal = ({
   onGameActivation,
@@ -188,12 +187,14 @@ const DesktopTerminal = ({
   }, []);
 
   useEffect(() => {
-    // if (!playingGame) {
-    //   window.addEventListener('keydown', setupTerminalActions);
-    //   return;
-    // }
+    if (!window) return;
 
-    // window.removeEventListener('keydown', setupTerminalActions);
+    if (!playingGame) {
+      window.addEventListener('keydown', setupTerminalActions);
+      return;
+    }
+
+    window.removeEventListener('keydown', setupTerminalActions);
   }, [playingGame]);
 
   useEffect(() => {
@@ -214,25 +215,22 @@ const DesktopTerminal = ({
     setWelcomeMessages([]);
 
     introTerminalTexts.forEach((terminalText) => {
-      const timeout = setTimeout(() => {
+      const timeout: number = setTimeout(() => {
         if (welcomeMessages.length !== introTerminalTexts.length) {
           setWelcomeMessages((prevState) => [...prevState, terminalText]);
         }
         clearTimeout(timeout);
-      }, terminalText.timer);
+      }, terminalText.timer) as unknown as number;
+
       animationQueue.current.push(timeout);
     });
   }, []);
 
   const renderTerminalMessage = useCallback((text: string, index: number) => (
-    <div className="desktop-terminal-row" key={`${text}-${index}`}>
-      <h6 className="desktop-terminal-subtitle">
-        <ArrowRightAlt fontSize="small" />
-        ~
-      </h6>
-      <h6
-        className={`desktop-terminal-text ${cx({
-          'is--current--line': index === terminalRows.length - 1,
+    <div className={styles["desktop-terminal-row"]} key={`${text}-${index}`}>
+      <h6 className={styles["desktop-terminal-subtitle"]}><ArrowRightAlt fontSize="small" />~</h6>
+      <h6 className={`${styles["desktop-terminal-text"]} ${cx({
+          [styles['is--current--line']]: index === terminalRows.length - 1,
         })}`}
         dangerouslySetInnerHTML={{ __html: text }}
       />
@@ -241,16 +239,22 @@ const DesktopTerminal = ({
 
   const renderWelcomeMessage = useCallback((text: ITerminalLine, index: number) => (
     <div
-      className="desktop-terminal-row"
+      className={styles["desktop-terminal-row"]}
       key={`${text.key}-${index}`}
     >
-      <h6 className="desktop-terminal-subtitle">
+      <h6 className={styles["desktop-terminal-subtitle"]}>
         <ArrowRightAlt fontSize="small" />
         ~
       </h6>
       <Typewriter
         options={{ delay: 0 }}
         variant='h6'
+        variantProps={{
+          /* @ts-ignore */
+          style: {
+            color: '#9AA5C6',
+          }
+        }}
         onInit={introTerminalTexts[index].typeText}
       />
     </div>
@@ -262,46 +266,46 @@ const DesktopTerminal = ({
 
   return (
     <Grid
-      className={`desktop-terminal ${cx({
-        closed: playingGame,
+      className={`${styles["desktop-terminal"]} ${cx({
+        [styles.closed]: playingGame,
       })}`}
       item
       md={8}
       sm={12}
     >
       <Card
-        className="desktop-terminal-typewriter-background"
+        className={styles["desktop-terminal-typewriter-background"]}
         elevation={3}
       >
         <Grid
-          className={`desktop-terminal-wrapper ${cx({
-            'is--focused': isWindowOnTop,
+          className={`${styles["desktop-terminal-wrapper"]} ${cx({
+            [styles['is--focused']]: isWindowOnTop,
           })}`}
         >
           <Grid
-            className="desktop-terminal-heading"
+            className={styles["desktop-terminal-heading"]}
             container
             flexWrap="nowrap"
             alignItems="center"
             justifyContent="space-between"
           >
             <Grid
-              className="desktop-terminal-window-circles"
+              className={styles["desktop-terminal-window-circles"]}
               container
               item
               md={3}
             >
-              <div className="desktop-terminal-window-wrapper">
-                <div className="desktop-terminal-window-circle" style={{ backgroundColor: '#ED6152' }} />
-                <Close className="hover-icon" />
+              <div className={styles["desktop-terminal-window-wrapper"]}>
+                <div className={styles["desktop-terminal-window-circle"]} style={{ backgroundColor: '#ED6152' }} />
+                <Close className={styles["hover-icon"]} />
               </div>
-              <div className="desktop-terminal-window-wrapper">
-                <div className="desktop-terminal-window-circle" style={{ backgroundColor: '#E7C21C' }} />
-                <Remove className="hover-icon" />
+              <div className={styles["desktop-terminal-window-wrapper"]}>
+                <div className={styles["desktop-terminal-window-circle"]} style={{ backgroundColor: '#E7C21C' }} />
+                <Remove className={styles["hover-icon"]} />
               </div>
-              <div className="desktop-terminal-window-wrapper">
-                <div className="desktop-terminal-window-circle" style={{ backgroundColor: '#4AC628' }} />
-                <OpenInFull className="hover-icon rotate" />
+              <div className={styles["desktop-terminal-window-wrapper"]}>
+                <div className={styles["desktop-terminal-window-circle"]} style={{ backgroundColor: '#4AC628' }} />
+                <OpenInFull className={styles["hover-icon rotate"]} />
               </div>
             </Grid>
 
@@ -312,17 +316,15 @@ const DesktopTerminal = ({
               alignItems="center"
             >
               <House fontSize="small" htmlColor={theme.palette.grey[400]} />
-              <h6 className="desktop-terminal-title">
-                portfolio -- -bash --80x24
-              </h6>
+              <h6 className={styles["desktop-terminal-title"]}>portfolio -- -bash --80x24</h6>
             </Grid>
           </Grid>
-          <div className="desktop-terminal-content" ref={(ref: HTMLDivElement) => {
+          <div className={styles["desktop-terminal-content"]} ref={(ref: HTMLDivElement) => {
             terminalContainerRef.current = ref;
           }}
           >
-            <div className="desktop-terminal-row">
-              <h6 className="desktop-terminal-subtitle">{loginTime}</h6>
+            <div className={styles["desktop-terminal-row"]}>
+              <h6 className={`${styles["desktop-terminal-subtitle"]} ${styles["desktop-terminal-subtitle-login"]}`}>{loginTime}</h6>
             </div>
             {welcomeMessages.map(renderWelcomeMessage)}
             {welcomeMessages.length === introTerminalTexts.length && terminalRows.map(renderTerminalMessage)}
