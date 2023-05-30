@@ -12,7 +12,7 @@ const useInView = ({
   };
 
   const observer = useMemo(() => {
-    if (!window) return null;
+    if (typeof window === 'undefined') return null;
 
     return new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {

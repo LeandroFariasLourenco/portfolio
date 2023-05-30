@@ -12,6 +12,10 @@
     background-color: rgba($theme-color-card, 0.7);
     height: 100vh;
     position: absolute;
+    
+    @include mobile() {
+      background-color: rgba($theme-color-card, 0.4);
+    }
   }
 
   &-particles {
@@ -33,7 +37,7 @@
   &-profile-image {
     $frame-size: 15px !default;
     $border-thickness: 2px !default;
-    $width: 280px !default;
+    $width: 240px !default;
     $color: $theme-color-secondary !default;
     $gradient-color: $color $border-thickness, #0000 0 calc(100% - $border-thickness), $color 0 !default;
 
@@ -44,7 +48,7 @@
     background: linear-gradient($gradient-color) 50%/100% var(--_i, 100%) no-repeat,
       linear-gradient(90deg, $gradient-color) 50% / var(--_i, 100%) 100% no-repeat;
     outline: calc($width / 2) solid #0005;
-    outline-offset: -280px;
+    outline-offset: -240px;
     transition: 400ms;
     cursor: pointer;
     margin: 0 auto;
@@ -55,6 +59,10 @@
       outline: $border-thickness solid $color;
       outline-offset: calc($frame-size / -2);
       --_i: calc(100% - 2 * $frame-size);
+    }
+
+    @include mobile() {
+      margin-top: 35px;
     }
   }
 

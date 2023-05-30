@@ -1,6 +1,5 @@
 'use client'
 
-import portuguese from '@/../public/intl/portuguese.json';
 import { LazyLoad } from '@/shared/components';
 import { ThemeProvider as MaterialThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import {
@@ -19,19 +18,17 @@ import 'swiper/css/pagination';
 import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import 'yet-another-react-lightbox/styles.css';
 
-import 'react-vertical-timeline-component/style.min.css';
-
 import ProjectsProvider from '@/components/home/projects/context/projects.context';
 import { APP } from '@/shared/constants/app';
 import { GlobalProvider, useGlobalContext } from '@/shared/contexts';
 import { CommonLayout } from '@/shared/layouts';
 import { EAppSections } from '@/shared/models';
-import Global from '@/shared/styles/global';
 import { materialTheme } from '@/shared/styles/utils';
 import { Roboto, Share_Tech_Mono, Ubuntu_Mono } from 'next/font/google';
-import { IntlProvider } from 'react-intl';
-import styles from './page.module.scss';
+import styles from './index.module.scss';
 import StackProvider from '@/components/home/stack/components/context/stack.context';
+import { useRouter } from 'next/router';
+import { ROUTES } from '@/shared/constants/routes';
 
 const Welcome = lazy(() => import('@/components/home/welcome/welcome'));
 const About = lazy(() => import('@/components/home/about/about'));
@@ -42,31 +39,52 @@ const Projects = lazy(() => import('@/components/home/projects/projects'));
 const MyTimeline = lazy(() => import('@/components/home/my-timeline/my-timeline'));
 
 const Root = () => {
-  // const navigate = useNavigate();
+  const router = useRouter();
   const { language, messages } = useGlobalContext();
   const components = useMemo(() => ([
-    <WelcomeProvider key={EAppSections.WELCOME}><Welcome /></WelcomeProvider>,
-    <Fragment key={EAppSections.ABOUT}><About /></Fragment>,
-    <Fragment key={EAppSections.EXPERIENCES}><Experience /></Fragment>,
-    <StackProvider key={EAppSections.STACK}><Stack /></StackProvider>,
-    <Fragment key={EAppSections.ACADEMIC}><Academic /></Fragment>,
-    <ProjectsProvider key={EAppSections.PROJECTS}><Projects /></ProjectsProvider>,
-    <Fragment key={EAppSections.MY_TIMELINE}><MyTimeline /></Fragment>,
+    {
+      id: EAppSections.WELCOME,
+      node: <WelcomeProvider key={EAppSections.WELCOME}><Welcome /></WelcomeProvider>
+    },
+    {
+      id: EAppSections.ABOUT,
+      node: <Fragment key={EAppSections.ABOUT}><About /></Fragment>,
+    },
+    {
+      id: EAppSections.EXPERIENCES,
+      node: <Fragment key={EAppSections.EXPERIENCES}><Experience /></Fragment>,
+    },
+    {
+      id: EAppSections.STACK,
+      node: <StackProvider key={EAppSections.STACK}><Stack /></StackProvider>,
+    },
+    {
+      id: EAppSections.ACADEMIC,
+      node: <Fragment key={EAppSections.ACADEMIC}><Academic /></Fragment>,
+    },
+    {
+      id: EAppSections.PROJECTS,
+      node: <ProjectsProvider key={EAppSections.PROJECTS}><Projects /></ProjectsProvider>,
+    },
+    {
+      id: EAppSections.MY_TIMELINE,
+      node: <Fragment key={EAppSections.MY_TIMELINE}><MyTimeline /></Fragment>,
+    },
   ]), []);
 
-  const renderComponent = useCallback((Component: any, index: number) => (
-    <LazyLoad key={index}>
-      {Component}
+  const renderComponent = useCallback(({ node, id }: { id: string, node: JSX.Element }, index: number) => (
+    <LazyLoad id={id} key={id}>
+      {node}
     </LazyLoad>
   ), []);
 
   const handleWindowResize = useCallback(({ target }: any) => {
     if (target.innerWidth >= APP.breakpoints.lg || target.innerWidth <= APP.breakpoints.sm) {
-      // navigate(ROUTES.home);
+      router.push(ROUTES.home);
       return;
     }
 
-    // navigate(ROUTES.notAvailable);
+    router.push(ROUTES.notAvailable);
   }, []);
 
   const handleOrientationChange = useCallback((window: Window) => {
@@ -75,7 +93,7 @@ const Root = () => {
     switch (orientation) {
       case 'landscape-primary':
       case 'landscape-secondary':
-        // navigate(ROUTES.notAvailable);
+        router.push(ROUTES.notAvailable);
         break;
       default:
         handleWindowResize(window);
@@ -97,7 +115,6 @@ const Root = () => {
 
   return (
     <div className={styles.page}>
-      <Global />
       {components.map(renderComponent)}
     </div>
   )
@@ -117,20 +134,15 @@ export default function Home() {
           --font-general: ${roboto.style.fontFamily};
         }
       `}</style>
-      <IntlProvider
-        locale="pt-BR"
-        messages={portuguese}
-      >
-        <StyledEngineProvider injectFirst>
-          <MaterialThemeProvider theme={materialTheme}>
-            <GlobalProvider>
-              <CommonLayout>
-                <Root />
-              </CommonLayout>
-            </GlobalProvider>
-          </MaterialThemeProvider>
-        </StyledEngineProvider>
-      </IntlProvider>
+      <StyledEngineProvider injectFirst>
+        <MaterialThemeProvider theme={materialTheme}>
+          <GlobalProvider>
+            <CommonLayout>
+              <Root />
+            </CommonLayout>
+          </GlobalProvider>
+        </MaterialThemeProvider>
+      </StyledEngineProvider>
     </div>
   )
 }

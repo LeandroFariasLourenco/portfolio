@@ -17,6 +17,8 @@
   "header.links.section.trajectory": "Trajetória",
   "header.links.section.curriculum": "Currículo",
 
+  "header.signature.made-by": "Feito por",
+
   "home.welcome.terminal.last-login": "Último login:",
   "home.welcome.terminal.console": "no console.",
   "home.welcome.terminal.helper-command": "Digite /help para mais informações",

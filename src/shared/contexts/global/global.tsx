@@ -18,20 +18,18 @@ export const useGlobalContext = () => useContext(GlobalContext);
 export const GlobalProvider = ({
   children,
 }: IHomeContextProps) => {
-  const [storedLanguage, setStoredLanguage] = useLocalStorage<ELanguages>('language', window?.navigator?.language as ELanguages);
+  const [storedLanguage, setStoredLanguage] = useLocalStorage<ELanguages>('language', ELanguages.English);
 
   const [contextLanguage, setContextLanguage] = useState<ELanguages>(storedLanguage);
 
   const getScreenState = () => {
+    if (typeof window === 'undefined') return EDeviceType.TABLET;
+
     if (window.innerWidth >= APP.breakpoints.md) {
       return EDeviceType.DESKTOP;
     }
 
-    if (window.innerWidth <= APP.breakpoints.sm) {
-      return EDeviceType.MOBILE;
-    }
-
-    return EDeviceType.TABLET;
+    return EDeviceType.TABLET
   };
 
   const [deviceType, setDeviceType] = useState<EDeviceType>(getScreenState());
@@ -52,13 +50,15 @@ export const GlobalProvider = ({
   }, []);
 
   useEffect(() => {
-    // setMessages(getMessages());
+    if (!window) return;
 
-    // window.addEventListener('resize', handleWindowResize);
+    setMessages(getMessages());
 
-    // return () => {
-    //   window.removeEventListener('resize', handleWindowResize);
-    // };
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
   }, [contextLanguage]);
 
   return (

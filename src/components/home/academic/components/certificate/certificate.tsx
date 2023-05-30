@@ -8,7 +8,7 @@ import { useLinkTarget } from '@/shared/hooks';
 
 import { ICardProps } from './props.interface';
 
-import './certificate.scss';
+import styles from './certificate.module.scss';
 
 const Certificate = ({
   certificate: card,
@@ -19,7 +19,7 @@ const Certificate = ({
 
   return (
     <Grid
-      className="certificate-wrapper"
+      className={styles["certificate-wrapper"]}
       ref={(ref) => {
         cardWrapperRef.current = ref as HTMLDivElement;
       }}
@@ -30,18 +30,18 @@ const Certificate = ({
       <Responsive
         aboveComponent={(
           <Grid
-            className="certificate-container"
+            className={styles["certificate-container"]}
             container
             alignItems="center"
             flexDirection="column"
             justifyContent="space-between"
           >
-            <Grid className="certificate-logo-container">
-              <img className="certificate-logo" src={card.logo} width={card.width.desktop} />
+            <Grid className={styles["certificate-logo-container"]}>
+              <img className={styles["certificate-logo"]} src={card.logo} width={card.width.desktop} />
             </Grid>
             <Typography variant="h5" fontSize="20px" textAlign="center"><FormattedMessage id={card.title} /></Typography>
             <a
-              className="certificate-link"
+              className={styles["certificate-link"]}
               href={card.link}
               target={linkTarget}
             >
@@ -57,20 +57,20 @@ const Certificate = ({
         )}
         belowComponent={(
           <a
-            className="certificate-link"
+            className={styles["certificate-link"]}
             href={card.link}
             target={linkTarget}
           >
             <Grid
-              className="certificate-container"
+              className={styles["certificate-container"]}
               container
               alignItems="center"
               flexDirection="row"
               flexWrap="nowrap"
               justifyContent="space-between"
             >
-              <Grid className="certificate-logo-container" minWidth={card.width.mobile}>
-                <img className="certificate-logo" src={card.logo} width={card.width.mobile} />
+              <Grid className={styles["certificate-logo-container"]} minWidth={card.width.mobile}>
+                <img className={styles["certificate-logo"]} src={card.logo} width={card.width.mobile} />
               </Grid>
               <Typography variant="h5" fontSize="14.5px" textAlign="center"><FormattedMessage id={card.title} /></Typography>
               <OpenInNew style={{ marginLeft: '5px' }} color="primary" />

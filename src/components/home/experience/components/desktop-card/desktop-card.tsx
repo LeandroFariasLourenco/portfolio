@@ -5,23 +5,23 @@ import ExperienceDetails from '../experience-details/experience-details';
 
 import { IDesktopCardProps } from './props.interface';
 
-import './desktop-card.scss';
+import styles from './desktop-card.module.scss';
 
 const DesktopCard = ({
   index,
   experience,
 }: IDesktopCardProps) => (
   <Grid container flexDirection="row" justifyContent="space-between" flexWrap="nowrap" gap={10}>
-    <Grid className="desktop-card-container" item xs={5}>
+    <Grid className={styles["desktop-card-container"]} item xs={5}>
       {index === 0 && (
-        <p className="desktop-card-experience"><FormattedMessage id="home.experience.current" /></p>
+        <p className={styles["desktop-card-experience"]}><FormattedMessage id="home.experience.current" /></p>
       )}
       <ExperienceCard
         experience={experience}
       />
     </Grid>
 
-    <Grid className="desktop-card-container" item xs={5}>
+    <Grid className={styles["desktop-card-container"]} item xs={5}>
       <ExperienceDetails
         experience={experience}
       />

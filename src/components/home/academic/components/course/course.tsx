@@ -7,7 +7,7 @@ import { FormattedMessage } from 'react-intl';
 import { Responsive, SeeMore } from '@/shared/components';
 import { ICourseProps } from './props.interface';
 
-import './course.scss';
+import styles from './course.module.scss';
 
 const Course = ({
   course: card,
@@ -17,7 +17,7 @@ const Course = ({
 
   return (
     <Grid
-      className="course-wrapper"
+      className={styles["course-wrapper"]}
       item
       container
       flexWrap="nowrap"
@@ -32,15 +32,15 @@ const Course = ({
       }}
     >
       <Grid
-        className="course-title-container"
+        className={styles["course-title-container"]}
         container
         justifyContent="center"
       >
-        <img className="course-logo" src={card.logo} />
-        <h5 className="course-title"><FormattedMessage id={card.title} /></h5>
+        <img className={styles["course-logo"]} src={card.logo} />
+        <h5 className={styles["course-title"]}><FormattedMessage id={card.title} /></h5>
       </Grid>
 
-      <div className="course-container">
+      <div className={styles["course-container"]}>
         <Responsive
           breakpoint="md"
           belowComponent={(
@@ -52,16 +52,16 @@ const Course = ({
         />
       </div>
 
-      <div className="course-container">
-        <div className="course-row">
+      <div className={styles["course-container"]}>
+        <div className={styles["course-row"]}>
           <CalendarMonth htmlColor="white" />
           <Typography>{card.duration}</Typography>
         </div>
-        <div className="course-row">
+        <div className={styles["course-row"]}>
           <LocationOn htmlColor="white" />
           <Typography><FormattedMessage id={card.location} /></Typography>
         </div>
-        <div className="course-row">
+        <div className={styles["course-row"]}>
           <School htmlColor="white" />
           <Typography><FormattedMessage id={card.type} /></Typography>
         </div>

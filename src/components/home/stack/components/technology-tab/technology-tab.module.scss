@@ -46,7 +46,9 @@
 
   &-mobile {
     &-arrow {
-      // transform: ${$selected ? 'rotate(180deg)' : 'rotate(0)'};
+      &.is--open {
+        transform: rotate(180deg);
+      }
       transition: transform 200ms ease-in-out;
     }
   }

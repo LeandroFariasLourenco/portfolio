@@ -11,7 +11,7 @@ import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
 import { useIntl } from 'react-intl';
 import { ISeeMoreProps } from './props.interface';
 
-import './see-more.scss';
+import styles from './see-more.module.scss';
 
 const SeeMore = ({
   children,
@@ -58,11 +58,11 @@ const SeeMore = ({
 
   return (
     <div
-      className="see-more-wrapper"
+      className={styles["see-more-wrapper"]}
       style={{ minHeight: defaultHeight }}
     >
       <div
-        className="see-more-text"
+        className={styles["see-more-text"]}
         ref={(ref: HTMLParagraphElement) => { textElementRef.current = ref; }}
         style={{ height: heightCurr, transitionDuration: `${transitionDuration}ms` }}
       >
@@ -70,7 +70,7 @@ const SeeMore = ({
       </div>
       {isOverflow && (
         <button
-          className="see-more-toggle"
+          className={styles["see-more-toggle"]}
           onClick={handleClick}
         >
           {isExpanded

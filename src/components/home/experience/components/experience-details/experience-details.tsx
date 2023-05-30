@@ -2,7 +2,7 @@ import { Card, Grid, Typography } from '@mui/material';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { IExperienceDetailsProps } from './props.interface';
 
-import './experience-details.scss';
+import styles from './experience-details.module.scss';
 
 const ExperienceDetails = ({
   experience,
@@ -10,11 +10,11 @@ const ExperienceDetails = ({
   const intl = useIntl();
   return (
     <Card
-      className="experience-details-card"
+      className={styles["experience-details-card"]}
       elevation={5}
     >
       <Grid container>
-        <Grid className="experience-details" item xs={12}>
+        <Grid className={styles["experience-details"]} item xs={12}>
           <h3><FormattedMessage id="home.experience.description" /></h3>
 
           {experience.description}

@@ -81,6 +81,7 @@
   .swiper {
     &-pagination {
       position: absolute;
+      z-index: 2;
 
       &-bullet {
         width: 25px;
@@ -93,6 +94,8 @@
         align-items: center;
         justify-content: center;
         position: relative;
+        border-radius: 100%;
+        background-color: $theme-color-body;
 
         &.first {
           border-color: $theme-color-primary;
@@ -116,6 +119,7 @@
         &.filled {
           &::before {
             background-color: $theme-color-secondary;
+            z-index: -1;
           }
 
           &::after {

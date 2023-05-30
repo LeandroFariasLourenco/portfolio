@@ -4,9 +4,9 @@ import Responsive from '@/shared/components/responsive/responsive';
 import SlideTitle from '@/shared/components/slide-title/slide-title';
 import SwipeAnimation from '@/shared/components/swipe-animation/swipe-animation';
 import { getBucketResource } from '@/shared/functions';
-import { useSwiperProps } from '@/shared/hooks';
+import { useResponsive, useSwiperProps } from '@/shared/hooks';
 import { Section } from '@/shared/layouts';
-import { EAppSections, EResponsiveType } from '@/shared/models';
+import { EResponsiveType } from '@/shared/models';
 import {
   Code, DeveloperBoard, Star,
 } from '@mui/icons-material';
@@ -32,13 +32,14 @@ import githubService from './services/github-service/github-service';
 import { IGithubRepository } from './services/github-service/models/github-repository.interface';
 
 import { APP } from '@/shared/constants/app';
-import './projects.scss';
+import styles from './projects.module.scss';
 
 const Projects = () => {
   const [repositories, setRepositories] = useState<IGithubRepository[]>([]);
   const swiperRef = useRef<SwiperClass>();
   const intl = useIntl();
   const [swiperIndex, setSwiperIndex] = useState<number>(0);
+  const isDesktop = useResponsive({});
   const { swiperProps } = useSwiperProps({
     desktop: {
       effect: 'slide',
@@ -53,6 +54,11 @@ const Projects = () => {
       onRealIndexChange: (swiper: SwiperClass) => {
         setSwiperIndex(swiper.realIndex);
       },
+      onTransitionStart: ({ $el }: any) => {
+        if (isDesktop || !$el) return;
+        const swiperContainer = ($el[0] as HTMLDivElement);
+        swiperContainer.style.height = 'auto';
+      }
     },
   });
 
@@ -181,13 +187,13 @@ const Projects = () => {
       <Responsive
         breakpoint="md"
         aboveComponent={<DesktopProject project={project} />}
-        belowComponent={<MobileProject project={project} />}
+        belowComponent={<MobileProject swiperRef={swiperRef.current!} project={project} />}
       />
     </SwiperSlide>
   ), []);
 
   return (
-    <div className="projects-wrapper" id={EAppSections.PROJECTS}>
+    <div className={styles["projects-wrapper"]}>
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString(intl.formatMessage({ id: 'home.projects.my-projects.title' }))
@@ -199,18 +205,18 @@ const Projects = () => {
           paddingBottom: 50,
         }}
       >
-        <p className="projects-description-text"><FormattedMessage id="home.projects.description" /></p>
-        <Grid className="projects-container" container>
-          <Grid className="projects-repository-wrapper" item xs={12} md={3}>
-            <Grid className="projects-repository-title" container flexDirection="row" alignItems="center">
+        <p className={styles["projects-description-text"]}><FormattedMessage id="home.projects.description" /></p>
+        <Grid className={styles["projects-container"]} container>
+          <Grid className={styles["projects-repository-wrapper"]} item xs={12} md={3}>
+            <Grid className={styles["projects-repository-title"]} container flexDirection="row" alignItems="center">
               <Code htmlColor="white" />
               <h4><FormattedMessage id="home.projects.title" /></h4>
             </Grid>
             <Responsive
               breakpoint="md"
-              aboveComponent={<Grid className="projects-repository-list" container flexWrap="wrap">{repositories.map(renderRepository)}</Grid>}
+              aboveComponent={<Grid className={styles["projects-repository-list"]} container flexWrap="wrap">{repositories.map(renderRepository)}</Grid>}
               belowComponent={(
-                <Grid className="projects-repository-list" container flexWrap="nowrap" flexDirection="row">
+                <Grid className={styles["projects-repository-list"]} container flexWrap="nowrap" flexDirection="row">
                   <SwipeAnimation lottieProps={{
                     height: '80px',
                     width: 'unset',
@@ -232,7 +238,7 @@ const Projects = () => {
             container
             flexDirection="column"
             flexWrap="nowrap"
-            className="projects-tabs"
+            className={styles["projects-tabs"]}
           >
             <SlideTitle
               icon={<Star htmlColor="#fff" />}

@@ -8,7 +8,8 @@ import { getBucketResource } from '@/shared/functions';
 import { useCallback } from 'react';
 import { IMobileCardProps } from './props.interface';
 
-import './mobile-card.scss';
+import styles from './mobile-card.module.scss';
+import Image from 'next/image';
 
 const MobileCard = ({
   index,
@@ -19,7 +20,7 @@ const MobileCard = ({
   const renderStackTechnology = useCallback((name: string) => (
     <li
       key={name}
-      className="mobile-card-stack-technology-list-item"
+      className={styles["mobile-card-stack-technology-list-item"]}
     >
       <Typography variant="subtitle2">{name}</Typography>
     </li>
@@ -27,49 +28,56 @@ const MobileCard = ({
 
   return (
     <Grid container flexDirection="row" flexWrap="nowrap">
-      <Grid className="mobile-card-container" container item xs={12}>
+      <Grid className={styles["mobile-card-container"]} container item xs={12}>
         {index === 0 && (
-          <p className="mobile-card-current-experience">
+          <p className={styles["mobile-card-current-experience"]}>
             <FormattedMessage id="home.experience.current" />
           </p>
         )}
         <Card
-          className="mobile-card-experience-card"
+          className={styles["mobile-card-experience-card"]}
           elevation={5}
         >
           <Grid container flexDirection="column">
-            <Grid className="mobile-card-experience-header" container flexDirection="row" flexWrap="nowrap" alignItems="center">
-              <img className="mobile-card-experience-icon" src={getBucketResource(experience.icon)} alt={experience.title} />
-              <h5 className="mobile-card-experience-title"><FormattedMessage id={experience.title} /></h5>
+            <Grid className={styles["mobile-card-experience-header"]} container flexDirection="row" flexWrap="nowrap" alignItems="center">
+              <Image
+                width={50}
+                height={50}
+                quality={50}
+                className={styles["mobile-card-experience-icon"]}
+                src={getBucketResource(experience.icon)}
+                alt={experience.title}
+              />
+              <h5 className={styles["mobile-card-experience-title"]}><FormattedMessage id={experience.title} /></h5>
             </Grid>
 
-            <Grid className="mobile-card-experience-card" container flex={1}>
+            <Grid className={styles["mobile-card-experience-infos"]} container flex={1} gap={1}>
               <Grid container item flexWrap="nowrap">
-                <Grid className="mobile-card-experience-topic" alignItems="center" container flexWrap="nowrap">
+                <Grid className={styles["mobile-card-experience-topic"]} alignItems="center" container flexWrap="nowrap">
                   <Business htmlColor="#fff" />
-                  <Typography variant="subtitle2"><FormattedMessage id={experience.company.name} /></Typography>
+                  <p className={styles["mobile-card-experience-topic-text"]}><FormattedMessage id={experience.company.name} /></p>
                 </Grid>
 
-                <Grid className="mobile-card-experience-topic" alignItems="center" container flexWrap="nowrap">
+                <Grid className={styles["mobile-card-experience-topic"]} alignItems="center" container flexWrap="nowrap">
                   <CalendarMonth htmlColor="#fff" />
-                  <Typography variant="subtitle2"><FormattedMessage id={experience.date} /></Typography>
+                  <p className={styles["mobile-card-experience-topic-text"]}><FormattedMessage id={experience.date} /></p>
                 </Grid>
               </Grid>
 
               <Grid container item flexWrap="nowrap">
-                <Grid className="mobile-card-experience-topic" alignItems="center" container flexWrap="nowrap">
+                <Grid className={styles["mobile-card-experience-topic"]} alignItems="center" container flexWrap="nowrap">
                   <Room htmlColor="#fff" />
-                  <Typography variant="subtitle2">{experience.location}</Typography>
+                  <p className={styles["mobile-card-experience-topic-text"]}>{experience.location}</p>
                 </Grid>
 
-                <Grid className="mobile-card-experience-topic" alignItems="center" container flexWrap="nowrap">
+                <Grid className={styles["mobile-card-experience-topic"]} alignItems="center" container flexWrap="nowrap">
                   <HomeWork htmlColor="#fff" />
-                  <Typography variant="subtitle2"><FormattedMessage id={experience.type} /></Typography>
+                  <p className={styles["mobile-card-experience-topic-text"]}><FormattedMessage id={experience.type} /></p>
                 </Grid>
               </Grid>
             </Grid>
 
-            <p className="mobile-card-experience-text">
+            <p className={styles["mobile-card-experience-text"]}>
               {experience.description}
             </p>
 
@@ -80,7 +88,13 @@ const MobileCard = ({
                 </ul>
               </Grid>
               <Grid item xs={4} container alignItems="flex-end" justifyContent="flex-end">
-                <img className="mobile-company-logo" src={getBucketResource(`/${experience.company.logo}`)} alt={experience.company.name} />
+                <Image
+                  className={styles["mobile-company-logo"]}
+                  src={getBucketResource(`/${experience.company.logo}`)}
+                  alt={experience.company.name}
+                  width={104}
+                  height={45}
+                />
               </Grid>
             </Grid>
           </Grid>

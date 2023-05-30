@@ -11,7 +11,7 @@ const LanguageTab = ({
   language,
   onToggle,
 }: ILanguageProps) => {
-  const { selected: { setLanguageTab, languageTab } } = useStackContext();
+  const { selected: { languageTab } } = useStackContext();
 
   return (
     <Grid
@@ -21,7 +21,7 @@ const LanguageTab = ({
       justifyContent="center"
       flex={1}
       onClick={() => {
-        onToggle(language.name);
+        onToggle(language);
       }}
       className={`${styles["language-tab-container"]}`}
     >
@@ -32,6 +32,7 @@ const LanguageTab = ({
           alt={language.name}
           width={130}
           height={65}
+          quality={55}
         />
       </div>
     </Grid >

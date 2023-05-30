@@ -26,7 +26,7 @@ import { ICertificate } from './models/certificate.interface';
 import { ICourse } from './models/course.interface';
 import { IExtracurricular } from './models/extracurricular.interface';
 
-import './academic.scss';
+import styles from './academic.module.scss';
 
 const Academic = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -145,11 +145,11 @@ const Academic = () => {
           behavior: 'smooth',
         });
       }}
-      className={`academic-formation-tab tab-button ${cx({
+      className={`${styles["academic-formation-tab"]} tab-button ${cx({
         open: activeTab === index,
       })}`}
     >
-      <h5 className="academic-formation-tab-title"><FormattedMessage id={tab} /></h5>
+      <h5 className={styles["academic-formation-tab-title"]}><FormattedMessage id={tab} /></h5>
     </div>
   ), [intl, activeTab]);
 
@@ -191,7 +191,7 @@ const Academic = () => {
   ), []);
 
   return (
-    <div className="academic-formation-wrapper" id={EAppSections.ACADEMIC}>
+    <div className={styles["academic-formation-wrapper"]} id={EAppSections.ACADEMIC}>
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString(intl.formatMessage({ id: 'home.formation.title' }))
@@ -203,7 +203,7 @@ const Academic = () => {
         }}
       >
         <Grid
-          className="academic-formation-tabs"
+          className={styles["academic-formation-tabs"]}
           container
           flexWrap="nowrap"
         >
@@ -220,7 +220,7 @@ const Academic = () => {
         </Grid>
 
         <Grid
-          className="academic-card-container"
+          className={styles["academic-card-container"]}
           container
           item
           ref={(ref) => {

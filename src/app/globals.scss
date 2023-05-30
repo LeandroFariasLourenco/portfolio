@@ -120,3 +120,15 @@ button {
   //   background-color: rgba($theme-color-primary, 0.1);
   // }
 }
+
+.MuiDivider-root {
+  &::after,
+  &::before {
+    background-color: $theme-color-primary;
+  }
+}
+
+.MuiDrawer-paper {
+  width: 100%;
+  max-width: 330px;
+}

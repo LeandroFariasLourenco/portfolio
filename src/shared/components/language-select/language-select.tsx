@@ -1,12 +1,13 @@
 import { useMemo, useCallback, ReactNode } from 'react';
 
 import { getBucketResource } from '@/shared/functions';
-import { usePreloadImages, useResponsive } from '@/shared/hooks';
+import { useLocale, usePreloadImages, useResponsive } from '@/shared/hooks';
 import { useGlobalContext } from '@/shared/contexts/global/global';
 import { MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { ELanguages, EResponsiveType } from '@/shared/models';
 
-import './language-select.scss';
+import styles from './language-select.module.scss';
+import Image from 'next/image';
 
 const LanguageSelect = () => {
   const imagesToPreload = useMemo(() => [
@@ -16,9 +17,11 @@ const LanguageSelect = () => {
   const { imagesLoaded } = usePreloadImages(imagesToPreload);
   const isMobile = useResponsive({ type: EResponsiveType.smaller });
   const globalContext = useGlobalContext();
+  const { switchLocale } = useLocale();
 
   const handleLanguageSelect = useCallback((event: SelectChangeEvent<unknown>) => {
-    globalContext.setLanguage(event.target.value as ELanguages);
+    // globalContext.setLanguage(event.target.value as ELanguages);
+    switchLocale(event.target.value as ELanguages);
   }, [globalContext]);
 
   const renderCountryIcon = useCallback((value: ELanguages): ReactNode => {
@@ -38,7 +41,14 @@ const LanguageSelect = () => {
     }
 
     return (
-      <img className="language-select-country-icon" width={25} height={18} src={source!} alt={alt!} />
+      <Image
+        className={styles["language-select-country-icon"]}
+        width={25}
+        height={18}
+        src={source!}
+        alt={alt!}
+        priority
+      />
     );
   }, []);
 
@@ -48,7 +58,7 @@ const LanguageSelect = () => {
 
   return (
     <Select
-      className="language-select"
+      className={styles["language-select"]}
       value={globalContext.language}
       onChange={handleLanguageSelect}
       variant="standard"
@@ -63,14 +73,26 @@ const LanguageSelect = () => {
       renderValue={renderCountryIcon as (value: any) => ReactNode}
     >
       <MenuItem value={ELanguages.Portuguese}>
-        <img className="language-select-country-icon" width={25} height={18} src={getBucketResource('/languages/brazil.png')} alt="Brazil flag" />
-        <span className="language-select-country-text">
+        <Image
+          className={styles["language-select-country-icon"]}
+          width={25}
+          height={18}
+          src={getBucketResource('/languages/brazil.png')}
+          alt="Brazil flag"
+        />
+        <span className={styles["language-select-country-text"]}>
           {!isMobile && 'PT'}
         </span>
       </MenuItem>
       <MenuItem value={ELanguages.English}>
-        <img className="language-select-country-icon" width={25} height={18} src={getBucketResource('/languages/united-states.png')} alt="United States flag" />
-        <span className="language-select-country-text">
+        <Image
+          className={styles["language-select-country-icon"]}
+          width={25}
+          height={18}
+          src={getBucketResource('/languages/united-states.png')}
+          alt="United States flag"
+        />
+        <span className={styles["language-select-country-text"]}>
           {!isMobile && 'EN'}
         </span>
       </MenuItem>

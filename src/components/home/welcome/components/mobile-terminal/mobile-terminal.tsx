@@ -3,7 +3,7 @@
 import {
   Close, CropDin, Remove,
 } from '@mui/icons-material';
-import { Grid } from '@mui/material';
+import { Card, Grid } from '@mui/material';
 import cx from 'classnames';
 import {
   useCallback, useEffect,
@@ -14,7 +14,9 @@ import { getBucketResource } from '@/shared/functions';
 import { useIsWindowTop } from '@/shared/hooks';
 import useIntroTerminalTexts from '../../hooks/use-intro-terminal-texts';
 import { ITerminalLine } from './models/terminal-line.interface';
-import * as S from './styled';
+
+import styles from './mobile-terminal.module.scss';
+import Image from 'next/image';
 
 const MobileTerminal = () => {
   const [terminalRows, setTerminalRows] = useState<ITerminalLine[]>([]);
@@ -37,90 +39,103 @@ const MobileTerminal = () => {
   }, []);
 
   return (
-    <S.TerminalComponentWrapper
+    <Grid
+      className={`${styles["mobile-terminal-component-wrapper"]} ${cx({
+        'is--focused': isWindowOnTop,
+      })}`}
       item
       xs={12}
-      className={cx({
-        'is--focused': isWindowOnTop,
-      })}
     >
-      <S.TypeWriterBackground
+      <Card
+        className={styles["mobile-terminal-typewriter-background"]}
         elevation={3}
       >
-        <S.TerminalWrapper item xs={12}>
-          <S.TerminalHeading
+        <Grid className={styles["mobile-terminal-terminal-wrapper"]} item xs={12}>
+          <Grid
             container
             flexDirection="row"
             flexWrap="nowrap"
+            className={styles["mobile-terminal-heading"]}
           >
-            <S.TerminalTab
+            <Grid
+              className={styles["mobile-terminal-terminal-tab"]}
               container
               flexDirection="row"
               flexWrap="nowrap"
             >
-              <S.TerminalTabIcon alt="Terminal icon" width={20} height={20} src={getBucketResource('/git-for-windows.ico')} />
+              <Image
+                className={styles["mobile-terminal-terminal-tab-icon"]}
+                alt="Terminal icon"
+                width={20}
+                height={20}
+                src={getBucketResource('/git-for-windows.ico')}
+                quality={50}
+                priority
+              />
 
-              <S.TerminalTabText>Bash</S.TerminalTabText>
+              <p className={styles["mobile-terminal-terminal-tab-text"]}>Bash</p>
 
-              <S.TerminalTabClose>
+              <Grid className={styles["mobile-terminal-terminal-tab-close"]}>
                 <Close htmlColor="white" fontSize="small" />
-              </S.TerminalTabClose>
-            </S.TerminalTab>
-            <S.TerminalWindowOptions
+              </Grid>
+            </Grid>
+            <Grid
+              className={styles["mobile-terminal-window"]}
               container
               justifyContent="flex-end"
               alignItems="center"
             >
-              <S.TerminalIconContainer>
+              <Grid className={styles["mobile-terminal-terminal-tab-container"]}>
                 <Remove htmlColor="white" fontSize="small" />
-              </S.TerminalIconContainer>
+              </Grid>
 
-              <S.TerminalIconContainer>
+              <Grid className={styles["mobile-terminal-terminal-tab-container"]}>
                 <CropDin htmlColor="white" fontSize="small" />
-              </S.TerminalIconContainer>
+              </Grid>
 
-              <S.TerminalIconContainer>
+              <Grid className={styles["mobile-terminal-terminal-tab-container"]}>
                 <Close htmlColor="white" fontSize="small" />
-              </S.TerminalIconContainer>
-            </S.TerminalWindowOptions>
-          </S.TerminalHeading>
-          <S.TerminalContent>
+              </Grid>
+            </Grid>
+          </Grid>
+          <div className={styles["mobile-terminal-terminal-content"]}>
             {terminalRows.map((text) => (
-              <S.TerminalRow
+              <Grid
                 container
                 flexDirection="column"
                 key={text.key}
               >
-                <S.TerminalText
+                <Grid
+                  className={styles["mobile-terminal-terminal-text"]}
                   container
                   flexDirection="row"
                   flexWrap="nowrap"
                 >
-                  <S.TerminalTextUser>Leand@DESKTOP</S.TerminalTextUser>
-                  <S.TerminalTextCPU>MINGW64</S.TerminalTextCPU>
-                  <S.TerminalTextPath>/c/WINDOWS/system32</S.TerminalTextPath>
-                </S.TerminalText>
+                  <p className={styles["mobile-terminal-terminal-text-user"]}>Leand@DESKTOP</p>
+                  <p className={styles["mobile-terminal-terminal-text-cpu"]}>MINGW64</p>
+                  <p className={styles["mobile-terminal-terminal-text-path"]}>/c/WINDOWS/system32</p>
+                </Grid>
                 <Grid
                   container
                   flexWrap="nowrap"
                   alignItems="flex-start"
                 >
-                  <S.TerminalTabCommandPrefix variant="h6">$</S.TerminalTabCommandPrefix>
+                  <h6 className={styles["mobile-terminal-terminal-tab-command-prefix"]}>$</h6>
                   <Typewriter
                     options={{
                       delay: 10,
                     }}
                     variant='h6'
-                    variantProps={{ fontSize: 14.5 }}
+                    variantProps={{ style: { fontSize: 14.5, color: '#9AA5C6' }}}
                     onInit={text.typeText}
                   />
                 </Grid>
-              </S.TerminalRow>
+              </Grid>
             ))}
-          </S.TerminalContent>
-        </S.TerminalWrapper>
-      </S.TypeWriterBackground>
-    </S.TerminalComponentWrapper>
+          </div>
+        </Grid>
+      </Card>
+    </Grid>
   );
 };
 

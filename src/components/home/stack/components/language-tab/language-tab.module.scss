@@ -12,9 +12,5 @@
   &-container {
     margin-bottom: 15px;
     cursor: pointer;
-
-    @include mobile() {
-      padding: 10px;
-    }
   }
 }

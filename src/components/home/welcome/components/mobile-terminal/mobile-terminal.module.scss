@@ -1,0 +1,146 @@
+.mobile-terminal {
+  &-window {
+    margin-bottom: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+  }
+
+  &-heading {
+    background-color: rgba(74, 74, 74, 0.1);
+    padding: 12px 10px 0 10px;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: black;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &-component {
+    &-wrapper {
+      width: 100%;
+      opacity: 0.5;
+      max-width: 525px;
+
+      &.is--focused {
+        opacity: 1;
+        pointer-events: unset;
+      }
+    }
+  }
+
+  &-typewriter {
+    &-background {
+      background-color: #1e1e1e;
+      border-radius: 5px;
+      max-width: 600px;
+      width: 95%;
+      margin: 0 auto;
+    }
+  }
+
+  &-title {
+    color: gray;
+    margin-left: 5px;
+  }
+
+  &-terminal {
+    &-wrapper {
+      border: 1px solid black;
+    }
+
+    &-content {
+      padding: 5px 10px;
+      background-color: black;
+
+      .Typewriter__cursor {
+        font-weight: bold;
+      }
+    }
+
+    &-text {
+      font-size: 12px;
+
+      &-cpu {
+        font-size: 12px;
+        color: #644469;
+        margin: 0 5px;
+      }
+
+      &-path {
+        color: #c4a000;
+        font-size: 12px;
+      }
+
+      &-user {
+        font-size: 12px;
+        color: #4a9206;
+      }
+    }
+
+    &-tab {
+      align-items: center;
+      padding: 5px;
+      margin-bottom: 0;
+      max-width: 160px;
+      background-color: black;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      overflow: hidden;
+      isolation: isolate;
+      position: relative;
+
+      &-text {
+        color: white;
+        white-space: nowrap;
+        font-size: 14px;
+      }
+
+      &-command {
+        &-prefix {
+          font-size: 14px;
+          color: #9AA5C6;
+          margin-right: 5px;
+        }
+      }
+
+      &-container {
+        @include flex-centered();
+        height: 100%;
+        padding: 8px 10px;
+        transition: background-color 200ms ease-in-out;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.2);
+
+          &:last-of-type {
+            background-color: rgba(117, 16, 16, 0.75);
+          }
+        }
+      }
+      &-icon {
+        width: 20px;
+        margin: 2px 10px 2px 2px;
+      }
+
+      &-close {
+        background-color: black;
+        padding: 4px;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        @include flex-centered();
+      }
+    }
+  }
+}

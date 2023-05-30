@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { ICardProps } from './props.interface';
 
-import './extracurricular.scss';
+import styles from './extracurricular.module.scss';
 
 const Extracurricular = ({
   extracurricular: card,
@@ -15,7 +15,7 @@ const Extracurricular = ({
 
   return (
     <Grid
-      className="extracurricular-card-wrapper"
+      className={styles["extracurricular-card-wrapper"]}
       item
       container
       flexWrap="nowrap"
@@ -29,28 +29,28 @@ const Extracurricular = ({
       }}
     >
       <Grid
-        className="extracurricular-card-title-container"
+        className={styles["extracurricular-card-title-container"]}
         container
         justifyContent="center"
       >
-        <img className="extracurricular-card-logo" src={card.logo} />
+        <img className={styles["extracurricular-card-logo"]} src={card.logo} />
         <Typography variant="h5" fontSize="20px" textAlign="center"><FormattedMessage id={card.title} /></Typography>
       </Grid>
 
-      <div className="extracurricular-card-container">
+      <div className={styles["extracurricular-card-container"]}>
         <Typography><FormattedMessage id={card.description} /></Typography>
       </div>
 
-      <div className="extracurricular-card-container">
-        <div className="extracurricular-card-row">
+      <div className={styles["extracurricular-card-container"]}>
+        <div className={styles["extracurricular-card-row"]}>
           <CalendarMonth htmlColor="white" />
           <Typography>{card.duration}</Typography>
         </div>
-        <div className="extracurricular-card-row">
+        <div className={styles["extracurricular-card-row"]}>
           <LocationOn htmlColor="white" />
           <Typography><FormattedMessage id={card.location} /></Typography>
         </div>
-        <div className="extracurricular-card-row">
+        <div className={styles["extracurricular-card-row"]}>
           <School htmlColor="white" />
           <Typography><FormattedMessage id={card.type} /></Typography>
         </div>

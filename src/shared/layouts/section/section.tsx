@@ -7,7 +7,7 @@ import {
 import { TypewriterClass } from 'typewriter-effect';
 import { ISectionProps } from './props.interface';
 
-import './section.scss';
+import styles from './section.module.scss';
 
 const Section = ({
   children,
@@ -15,17 +15,15 @@ const Section = ({
   icon,
   onTitleShow,
   childrenWrapperProps,
-  id,
 }: ISectionProps) => (
   <Grid
     container
     item
     xs={12}
-    className="section-container"
+    className={styles["section-container"]}
     justifyContent="center"
     alignItems="center"
     style={gridStyle}
-    id={id}
   >
     <Grid item xs={12} width="100%" style={{ maxWidth: 1000 }}>
       <SlideTitle

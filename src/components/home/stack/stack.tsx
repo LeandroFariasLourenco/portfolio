@@ -22,11 +22,14 @@ const Languages = () => {
   const isMobile = useResponsive({ type: EResponsiveType.smaller });
   const tabContainerRef = useRef<HTMLDivElement>();
   const intl = useIntl();
-  const { selected: { setLanguageTab, languageTab } } = useStackContext();
+  const { selected: { setLanguageTab, languageTab, setSelectedTechnologyTab } } = useStackContext();
 
-  const onLanguageTabToggle = useCallback((language: string) => {
-    setLanguageTab(language);
-    if (isMobile) return;
+  const onLanguageTabToggle = useCallback((language: ILanguage) => {
+    setLanguageTab(language.name);
+    if (isMobile) {
+      setSelectedTechnologyTab(language.technologies[0].name);
+      return;
+    };
     tabContainerRef.current!.scrollIntoView({
       block: 'center',
       behavior: 'smooth',
@@ -35,6 +38,7 @@ const Languages = () => {
 
   useEffect(() => {
     setLanguageTab(languages[0].name);
+    setSelectedTechnologyTab(languages[0].technologies[0].name);
   }, []);
 
   const renderLanguages = useCallback(({ name, technologies }: ILanguage, index: number) => (
@@ -59,7 +63,7 @@ const Languages = () => {
   ), []);
 
   return (
-    <div className={styles["stack-main-section"]} id={EAppSections.STACK}>
+    <div className={styles["stack-main-section"]}>
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString(intl.formatMessage({ id: 'home.languages.title' }))

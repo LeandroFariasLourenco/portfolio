@@ -3,7 +3,7 @@ import cx from 'classnames';
 import TypewriterEffect from 'typewriter-effect';
 import { ITypewriterProps } from './props.interface';
 
-import './typewriter.scss';
+import styles from './typewriter.module.scss';
 
 const Typewriter = ({
   onInit,
@@ -16,8 +16,8 @@ const Typewriter = ({
 
   return (
     <div
-      className={`typewriter ${cx({
-        'is--finished': hasFinished,
+      className={`${styles.typewriter} ${cx({
+        [styles['is--finished']]: hasFinished,
       })}`}
     >
       <Variant {...variantProps}>

@@ -17,6 +17,8 @@ import Image from 'next/image';
 import Particles, { ParticlesProps } from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 import { desktopParticlesConfig } from './particles/desktop-config';
+
+import mobileAnimation from './mobile-animation.module.scss';
 import styles from './welcome.module.scss';
 
 const Welcome = () => {
@@ -46,10 +48,10 @@ const Welcome = () => {
     return (
       <a href={APP.socials.github} target={linkTarget} rel="noreferrer">
         <Image
-          width={280}
-          height={280}
+          width={240}
+          height={240}
           quality={60}
-          src={`https://www.github.com/LeandroFariasLourenco.png?size=280`}
+          src={`https://www.github.com/LeandroFariasLourenco.png?size=240`}
           className={`${styles["welcome-profile-image"]} ${cx({ [styles.focused]: isWindowOnTop })}`}
           alt="My profile photo"
           priority
@@ -83,27 +85,37 @@ const Welcome = () => {
       item
       justifyContent="center"
       md={12}
-      id={EAppSections.WELCOME}
     >
-      <div className="background-canvas">
-        <Particles
-          canvasClassName="background-canvas"
-          init={initEngine}
-          options={particlesConfig}
-        />
-      </div>
       <Responsive
         breakpoint="md"
-      >
-        <Grid
-          className={`${styles["welcome-arrow-down"]} ${cx({
-            'is--visible': isWindowOnTop && !playingGame,
-          })}`}
-          onClick={handleArrowDownClick}
-        >
-          <ArrowDownward />
-        </Grid>
-      </Responsive>
+        aboveComponent={(
+          <>
+            <div className="background-canvas">
+              <Particles
+                canvasClassName="background-canvas"
+                init={initEngine}
+                options={particlesConfig}
+              />
+            </div>
+            <Grid
+              className={`${styles["welcome-arrow-down"]} ${cx({
+                'is--visible': isWindowOnTop && !playingGame,
+              })}`}
+              onClick={handleArrowDownClick}
+            >
+              <ArrowDownward />
+            </Grid>
+          </>
+        )}
+        belowComponent={(
+          <div className={mobileAnimation["background-container"]}>
+            <div className={mobileAnimation["background-stars1"]}></div>
+            <div className={mobileAnimation["background-stars2"]}></div>
+            <div className={mobileAnimation["background-stars3"]}></div>
+            <div className={mobileAnimation["background-stars4"]}></div>
+          </div>
+        )}
+      />
       <Grid
         className={`${styles["welcome-container"]} ${cx({ [styles.playing]: fadingOutContainer })}`}
         container
@@ -154,7 +166,7 @@ const Welcome = () => {
               'is--visible': isWindowOnTop,
             })}`}
           >
-          <h6 className={styles["welcome-fps-title"]}>FPS</h6>
+            <h6 className={styles["welcome-fps-title"]}>FPS</h6>
             <Grid container>
               {fpsOptions.map(renderFpsOption)}
             </Grid>

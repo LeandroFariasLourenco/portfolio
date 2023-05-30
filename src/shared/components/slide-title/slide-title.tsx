@@ -48,7 +48,7 @@ const SlideTitle = ({
               typewriter.deleteAll(5);
               onTitleShow(typewriter);
             }}
-            variantProps={{ fontSize: isMobile ? '24px' : '32px' }}
+            variantProps={{ style: { fontSize: isMobile ? '24px' : '32px' }}}
           />
         ) : null}
       </Box>

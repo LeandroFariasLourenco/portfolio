@@ -1,0 +1,375 @@
+{
+  "general.button.close": "Fechar",
+  "general.button.open": "Abrir",
+  "general.button.see": "Visualizar",
+  "general.button.see-more": "Ver mais",
+  "general.button.see-less": "Ver menos",
+  "general.button.go-back": "Voltar",
+  "general.loading.hint": "Carregando",
+
+  "not-available.text": "Parece que você acessou esta tela com um dispositivo que ainda não é suportado. Mas não se preocupe, em um tempo não tão distante isso será resolvido. Enquanto isso, que tal aproveitar para relaxar e tomar uma xícara de café enquanto aguarda? Ou melhor ainda, tentar acessar meu portfólio pelo desktop ou celular?",
+
+  "header.links.section.about-me": "Sobre mim",
+  "header.links.section.experience": "Experiência",
+  "header.links.section.stack": "Stack",
+  "header.links.section.formation": "Formação",
+  "header.links.section.projects": "Projetos",
+  "header.links.section.trajectory": "Trajetória",
+  "header.links.section.curriculum": "Currículo",
+
+  "header.signature.made-by": "Feito por",
+
+  "home.welcome.terminal.last-login": "Último login:",
+  "home.welcome.terminal.console": "no console.",
+  "home.welcome.terminal.helper-command": "Digite /help para mais informações",
+
+  "home.welcome.terminal.text1.string1": "Olá, eu s",
+  "home.welcome.terminal.text1.string2": "sou o Leon",
+  "home.welcome.terminal.text1.string3": "andro Farias!",
+  "home.welcome.terminal.text2.string1": "Este é o meu portfólio que montei para você conhecer um pouco de mim.",
+  "home.welcome.terminal.text3.string1": "Espero que goste!",
+  "home.welcome.terminal.text4.string1": "Não se esqueça de entrar em contato!",
+
+  "home.welcome.snake-game.score": "Pontuação",
+  "home.welcome.snake-game.restart": "Recomeçar",
+  "home.welcome.snake-game.game-over": "Game Over",
+  "home.welcome.snake-game.paused": "Pausado",
+  "home.welcome.snake-game.pause": "Pausar",
+  "home.welcome.snake-game.movement-keys": "Teclas de movimento",
+
+  "home.welcome.terminal.not-found": "Bash: comando não encontrado:",
+  "home.welcome.terminal.possible-commands": "Aqui está uma lista de comandos possíveis:",
+  "home.welcome.terminal.game.question": "Qual jogo foi inspirado pelo Blockade de 1976? (Digite apenas o nome)",
+
+  "home.about-me.title": "Sobre mim",
+  "home.about-me.summary1": "Sou um jovem desenvolvedor front-end pleno, com 4 anos de experiência. Minha trajetória inclui trabalhos em empresas de diferentes portes, desde pequenas startups até grandes empresas multinacionais. Estou sempre pronto para enfrentar novos desafios e me reinventar diante de mudanças constantes. Sou conhecido por ser uma pessoa colaborativa e empática, sempre disposto a ajudar e trocar conhecimentos com meus colegas.",
+  "home.about-me.summary2": "Desde cedo, tive interesse por tecnologia e computação. Aos 16 anos, comecei meus estudos por um curso técnico e seguindo para o técnologo logo no fim de minha formação técnica. Com o passar dos anos, continuei estudando e me atualizando constantemente, acompanhando as tendências e novidades do mercado de TI, em especial no ecossistema Javascript e Typescript.",
+  "home.about-me.summary3": "Sempre estou em busca de novos desafios e aprendizados, e sei que esse é um caminho que não tem fim, pois a tecnologia está em constante evolução e é preciso estar sempre atualizado para acompanhar esse ritmo acelerado.",
+
+  "home.about-me.overview": "Visão geral",
+
+  "home.about-me.objectives": "Objetivos",
+  "home.about-me.stack": "Stack",
+  "home.about-me.formation": "Formação",
+  "home.about-me.hobbies": "Hobbies",
+
+  "home.about-me.objectives.first": "Um emprego que me traga estabilidade e confiança para sempre trabalhar com excelência.",
+  "home.about-me.objectives.second": "Aprofundar meus conhecimentos em cloud.",
+  "home.about-me.objectives.third": "Me tornar um dev full stack",
+  "home.about-me.objectives.fourth": "Realizar uma pós graduação na área de desenvolvimento de software.",
+
+  "home.about-me.stack.first": "Ampla experiência com Typescript",
+  "home.about-me.stack.second": "Ampla experiência com Javascript",
+  "home.about-me.stack.third": "Git e Gitflow",
+  "home.about-me.stack.fourth": "Conhecimentos em Cloud (AWS)",
+
+  "home.about-me.formation.first": "Técnologo em Análise e Desenvolvimento de Sistemas pela FIAP",
+  "home.about-me.formation.second": "Técnico em informática para Internet pela ETEC",
+
+  "home.about-me.hobbies.first": "Livros, músicas",
+  "home.about-me.hobbies.second": "Filmes, séries",
+  "home.about-me.hobbies.third": "Jogos e jogos de mesa",
+
+  "home.experience.title": "Experiência profissional",
+
+  "home.experience.ibm-mid-level.title": "Front-End Pleno",
+  "home.experience.ibm-mid-level.company": "IBM",
+  "home.experience.ibm-mid-level.date": "09/2022 - Atual",
+  "home.experience.ibm-mid-level.description1": "Tenho trabalhado com ênfase em testes unitários, integração de APIs Rest, GraphQL, Typescript, Angular e a utilização do Flame como biblioteca de componentes. Também sou responsável por realizar code reviews de pull requests e organizar workshops para ajudar meus colegas no dia a dia.",
+  "home.experience.ibm-mid-level.description2": "Contribuo ativamente para o desenvolvimento de uma biblioteca interna que é compartilhada entre os micro front-ends do projeto. Ao longo do tempo em que trabalho na IBM, tenho tido a oportunidade de aprimorar minhas habilidades técnicas e comportamentais, além de adquirir novos conhecimentos e práticas que contribuem para minha formação como profissional na área de tecnologia.",
+
+  "home.experience.ibm-mid-level.type": "Híbrido",
+  "home.experience.ibm-mid-level.stack": "Typescript, Devops, Angular, Git, Sass, HTML, Teste unitário, Flame, GraphQL",
+
+  "home.experience.gft-mid-level.title": "Front-End Pleno",
+  "home.experience.gft-mid-level.company": "GFT",
+  "home.experience.gft-mid-level.date": "04/2022 - 09/2022",
+  "home.experience.gft-mid-level.description1": "Durante meu período na GFT, participei de um projeto interno que me proporcionou a oportunidade de trabalhar com a AWS, em especial com serviços como S3, CloudFormation, RDS, Lambda, API Gateway e CodeBuild.",
+  "home.experience.gft-mid-level.description2": "Atuei principalmente no desenvolvimento de soluções em React no front-end, além de trabalhar simultaneamente na manutenção de funções existentes na parte de back-end com Node e Lambda. Em resumo, minha experiência trabalhando na GFT foi extremamente positiva e me proporcionou novos conhecimentos e habilidades, especialmente na área de Cloud e meu primeiro contato com back end.",
+  "home.experience.gft-mid-level.type": "Home Office",
+  "home.experience.gft-mid-level.stack": "React, Typescript, AWS, Git, Devops, Lambda, Node",
+
+  "home.experience.nbm-junior.title": "Front-End Júnior",
+  "home.experience.nbm-junior.company": "NBM Informática",
+  "home.experience.nbm-junior.date": "03/2021 - 04/2022",
+  "home.experience.nbm-junior.description1": "Na NBM, tive a oportunidade de trabalhar em projetos internos de sistemas de varejo, rastreio e postagem de encomendas. Uma das principais experiências que tive na NBM foi a responsabilidade de ajudar a gerenciar diretamente uma pessoa.",
+  "home.experience.nbm-junior.description2": "Atuei em projetos que utilizaram React Native, Angular e até mesmo um pouco de Flutter. Isso me permitiu ampliar minhas habilidades em diferentes tecnologias e me tornar um desenvolvedor mais completo. No geral, minha experiência na NBM foi bastante enriquecedora, tanto em termos de aprendizado quanto de desenvolvimento pessoal e profissional. Agradeço a oportunidade que tive de trabalhar em projetos importantes e contribuir para o sucesso da empresa.",
+  "home.experience.nbm-junior.type": "Híbrido",
+  "home.experience.nbm-junior.stack": "PUG, SCSS, Typescript, Angular, React Native, AWS, Git, Gulp, Flutter",
+
+  "home.experience.enext-junior.title": "Front-End Júnior",
+  "home.experience.enext-junior.company": "Enext",
+  "home.experience.enext-junior.date": "09/2020 - 12/2020",
+  "home.experience.enext-junior.description1": "Promovido para Júnior, continuei exercendo as demandas de Ongoing mas agora também fazendo parte do departamento de projetos. Continuei trabalhando e me aprofundando nas plataformas de Ecommerce do meu estágio: Wordpress, VTEX e Magento. Continuando com as ferramentas de automação de tarefas como Gulp e Grunt.",
+  "home.experience.enext-junior.description2": " Minha atuação também continuou envolvendo o uso de tecnologias como Typescript, Javascript, React e Jquery, em que pude aplicar meus conhecimentos e habilidades para oferecer soluções eficientes e de qualidade aos projetos que participei. Além disso, comecei a exercer responsabilidades de participar de apresentações técnicas para diversos clientes, me proporcionando uma valiosa experiência única para minha carreira.",
+  "home.experience.enext-junior.type": "Home Office",
+  "home.experience.enext-junior.stack": "PUG, SCSS, Javascript, React, Wordpress, VTEX, Git, Gulp, Grunt",
+
+  "home.experience.enext-intern.title": "Front-End Estágio",
+  "home.experience.enext-intern.company": "Enext",
+  "home.experience.enext-intern.date": "10/2019 - 09/2020",
+  "home.experience.enext-intern.description1": "Sendo promovido pelo processo de Programa de Capacitação, comecei a receber responsabilidades de trabalhos no departamento de Ongoing, ou seja, tinha como objetivo atender as demandas recorrentes dos clientes.",
+  "home.experience.enext-intern.description2": "Por estar em uma empresa com clientes variados, pude ter contatos com diversas tecnologias e projetos diferentes, abrangendo tecnologias tradicionais do mundo de front end como Javascript, HTML e CSS. Como minha primeira experiência profissional, acabou sendo minha primeira oportunidade de contato com muitas tecnologias que hoje fazem parte de minha especialidade, como: Git, Angular e React.",
+  "home.experience.enext-intern.type": "Híbrido",
+  "home.experience.enext-intern.stack": "HTML, PUG, SCSS, Javascript, React, Magento, VTEX, Git",
+
+  "home.experience.enext-development-program.title": "Front-End Programa de Capacitação",
+  "home.experience.enext-development-program.company": "Enext",
+  "home.experience.enext-development-program.date": "09/2019 - 10/2019",
+  "home.experience.enext-development-program.description1": "Durante meu primeiro programa de capacitação em front end, tive a oportunidade de aprender com profissionais experientes na área. O programa consistiu em um processo seletivo para uma vaga de estágio, onde aprendi a utilizar ferramentas importantes como Git, VTEX, Html, Css e Sass, além de aprofundar meus conhecimentos em Javascript.",
+  "home.experience.enext-development-program.description2": "Ao longo do programa, fui desafiado a apresentar semanalmente o que aprendi, o que me permitiu desenvolver minhas habilidades de comunicação e aprimorar meu entendimento dos conceitos abordados. Na última semana, recebemos a tarefa de criar um projeto final que incorporasse tudo o que aprendemos ao longo do programa.",
+  "home.experience.enext-development-program.type": "Presencial",
+  "home.experience.enext-development-program.stack": "HTML, SCSS, Javascript, Git",
+
+  "home.experience.current": "Atual",
+  "home.experience.description": "Descrição",
+  "home.experience.stack": "Tecnologias",
+
+  "home.languages.knowledge": "Conhecimentos",
+  "home.languages.title": "Minha stack",
+
+  "home.js-ts.technologies.react.description": "Como uma biblioteca JavaScript que pode ser integrada ao Typescript e desenvolvido pelo Facebook, tive meu primeiro contato com a tecnologia ainda nos meus dias de estágio. Possuo um conhecimento sólido em seus principais conceitos, em especial sobre a síntaxe de hooks. Trabalhei em diversos projetos React com diversas estruturas e padrões de projetos, mas não apenas isso como também tive a oportunidade de realizar sessões de mentorias durante meu tempo na IBM para compartilhar e ensinar sobre React.",
+  "home.js-ts.technologies.react.redux": "Redux",
+  "home.js-ts.technologies.react.mobx": "Mobx",
+  "home.js-ts.technologies.react.props": "Props",
+  "home.js-ts.technologies.react.context": "Context",
+  "home.js-ts.technologies.react.hooks": "Hooks",
+  "home.js-ts.technologies.react.classes": "Classes",
+  "home.js-ts.technologies.react.styled-components": "Styled Components",
+
+  "home.js-ts.technologies.react-native.description": "Utilizei React Native para um projeto interno de gestão e controle de vendas, me familiarizei com as particularidades do React Native em comparação com o React da web, como a estrutura de estilização de componentes, forma de depurar aplicações e a JS Bridge. Essas diferenças e muitas outras, apesar de parecerem superficiais, são apenas uma parte de como o React Native se difere de seu equivalente na Web.",
+  "home.js-ts.technologies.react-native.redux": "Redux",
+  "home.js-ts.technologies.react-native.mobx": "Mobx",
+  "home.js-ts.technologies.react-native.props": "Props",
+  "home.js-ts.technologies.react-native.context": "Context",
+  "home.js-ts.technologies.react-native.hooks": "Hooks",
+  "home.js-ts.technologies.react-native.classes": "Classes",
+  "home.js-ts.technologies.react-native.styled-components": "Styled Components",
+  "home.js-ts.technologies.react-native.js-bridge": "JS Bridge",
+
+  "home.js-ts.technologies.angular.description": "Trabalho com Angular há quase 2 anos. Desde o meu primeiro contato com o Angular, consegui me adaptar rapidamente aos seus conceitos, como roteamento, rxjs, módulos e testes unitários. Foi com o Angular que eu tive minha primeira experiência profissional com testes unitários, o que me trouxe uma compreensão mais profunda sobre a importância de desenvolver software com qualidade. O Angular se tornou meu framework preferido no ecossistema Typescript, e minha primeira escolha para a construção de projetos com SPA.",
+  "home.js-ts.technologies.angular.rxjs": "RxJs",
+  "home.js-ts.technologies.angular.providers": "Providers",
+  "home.js-ts.technologies.angular.inputs-outputs": "Inputs/Outputs Emitters",
+  "home.js-ts.technologies.angular.modules": "Módulos",
+  "home.js-ts.technologies.angular.unit-testing": "Testes unitários",
+  "home.js-ts.technologies.angular.services": "Serviços",
+  "home.js-ts.technologies.angular.routing": "Roteamento",
+  "home.js-ts.technologies.angular.dependency-injection": "Injeção de dependências",
+
+  "home.js-ts.technologies.typescript.description": "Depois de trabalhar em projetos de diferentes tamanhos e complexidades, desde pequenos projetos com Typescript puro até frameworks como o Angular, posso afirmar que essa tecnologia se tornou fundamental para mim. A implementação de tipagem estática tem sido um grande benefício para a garantia da qualidade do código e uma das razões pelas quais não consigo imaginar voltar ao JavaScript vanilla. O uso do Typescript trouxe segurança e consistência para os projetos em que trabalhei, ajudando a evitar erros e melhorando a manutenibilidade.",
+  "home.js-ts.technologies.typescript.typing": "Tipagem",
+  "home.js-ts.technologies.typescript.interfaces": "Interfaces",
+  "home.js-ts.technologies.typescript.generics": "Generics",
+  "home.js-ts.technologies.typescript.unions.etc": "Unions, Enums, Non-null assertion",
+  "home.js-ts.technologies.typescript.tsconfigs": "Configurações de projeto (TSConfig)",
+
+  "home.js-ts.technologies.javascript.description": "Antes mesmo de ter meu primeiro contato profissional com a linguagem, já estava estudando e me familiarizando com ela. Embora minha preferência seja usar Typescript, e até mesmo já ter reescrito muitos projetos pessoais de Javascript para Typescript, ainda acredito que ter conhecimentos em Javascript é crucial para qualquer desenvolvedor front-end, uma vez que a linguagem é praticamente a base da web, apesar de suas particularidades, sejam boas ou não tão boas assim.",
+  "home.js-ts.technologies.javascript.async": "Async, Promises",
+  "home.js-ts.technologies.javascript.closures": "Closures",
+  "home.js-ts.technologies.javascript.modules": "Módulos",
+  "home.js-ts.technologies.javascript.optional-chaining": "Optional Chaining",
+  "home.js-ts.technologies.javascript.dom": "DOM",
+  "home.js-ts.technologies.javascript.websockets": "WEBSockets",
+
+  "home.js-ts.technologies.jquery.description": "Tive a oportunidade de trabalhar extensivamente com jQuery em minha primeira empresa, estritamente na manutenção de projetos que já existiam há algum tempo no mercado. Embora eu reconheça a utilidade do jQuery em projetos legados, para novos projetos eu preferiria utilizar Javascript puro, já que muitas de suas funcionalidades agora podem ser implementadas de forma nativa.",
+  "home.js-ts.technologies.jquery.selectors": "Seletores",
+  "home.js-ts.technologies.jquery.plugins": "Plugins",
+
+  "home.js-ts.technologies.webpack.description": "Ferramenta de construção de módulos para JavaScript, utilizada para compilar e empacotar código. Ele permite que você crie um conjunto de arquivos JavaScript e seus respectivos arquivos de dependência em um único arquivo de saída. O Webpack é amplamente utilizado em projetos modernos de JavaScript, como o React e o Angular. Geralmente, não é muito comum modificações ou criação de configurações Webpack do zero por conta de muitos frameworks já trazerem pré-configurações. Entretanto, já realizei projetos pessoais aonde eu criei minha própria configuração do Webpack do zero.",
+  "home.js-ts.technologies.gulp.description": "Ferramenta de automação de tarefas em JavaScript. Trabalhei muito com Gulp quando tive experiências em projetos que utilizavam Javascript Vanilla e Scss. Ele ajuda a automatizar tarefas repetitivas, como minificação de código, compressão de imagens, compilação de arquivos Sass/LESS para CSS, concatenação de arquivos, entre outras coisas. Funciona através de plugins, que podem ser instalados através do gerenciador de pacotes npm. Já criei tarefas em projetos pessoais para realizar minificação, transpilação de estilo e geração de PUG para HTML.",
+  "home.js-ts.technologies.grunt.description": "Ferramenta de automação de tarefas em JavaScript, similar com o Gulp. Basicamente pela minha experiência, já encontrei projetos que utilizavam Gulp e outros, Grunt. Particularmente nunca realizei um projeto do zero com Grunt por preferir a estrutura geral do Gulp para fins de automação de tarefas.",
+
+  "home.aws.cloudformation.description": "Criação de pilhas de processos dentro da AWS para automatizar e facilitar a instalação de aplicações entre várias contas ou regiões. Normalmente utilizado em conjunto com o CDK da AWS para realizar a infraestrutura como código (IAC). Já trabalhei com projetos que dependiam do CloudFormation para distribuir aplicações de forma consistente em várias contas AWS, garantindo uma infraestrutura íntegra independente.",
+  "home.aws.api-gateway.description": "Utilizado para expôr e controlar APIs através da infraestrutura da AWS, um caso de uso bem comum que particularmente já utilizei, é a integração com funções Lambdas para endpoints dentro do API Gateway, aonde é possível configurar Tokens, API Keys, CORS.",
+  "home.aws.lambda.description": "FaaS (Function as a Service), aonde particularmente já desenvolvi funções lambda com NodeJS para integrações ao API Gateway para aplicações conseguirem invoca-las com base em necessidades. Mas seu uso pode ser muito além disso, o API Gateway é apenas uma das formas de invocar uma função Lambda",
+  "home.aws.cloudfront.description": "Distribuição de conteúdo (CDN) em nuvem da AWS. Ele pode ser integrado com o Route 53 para disponibilizar distribuições de sites em domínios que, juntando com a rede da AWS de CDN, permite cachear arquivos em uma infraestrutura global para tempos de carregamento extremamente eficientes.",
+  "home.aws.cloud-dev-kit.description": "Particularmente desenvolvi apenas aplicações com fins de estudo mas já tive que realizar manutenção em projetos que utilizavam o conceito de IaC na AWS e por consequência, o CDK. O fluxo se resumia em gerar o CDK para assim, realizar seu deploy no CloudFront, ou até mesmo a geração de pilhas no cloud formation. O grande benefício de utilizar o CDK, é conseguir escrever IAC utilizando uma linguagem de sua escolha.",
+  "home.aws.codecommit.description": "Normalmente utilizo o github mas já tive que utilizar o serviço de repositório privado da AWS. É extremamente semelhante ao Github mas tem o seu diferencial de já ser nativamente integrado ao ambiente da AWS, então é possível ter muito mais integrações com o código da aplicação do que utilizando uma alternativa de terceiros.",
+  "home.aws.codebuild.description": "Utilizado para criação de etapas na compilação e build do código, pode ser utilizado para gerar artefatos que consequentemente são enviados ao S3 por exemplo, como foi o caso deste meu portfólio.",
+  "home.aws.cognito.description": "Serviço gerenciado que permite adicionar recursos de autenticação, autorização e gerenciamento de usuários a aplicativos web e móveis. Nos projetos em que participei do qual utilizaram o Cognito, eles permitiram que os usuários pudessem realizar cadastro, login e acessem recursos com autenticação baseada em usuários ou em provedores de identidade social, como Facebook e Google. Funcionalidades existentes em vários aplicativos mas que são facilitadas pelo Amazon Cognito",
+  "home.aws.amplify.description": "Conjunto de ferramentas e serviços da AWS que permite a criação de aplicativos web e móveis de maneira rápida e fácil. Fornecendo uma estrutura completa de desenvolvimento para criar aplicativos com recursos como autenticação, armazenamento de dados. E ainda permite a criação de aplicativos usando tecnologias como React, React Native, Angular, além de poderem conectar seus aplicativos a serviços da AWS, como o Amazon S3 e o Amazon Cognito.",
+  "home.aws.s3.description": "Talvez o serviços mais conhecido da AWS, responsável por armazenamento das mais diversas formas de dados estáticos em nuvem, seja pastas, imagens, pdfs... Inclusive, todos os assets deste meu portfólio, estão hospedados em um bucket s3 criado por mim. Pela minha experiência, o uso de buckets S3, são diversos e podem ser usados para hospedagem de sites, armazenamento de objetos a longo prazo e até mesmo para armazenar assets.",
+
+  "home.html-css.sass.description": "Uma linguagem de folhas de estilo que serve como uma extensão do CSS, permitindo uma sintaxe mais fácil de ler e escrever. Ele adiciona recursos avançados, como variáveis, mixins, funções e aninhamento, que ajudam a tornar a escrita de estilos mais rápida e eficiente. Com o SCSS, é possível escrever estilos mais complexos de maneira mais organizada, o que facilita a manutenção de grandes projetos. Tanto que pela minha experiência, dificilmente voltei a utilizar CSS puro, geralmente sempre acabou sendo SASS ou SCSS, que embora geralmente um seja confundido com o outro, o SCSS tem uma síntaxe diferente do SASS.",
+  "home.html-css.sass.mixins": "Mixins",
+  "home.html-css.sass.variables": "Variáveis",
+  "home.html-css.sass.functions": "Funções",
+  "home.html-css.sass.nesting": "Aninhamento",
+
+  "home.html-css.html.description": "Linguagem de marcação usada para criar a estrutura e o conteúdo básico de páginas web. Não precisa de muita explicação, pois como desenvolvedor Front-End, o HTML é a estrutura da Web desde os seus primórdios e consequentemente, qualquer framework ou trabalho voltado a front-end com Web, de uma forma ou de outra, é utilizado HTML.",
+  "home.html-css.pug.description": "Pug é uma linguagem de template que permite escrever HTML de forma simplificada e elegante. Com a sintaxe baseada em indentação, Pug permite que os desenvolvedores escrevam código mais legível e organizado, economizando tempo e esforço na criação de páginas web. Além disso, Pug possui recursos avançados como mixins e includes, que permitem criar blocos reutilizáveis de código e modularizar o projeto. Por se tratar de uma linguagem de template, ele é utilizado em conjunto com ferramentas de automação de tarefas para compilação para HTML puro.",
+  "home.html-css.css.description": "Assim com o HTML, o CSS não precisa de nenhuma introdução sobre seu funcionamento, o CSS em sua forma pura acabo não utilizando muito por conta de que em projetos maiores e frameworks como o Angular, geralmente o uso de SCSS acabam sendo mais apropriados por facilitar a estruturação de códigos de estilos mais organizados, algo que é difícil de alcançar com o CSS nativo.",
+
+  "home.swift.description": "Apesar de ainda não possuir experiência profissional com Swift, tenho investido meu tempo livre em sua aprendizagem, com o objetivo de me aprofundar meus conhecimentos sobre o mundo mobile. Nesse meio tempo, obtive conhecimento dos conceitos básicos da linguagem, como tipos de dados, funções, estruturas de controle de fluxo, orientação a objetos, protocolos e até mesmo Core Data. Também já trabalhei em pequenos projetos pessoais utilizando a linguagem, o que me permitiu aprimorar meus conhecimentos e entender melhor o ecossistema iOS.",
+  "home.swift.topics.optionals": "Opcionais",
+  "home.swift.topics.type-safety": "Segurança de tipos",
+  "home.swift.topics.collection-manipulation": "Manipulação de coleções",
+  "home.swift.topics.type-infer": "Inferência de Tipos",
+  "home.swift.topics.error-handling": "Tratamento de Erros",
+  "home.swift.topics.core-data": "Core Data",
+
+  "home.dart.flutter.description": "Embora eu ainda não tenha muita experiência profissional em Flutter, aprendi muito com ele em projetos pessoais e em alguns projetos pessoais. Também tive a oportunidade de trabalhar brevemente em um projeto profissional com Flutter mobile. Meus conhecimentos se concentram principalmente em Flutter para dispositivos móveis, tenho ciência que pode ser usado para desenvolvimento de apps para desktop e web, mas particularmente, eu ainda cheguei a utilizar.",
+  "home.dart.flutter.widgets": "Widgets",
+  "home.dart.flutter.material-design-cupertino": "Material Design e Cupertino",
+  "home.dart.flutter.state-management": "Gerenciamento de Estado",
+  "home.dart.flutter.dart": "Dart",
+
+  "home.dart.description": "Tive meu contato com o Dart assim que comecei a ter interesse em aprender Flutter. Consequentemente, minha experiência acaba sendo parecida. Tenho conhecimentos em conceitos básicos como funções assíncronas, classes e interfaces.",
+  "home.dart.typing": "Tipagem opcional",
+  "home.dart.async-await": "Async Await",
+  "home.dart.collections": "Coleções",
+
+  "home.formation.title": "Formação",
+  "home.formation.tabs1.title": "Cursos",
+  "home.formation.tabs2.title": "Extracurrículares",
+  "home.formation.tabs3.title": "Certificações",
+
+  "home.formation.fiap.title": "Análise e Desenvolvimento de Sistemas",
+  "home.formation.fiap.type": "Técnologo",
+  "home.formation.fiap.description1": "Durante o curso, tive a oportunidade de aprender sobre diversos assuntos essenciais para o desenvolvimento de sistemas, desde a modelagem e construção de banco de dados Oracle, passando por cloud com Azure, gestão e engenharia, até a lógica de programação em Java, back end com C# e front end com React, HTML e CSS.",
+  "home.formation.fiap.description2": "Tive a oportunidade de aplicar os conhecimentos em diversos projetos práticos, individualmente e em equipe. Dos quais me permitiram aprimorar minhas habilidades de comunicação, trabalho em equipe e resolução de problemas, proporcionando uma experiência valiosa no desenvolvimento de software completos.",
+  "home.formation.fiap.location": "Vila Mariana - SP",
+
+  "home.formation.etec.title": "Informática p/ Internet",
+  "home.formation.etec.type": "Técnico",
+  "home.formation.etec.description1": "Minha primeira formação na área de TI. Tive a oportunidade de aprender sobre diversos temas essenciais para o desenvolvimento de sistemas para a web, incluindo Linux, redes, front-end, back-end e banco de dados. Também pude estudar diversas linguagens de programação, como SQL, Java, Javascript, PHP, HTML, CSS e até mesmo JQuery.",
+  "home.formation.etec.description2": "Foi uma experiência enriquecedora e fundamental para minha carreira profissional. Servindo com base para minha formação superior e principalmente para minha primeira experiência como estágio em Front End.",
+  "home.formation.etec.location": "Diadema - SP",
+
+  "home.extracurricular1.title": "Curso de inglês",
+  "home.extracurricular1.type": "Extracurricular",
+  "home.extracurricular1.description": "Curso de inglês pelo CCAA entre os anos de 2013 e 2018. Iniciei meus estudos no nível básico seguindo pelos semestres gradualmente até o nível avançado, sem a necessidade de repetir nenhum semestre. Esse aprendizado me proporcionou uma base sólida em gramática, vocabulário e compreensão auditiva. Graças a essa preparação, tive a oportunidade de realizar o exame TOEFL ITP. Atingindo meu nível B2 em inglês.",
+  "home.extracurricular1.location": "Diadema - SP",
+
+  "home.extracurricular2.title": "Certified Cloud Practitioner (course)",
+  "home.extracurricular2.type": "Extracurricular",
+  "home.extracurricular2.description": "Curto aprendizado de 14 horas instruído pelo Sthephane Maarek que cobre todos os detalhes para preparação do exame Cloud Practitioner da AWS. Foi fundamental em meus estudos para conseguir a renomada certificação.",
+  "home.extracurricular2.location": "Online",
+
+  "home.certifications1.title": "Certified Cloud Practitioner",
+  "home.certifications2.title": "TOEFL ITP",
+  "home.certifications3.title": "Curso de inglês",
+  "home.certifications4.title": "Análise e Desenvolvimento de Sistemas",
+  "home.certifications5.title": "Informática p/ Internet",
+  "home.certifications6.title": "App Developer",
+  "home.certifications7.title": "Web Designer",
+
+  "home.projects.title": "Repositórios",
+  "home.projects.description": "Este é o local onde você pode encontrar meus projetos pessoais mais notáveis. Caso haja interesse em obter informações mais detalhadas sobre meus projetos profissionais, por favor, entre em contato comigo.",
+  "home.projects.my-projects.title": "Meus projetos",
+  "home.projects.highlights.title": "Em destaque",
+
+  "home.projects.fut-awesome.paragraph1": "Com o objetivo de aprimorar minhas habilidades em programação para dispositivos móveis, desenvolvi um projeto pessoal em Flutter e Dart voltado para consumo de APIs de futebol. Esse aplicativo permite o acesso a informações sobre jogos de diversas ligas, tais como Brasileirão, Copa do Brasil e Champions League além de disponibilizar notícias sobre o mundo do futebol.",
+  "home.projects.fut-awesome.paragraph2": "Através da integração com as APIs, o aplicativo é capaz de exibir em tempo real os resultados dos jogos, bem como a tabela de classificação das equipes.",
+  "home.projects.fut-awesome.paragraph3": "Além disso, é possível visualizar informações sobre os jogadores, tais como estatísticas de gols e assistências, e receber notificações sobre os próximos jogos.",
+
+  "home.projects.zappy-code.paragraph1": "Meu primeiro projeto em Swift para IOS foi um aplicativo que lista os cursos de um professor na plataforma Udemy. O objetivo principal desse projeto foi fornecer aos usuários uma forma mais fácil e intuitiva de encontrar e se inscrever nos cursos do professor.",
+  "home.projects.zappy-code.paragraph2": "O aplicativo foi desenvolvido utilizando a linguagem de programação Swift e a plataforma de desenvolvimento Xcode. ",
+
+  "home.projects.daily-journal.paragraph1": "Desenvolvido em Swift para IOS foi um aplicativo que permite ao usuário digitar entradas para cada dia, semelhante a um diário pessoal. Ao abrir o aplicativo, o usuário é direcionado para uma tela onde pode digitar uma entrada para o dia atual. As entradas diárias são organizadas por data e podem ser facilmente acessadas através de uma lista, que mostra todos os dias em que o usuário escreveu algo. Cada entrada diária possui um título e um campo de texto onde o usuário pode escrever livremente.",
+  "home.projects.daily-journal.paragraph2": "Foram utilizados recursos avançados do Swift, como o armazenamento de dados localmente com Core Data. Em resumo, esse projeto em Swift para IOS foi uma oportunidade para aplicar meus conhecimentos em programação e desenvolvimento de aplicativos móveis.",
+
+  "home.projects.restaurant-finder.paragraph1": "Um projeto utilizando as tecnologias React e Typescript, com o objetivo de permitir que o usuário encontre restaurantes próximos e possa ver avaliações e comentários diretamente na interface do Google Maps. Além disso, as avaliações e comentários foram disponibilizados pela API de Maps, simulando o que você consegue encontrar no próprio aplicativo do Maps.",
+  "home.projects.restaurant-finder.paragraph2": "Em resumo, este projeto foi desenvolvido como uma prova de conceito para aprender sobre os serviços que o google oferece em sua cloud e aprender mais sobre o React, assim como também tive meu primeiro contato com a biblioteca Lottie, para trabalhar com animações em JSON.",
+
+  "home.projects.canvas-matrix.paragraph1": "Utilizando Javascript, HTML e CSS. Desenvolvi um projeto com o objetivo de simular o efeito de letras aleatórias caindo em diferentes intervalos, em um fundo preto, imitando o icônico efeito do filme Matrix. Para isso, utilizei a funcionalidade nativa do Canvas para gerar o fundo preto e desenhar as letras, além de implementar a lógica em Javascript para criar a animação das letras caindo aleatoriamente na tela.",
+  "home.projects.canvas-matrix.paragraph2": "A implementação dessa funcionalidade foi desafiadora, exigindo o uso de recursos avançados de Javascript, como animação de quadros e manipulação do DOM, além de conhecimentos avançados em HTML e CSS. O resultado final foi uma simulação de letras caindo de forma fluida e aleatória na tela.",
+
+  "home.projects.solar-system.paragraph1": "Projeto criado com Javascript, CSS e HTML para criar um ambiente 3D do Sistema Solar, utilizando a biblioteca ThreeJS para modelagem 3D. O objetivo do era simular um pequeno ambiente com alguns planetas orbitando ao redor do sol, permitindo ao usuário navegar por eles através do teclado. O projeto utilizou o Canvas para criar um ambiente 3D do Sistema Solar, com texturas simples. Utilizei também técnicas de iluminação para criar uma simples atmosfera no ambiente.",
+  "home.projects.solar-system.paragraph2": "Apesar de não ser uma réplica fiel, o projeto me permitiu estudar e aprender bastante sobre modelagem 3D no geral e como ela funciona na Web.",
+
+  "home.projects.snake-game.paragraph1": "Jogo desenvolvido com Javascript, HTML e SCSS, uma recriação do clássico jogo da cobrinha de celular. Ele funciona nativamente no navegador, utilizando a funcionalidade do Canvas para desenhar o jogo. O jogador pode controlar a cobra utilizando as teclas WASD ou as setas direcionais, com o objetivo de coletar alimentos e aumentar sua pontuação. A dificuldade do jogo aumenta a cada ponto, com a tela diminuindo e a velocidade da cobra aumentando.",
+  "home.projects.snake-game.paragraph2": "Para criar o jogo, utilizei as funcionalidades do Javascript Vanilla, manipulando o DOM e o Canvas, além de implementar animações e lógica. A grande ideia desse projeto, era me aprofundar um pouco em como criar um jogo na Web com Canvas, juntando assim, duas coisas que eu amo.",
+  "home.projects.snake-game.paragraph3": " Além disso, o jogo pode ser jogado diretamente em meu portfólio, através de um comando no terminal na versão desktop.",
+
+  "home.projects.be-the-hero.paragraph1": "Aplicação para conectar ONGs e outras instituições a pessoas que tem disponibilidade para ajudar. Este foi meu primeiro projeto que desenvolvi com o intuito de estudar. Foi uma solução que foi construída tendo como base o conteúdo da semana Omnistack ocorrida entre 23/03/2020 até 27/03/2020",
+  "home.projects.be-the-hero.paragraph2": "A semana Omnistack foi uma espécie de mini bootcampo, aonde cada dia construímos uma parte diferente da aplicação. No primeiro dia o Front End, seguido para o Back End e Banco de Dados, Mobile com React Native e por fim a integração de todas as partes.",
+  "home.projects.be-the-hero.paragraph3": "Foi um projeto crucial para me ajudar com meu aprendizado de React. Que na época, ainda era bem iniciante.",
+
+  "home.projects.finantial-data-chart.paragraph1": "Projeto desenvolvido para estudo pessoal em Angular utilizando a API do Yahoo Finance para listar valores de ações de diversas empresas. Sendo possível acompanhar a evolução dos preços das ações em tempo real, podendo ser possível filtrar de minuto-a-minuto, dia-a-dia, mês, dia.",
+  "home.projects.finantial-data-chart.paragraph2": "Desenvolvido em Angular com uso da biblioteca chart-js para a criação de gráficos interativos. Foi um projeto para aplicar meus conhecimentos utilizando uma API financeira, algo inédito para mim até então.",
+
+  "home.projects.description.title": "Sobre meus projetos",
+  "home.projects.description.content1": "Teste",
+  "home.projects.description.content2": "Teste Teste Teste",
+
+  "home.mytimeline.title": "Minha trajetória",
+
+  "home.mytimeline.first-mentoring-session.title": "Seção de mentoria",
+  "home.mytimeline.first-mentoring-session.date": "13/03/2023",
+  "home.mytimeline.first-mentoring-session.description": "Como colaborador da IBM, tive minha primeira oportunidade de organizar uma série de sessões para meus colegas que duraram uma semana aonde pude apresentar o que é o React, com projetos práticos aonde eles podiam tirar dúvidas ao vivo conforme necessário.",
+
+  "home.mytimeline.ibm.title": "Oportunidade na IBM",
+  "home.mytimeline.ibm.date": "12/09/2022",
+  "home.mytimeline.ibm.description": "Um novo capítulo da minha vida, dessa vez na renomada IBM. Trabalhei principalmente com Angular mas o que de fato proporcionou uma evolução enorme para minha carreira foi minha primeira experiência com desenvolvimento orientado a testes e também todas as plataformas de estudos que a IBM possui.",
+
+  "home.mytimeline.aws-certification.title": "Certificação AWS Cloud Practitioner",
+  "home.mytimeline.aws-certification.date": "15/08/2022",
+  "home.mytimeline.aws-certification.description": "Minha primeira certificação com AWS. Apesar de ter tido experiência prévia com desenvolvimento em nuvem. Agora comecei oficialmente minha jornada como Cloud Practitioner.",
+
+  "home.mytimeline.gft.title": "Oportunidade na GFT",
+  "home.mytimeline.gft.date": "01/04/2022",
+  "home.mytimeline.gft.description": "Foi aqui aonde tive minha primeira experiência com desenvolvimento em nuvem. Utilizando até mesmo um pouco de back end para a manutenção da APIs Lambda em Node, realização de deploys e stacks com Cloud Formation e desenvolvimento Front End com React, MobX.",
+
+  "home.mytimeline.nbm.title": "Oportunidade na NBM Informática",
+  "home.mytimeline.nbm.date": "01/03/2021",
+  "home.mytimeline.nbm.description": "Aonde obtive minha primeira experiência não apenas com desenvolvimento mas sendo responsável pelo gerenciamento e auxílio de colegas dentro da empresa. Também acabou sendo meu primeiro contato com Typescript e Angular.",
+
+  "home.mytimeline.freelance-project.title": "Projeto Freelancer",
+  "home.mytimeline.freelance-project.date": "15/12/2020",
+  "home.mytimeline.freelance-project.description": "No meio tempo entre minha transição de minha ex-empresa e uma nova, tive minha primeira oportunidade de desenvolvimento Full Stack. Uma pequena empresa de elétrica, necessitava de um app para coletar informações de No Breaks de clientes, aonde tanto o colaborador como o cliente assinavam um documento para ser enviado um e-mail com PDF para ambas as partes. Utilizei AWS com funções Lambdas para disparar e-mails e gerar PDFs, enquanto o App foi feito com React Native.",
+
+  "home.mytimeline.fiap-end.title": "Formação Ensino Superior",
+  "home.mytimeline.fiap-end.date": "07/12/2020",
+  "home.mytimeline.fiap-end.description": "Consegui concluir meu curso de nível Tecnólogo em Análise e Desenvolvimento de Sistemas pela FIAP. O diploma sinalizou o fim de um capítulo particularmente desafiador de minha vida profissional, tendo em mente o equilíbrio de vida acadêmica, profissional e pessoal. Mas ainda sim, foi uma trajetória que me proporcionou muito crescimento.",
+
+  "home.mytimeline.junior-promotion.title": "Promoção para Júnior",
+  "home.mytimeline.junior-promotion.date": "01/09/2020",
+  "home.mytimeline.junior-promotion.description": "Antes do término de meu contrato como estagiário, tive o reconhecimento de ser promovido para Front End Júnior. Sendo minha primeira experiência na área de T.I em tempo integral.",
+
+  "home.mytimeline.omnistack-week.title": "Semana Omnistack",
+  "home.mytimeline.omnistack-week.date": "23/03/2020",
+  "home.mytimeline.omnistack-week.description": "Foi um 'mini bootcamp' fornecido pela Rocketseat, com o intuito de ajudar desenvolvedores a terem uma experiência de projeto full stack. Mas me forneceu grande conhecimento em especial com React.",
+
+  "home.mytimeline.next-fiap.title": "Evento Next da Fiap",
+  "home.mytimeline.next-fiap.date": "03/11/2019",
+  "home.mytimeline.next-fiap.description": "Projeto desenvolvido no decorrer do ano de 2019 quando estava na FIAP. O projeto acabou sendo escolhido para ser apresentado na feira da FIAP em parceria com diversas empresas de tecnologia. Ao decorrer do evento, apresentamos nosso projeto e acabamos ficando em segundo lugar.",
+
+  "home.mytimeline.intern.title": "Estágio",
+  "home.mytimeline.intern.date": "01/10/2019",
+  "home.mytimeline.intern.description": "Resultado de meu desempenho no programa de capacitação. Acabei sendo escolhido para a vaga de estágio.",
+
+  "home.mytimeline.capacitation-program.title": "Primeiro emprego",
+  "home.mytimeline.capacitation-program.date": "01/09/2019",
+  "home.mytimeline.capacitation-program.description": "Acabou sendo um processo seletivo com duração de 1 mês para concorrer para vaga de estágio, mas ainda sim tive contato com diversos profissionais da empresa no decorrer desse tempo.",
+
+  "home.mytimeline.fiap-start.title": "Ingressão na faculdade",
+  "home.mytimeline.fiap-start.date": "18/02/2019",
+  "home.mytimeline.fiap-start.description": "Foi o ponto de partida de minha carreira na área de T.I. Aonde comecei a procurar de forma ativa minha primeira oportunidade.",
+
+  "home.mytimeline.english-conclusion.title": "Término inglês",
+  "home.mytimeline.english-conclusion.date": "13/12/2018",
+  "home.mytimeline.english-conclusion.description": "Após 5 anos de aprendizado, realizei minha prova do TOEFL ITP, terminando assim meu curso de inglês e atingindo meu nível de inglês avançado.",
+
+  "home.mytimeline.technical-formation.title": "Formação Técnica",
+  "home.mytimeline.technical-formation.date": "07/12/2018",
+  "home.mytimeline.technical-formation.description": "Coincidindo com meu término do ensino médio, realizei a apresentação de meu TCC, terminando assim, meu primeiro curso na área de T.I",
+
+  "home.mytimeline.technical-start.title": "Ingressão no curso técnico",
+  "home.mytimeline.technical-start.date": "23/07/2017",
+  "home.mytimeline.technical-start.description": "Aqui foi aonde começou meu primeiro contato com a área de T.I. Em especial, na área de programação e com conceitos como virtualização, computação e diversos.",
+
+  "home.mytimeline.english-start.title": "Curso de inglês",
+  "home.mytimeline.english-start.date": "17/07/2013",
+  "home.mytimeline.english-start.description": "Apesar de começar bem cedo, ainda em minha pré-adolescência, considero como um dos cursos mais importantes para minha carreira, pois consegui realizar 5 anos de aulas, 2 vezes por semana, aprendendo bastante sobre a lingua inglesa, desde escrita e fala.",
+
+  "home.mytimeline.start.title": "Marco zero",
+  "home.mytimeline.start.date": "05/02/2001",
+  "home.mytimeline.start.description": "Como toda trajetória possui um começo, aqui é aonde começa a minha.",
+
+  "home.footer.contact.title": "Contato",
+  "home.footer.socialmedia.title": "Redes sociais",
+  "home.footer.requirements.title": "Autoria",
+  "home.footer.copyright": "© 2022 - 2023 - Todos os direitos reservados."
+}

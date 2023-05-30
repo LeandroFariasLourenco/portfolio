@@ -5,14 +5,14 @@ import { FormattedMessage } from 'react-intl';
 import { useLinkTarget } from '@/shared/hooks';
 import { APP } from '@/shared/constants/app';
 
-import "./footer.scss";
+import styles from "./footer.module.scss";
 
 const Footer = () => {
   const linkTarget = useLinkTarget();
 
   return (
     <Grid
-      className="footer"
+      className={styles["footer"]}
       container
       component="footer"
       justifyContent="center"
@@ -26,38 +26,38 @@ const Footer = () => {
         md={8}
         justifyContent="center"
       >
-        <Grid className="footer-column" item xs={12} md={4}>
+        <Grid className={styles["footer-column"]} item xs={12} md={4}>
           <Grid
             container
             justifyContent="center"
             alignItems="flex-start"
             flexDirection="column"
           >
-            <h5 className="footer-title"><FormattedMessage id="home.footer.contact.title" /></h5>
+            <h5 className={styles["footer-title"]}><FormattedMessage id="home.footer.contact.title" /></h5>
             <a
-              className="footer-link"
+              className={styles["footer-link"]}
               href="mailto:leandro.farias01@outlook.com"
             >
               <Email fontSize="small" htmlColor="white" />
               <Typography>leandro.farias01@outlook.com</Typography>
             </a>
-            <a className="footer-link" href="whatsapp://send/?phone=+5511983732412">
+            <a className={styles["footer-link"]} href="whatsapp://send/?phone=+5511983732412">
               <Phone fontSize="small" htmlColor="white" />
               <Typography>+55 (11) 98373-2412</Typography>
             </a>
           </Grid>
         </Grid>
-        <Grid item xs={12} md={4}>
-          <h5 className="footer-title"><FormattedMessage id="home.footer.socialmedia.title" /></h5>
-          <Grid className="footer-row">
-            <a className="footer-icon-container" href={APP.socials.linkedIn} target={linkTarget}><LinkedIn fontSize="large" htmlColor="#fff" /></a>
-            <a className="footer-icon-container github" href={APP.socials.github} target={linkTarget}><GitHub fontSize="large" /></a>
+        <Grid className={styles["footer-column"]} item xs={12} md={4}>
+          <h5 className={styles["footer-title"]}><FormattedMessage id="home.footer.socialmedia.title" /></h5>
+          <Grid className={styles["footer-row"]}>
+            <a className={styles["footer-icon-container"]} href={APP.socials.linkedIn} target={linkTarget}><LinkedIn fontSize="large" htmlColor="#fff" /></a>
+            <a className={`${styles["footer-icon-container"]} ${styles.github}`} href={APP.socials.github} target={linkTarget}><GitHub fontSize="large" /></a>
           </Grid>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid className={styles["footer-column"]} item xs={12} md={4}>
           <Grid>
-            <h5 className="footer-title"><FormattedMessage id="home.footer.requirements.title" /></h5>
-            <Grid className="footer-row">
+            <h5 className={styles["footer-title"]}><FormattedMessage id="home.footer.requirements.title" /></h5>
+            <Grid className={styles["footer-row"]}>
               <Typography>
                 <FormattedMessage id="home.footer.copyright" />
               </Typography>

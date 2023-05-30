@@ -2,7 +2,8 @@
   background-color: $theme-color-card;
   transition: background-color 200ms ease-in-out, box-shadow 200ms ease-in-out;
   padding: 5px 0;
-  box-shadow: 0 0 2px $theme-color-primary;
+  box-shadow: 0 0 2px $theme-color-secondary;
+  width: 100%;
 
   .MuiSelect {
     &-select {
@@ -25,8 +26,11 @@
 
   &-link {
     &-text {
-      color: white;
       font-size: 14px;
+
+      @include desktop() {
+        color: white;
+      }
     }
 
     cursor: pointer;
@@ -94,16 +98,11 @@
 
 .mobile {
   &-drawer {
-    divider {
+    &-divider {
       &::before,
       &::after {
         border-color: $theme-color-primary;
       }
-    }
-
-    .MuiPaper-root {
-      width: 100%;
-      max-width: 330px;
     }
 
     &-container {

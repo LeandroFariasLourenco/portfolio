@@ -5,11 +5,14 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { ITechnologyDetailsProps } from './props.interface';
 
 import styles from './technology-details.module.scss';
+import { useStackContext } from '../context/stack.context';
 
 const TechnologyDetails = ({
   technology,
-  isSelected,
 }: ITechnologyDetailsProps) => {
+  const { selected: {
+    technologyTab,
+  } } = useStackContext();
   const intl = useIntl();
 
   const renderTechnologyTopic = useCallback((topic: string) => (
@@ -26,7 +29,7 @@ const TechnologyDetails = ({
   return (
     <div
       className={`${styles["technology-details-description-card"]} ${cx({
-        [styles['is--selected']]: isSelected,
+        [styles['is--selected']]: technology.name === technologyTab,
       })}`}
     >
       <div className={styles["technology-details-description-container"]}>

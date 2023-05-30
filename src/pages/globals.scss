@@ -1,0 +1,181 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+no-scroll {
+  overflow: hidden !important;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $theme-color-secondary;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: $theme-color-primary;
+}
+
+::-webkit-scrollbar-track {
+  background: $theme-color-card;
+}
+
+body {
+  background-color: $theme-color-body;
+  scroll-behavior: smooth;
+  font-family: $theme-font-general;
+}
+
+h1 {
+  font-family: $theme-font-title, monospace;
+  font-weight: 400;
+  font-size: 38px;
+  text-transform: uppercase;
+  text-shadow: 0 0 5px #06d674;
+  color: white;
+}
+
+h2 {
+  font-family: $theme-font-title, monospace;
+  font-weight: 400;
+  color: white;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.133px;
+  font-size: 32px !important;
+}
+
+h3 {
+  font-size: 26px;
+  font-family: $theme-font-title, monospace;
+  text-shadow: 0 0 1px #06d674;
+  font-weight: 400;
+  line-height: 1.167;
+  letter-spacing: 0em;
+  color: #9aa5c6;
+}
+
+h4 {
+  font-size: 24px;
+  font-family: $theme-font-title, monospace;
+  font-weight: 400;
+  color: #9aa5c6;
+}
+
+h5 {
+  font-size: 22px;
+  font-family: $theme-font-title, monospace;
+  font-weight: 400;
+  line-height: 1.334;
+  letter-spacing: 0;
+  color: #9aa5c6;
+}
+
+h6 {
+  font-size: 17px;
+  font-family: $theme-font-subtitle, monospace;
+  color: white;
+  font-weight: 400;
+
+  span {
+    font-family: $theme-font-subtitle, monospace;
+  }
+}
+
+p {
+  color: $theme-color-font;
+  font-family: $theme-font-general;
+  line-height: 1.5;
+  letter-spacing: 0.15px;
+}
+
+button {
+  outline: none;
+  background-color: transparent;
+  align-items: center;
+  display: flex;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  color: $theme-color-primary;
+  transition: background-color 400ms ease-in-out;
+  text-transform: uppercase;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 15px;
+
+  // &:hover {
+  //   background-color: rgba($theme-color-primary, 0.1);
+  // }
+}
+
+.MuiDivider-root {
+  &::after,
+  &::before {
+    background-color: $theme-color-primary;
+  }
+}
+
+.MuiDrawer-paper {
+  width: 100%;
+  max-width: 330px;
+}
+
+.swiper {
+  &-slide {
+    @mixin create-animated-border(
+      $border-color,
+      $animation-duration,
+      $animation-direction: 'normal'
+    ) {
+      @include animated-border(
+        $theme-color-card,
+        $border-color,
+        $theme-color-secondary,
+        $animation-duration,
+        $animation-direction
+      );
+    }
+
+    &:first-of-type {
+      .mobile,
+      .desktop {
+        &-card-container {
+          &:first-of-type {
+            @include create-animated-border($theme-color-primary, 40s);
+          }
+          
+          &:last-of-type {
+            @include create-animated-border($theme-color-primary, 65s, reverse);
+          }
+        }
+      }
+    }
+    
+    .mobile,
+    .desktop {
+      &-card-container {
+        &:first-of-type {
+          @include create-animated-border($theme-color-secondary, 40s);
+        }
+        
+        &:last-of-type {
+          @include create-animated-border($theme-color-secondary, 65s, reverse);
+        }
+      }
+    }
+  }
+}
+

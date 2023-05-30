@@ -6,7 +6,7 @@ import SeeMore from '@/shared/components/see-more/see-more';
 import { useLinkTarget } from '@/shared/hooks';
 import { IDesktopProjectProps } from './props.interface';
 
-import './desktop-project.scss';
+import styles from './desktop-project.module.scss';
 
 const DesktopProject = ({
   project,
@@ -19,15 +19,15 @@ const DesktopProject = ({
   return (
     <>
       {isVideoBackground ? (
-        <video className="desktop-project-background-video" src={project.image} autoPlay muted loop />
-      ) : <img className="desktop-project-background-image" src={project.image} />}
+        <video className={styles["desktop-project-background-video"]} src={project.image} autoPlay muted loop />
+      ) : <img className={styles["desktop-project-background-image"]} src={project.image} />}
       <Grid>
         <Grid
           className={`desktop-project-slide-overlay ${cx({ closed: previewing })}`}
           container
           alignItems="flex-end"
         >
-          <Grid className="desktop-project-actions">
+          <Grid className={styles["desktop-project-actions"]}>
             <a target={linkTarget} href={project.link} rel="noreferrer">
               <GitHub fontSize="small" htmlColor="#fff" />
             </a>
@@ -35,10 +35,10 @@ const DesktopProject = ({
               {previewing ? <VisibilityOff /> : <Visibility />}
             </IconButton>
           </Grid>
-          <Grid className="desktop-project-technology-wrapper" container item xs={6}>
+          <Grid className={styles["desktop-project-technology-wrapper"]} container item xs={6}>
             {project.icons.map((icon, index) => (
               <img
-                className="desktop-project-technology-icon"
+                className={styles["desktop-project-technology-icon"]}
                 key={`${project.title}-${index}`}
                 src={icon}
               />
@@ -46,7 +46,7 @@ const DesktopProject = ({
           </Grid>
 
           <Grid container item xs={6}>
-            <Card className="desktop-project-description-card">
+            <Card className={styles["desktop-project-description-card"]}>
               <h3>{project.title}</h3>
               <SeeMore>
                 {project.paragraphs.map(renderProjectParagraph)}

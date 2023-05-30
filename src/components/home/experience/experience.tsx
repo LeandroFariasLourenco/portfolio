@@ -18,7 +18,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { CustomSwiperControls, Responsive } from '@/shared/components';
 import SeeMore from '@/shared/components/see-more/see-more';
 import { useResponsive, useSwiperProps } from '@/shared/hooks';
-import { EAppSections, EResponsiveType } from '@/shared/models';
+import { EResponsiveType } from '@/shared/models';
 import { FormattedMessage, useIntl } from 'react-intl';
 import DesktopCard from './components/desktop-card/desktop-card';
 import MobileCard from './components/mobile-card/mobile-card';
@@ -26,7 +26,6 @@ import MobileCard from './components/mobile-card/mobile-card';
 import { IExperience } from './models/experience.interface';
 
 import styles from './experience.module.scss';
-import './shared.scss';
 
 const Experience = () => {
   const theme = useTheme();
@@ -227,7 +226,6 @@ const Experience = () => {
   return (
     <div className={styles["experience-container"]}>
       <Section
-        id={EAppSections.EXPERIENCES}
         onTitleShow={(typewriter) => {
           typewriter.typeString(intl.formatMessage({ id: 'home.experience.title' }))
             .start();
@@ -246,7 +244,7 @@ const Experience = () => {
               setSwiperIndex(realIndex);
             }}
             onTransitionStart={({ $el }: any) => {
-              if (!isMobile) return;
+              if (!isMobile || !$el) return;
               const swiperContainer = ($el[0] as HTMLDivElement);
               swiperContainer.style.height = 'auto';
             }}

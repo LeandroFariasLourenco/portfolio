@@ -95,7 +95,7 @@ const About = () => {
   ), [hobbies, currentOpenedStory]);
 
   return (
-    <div className={styles["about-wrapper"]} id={EAppSections.ABOUT}>
+    <div className={styles["about-wrapper"]}>
       <Section
         onTitleShow={(typewriter) => {
           typewriter.typeString(intl.formatMessage({ id: 'home.about-me.title' }))

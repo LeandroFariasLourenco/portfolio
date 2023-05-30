@@ -11,10 +11,7 @@ import { useResponsive } from '@/shared/hooks';
 import { EResponsiveType } from '@/shared/models';
 import { IStoryProps } from './props.interface';
 
-import { useCallback } from 'react';
-import { IHobbie } from '../models/hobbies.interface';
-
-import './story.scss';
+import styles from './story.module.scss';
 
 const Story = ({
   hobby,
@@ -30,7 +27,7 @@ const Story = ({
       item
     >
       <Grid
-        className="story-container"
+        className={styles["story-container"]}
         container
         alignItems="center"
         justifyContent="center"
@@ -43,22 +40,22 @@ const Story = ({
           alignItems="center"
         >
           <button
-            className="story-topic"
+            className={styles["story-topic"]}
             onClick={() => {
               onClick(hobby.label, true);
             }}
           >
-            <div className="story-topic-border" style={{ borderColor: hobby.color }} />
-            <div className="story-topic-content">
+            <div className={styles["story-topic-border"]} style={{ borderColor: hobby.color }} />
+            <div className={styles["story-topic-content"]}>
               {hobby.icon}
             </div>
           </button>
-          <p className="story-label">{hobby.label}</p>
+          <p className={styles["story-label"]}>{hobby.label}</p>
         </Grid>
 
         <Card
           elevation={4}
-          className={`story-panel ${cx({
+          className={`${styles["story-panel"]} ${cx({
             'is--open': open,
           })}`}
           style={{
@@ -68,7 +65,7 @@ const Story = ({
           {hobby.content}
 
           <Button
-            className="story-close"
+            className={styles["story-close"]}
             onClick={() => {
               onClick(hobby.label, false);
             }}

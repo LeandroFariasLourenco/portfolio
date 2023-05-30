@@ -14,6 +14,7 @@ import useInView from '@/shared/hooks/use-in-view/use-in-view';
 
 const LazyLoad = ({
   children,
+  id,
 }: ILazyLoadProps) => {
   const { inView, ref } = useInView({
     threshold: 0.20,
@@ -38,6 +39,7 @@ const LazyLoad = ({
     <div
       className={`${styles["lazy-load-wrapper"]}${cx({ 'in--view': isInViewDebounced })}`}
       ref={ref}
+      id={id}
     >
 
       {!isInViewDebounced && (

@@ -64,6 +64,10 @@
       }
     }
 
+    &-infos {
+      margin: 10px 0;
+    }
+
     &-icon {
       width: 50px;
     }
@@ -80,6 +84,11 @@
     
     &-topic {
       margin-top: 10px;
+
+      &-text {
+        font-size: 13px;
+        white-space: nowrap;
+      }
 
       svg {
         margin-right: 5px;

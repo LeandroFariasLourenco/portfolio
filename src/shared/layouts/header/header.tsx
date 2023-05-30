@@ -16,7 +16,6 @@ import {
   useMemo, useState,
 } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-// import { HashLink } from 'react-router-hash-link';
 import Responsive from '@/shared/components/responsive/responsive';
 import { getBucketResource, smoothScroll } from '@/shared/functions';
 import { useIsWindowTop, useResponsive } from '@/shared/hooks';
@@ -41,10 +40,12 @@ const Header = () => {
   });
 
   const scrollToTop = useCallback(() => {
-    // window.scrollTo({
-    //   top: 0,
-    //   behavior: 'smooth',
-    // });
+    if (!window) return;
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }, []);
 
   const desktopMenuOptions: IMenuOption[] = useMemo<IMenuOption[]>(() => [
@@ -66,14 +67,13 @@ const Header = () => {
   const renderMenuOptions = useCallback((link: IMenuOption) => (
     <div
       key={link.label}
-      // to={link.href}
       className={styles["header-link"]}
-    // scroll={(element) => {
-    //   if (isMobile) {
-    //     setMobileMenuOpen(false);
-    //   }
-    //   smoothScroll(element);
-    // }}
+      onClick={() => {
+        if (isMobile) {
+          setMobileMenuOpen(false);
+        }
+        smoothScroll(document.querySelector(link.href)!);
+      }}
     >
       {cloneElement(link.icon as any, { htmlColor: '#fff', fontSize: 'small' } as IconProps)}
       <p className={styles["header-link-text"]}><FormattedMessage id={link.label} /></p>
@@ -132,7 +132,7 @@ const Header = () => {
                             {menuOptions.map(renderMenuOptions)}
                           </Grid>
                           <Grid item xs flex={0}>
-                            <Divider textAlign="center"><Chip label={<Typography variant="h3">Feito por</Typography>} /></Divider>
+                            <Divider textAlign="center"><Chip label={<Typography variant="h3">{intl.formatMessage({ id: 'header.signature.made-by' })}</Typography>} /></Divider>
                             <Image
                               className={styles.signature}
                               width={85}
@@ -140,6 +140,7 @@ const Header = () => {
                               src={getBucketResource('/signature.png')}
                               alt="signature"
                               quality={60}
+                              priority
                             />
                           </Grid>
                         </Grid>

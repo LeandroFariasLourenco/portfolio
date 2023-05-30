@@ -29,8 +29,8 @@
   $colorShadeE: #2c86a1b9 !default;
   $colorShadeD: #1486a881 !default;
   $colorShadeC: #2fac722f !default;
-  $colorShadeB: #0E1122 !default;
-  $colorShadeA: #10141D !default;
+  $colorShadeB: #0e1122 !default;
+  $colorShadeA: #10141d !default;
 
   width: 100%;
   border: 2px solid $colorShadeA;
@@ -39,8 +39,15 @@
   transition: all 175ms cubic-bezier(0, 0, 1, 1);
   position: relative;
   cursor: pointer;
-  padding: 10px;
   @include flex-centered();
+
+  @include desktop() {
+    padding: 10px;
+  }
+
+  @include mobile() {
+    padding: 0 10px;
+  }
 
   &::before {
     position: absolute;
@@ -77,3 +84,6 @@
   }
 }
 
+.outlined {
+  border: 1px solid rgba($theme-color-primary, 0.5);
+}

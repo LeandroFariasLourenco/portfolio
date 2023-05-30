@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { useCallback, memo } from 'react';
 import { ICustomSwiperControlsProps } from './props.interface';
 
-import './custom-swiper-controls.scss';
+import styles from './custom-swiper-controls.module.scss';
 
 const CustomSwiperControls = ({
   totalSlides,
@@ -13,10 +13,10 @@ const CustomSwiperControls = ({
 }: ICustomSwiperControlsProps) => {
   const renderSwiperPagination = useCallback((_: any, index: number) => (
     <Box
-      className={cx('swiper-pagination-bullet', {
-        filled: index >= swiperIndex,
-        first: index === 0,
-      })}
+      className={`${cx(styles["swiper-pagination-bullet"], {
+        [styles.filled]: index >= swiperIndex,
+        [styles.first]: index === 0,
+      })}`}
       onClick={() => {
         swiper!.slideTo(index);
       }}
@@ -27,25 +27,28 @@ const CustomSwiperControls = ({
 
   return (
     <div
-      className={`swiper-controls ${cx({ horizontal: paginationLayout === 'horizontal', vertical: paginationLayout === 'vertical' })}`}
+      className={`${styles["swiper-controls"]} ${cx({
+        [styles.horizontal]: paginationLayout === 'horizontal',
+        [styles.vertical]: paginationLayout === 'vertical'
+      })}`}
     >
       {paginationLayout !== undefined ? (
-        <Box className="swiper-pagination">
+        <Box className={styles["swiper-pagination"]}>
           {[...Array(totalSlides)].map(renderSwiperPagination)}
         </Box>
       ) : null}
       <Box
         onClick={() => swiper!.slideNext()}
-        className={`swiper-button-next ${cx({
-          disabled: swiper?.isEnd,
+        className={`${styles["swiper-button-next"]} ${cx({
+          [styles.disabled]: swiper?.isEnd,
         })}`}
       />
       <Box
         onClick={() => {
           swiper!.slidePrev();
         }}
-        className={`swiper-button-prev ${cx({
-          disabled: swiper?.isBeginning,
+        className={`${styles["swiper-button-prev"]} ${cx({
+          [styles.disabled]: swiper?.isBeginning,
         })}`}
       />
     </div>

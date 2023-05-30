@@ -1,13 +1,19 @@
 @mixin icon-style {
   position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 20px;
-  left: 50%;
-  transform: translate(-50%);
-  top: 15px;
   z-index: 1;
+  @include flex-centered();
+  @include desktop() {
+    top: 15px;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  @include mobile() {
+    padding: 10px;
+    left: 0;
+    top: 0;
+  }
 }
 
 .my-timeline {
@@ -16,19 +22,31 @@
     height: 100%;
     width: 4px;
     background: $theme-color-primary;
-    left: 50%;
-    top: 20px;
-    transform: translateX(-50%);
+
+    @include desktop() {
+      left: 50%;
+      top: 20px;
+      transform: translateX(-50%);
+    }
 
     @include mobile() {
-      display: none;
+      left: 20px;
+      top: 10px;
     }
 
     &-icon {
-      bottom: 0px;
-      left: 50%;
-      transform: translateX(-50%);
       @include icon-style();
+
+      @include desktop() {
+        bottom: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      @include mobile() {
+        left: 20px;
+        top: 0;
+      }
     }
   }
 
@@ -36,21 +54,24 @@
     &-left,
     &-right {
       display: flex;
-      margin-top: 80px;
       position: relative;
-    }
 
-    @include mobile() {
-      margin: 10px 0;
+      @include desktop() {
+        margin-top: 80px;
+      }
+
+      @include mobile() {
+        justify-content: flex-end;
+
+        & + & {
+          margin-top: 50px;
+        }
+      }
     }
 
     &-left {
-      justify-content: flex-start;
-
-      &-card {
-        @include mobile() {
-          display: none;
-        }
+      @include desktop() {
+        justify-content: flex-start;
       }
     }
     &-right {
@@ -59,11 +80,57 @@
 
     &-card {
       position: relative;
+      background: $theme-color-card;
+      width: calc(50% - 40px);
+      padding: 20px;
+      position: relative;
+      animation: fadeIn;
+      animation-fill-mode: forwards;
+      animation-duration: 350ms;
+
+      @include mobile() {
+        width: 80%;
+        margin-right: 10px;
+        padding: 15px 15px 60px 15px;
+      }
+
+      &.left {
+        @include desktop() {
+          margin-left: -20px;
+        }
+      }
+
+      &.right {
+        @include desktop() {
+          margin-right: -20px;
+        }
+      }
 
       &-date {
         position: absolute;
-        top: 30px;
-        font-size: 28px;
+
+        &.left {
+          @include desktop() {
+            right: -285px;
+          }
+        }
+
+        &.right {
+          @include desktop() {
+            left: -285px;
+          }
+        }
+
+        @include desktop() {
+          top: 30px;
+          font-size: 28px;
+        }
+
+        @include mobile() {
+          font-size: 24px;
+          bottom: 20px;
+          right: 15px;
+        }
       }
 
       @keyframes fadeIn {
@@ -78,24 +145,8 @@
         }
       }
 
-      background: $theme-color-card;
-      width: calc(50% - 40px);
-      padding: 20px;
-      position: relative;
-      animation: fadeIn;
-      animation-fill-mode: forwards;
-      animation-duration: 350ms;
-
-      @include mobile() {
-        width: 100%;
-      }
-
       &-icon {
         @include icon-style();
-
-        @include mobile() {
-          display: none;
-        }
       }
 
       &::before {
@@ -132,7 +183,9 @@
       }
 
       &-text {
-        margin: 10px 0 17px 0;
+        @include mobile() {
+          font-size: 13px;
+        }
       }
 
       &-details {
@@ -155,12 +208,12 @@
     cursor: pointer;
     @include pulse-style();
     @include flex-centered();
-    left: 50%;
-    bottom: -30px;
-
+    
     @include mobile() {
       width: 40px;
       height: 40px;
+      left: 0;
+      bottom: 20px;
     }
 
     @include desktop() {
@@ -168,6 +221,8 @@
       margin-top: -15px;
       height: 55px;
       width: 55px;
+      left: 50%;
+      bottom: -30px;
     }
 
     svg {
@@ -197,7 +252,7 @@
     padding-bottom: 80px;
 
     @include mobile() {
-      overflow-x: hidden;
+      margin-top: 30px;
     }
   }
 }

@@ -12,21 +12,23 @@ import { ITechnologiesProps } from './props.interface';
 import { ITechnology } from './models/technology.interface';
 
 import styles from './technologies.module.scss';
+import { useStackContext } from '../context/stack.context';
 
 const Technologies = ({
   technologies,
 }: ITechnologiesProps) => {
-  const [selectedTab, setSelectedTab] = useState<number>(0);
+  const { selected: {
+    technologyTab,
+    setSelectedTechnologyTab
+  } } = useStackContext();
 
   const renderTechnology = useCallback((technology: ITechnology, index: number) => (
     <TechnologyTab
-      index={index}
       key={technology.description}
       technology={technology}
-      onDesktopToggle={(index) => setSelectedTab(index)}
-      selectedTab={selectedTab}
+      onDesktopToggle={(technology) => setSelectedTechnologyTab(technology.name)}
     />
-  ), [selectedTab]);
+  ), []);
 
   return (
     <Grid className={styles["languages-container"]} container flexWrap="nowrap">
@@ -38,7 +40,7 @@ const Technologies = ({
       >
         <Grid item xs={8}>
           <TechnologyDetails
-            technology={technologies[selectedTab]}
+            technology={}
           />
         </Grid>
       </Responsive>
