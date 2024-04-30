@@ -32,16 +32,6 @@ const Footer = () => {
             flexDirection="column"
           >
             <S.Title variant="h5"><FormattedMessage id="home.footer.contact.title" /></S.Title>
-            {/*<S.FooterLink
-              href="mailto:leandro.farias01@outlook.com"
-            >
-              <Email fontSize="small" htmlColor="white" />
-              <Typography>leandro.farias01@outlook.com</Typography>
-            </S.FooterLink>
-            <S.FooterLink href="whatsapp://send/?phone=+5511983732412">
-              <Phone fontSize="small" htmlColor="white" />
-              <Typography>+55 (11) 98373-2412</Typography>
-            </S.FooterLink>*/}
           </S.FooterContainer>
         </S.FooterColumn>
         <S.FooterColumn item xs={12} md={4}>
